@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "balick",
-  "homepage": "https://balick-ui.com",
+  "homepage": "https://ui.balick.dev",
   "items": [
     {
       "name": "marquee",
@@ -96,7 +96,7 @@
       "title": "Marquee Demo",
       "description": "Example usage of Marquee.",
       "registryDependencies": [
-        "https://balick-ui.com/r/marquee.json"
+        "https://ui.balick.dev/r/marquee.json"
       ],
       "files": [
         {
@@ -111,7 +111,7 @@
       "title": "Blur Fade Demo",
       "description": "Example usage of Blur Fade.",
       "registryDependencies": [
-        "https://balick-ui.com/r/blur-fade.json"
+        "https://ui.balick.dev/r/blur-fade.json"
       ],
       "files": [
         {
@@ -126,7 +126,7 @@
       "title": "Shimmer Button Demo",
       "description": "Example usage of Shimmer Button.",
       "registryDependencies": [
-        "https://balick-ui.com/r/shimmer-button.json"
+        "https://ui.balick.dev/r/shimmer-button.json"
       ],
       "files": [
         {
@@ -141,7 +141,7 @@
       "title": "Grid Pattern Demo",
       "description": "Example usage of Grid Pattern.",
       "registryDependencies": [
-        "https://balick-ui.com/r/grid-pattern.json"
+        "https://ui.balick.dev/r/grid-pattern.json"
       ],
       "files": [
         {
@@ -160,10 +160,10 @@
       ],
       "registryDependencies": [
         "button",
-        "https://balick-ui.com/r/blur-fade.json",
-        "https://balick-ui.com/r/grid-pattern.json",
-        "https://balick-ui.com/r/marquee.json",
-        "https://balick-ui.com/r/shimmer-button.json"
+        "https://ui.balick.dev/r/blur-fade.json",
+        "https://ui.balick.dev/r/grid-pattern.json",
+        "https://ui.balick.dev/r/marquee.json",
+        "https://ui.balick.dev/r/shimmer-button.json"
       ],
       "files": [
         {
@@ -181,7 +181,7 @@
         "features"
       ],
       "registryDependencies": [
-        "https://balick-ui.com/r/marquee.json"
+        "https://ui.balick.dev/r/marquee.json"
       ],
       "files": [
         {
