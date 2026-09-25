@@ -1,78 +1,152 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
+  "name": "balick",
+  "homepage": "https://balick-ui.com",
   "items": [
     {
-      "name": "hello-world",
-      "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component",
-      "registryDependencies": ["button"],
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "description": "An infinite scrolling track for logos, testimonials or anything else.",
+      "cssVars": {
+        "theme": {
+          "animate-marquee": "marquee var(--duration) linear infinite",
+          "animate-marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes marquee": {
+          "from": {
+            "transform": "translateX(0)"
+          },
+          "to": {
+            "transform": "translateX(calc(-100% - var(--gap)))"
+          }
+        },
+        "@keyframes marquee-vertical": {
+          "from": {
+            "transform": "translateY(0)"
+          },
+          "to": {
+            "transform": "translateY(calc(-100% - var(--gap)))"
+          }
+        }
+      },
       "files": [
         {
-          "path": "registry/new-york/blocks/hello-world/hello-world.tsx",
-          "type": "registry:component"
+          "path": "registry/balick/components/marquee.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "example-form",
-      "type": "registry:component",
-      "title": "Example Form",
-      "description": "A contact form with Zod validation.",
-      "dependencies": ["zod"],
-      "registryDependencies": ["button", "input", "label", "textarea", "card"],
+      "name": "blur-fade",
+      "type": "registry:ui",
+      "title": "Blur Fade",
+      "description": "Reveal content with a soft blur and fade, on mount or when scrolled into view.",
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
-          "path": "registry/new-york/blocks/example-form/example-form.tsx",
-          "type": "registry:component"
+          "path": "registry/balick/components/blur-fade.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "complex-component",
-      "type": "registry:component",
-      "title": "Complex Component",
-      "description": "A complex component showing hooks, libs and components.",
-      "registryDependencies": ["card"],
+      "name": "shimmer-button",
+      "type": "registry:ui",
+      "title": "Shimmer Button",
+      "description": "A button with a beam of light travelling around its border.",
+      "cssVars": {
+        "theme": {
+          "animate-shimmer-spin": "shimmer-spin var(--shimmer-duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes shimmer-spin": {
+          "to": {
+            "rotate": "360deg"
+          }
+        }
+      },
       "files": [
         {
-          "path": "registry/new-york/blocks/complex-component/page.tsx",
-          "type": "registry:page",
-          "target": "app/pokemon/page.tsx"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/components/pokemon-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/components/pokemon-image.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/lib/pokemon.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/hooks/use-pokemon.ts",
-          "type": "registry:hook"
+          "path": "registry/balick/components/shimmer-button.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "example-with-css",
-      "type": "registry:component",
-      "title": "Example with CSS",
-      "description": "A login form with a CSS file.",
+      "name": "grid-pattern",
+      "type": "registry:ui",
+      "title": "Grid Pattern",
+      "description": "A lightweight SVG grid background with optional highlighted cells.",
       "files": [
         {
-          "path": "registry/new-york/blocks/example-with-css/example-card.tsx",
-          "type": "registry:component"
-        },
+          "path": "registry/balick/components/grid-pattern.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marquee-demo",
+      "type": "registry:example",
+      "title": "Marquee Demo",
+      "description": "Example usage of Marquee.",
+      "registryDependencies": [
+        "https://balick-ui.com/r/marquee.json"
+      ],
+      "files": [
         {
-          "path": "registry/new-york/blocks/example-with-css/example-card.css",
-          "type": "registry:component"
+          "path": "registry/balick/examples/marquee-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "blur-fade-demo",
+      "type": "registry:example",
+      "title": "Blur Fade Demo",
+      "description": "Example usage of Blur Fade.",
+      "registryDependencies": [
+        "https://balick-ui.com/r/blur-fade.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/blur-fade-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-button-demo",
+      "type": "registry:example",
+      "title": "Shimmer Button Demo",
+      "description": "Example usage of Shimmer Button.",
+      "registryDependencies": [
+        "https://balick-ui.com/r/shimmer-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/shimmer-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "grid-pattern-demo",
+      "type": "registry:example",
+      "title": "Grid Pattern Demo",
+      "description": "Example usage of Grid Pattern.",
+      "registryDependencies": [
+        "https://balick-ui.com/r/grid-pattern.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/grid-pattern-demo.tsx",
+          "type": "registry:example"
         }
       ]
     }

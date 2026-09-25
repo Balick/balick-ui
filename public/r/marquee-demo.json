@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-demo",
+  "type": "registry:example",
+  "title": "Marquee Demo",
+  "description": "Example usage of Marquee.",
+  "registryDependencies": [
+    "https://balick-ui.com/r/marquee.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/marquee-demo.tsx",
+      "content": "import { Marquee } from \"@/registry/balick/components/marquee\"\n\nconst reviews = [\n  { name: \"Lina\", handle: \"@lina\", body: \"Dropped it into our landing page in two minutes.\" },\n  { name: \"Marc\", handle: \"@marc\", body: \"Finally a component library that stays out of the way.\" },\n  { name: \"Sofia\", handle: \"@sofia\", body: \"The details are what sell it. Clean and quiet.\" },\n  { name: \"Noah\", handle: \"@noah\", body: \"Works with my existing shadcn setup, no friction.\" },\n  { name: \"Yara\", handle: \"@yara\", body: \"Motion that feels intentional, not decorative.\" },\n  { name: \"Tom\", handle: \"@tom\", body: \"The CLI install is the killer feature for me.\" },\n]\n\nfunction ReviewCard({ name, handle, body }: (typeof reviews)[number]) {\n  return (\n    <figure className=\"w-64 rounded-xl border bg-background p-4 transition-colors hover:bg-muted/50\">\n      <div className=\"flex items-center gap-3\">\n        <div className=\"flex size-8 items-center justify-center rounded-full bg-foreground text-xs font-medium text-background\">\n          {name[0]}\n        </div>\n        <div className=\"flex flex-col\">\n          <figcaption className=\"text-sm font-medium\">{name}</figcaption>\n          <p className=\"text-xs text-muted-foreground\">{handle}</p>\n        </div>\n      </div>\n      <blockquote className=\"mt-3 text-sm text-muted-foreground\">{body}</blockquote>\n    </figure>\n  )\n}\n\nexport default function MarqueeDemo() {\n  const half = Math.ceil(reviews.length / 2)\n  return (\n    <div className=\"flex w-full flex-col overflow-hidden\">\n      <Marquee pauseOnHover fade duration=\"30s\">\n        {reviews.slice(0, half).map((review) => (\n          <ReviewCard key={review.handle} {...review} />\n        ))}\n      </Marquee>\n      <Marquee reverse pauseOnHover fade duration=\"30s\">\n        {reviews.slice(half).map((review) => (\n          <ReviewCard key={review.handle} {...review} />\n        ))}\n      </Marquee>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

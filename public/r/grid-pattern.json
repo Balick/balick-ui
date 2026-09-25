@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid-pattern",
+  "type": "registry:ui",
+  "title": "Grid Pattern",
+  "description": "A lightweight SVG grid background with optional highlighted cells.",
+  "files": [
+    {
+      "path": "registry/balick/components/grid-pattern.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface GridPatternProps extends React.ComponentProps<\"svg\"> {\n  /** Width of a cell, in pixels. */\n  width?: number\n  /** Height of a cell, in pixels. */\n  height?: number\n  /** Horizontal offset of the pattern. */\n  x?: number\n  /** Vertical offset of the pattern. */\n  y?: number\n  /** Dash pattern of the lines, e.g. \"4 2\". */\n  strokeDasharray?: string\n  /** Cells to fill, as [column, row] pairs. */\n  squares?: Array<[number, number]>\n}\n\nexport function GridPattern({\n  width = 40,\n  height = 40,\n  x = -1,\n  y = -1,\n  strokeDasharray = \"0\",\n  squares,\n  className,\n  ...props\n}: GridPatternProps) {\n  const id = React.useId()\n\n  return (\n    <svg\n      data-slot=\"grid-pattern\"\n      aria-hidden\n      className={cn(\n        \"pointer-events-none absolute inset-0 h-full w-full fill-foreground/[0.04] stroke-foreground/10\",\n        className\n      )}\n      {...props}\n    >\n      <defs>\n        <pattern\n          id={id}\n          width={width}\n          height={height}\n          patternUnits=\"userSpaceOnUse\"\n          x={x}\n          y={y}\n        >\n          <path\n            d={`M.5 ${height}V.5H${width}`}\n            fill=\"none\"\n            strokeDasharray={strokeDasharray}\n          />\n        </pattern>\n      </defs>\n      <rect width=\"100%\" height=\"100%\" strokeWidth={0} fill={`url(#${id})`} />\n      {squares && (\n        <svg x={x} y={y} className=\"overflow-visible\">\n          {squares.map(([col, row]) => (\n            <rect\n              key={`${col}-${row}`}\n              strokeWidth=\"0\"\n              width={width - 1}\n              height={height - 1}\n              x={col * width + 1}\n              y={row * height + 1}\n            />\n          ))}\n        </svg>\n      )}\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,23 +1,37 @@
-# registry-template
+# Balick UI
 
-You can use the `shadcn` CLI to run your own component registry. Running your own
-component registry allows you to distribute your custom components, hooks, pages, and
-other files to any React project.
+Minimal, animated components, blocks and templates built on top of
+[shadcn/ui](https://ui.shadcn.com). Every item is distributed as source code
+through the shadcn CLI.
 
-> [!IMPORTANT]  
-> This template uses Tailwind v4. For Tailwind v3, see [registry-template-v3](https://github.com/shadcn-ui/registry-template-v3).
+```bash
+npx shadcn@latest add https://balick-ui.com/r/marquee.json
+```
 
-## Getting Started
+## Development
 
-This is a template for creating a custom registry using Next.js.
+```bash
+pnpm install
+pnpm dev              # docs site on http://localhost:3000
+pnpm registry:build   # regenerate public/r/*.json from registry.json
+pnpm build            # production build of the site
+```
 
-- The template uses a `registry.json` file to define components and their files.
-- The `shadcn build` command is used to build the registry.
-- The registry items are served as static files under `public/r/[name].json`.
-- The template also includes a route handler for serving registry items.
-- Every registry item are compatible with the `shadcn` CLI.
-- We have also added v0 integration using the `Open in v0` api.
+Set `NEXT_PUBLIC_BASE_URL` to the deployed URL so install commands and
+"Open in v0" links point to the right registry.
 
-## Documentation
+## Project structure
 
-Visit the [shadcn documentation](https://ui.shadcn.com/docs/registry) to view the full documentation.
+```
+app/(site)/            Marketing and docs pages
+  docs/components/     One page per component, generated from content/components.ts
+components/            Site UI (header, previews, code blocks, search…)
+components/ui/         shadcn/ui primitives used by the site
+config/                Site and navigation configuration
+content/components.ts  Documentation for each component (usage, props, CSS)
+registry/balick/       Everything distributed through the CLI (see registry/README.md)
+registry.json          Registry manifest consumed by `shadcn build`
+public/r/              Built registry, served statically
+```
+
+See [`registry/README.md`](registry/README.md) to add a new component.
