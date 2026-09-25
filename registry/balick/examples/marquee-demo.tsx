@@ -1,4 +1,4 @@
-import { Marquee } from "@/registry/balick/components/marquee"
+import { Marquee } from "@/registry/balick/ui/marquee"
 
 const reviews = [
   { name: "Lina", handle: "@lina", body: "Dropped it into our landing page in two minutes." },

@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { GridPattern } from "@/registry/balick/components/grid-pattern"
+import { GridPattern } from "@/registry/balick/ui/grid-pattern"
 
 export function ComingSoon({
   label,

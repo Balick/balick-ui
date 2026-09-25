@@ -14,15 +14,29 @@ export function getRegistryItem(name: string) {
     | undefined
 }
 
-/**
- * Reads the first file of a registry item and rewrites internal import paths
- * to the ones users get after installing with the shadcn CLI.
- */
-export async function getRegistrySource(name: string) {
-  const item = getRegistryItem(name)
-  const file = item?.files[0]
-  if (!file) return null
+/** Rewrites internal import paths to the ones users get after installing. */
+function toInstalledSource(source: string) {
+  return source.replaceAll("@/registry/balick/ui/", "@/components/ui/")
+}
 
-  const source = await fs.readFile(path.join(process.cwd(), file.path), "utf8")
-  return source.replaceAll("@/registry/balick/components/", "@/components/ui/")
+/** Reads the first file of a registry item. */
+export async function getRegistrySource(name: string) {
+  const files = await getRegistryFiles(name)
+  return files[0]?.code ?? null
+}
+
+/** Reads every file of a registry item, with the path it is installed to. */
+export async function getRegistryFiles(name: string) {
+  const item = getRegistryItem(name)
+  if (!item) return []
+
+  return Promise.all(
+    item.files.map(async (file) => {
+      const source = await fs.readFile(path.join(process.cwd(), file.path), "utf8")
+      return {
+        path: `${file.type === "registry:ui" ? "components/ui" : "components"}/${path.basename(file.path)}`,
+        code: toInstalledSource(source),
+      }
+    })
+  )
 }

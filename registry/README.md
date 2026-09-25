@@ -5,16 +5,27 @@ also be declared in `registry.json` at the repository root.
 
 | Folder        | Registry type      | Purpose                                             |
 | ------------- | ------------------ | --------------------------------------------------- |
-| `components/` | `registry:ui`      | Standalone components (animated or original)        |
+| `ui/`         | `registry:ui`      | Standalone components (animated or original)        |
 | `blocks/`     | `registry:block`   | Full page sections: hero, pricing, footer…          |
 | `templates/`  | `registry:block`   | Complete pages or multi-section landing pages       |
 | `examples/`   | `registry:example` | Demos rendered in the docs and opened in v0         |
 
 ## Adding a component
 
-1. Create `components/<name>.tsx` and `examples/<name>-demo.tsx`.
+1. Create `ui/<name>.tsx` and `examples/<name>-demo.tsx`.
 2. Declare both in `registry.json` (the demo lists the component's URL in
    `registryDependencies`).
 3. Register the demo in `registry/__index__.ts` and document it in
    `content/components.ts`.
+4. Run `pnpm registry:build`.
+
+## Adding a block
+
+1. Create `blocks/<category>-NN/<category>-NN.tsx` and export the section.
+   Import shadcn primitives from `@/components/ui/*` and Balick components
+   from `@/registry/balick/ui/*` (the CLI rewrites them to `@/components/ui/*`).
+2. Declare it in `registry.json` with `"type": "registry:block"`, a
+   `categories` entry and its `registryDependencies`.
+3. Register it in the `blocks` map of `registry/__index__.ts`. The gallery at
+   `/blocks` and the standalone preview at `/view/<name>` pick it up.
 4. Run `pnpm registry:build`.

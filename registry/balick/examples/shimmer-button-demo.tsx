@@ -1,4 +1,4 @@
-import { ShimmerButton } from "@/registry/balick/components/shimmer-button"
+import { ShimmerButton } from "@/registry/balick/ui/shimmer-button"
 
 export default function ShimmerButtonDemo() {
   return <ShimmerButton>Get started</ShimmerButton>

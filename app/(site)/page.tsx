@@ -5,10 +5,10 @@ import { FrameSection } from "@/components/home/frame"
 import { InstallPill } from "@/components/home/install-pill"
 import { componentDocs } from "@/content/components"
 import { cn } from "@/lib/utils"
-import { BlurFade } from "@/registry/balick/components/blur-fade"
-import { GridPattern } from "@/registry/balick/components/grid-pattern"
-import { Marquee } from "@/registry/balick/components/marquee"
-import { ShimmerButton } from "@/registry/balick/components/shimmer-button"
+import { BlurFade } from "@/registry/balick/ui/blur-fade"
+import { GridPattern } from "@/registry/balick/ui/grid-pattern"
+import { Marquee } from "@/registry/balick/ui/marquee"
+import { ShimmerButton } from "@/registry/balick/ui/shimmer-button"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
 
 const stack = ["React 19", "Next.js", "Tailwind CSS v4", "shadcn/ui", "Motion", "TypeScript", "Radix UI", "Vite"]
@@ -175,7 +175,7 @@ export default function HomePage() {
             Start with one component.
           </h2>
           <p className="relative mt-3 max-w-md text-balance text-muted-foreground">
-            Blocks and templates are on the way. Everything is free and open source.
+            Blocks are here, templates are on the way. Everything is free and open source.
           </p>
           <Link
             href="/docs/installation"
