@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-fade",
+  "type": "registry:ui",
+  "title": "Blur Fade",
+  "description": "Reveal content with a soft blur and fade, on mount or when scrolled into view.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/components/blur-fade.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion, type Variants } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype Direction = \"up\" | \"down\" | \"left\" | \"right\"\n\nexport interface BlurFadeProps\n  extends Omit<React.ComponentProps<typeof motion.div>, \"children\"> {\n  children?: React.ReactNode\n  /** Animation duration in seconds. */\n  duration?: number\n  /** Delay before the animation starts, in seconds. */\n  delay?: number\n  /** Distance travelled by the element, in pixels. */\n  offset?: number\n  /** Direction the element comes from. */\n  direction?: Direction\n  /** Amount of blur at the start of the animation. */\n  blur?: string\n  /** Wait until the element scrolls into view before animating. */\n  inView?: boolean\n  /** Margin applied to the viewport when `inView` is set. */\n  inViewMargin?: string\n}\n\nconst axis: Record<Direction, [\"x\" | \"y\", 1 | -1]> = {\n  up: [\"y\", 1],\n  down: [\"y\", -1],\n  left: [\"x\", 1],\n  right: [\"x\", -1],\n}\n\nexport function BlurFade({\n  children,\n  className,\n  duration = 0.4,\n  delay = 0,\n  offset = 8,\n  direction = \"down\",\n  blur = \"6px\",\n  inView = false,\n  inViewMargin = \"-50px\",\n  ...props\n}: BlurFadeProps) {\n  const reduceMotion = useReducedMotion()\n  const [key, sign] = axis[direction]\n\n  const variants: Variants = {\n    hidden: {\n      opacity: 0,\n      filter: `blur(${blur})`,\n      [key]: reduceMotion ? 0 : offset * sign,\n    },\n    visible: { opacity: 1, filter: \"blur(0px)\", [key]: 0 },\n  }\n\n  return (\n    <motion.div\n      data-slot=\"blur-fade\"\n      initial=\"hidden\"\n      {...(inView\n        ? { whileInView: \"visible\", viewport: { once: true, margin: inViewMargin } }\n        : { animate: \"visible\" })}\n      variants={variants}\n      transition={{ delay: 0.04 + delay, duration, ease: \"easeOut\" }}\n      className={cn(className)}\n      {...props}\n    >\n      {children}\n    </motion.div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

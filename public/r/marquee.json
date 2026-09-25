@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "type": "registry:ui",
+  "title": "Marquee",
+  "description": "An infinite scrolling track for logos, testimonials or anything else.",
+  "files": [
+    {
+      "path": "registry/balick/components/marquee.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface MarqueeProps extends React.ComponentProps<\"div\"> {\n  /** Reverse the scroll direction. */\n  reverse?: boolean\n  /** Pause the animation while the pointer is over the marquee. */\n  pauseOnHover?: boolean\n  /** Scroll vertically instead of horizontally. */\n  vertical?: boolean\n  /** Fade the edges into the background. */\n  fade?: boolean\n  /** How many times the content is repeated to fill the track. */\n  repeat?: number\n  /** Duration of one full loop, as a CSS time. */\n  duration?: string\n  /** Space between items, as a CSS length. */\n  gap?: string\n}\n\nexport function Marquee({\n  className,\n  reverse = false,\n  pauseOnHover = false,\n  vertical = false,\n  fade = false,\n  repeat = 4,\n  duration = \"40s\",\n  gap = \"1rem\",\n  style,\n  children,\n  ...props\n}: MarqueeProps) {\n  return (\n    <div\n      data-slot=\"marquee\"\n      style={\n        { \"--duration\": duration, \"--gap\": gap, ...style } as React.CSSProperties\n      }\n      className={cn(\n        \"group flex gap-(--gap) overflow-hidden p-2\",\n        vertical ? \"flex-col\" : \"flex-row\",\n        fade &&\n          (vertical\n            ? \"[mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]\"\n            : \"[mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]\"),\n        className\n      )}\n      {...props}\n    >\n      {Array.from({ length: repeat }, (_, i) => (\n        <div\n          key={i}\n          aria-hidden={i > 0 || undefined}\n          className={cn(\n            \"flex shrink-0 justify-around gap-(--gap) motion-reduce:animate-none\",\n            vertical\n              ? \"animate-marquee-vertical flex-col\"\n              : \"animate-marquee flex-row\",\n            reverse && \"[animation-direction:reverse]\",\n            pauseOnHover && \"group-hover:[animation-play-state:paused]\"\n          )}\n        >\n          {children}\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-marquee": "marquee var(--duration) linear infinite",
+      "animate-marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes marquee": {
+      "from": {
+        "transform": "translateX(0)"
+      },
+      "to": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      }
+    },
+    "@keyframes marquee-vertical": {
+      "from": {
+        "transform": "translateY(0)"
+      },
+      "to": {
+        "transform": "translateY(calc(-100% - var(--gap)))"
+      }
+    }
+  }
+}

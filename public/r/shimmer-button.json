@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-button",
+  "type": "registry:ui",
+  "title": "Shimmer Button",
+  "description": "A button with a beam of light travelling around its border.",
+  "files": [
+    {
+      "path": "registry/balick/components/shimmer-button.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ShimmerButtonProps extends React.ComponentProps<\"button\"> {\n  /** Color of the light travelling around the border. */\n  shimmerColor?: string\n  /** Duration of one full turn, as a CSS time. */\n  shimmerDuration?: string\n  /** Background of the button. */\n  background?: string\n}\n\nexport function ShimmerButton({\n  className,\n  shimmerColor = \"#ffffff\",\n  shimmerDuration = \"3s\",\n  background = \"#0a0a0a\",\n  style,\n  children,\n  ...props\n}: ShimmerButtonProps) {\n  return (\n    <button\n      data-slot=\"shimmer-button\"\n      style={\n        {\n          \"--shimmer-color\": shimmerColor,\n          \"--shimmer-duration\": shimmerDuration,\n          \"--shimmer-bg\": background,\n          ...style,\n        } as React.CSSProperties\n      }\n      className={cn(\n        \"group relative isolate inline-flex cursor-pointer overflow-hidden rounded-full p-px transition-transform duration-200 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50\",\n        \"shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_8px_24px_-8px_rgb(0_0_0/0.5)]\",\n        className\n      )}\n      {...props}\n    >\n      <span\n        aria-hidden\n        className=\"animate-shimmer-spin absolute top-1/2 left-1/2 -z-10 aspect-square w-[max(200%,12rem)] -translate-x-1/2 -translate-y-1/2 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_270deg,var(--shimmer-color)_330deg,transparent_360deg)] motion-reduce:animate-none\"\n      />\n      <span className=\"relative inline-flex h-full w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-(--shimmer-bg) px-6 py-2.5 text-sm font-medium whitespace-nowrap text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]\">\n        <span\n          aria-hidden\n          className=\"absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 transition-[left,opacity] duration-700 ease-out group-hover:left-[120%] group-hover:opacity-100\"\n        />\n        {children}\n      </span>\n    </button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-shimmer-spin": "shimmer-spin var(--shimmer-duration) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes shimmer-spin": {
+      "to": {
+        "rotate": "360deg"
+      }
+    }
+  }
+}
