@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react"
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Section, SectionHeader } from "@/registry/balick/ui/section"
 
 type Billing = "monthly" | "yearly"
 
@@ -134,23 +135,16 @@ export function Pricing01() {
   const [billing, setBilling] = React.useState<Billing>("yearly")
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
-      <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
-        <p className="font-mono text-xs tracking-wider text-muted-foreground uppercase">
-          Pricing
-        </p>
-        <h2 className="mt-3 text-4xl font-semibold tracking-tighter text-balance sm:text-5xl">
-          Simple pricing that scales with you.
-        </h2>
-        <p className="mt-4 text-lg text-balance text-muted-foreground">
-          Start for free, upgrade when you need to. No hidden fees.
-        </p>
-        <div className="mt-8">
-          <BillingToggle value={billing} onChange={setBilling} />
-        </div>
-      </div>
+    <Section>
+      <SectionHeader
+        eyebrow="Pricing"
+        title="Simple pricing that scales with you."
+        description="Start for free, upgrade when you need to. No hidden fees."
+      >
+        <BillingToggle value={billing} onChange={setBilling} />
+      </SectionHeader>
 
-      <div className="mt-14 grid gap-4 lg:grid-cols-3 lg:items-start">
+      <div className="mt-16 grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-start">
         {plans.map((plan) => (
           <div
             key={plan.name}
@@ -204,6 +198,6 @@ export function Pricing01() {
         </a>
         .
       </p>
-    </section>
+    </Section>
   )
 }

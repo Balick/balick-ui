@@ -2,6 +2,7 @@ import { ArrowRight, Github, Linkedin, Triangle, Twitter, Youtube } from "lucide
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Container } from "@/registry/balick/ui/section"
 
 const columns = [
   { title: "Product", links: ["Features", "Pricing", "Integrations", "Changelog", "Roadmap"] },
@@ -20,8 +21,8 @@ const socials = [
 export function Footer01() {
   return (
     <footer className="relative overflow-hidden border-t">
-      <div className="mx-auto max-w-6xl px-6 pt-16 sm:pt-20">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
+      <Container className="pt-16 sm:pt-20">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_2fr]">
           <div className="flex max-w-sm flex-col gap-6">
             <a href="#" className="flex items-center gap-2 font-semibold tracking-tight">
               <Triangle className="size-5 fill-current" />
@@ -93,16 +94,13 @@ export function Footer01() {
             ))}
           </div>
         </div>
-      </div>
+      </Container>
 
-      <div
-        aria-hidden
-        className="pointer-events-none mx-auto max-w-6xl px-6 select-none"
-      >
+      <Container aria-hidden className="pointer-events-none select-none">
         <p className="-mb-[0.22em] bg-gradient-to-b from-foreground/15 to-transparent bg-clip-text text-center text-[clamp(5rem,22vw,16rem)] leading-none font-semibold tracking-tighter text-transparent">
           Acme
         </p>
-      </div>
+      </Container>
     </footer>
   )
 }

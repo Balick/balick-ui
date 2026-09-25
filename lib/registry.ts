@@ -31,7 +31,7 @@ export async function getRegistryFiles(name: string) {
   if (!item) return []
 
   return Promise.all(
-    item.files.map(async (file) => {
+    (item.files ?? []).map(async (file) => {
       const source = await fs.readFile(path.join(process.cwd(), file.path), "utf8")
       return {
         path: `${file.type === "registry:ui" ? "components/ui" : "components"}/${path.basename(file.path)}`,

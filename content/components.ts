@@ -5,6 +5,11 @@ export interface PropDef {
   description: string
 }
 
+export interface PropGroup {
+  title: string
+  props: PropDef[]
+}
+
 export interface ComponentDoc {
   slug: string
   title: string
@@ -12,7 +17,9 @@ export interface ComponentDoc {
   /** Registry item name of the demo rendered in the preview. */
   example: string
   usage: string
-  props: PropDef[]
+  props?: PropDef[]
+  /** Use instead of `props` when the item exports several components. */
+  propGroups?: PropGroup[]
   /** CSS users add to their global stylesheet when installing manually. */
   css?: string
   /** Shown with a "New" badge in navigation. */
@@ -109,6 +116,54 @@ export function Logos() {
       { name: "repeat", type: "number", default: "4", description: "How many times the content is repeated to fill the track." },
       { name: "duration", type: "string", default: '"40s"', description: "Duration of one full loop, as a CSS time." },
       { name: "gap", type: "string", default: '"1rem"', description: "Space between items, as a CSS length." },
+    ],
+  },
+  {
+    slug: "section",
+    title: "Section",
+    description:
+      "Layout primitives shared by every block: Section, Container and SectionHeader.",
+    example: "section-demo",
+    usage: `import { Section, SectionHeader } from "@/components/ui/section"
+
+export function Faq() {
+  return (
+    <Section>
+      <SectionHeader
+        eyebrow="FAQ"
+        title="Questions, answered."
+        description="Everything you need to know before getting started."
+      />
+      <div className="mt-16">{/* Your content */}</div>
+    </Section>
+  )
+}`,
+    propGroups: [
+      {
+        title: "Section",
+        props: [
+          { name: "spacing", type: '"none" | "compact" | "default"', default: '"default"', description: 'Vertical padding. Use "none" when the block manages its own.' },
+          { name: "width", type: '"narrow" | "default" | "wide"', default: '"default"', description: "Maximum width of the content: 3xl, 6xl or 7xl." },
+          { name: "containerClassName", type: "string", description: "Classes applied to the inner container." },
+        ],
+      },
+      {
+        title: "Container",
+        props: [
+          { name: "width", type: '"narrow" | "default" | "wide"', default: '"default"', description: "Maximum width of the content: 3xl, 6xl or 7xl." },
+        ],
+      },
+      {
+        title: "SectionHeader",
+        props: [
+          { name: "title", type: "ReactNode", description: "Heading of the section. Required." },
+          { name: "eyebrow", type: "ReactNode", description: "Short label above the title, set in monospace capitals." },
+          { name: "description", type: "ReactNode", description: "Supporting text under the title." },
+          { name: "align", type: '"center" | "left"', default: '"center"', description: "Alignment of the header." },
+          { name: "as", type: '"h1" | "h2" | "h3"', default: '"h2"', description: "Heading level of the title." },
+          { name: "children", type: "ReactNode", description: "Actions shown under the description, such as a toggle or buttons." },
+        ],
+      },
     ],
   },
   {

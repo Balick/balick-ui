@@ -25,7 +25,7 @@ export const blockList: BlockMeta[] = registry.items
     title: item.title,
     description: item.description,
     category: (item as { categories?: string[] }).categories?.[0] as BlockCategory,
-    files: item.files,
+    files: item.files ?? [],
   }))
 
 export function getBlock(name: string) {
