@@ -123,7 +123,7 @@
 .dark .shiki span {
   color: var(--shiki-dark);
 }
-.shiki .line {
-  display: inline-block;
-  min-height: 1lh;
+/* Keep blank lines visible: Shiki renders them as empty spans. */
+.shiki .line:empty::before {
+  content: "\200b";
 }

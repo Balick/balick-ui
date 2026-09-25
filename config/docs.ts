@@ -1,3 +1,4 @@
+import { blockCategories } from "@/content/blocks"
 import { componentDocs } from "@/content/components"
 
 export interface NavItem {
@@ -37,7 +38,10 @@ export const docsNav: NavSection[] = [
   },
   {
     title: "Blocks",
-    items: [{ title: "Coming soon", href: "/blocks", disabled: true }],
+    items: blockCategories.map((category) => ({
+      title: category.title,
+      href: `/blocks#${category.slug}`,
+    })),
   },
   {
     title: "Templates",
@@ -45,7 +49,7 @@ export const docsNav: NavSection[] = [
   },
 ]
 
-/** Pages in reading order, used for previous/next links. */
+/** Docs pages in reading order, used for previous/next links. */
 export const flatDocs = docsNav
   .flatMap((section) => section.items)
-  .filter((item) => !item.disabled)
+  .filter((item) => !item.disabled && item.href.startsWith("/docs"))

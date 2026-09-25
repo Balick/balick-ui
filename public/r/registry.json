@@ -34,7 +34,7 @@
       },
       "files": [
         {
-          "path": "registry/balick/components/marquee.tsx",
+          "path": "registry/balick/ui/marquee.tsx",
           "type": "registry:ui"
         }
       ]
@@ -49,7 +49,7 @@
       ],
       "files": [
         {
-          "path": "registry/balick/components/blur-fade.tsx",
+          "path": "registry/balick/ui/blur-fade.tsx",
           "type": "registry:ui"
         }
       ]
@@ -73,7 +73,7 @@
       },
       "files": [
         {
-          "path": "registry/balick/components/shimmer-button.tsx",
+          "path": "registry/balick/ui/shimmer-button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -85,7 +85,7 @@
       "description": "A lightweight SVG grid background with optional highlighted cells.",
       "files": [
         {
-          "path": "registry/balick/components/grid-pattern.tsx",
+          "path": "registry/balick/ui/grid-pattern.tsx",
           "type": "registry:ui"
         }
       ]
@@ -147,6 +147,86 @@
         {
           "path": "registry/balick/examples/grid-pattern-demo.tsx",
           "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "hero-01",
+      "type": "registry:block",
+      "title": "Hero with product preview",
+      "description": "Centred hero with announcement pill, animated headline, product preview and a scrolling logo cloud.",
+      "categories": [
+        "hero"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://balick-ui.com/r/blur-fade.json",
+        "https://balick-ui.com/r/grid-pattern.json",
+        "https://balick-ui.com/r/marquee.json",
+        "https://balick-ui.com/r/shimmer-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/hero-01/hero-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "features-01",
+      "type": "registry:block",
+      "title": "Bento features",
+      "description": "Bento grid of four illustrated features, followed by a row of secondary features.",
+      "categories": [
+        "features"
+      ],
+      "registryDependencies": [
+        "https://balick-ui.com/r/marquee.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/features-01/features-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pricing-01",
+      "type": "registry:block",
+      "title": "Pricing with billing toggle",
+      "description": "Three-tier pricing with an animated monthly / yearly toggle and a highlighted plan.",
+      "categories": [
+        "pricing"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/pricing-01/pricing-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "footer-01",
+      "type": "registry:block",
+      "title": "Footer with newsletter",
+      "description": "Multi-column footer with newsletter form, status indicator, social links and an oversized wordmark.",
+      "categories": [
+        "footer"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/footer-01/footer-01.tsx",
+          "type": "registry:component"
         }
       ]
     }

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/balick/examples/shimmer-button-demo.tsx",
-      "content": "import { ShimmerButton } from \"@/registry/balick/components/shimmer-button\"\n\nexport default function ShimmerButtonDemo() {\n  return <ShimmerButton>Get started</ShimmerButton>\n}\n",
+      "content": "import { ShimmerButton } from \"@/registry/balick/ui/shimmer-button\"\n\nexport default function ShimmerButtonDemo() {\n  return <ShimmerButton>Get started</ShimmerButton>\n}\n",
       "type": "registry:example"
     }
   ]

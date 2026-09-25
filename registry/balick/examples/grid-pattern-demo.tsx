@@ -1,4 +1,4 @@
-import { GridPattern } from "@/registry/balick/components/grid-pattern"
+import { GridPattern } from "@/registry/balick/ui/grid-pattern"
 
 export default function GridPatternDemo() {
   return (

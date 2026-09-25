@@ -1,4 +1,4 @@
-import { BlurFade } from "@/registry/balick/components/blur-fade"
+import { BlurFade } from "@/registry/balick/ui/blur-fade"
 
 export default function BlurFadeDemo() {
   return (

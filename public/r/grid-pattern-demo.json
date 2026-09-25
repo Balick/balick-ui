@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/balick/examples/grid-pattern-demo.tsx",
-      "content": "import { GridPattern } from \"@/registry/balick/components/grid-pattern\"\n\nexport default function GridPatternDemo() {\n  return (\n    <div className=\"relative flex size-full min-h-80 items-center justify-center overflow-hidden\">\n      <p className=\"z-10 text-4xl font-semibold tracking-tighter\">Grid Pattern</p>\n      <GridPattern\n        squares={[\n          [4, 4], [5, 1], [8, 2], [5, 3], [10, 10], [12, 6], [15, 5], [6, 7], [11, 3],\n        ]}\n        className=\"[mask-image:radial-gradient(360px_circle_at_center,white,transparent)]\"\n      />\n    </div>\n  )\n}\n",
+      "content": "import { GridPattern } from \"@/registry/balick/ui/grid-pattern\"\n\nexport default function GridPatternDemo() {\n  return (\n    <div className=\"relative flex size-full min-h-80 items-center justify-center overflow-hidden\">\n      <p className=\"z-10 text-4xl font-semibold tracking-tighter\">Grid Pattern</p>\n      <GridPattern\n        squares={[\n          [4, 4], [5, 1], [8, 2], [5, 3], [10, 10], [12, 6], [15, 5], [6, 7], [11, 3],\n        ]}\n        className=\"[mask-image:radial-gradient(360px_circle_at_center,white,transparent)]\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]
