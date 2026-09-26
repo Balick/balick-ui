@@ -228,6 +228,25 @@
       ]
     },
     {
+      "name": "navbar-01",
+      "type": "registry:block",
+      "title": "Navbar with mobile menu",
+      "description": "Sticky navigation bar that turns translucent on scroll, with an accessible mobile menu.",
+      "categories": [
+        "navbar"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/navbar-01/navbar-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "hero-01",
       "type": "registry:block",
       "title": "Hero with product preview",

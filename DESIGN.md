@@ -45,7 +45,11 @@ Every block is built on the `section` primitive (`@/registry/balick/ui/section`)
   A block with custom padding must still end with the default bottom padding.
 - Header to content: `mt-16`.
 - Blocks never add outer margins and never draw borders against their
-  neighbours, except the footer's top border.
+  neighbours, except the footer's top border and the navbar's bottom border
+  once the page has scrolled.
+- Navbars are a `header` built on `Container` (not `Section`), `sticky top-0`,
+  `h-16`, and transparent until the page scrolls. Their mobile menu closes on
+  Escape, on link click and when the viewport reaches the desktop breakpoint.
 - Card grids use `gap-4`. Bento grids use `gap-px bg-border` inside a bordered,
   rounded container, so the gaps become hairlines.
 - Every grid sets its base column count (`grid-cols-1 md:grid-cols-3`), never

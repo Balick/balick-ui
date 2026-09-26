@@ -53,7 +53,7 @@ sites avant le lancement (étape D).
 
 Mieux vaut 15 blocks parfaitement compatibles que 60 disparates.
 
-- [ ] Navbar (indispensable pour composer une vraie page)
+- [x] Navbar (indispensable pour composer une vraie page) : `navbar-01`
 - [ ] Logos
 - [ ] Témoignages
 - [ ] FAQ

@@ -1,6 +1,7 @@
 import registry from "@/registry.json"
 
 export const blockCategories = [
+  { slug: "navbar", title: "Navbar" },
   { slug: "hero", title: "Hero" },
   { slug: "features", title: "Features" },
   { slug: "pricing", title: "Pricing" },

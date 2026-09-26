@@ -3,6 +3,7 @@ import type * as React from "react"
 import { Features01 } from "@/registry/balick/blocks/features-01/features-01"
 import { Footer01 } from "@/registry/balick/blocks/footer-01/footer-01"
 import { Hero01 } from "@/registry/balick/blocks/hero-01/hero-01"
+import { Navbar01 } from "@/registry/balick/blocks/navbar-01/navbar-01"
 import { Pricing01 } from "@/registry/balick/blocks/pricing-01/pricing-01"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
 import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
@@ -21,6 +22,7 @@ export const examples: Record<string, React.ComponentType> = {
 
 /** Blocks rendered on their own at /view/[name], keyed by registry item name. */
 export const blocks: Record<string, React.ComponentType> = {
+  "navbar-01": Navbar01,
   "hero-01": Hero01,
   "features-01": Features01,
   "pricing-01": Pricing01,
