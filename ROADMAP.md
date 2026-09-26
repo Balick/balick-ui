@@ -54,10 +54,10 @@ sites avant le lancement (étape D).
 Mieux vaut 15 blocks parfaitement compatibles que 60 disparates.
 
 - [x] Navbar (indispensable pour composer une vraie page) : `navbar-01`
-- [ ] Logos
-- [ ] Témoignages
-- [ ] FAQ
-- [ ] Call to action
+- [x] Logos : `logos-01`
+- [x] Témoignages : `testimonials-01`
+- [x] FAQ : `faq-01`
+- [x] Call to action : `cta-01`
 - [ ] Variantes des blocks clés : hero-02, features-02, pricing-02, footer-02
 
 ### C. Composeur

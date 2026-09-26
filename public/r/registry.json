@@ -270,6 +270,24 @@
       ]
     },
     {
+      "name": "logos-01",
+      "type": "registry:block",
+      "title": "Logo grid",
+      "description": "Hairline grid of customer logos with a short introduction.",
+      "categories": [
+        "logos"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/logos-01/logos-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "features-01",
       "type": "registry:block",
       "title": "Bento features",
@@ -284,6 +302,24 @@
       "files": [
         {
           "path": "registry/balick/blocks/features-01/features-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "testimonials-01",
+      "type": "registry:block",
+      "title": "Testimonial wall",
+      "description": "Masonry wall of customer quotes with names, roles and initials avatars.",
+      "categories": [
+        "testimonials"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/testimonials-01/testimonials-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -306,6 +342,45 @@
       "files": [
         {
           "path": "registry/balick/blocks/pricing-01/pricing-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "faq-01",
+      "type": "registry:block",
+      "title": "FAQ with accordion",
+      "description": "Two-column FAQ: sticky header with a contact link, and an accessible accordion.",
+      "categories": [
+        "faq"
+      ],
+      "registryDependencies": [
+        "accordion",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/faq-01/faq-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cta-01",
+      "type": "registry:block",
+      "title": "Inverted call to action",
+      "description": "High-contrast call to action panel with a subtle grid and two actions.",
+      "categories": [
+        "cta"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.dev/r/grid-pattern.json",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/cta-01/cta-01.tsx",
           "type": "registry:component"
         }
       ]

@@ -3,8 +3,12 @@ import registry from "@/registry.json"
 export const blockCategories = [
   { slug: "navbar", title: "Navbar" },
   { slug: "hero", title: "Hero" },
+  { slug: "logos", title: "Logos" },
   { slug: "features", title: "Features" },
+  { slug: "testimonials", title: "Testimonials" },
   { slug: "pricing", title: "Pricing" },
+  { slug: "faq", title: "FAQ" },
+  { slug: "cta", title: "Call to action" },
   { slug: "footer", title: "Footer" },
 ] as const
 
