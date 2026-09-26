@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 
 function isActive(pathname: string, href: string) {
   if (href === "/docs") {
-    return pathname === "/docs" || pathname === "/docs/installation"
+    return pathname.startsWith("/docs") && !pathname.startsWith("/docs/components")
   }
   return pathname.startsWith(href)
 }

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logos-01",
+  "type": "registry:block",
+  "title": "Logo grid",
+  "description": "Hairline grid of customer logos with a short introduction.",
+  "registryDependencies": [
+    "https://ui.balick.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/logos-01/logos-01.tsx",
+      "content": "import { Box, Hexagon, Layers, Orbit, Triangle, Waves } from \"lucide-react\"\n\nimport { Section } from \"@/registry/balick/ui/section\"\n\nconst title = \"Powering the teams behind the products you use every day\"\n\nconst logos = [\n  { name: \"Northwind\", icon: Triangle },\n  { name: \"Lumen\", icon: Hexagon },\n  { name: \"Arcadia\", icon: Box },\n  { name: \"Halcyon\", icon: Waves },\n  { name: \"Quanta\", icon: Orbit },\n  { name: \"Stratum\", icon: Layers },\n]\n\nexport function Logos01() {\n  return (\n    <Section spacing=\"compact\">\n      <p className=\"mx-auto max-w-md text-center text-sm text-balance text-muted-foreground\">\n        {title}\n      </p>\n      <ul className=\"mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-3 lg:grid-cols-6\">\n        {logos.map(({ name, icon: Icon }) => (\n          <li\n            key={name}\n            className=\"group flex h-24 items-center justify-center gap-2 bg-background text-lg font-semibold tracking-tight text-muted-foreground/70 transition-colors hover:text-foreground\"\n          >\n            <Icon className=\"size-5\" strokeWidth={2.25} aria-hidden />\n            {name}\n          </li>\n        ))}\n      </ul>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "logos"
+  ]
+}

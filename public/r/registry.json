@@ -4,6 +4,56 @@
   "homepage": "https://ui.balick.dev",
   "items": [
     {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Balick Theme",
+      "description": "The monochrome colour palette, radius and dark mode used by every Balick UI component and block.",
+      "files": [],
+      "cssVars": {
+        "light": {
+          "radius": "0.5rem",
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.145 0 0)",
+          "primary-foreground": "oklch(0.985 0 0)",
+          "secondary": "oklch(0.97 0 0)",
+          "secondary-foreground": "oklch(0.205 0 0)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.52 0 0)",
+          "accent": "oklch(0.965 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.92 0 0)",
+          "input": "oklch(0.92 0 0)",
+          "ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.145 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.16 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.985 0 0)",
+          "primary-foreground": "oklch(0.145 0 0)",
+          "secondary": "oklch(0.22 0 0)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.2 0 0)",
+          "muted-foreground": "oklch(0.7 0 0)",
+          "accent": "oklch(0.22 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 12%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)"
+        }
+      }
+    },
+    {
       "name": "marquee",
       "type": "registry:ui",
       "title": "Marquee",
@@ -91,6 +141,18 @@
       ]
     },
     {
+      "name": "section",
+      "type": "registry:ui",
+      "title": "Section",
+      "description": "Layout primitives shared by every block: Section, Container and SectionHeader.",
+      "files": [
+        {
+          "path": "registry/balick/ui/section.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "marquee-demo",
       "type": "registry:example",
       "title": "Marquee Demo",
@@ -151,6 +213,40 @@
       ]
     },
     {
+      "name": "section-demo",
+      "type": "registry:example",
+      "title": "Section Demo",
+      "description": "Example usage of Section.",
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/section-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "navbar-01",
+      "type": "registry:block",
+      "title": "Navbar with mobile menu",
+      "description": "Sticky navigation bar that turns translucent on scroll, with an accessible mobile menu.",
+      "categories": [
+        "navbar"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/navbar-01/navbar-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "hero-01",
       "type": "registry:block",
       "title": "Hero with product preview",
@@ -158,16 +254,60 @@
       "categories": [
         "hero"
       ],
+      "meta": {
+        "includes": [
+          "logos"
+        ]
+      },
       "registryDependencies": [
         "button",
         "https://ui.balick.dev/r/blur-fade.json",
         "https://ui.balick.dev/r/grid-pattern.json",
         "https://ui.balick.dev/r/marquee.json",
-        "https://ui.balick.dev/r/shimmer-button.json"
+        "https://ui.balick.dev/r/shimmer-button.json",
+        "https://ui.balick.dev/r/section.json"
       ],
       "files": [
         {
           "path": "registry/balick/blocks/hero-01/hero-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "hero-02",
+      "type": "registry:block",
+      "title": "Split hero with deploy terminal",
+      "description": "Left-aligned hero with key figures and an animated deploy terminal. No logo strip, so it pairs with logos-01.",
+      "categories": [
+        "hero"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.dev/r/blur-fade.json",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/hero-02/hero-02.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "logos-01",
+      "type": "registry:block",
+      "title": "Logo grid",
+      "description": "Hairline grid of customer logos with a short introduction.",
+      "categories": [
+        "logos"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/logos-01/logos-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -181,11 +321,48 @@
         "features"
       ],
       "registryDependencies": [
-        "https://ui.balick.dev/r/marquee.json"
+        "https://ui.balick.dev/r/marquee.json",
+        "https://ui.balick.dev/r/section.json"
       ],
       "files": [
         {
           "path": "registry/balick/blocks/features-01/features-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "features-02",
+      "type": "registry:block",
+      "title": "Feature grid",
+      "description": "Six features in a hairline grid, with a left-aligned header.",
+      "categories": [
+        "features"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/features-02/features-02.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "testimonials-01",
+      "type": "registry:block",
+      "title": "Testimonial wall",
+      "description": "Masonry wall of customer quotes with names, roles and initials avatars.",
+      "categories": [
+        "testimonials"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/testimonials-01/testimonials-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -202,11 +379,70 @@
         "motion"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "https://ui.balick.dev/r/section.json"
       ],
       "files": [
         {
           "path": "registry/balick/blocks/pricing-01/pricing-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pricing-02",
+      "type": "registry:block",
+      "title": "Single plan",
+      "description": "One all-inclusive plan: what's included on one side, price and call to action on the other.",
+      "categories": [
+        "pricing"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/pricing-02/pricing-02.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "faq-01",
+      "type": "registry:block",
+      "title": "FAQ with accordion",
+      "description": "Two-column FAQ: sticky header with a contact link, and an accessible accordion.",
+      "categories": [
+        "faq"
+      ],
+      "registryDependencies": [
+        "accordion",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/faq-01/faq-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cta-01",
+      "type": "registry:block",
+      "title": "Inverted call to action",
+      "description": "High-contrast call to action panel with a subtle grid and two actions.",
+      "categories": [
+        "cta"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.dev/r/grid-pattern.json",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/cta-01/cta-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -221,11 +457,30 @@
       ],
       "registryDependencies": [
         "button",
-        "input"
+        "input",
+        "https://ui.balick.dev/r/section.json"
       ],
       "files": [
         {
           "path": "registry/balick/blocks/footer-01/footer-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "footer-02",
+      "type": "registry:block",
+      "title": "Compact footer",
+      "description": "Single-row footer with links and socials, and a legal line.",
+      "categories": [
+        "footer"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/footer-02/footer-02.tsx",
           "type": "registry:component"
         }
       ]

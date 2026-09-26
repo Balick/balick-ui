@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import { BlurFade } from "@/registry/balick/ui/blur-fade"
 import { GridPattern } from "@/registry/balick/ui/grid-pattern"
 import { Marquee } from "@/registry/balick/ui/marquee"
+import { Section } from "@/registry/balick/ui/section"
 import { ShimmerButton } from "@/registry/balick/ui/shimmer-button"
 
 const logos = [
@@ -78,14 +79,14 @@ function ProductPreview() {
 
 export function Hero01() {
   return (
-    <section className="relative overflow-hidden">
+    <Section spacing="none" className="overflow-hidden">
       <GridPattern
         width={48}
         height={48}
         squares={[[4, 2], [10, 1], [16, 3], [7, 6], [20, 5], [2, 8]]}
         className="[mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,white,transparent)]"
       />
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-24 text-center sm:pt-32">
+      <div className="relative flex flex-col items-center pt-24 text-center sm:pt-32">
         <BlurFade>
           <a
             href="#"
@@ -99,7 +100,7 @@ export function Hero01() {
           </a>
         </BlurFade>
         <BlurFade delay={0.1}>
-          <h1 className="mt-8 text-5xl font-semibold tracking-tighter text-balance sm:text-6xl md:text-7xl">
+          <h1 className="mt-8 max-w-4xl text-5xl font-semibold tracking-tighter text-balance sm:text-6xl md:text-7xl">
             The platform for teams that ship.
           </h1>
         </BlurFade>
@@ -126,11 +127,11 @@ export function Hero01() {
             No credit card required · Free 14-day trial
           </p>
         </BlurFade>
-        <BlurFade delay={0.45} offset={24} className="mt-16 w-full">
+        <BlurFade delay={0.45} offset={24} className="mt-16 w-full max-w-5xl">
           <ProductPreview />
         </BlurFade>
       </div>
-      <div className="relative mx-auto max-w-5xl px-6 py-20">
+      <div className="relative pt-20 pb-24 sm:pb-32">
         <p className="text-center font-mono text-xs tracking-wider text-muted-foreground uppercase">
           Trusted by fast-moving teams
         </p>
@@ -146,6 +147,6 @@ export function Hero01() {
           ))}
         </Marquee>
       </div>
-    </section>
+    </Section>
   )
 }

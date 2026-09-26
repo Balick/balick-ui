@@ -17,9 +17,16 @@ import {
 
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/registry/balick/ui/marquee"
+import { Section, SectionHeader } from "@/registry/balick/ui/section"
 
 const bars = [38, 52, 44, 68, 58, 76, 62, 88, 72, 96]
 const integrations = [Database, Cloud, Mail, CreditCard, MessageSquare, Webhook, GitBranch]
+
+const secondaryFeatures = [
+  { icon: Timer, title: "Instant rollbacks", body: "Revert any deploy in one click, without rebuilding." },
+  { icon: RefreshCw, title: "Preview environments", body: "Every pull request gets its own live URL." },
+  { icon: GitBranch, title: "Git-based workflow", body: "Push to deploy. Branches, reviews and history included." },
+]
 
 function Cell({
   icon: Icon,
@@ -52,21 +59,14 @@ function Cell({
 
 export function Features01() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-2xl text-center">
-        <p className="font-mono text-xs tracking-wider text-muted-foreground uppercase">
-          Features
-        </p>
-        <h2 className="mt-3 text-4xl font-semibold tracking-tighter text-balance sm:text-5xl">
-          Everything you need. Nothing you don&apos;t.
-        </h2>
-        <p className="mt-4 text-lg text-balance text-muted-foreground">
-          A focused set of tools that work together, so your team can spend
-          time on the product instead of the plumbing.
-        </p>
-      </div>
+    <Section>
+      <SectionHeader
+        eyebrow="Features"
+        title="Everything you need. Nothing you don't."
+        description="A focused set of tools that work together, so your team can spend time on the product instead of the plumbing."
+      />
 
-      <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border bg-border md:grid-cols-3">
+      <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border bg-border md:grid-cols-3">
         <Cell
           icon={BarChart3}
           title="Real-time analytics"
@@ -149,12 +149,8 @@ export function Features01() {
         </Cell>
       </div>
 
-      <div className="mt-12 grid gap-8 sm:grid-cols-3">
-        {[
-          { icon: Timer, title: "Instant rollbacks", body: "Revert any deploy in one click, without rebuilding." },
-          { icon: RefreshCw, title: "Preview environments", body: "Every pull request gets its own live URL." },
-          { icon: GitBranch, title: "Git-based workflow", body: "Push to deploy. Branches, reviews and history included." },
-        ].map(({ icon: Icon, title, body }) => (
+      <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+        {secondaryFeatures.map(({ icon: Icon, title, body }) => (
           <div key={title} className="flex gap-3">
             <Icon className="mt-0.5 size-4 shrink-0" />
             <div>
@@ -164,6 +160,6 @@ export function Features01() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }

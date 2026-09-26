@@ -111,7 +111,16 @@ export default async function ComponentPage({ params }: Props) {
       <CodeBlock code={doc.usage} />
 
       <H2 id="props">Props</H2>
-      <PropsTable props={doc.props} />
+      <div className="flex flex-col gap-8">
+        {(doc.propGroups ?? [{ title: "", props: doc.props ?? [] }]).map((group) => (
+          <div key={group.title}>
+            {group.title && (
+              <h3 className="mb-3 font-mono text-sm font-medium">{`<${group.title} />`}</h3>
+            )}
+            <PropsTable props={group.props} />
+          </div>
+        ))}
+      </div>
     </DocsPage>
   )
 }

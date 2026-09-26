@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "registry:build": "shadcn build"
+    "registry:build": "node scripts/sync-theme.mjs && node scripts/check-blocks.mjs && shadcn build"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.20",
     "@radix-ui/react-dialog": "^1.1.23",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",

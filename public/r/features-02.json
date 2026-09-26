@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features-02",
+  "type": "registry:block",
+  "title": "Feature grid",
+  "description": "Six features in a hairline grid, with a left-aligned header.",
+  "registryDependencies": [
+    "https://ui.balick.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/features-02/features-02.tsx",
+      "content": "import { BarChart3, Globe, GitBranch, Lock, Timer, Webhook } from \"lucide-react\"\n\nimport { Section, SectionHeader } from \"@/registry/balick/ui/section\"\n\nconst header = {\n  eyebrow: \"Platform\",\n  title: \"Built for the way you ship.\",\n  description:\n    \"Six building blocks that cover the whole path from commit to customer, without glue code.\",\n}\n\nconst features = [\n  { icon: GitBranch, title: \"Git-based workflow\", description: \"Push to deploy. Every branch gets a preview URL your whole team can review.\" },\n  { icon: Globe, title: \"Global edge network\", description: \"Served from 312 locations, a few milliseconds away from every visitor.\" },\n  { icon: BarChart3, title: \"Real-time analytics\", description: \"Traffic, performance and conversions, live and without sampling.\" },\n  { icon: Lock, title: \"Secure by default\", description: \"Encryption, SSO and audit logs included on every plan, not sold as add-ons.\" },\n  { icon: Timer, title: \"Instant rollbacks\", description: \"Revert any deploy in one click. No rebuild, no waiting, no downtime.\" },\n  { icon: Webhook, title: \"Integrations\", description: \"Connect your database, payments and email, or build your own with webhooks.\" },\n]\n\nexport function Features02() {\n  return (\n    <Section>\n      <SectionHeader {...header} align=\"left\" />\n      <div className=\"mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-2 lg:grid-cols-3\">\n        {features.map(({ icon: Icon, title, description }) => (\n          <div key={title} className=\"bg-background p-8 transition-colors hover:bg-muted/30\">\n            <span className=\"flex size-10 items-center justify-center rounded-lg border\">\n              <Icon className=\"size-4.5\" aria-hidden />\n            </span>\n            <h3 className=\"mt-6 font-medium\">{title}</h3>\n            <p className=\"mt-2 text-sm leading-6 text-muted-foreground\">{description}</p>\n          </div>\n        ))}\n      </div>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "features"
+  ]
+}

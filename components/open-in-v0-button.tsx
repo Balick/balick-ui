@@ -3,14 +3,17 @@ import { cn } from "@/lib/utils"
 
 export function OpenInV0Button({
   name,
+  url = registryUrl(name),
   className,
 }: {
   name: string
+  /** Registry item to open. Defaults to the item called `name`. */
+  url?: string
   className?: string
 }) {
   return (
     <a
-      href={`https://v0.dev/chat/api/open?url=${encodeURIComponent(registryUrl(name))}`}
+      href={`https://v0.dev/chat/api/open?url=${encodeURIComponent(url)}`}
       target="_blank"
       rel="noreferrer"
       aria-label={`Open ${name} in v0`}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-demo",
+  "type": "registry:example",
+  "title": "Section Demo",
+  "description": "Example usage of Section.",
+  "registryDependencies": [
+    "https://ui.balick.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/section-demo.tsx",
+      "content": "import { Section, SectionHeader } from \"@/registry/balick/ui/section\"\n\nexport default function SectionDemo() {\n  return (\n    <Section spacing=\"compact\" width=\"narrow\">\n      <SectionHeader\n        eyebrow=\"Changelog\"\n        title=\"Shipped this week.\"\n        description=\"Every block uses the same header, container and vertical rhythm, so sections always line up.\"\n      />\n    </Section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

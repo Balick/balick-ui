@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-01",
+  "type": "registry:block",
+  "title": "Inverted call to action",
+  "description": "High-contrast call to action panel with a subtle grid and two actions.",
+  "registryDependencies": [
+    "button",
+    "https://ui.balick.dev/r/grid-pattern.json",
+    "https://ui.balick.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/cta-01/cta-01.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { GridPattern } from \"@/registry/balick/ui/grid-pattern\"\nimport { Section } from \"@/registry/balick/ui/section\"\n\nconst content = {\n  title: \"Ship your next release today.\",\n  description: \"Start for free, invite your team, and deploy in minutes. No credit card required.\",\n  primary: { label: \"Start for free\", href: \"#\" },\n  secondary: { label: \"Talk to sales\", href: \"#\" },\n}\n\nexport function Cta01() {\n  return (\n    <Section>\n      <div className=\"relative isolate overflow-hidden rounded-2xl bg-foreground px-6 py-20 text-center text-background sm:px-16 sm:py-24\">\n        <GridPattern\n          width={40}\n          height={40}\n          squares={[[2, 1], [6, 3], [12, 2], [17, 4], [22, 1], [9, 5]]}\n          className=\"-z-10 fill-background/[0.04] stroke-background/10 [mask-image:radial-gradient(ellipse_60%_70%_at_50%_50%,white,transparent)]\"\n        />\n        <h2 className=\"mx-auto max-w-2xl text-4xl font-semibold tracking-tighter text-balance sm:text-5xl\">\n          {content.title}\n        </h2>\n        <p className=\"mx-auto mt-4 max-w-xl text-lg text-balance opacity-70\">\n          {content.description}\n        </p>\n        <div className=\"mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row\">\n          <Button size=\"lg\" variant=\"secondary\" asChild>\n            <a href={content.primary.href}>\n              {content.primary.label}\n              <ArrowRight className=\"size-4\" />\n            </a>\n          </Button>\n          <a\n            href={content.secondary.href}\n            className=\"inline-flex h-10 items-center px-4 text-sm font-medium opacity-80 transition-opacity hover:opacity-100\"\n          >\n            {content.secondary.label}\n          </a>\n        </div>\n      </div>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "cta"
+  ]
+}

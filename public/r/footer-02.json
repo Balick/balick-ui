@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-02",
+  "type": "registry:block",
+  "title": "Compact footer",
+  "description": "Single-row footer with links and socials, and a legal line.",
+  "registryDependencies": [
+    "https://ui.balick.dev/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/footer-02/footer-02.tsx",
+      "content": "import { Github, Linkedin, Triangle, Twitter } from \"lucide-react\"\n\nimport { Container } from \"@/registry/balick/ui/section\"\n\nconst brand = { name: \"Acme\", href: \"#\" }\n\nconst links = [\n  { label: \"Features\", href: \"#\" },\n  { label: \"Pricing\", href: \"#\" },\n  { label: \"Docs\", href: \"#\" },\n  { label: \"Changelog\", href: \"#\" },\n  { label: \"Blog\", href: \"#\" },\n]\n\nconst legal = [\n  { label: \"Privacy\", href: \"#\" },\n  { label: \"Terms\", href: \"#\" },\n]\n\nconst socials = [\n  { name: \"GitHub\", icon: Github, href: \"#\" },\n  { name: \"X\", icon: Twitter, href: \"#\" },\n  { name: \"LinkedIn\", icon: Linkedin, href: \"#\" },\n]\n\nexport function Footer02() {\n  return (\n    <footer className=\"border-t\">\n      <Container className=\"flex flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between\">\n        <a href={brand.href} className=\"flex items-center gap-2 font-semibold tracking-tight\">\n          <Triangle className=\"size-5 fill-current\" />\n          {brand.name}\n        </a>\n        <nav aria-label=\"Footer\">\n          <ul className=\"flex flex-wrap gap-x-6 gap-y-3\">\n            {links.map((link) => (\n              <li key={link.label}>\n                <a\n                  href={link.href}\n                  className=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"\n                >\n                  {link.label}\n                </a>\n              </li>\n            ))}\n          </ul>\n        </nav>\n        <div className=\"-ml-2 flex items-center gap-1 md:ml-0\">\n          {socials.map(({ name, icon: Icon, href }) => (\n            <a\n              key={name}\n              href={href}\n              aria-label={name}\n              className=\"inline-flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground\"\n            >\n              <Icon className=\"size-4\" />\n            </a>\n          ))}\n        </div>\n      </Container>\n      <Container>\n        <div className=\"flex flex-col gap-3 border-t py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between\">\n          <p>© {new Date().getFullYear()} Acme, Inc. All rights reserved.</p>\n        <ul className=\"flex gap-6\">\n          {legal.map((link) => (\n            <li key={link.label}>\n              <a href={link.href} className=\"transition-colors hover:text-foreground\">\n                {link.label}\n              </a>\n            </li>\n          ))}\n          </ul>\n        </div>\n      </Container>\n    </footer>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "footer"
+  ]
+}
