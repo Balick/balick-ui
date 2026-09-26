@@ -73,7 +73,7 @@ Mieux vaut 15 blocks parfaitement compatibles que 60 disparates.
 - [x] Témoignages : `testimonials-01`
 - [x] FAQ : `faq-01`
 - [x] Call to action : `cta-01`
-- [ ] Variantes des blocks clés : hero-02, features-02, pricing-02, footer-02
+- [x] Variantes des blocks clés : hero-02, features-02, pricing-02, footer-02
 
 ### C. Composeur
 

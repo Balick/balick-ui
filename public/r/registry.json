@@ -275,6 +275,26 @@
       ]
     },
     {
+      "name": "hero-02",
+      "type": "registry:block",
+      "title": "Split hero with deploy terminal",
+      "description": "Left-aligned hero with key figures and an animated deploy terminal. No logo strip, so it pairs with logos-01.",
+      "categories": [
+        "hero"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.dev/r/blur-fade.json",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/hero-02/hero-02.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "logos-01",
       "type": "registry:block",
       "title": "Logo grid",
@@ -307,6 +327,24 @@
       "files": [
         {
           "path": "registry/balick/blocks/features-01/features-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "features-02",
+      "type": "registry:block",
+      "title": "Feature grid",
+      "description": "Six features in a hairline grid, with a left-aligned header.",
+      "categories": [
+        "features"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/features-02/features-02.tsx",
           "type": "registry:component"
         }
       ]
@@ -347,6 +385,25 @@
       "files": [
         {
           "path": "registry/balick/blocks/pricing-01/pricing-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pricing-02",
+      "type": "registry:block",
+      "title": "Single plan",
+      "description": "One all-inclusive plan: what's included on one side, price and call to action on the other.",
+      "categories": [
+        "pricing"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/pricing-02/pricing-02.tsx",
           "type": "registry:component"
         }
       ]
@@ -406,6 +463,24 @@
       "files": [
         {
           "path": "registry/balick/blocks/footer-01/footer-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "footer-02",
+      "type": "registry:block",
+      "title": "Compact footer",
+      "description": "Single-row footer with links and socials, and a legal line.",
+      "categories": [
+        "footer"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.dev/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/footer-02/footer-02.tsx",
           "type": "registry:component"
         }
       ]
