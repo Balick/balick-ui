@@ -25,6 +25,18 @@ Run `pnpm registry:build` after any change to `registry.json`,
 `registry/balick/**` or the colour tokens in `app/globals.css`, and commit the
 regenerated `public/r/` files.
 
+## Git
+
+- Start every change from an up-to-date `main`, on a new branch named
+  `type/short-topic` in kebab-case. Types: `feat` (component, block or
+  feature), `fix`, `docs`, `refactor`, `chore`. Examples: `feat/testimonials-02`,
+  `fix/composer-drag-order`, `docs/git-conventions`.
+- One branch per change; never reuse a branch whose pull request was merged.
+- Commit messages: an imperative summary line, a blank line, then what
+  changed and why.
+- Commits are authored by Théo Balick <balickmethens@gmail.com>, without
+  Claude attribution (see `.claude/settings.json`).
+
 ## Conventions
 
 - `registry.json` is the single source of truth: docs pages, the blocks
