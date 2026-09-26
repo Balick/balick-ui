@@ -254,6 +254,11 @@
       "categories": [
         "hero"
       ],
+      "meta": {
+        "includes": [
+          "logos"
+        ]
+      },
       "registryDependencies": [
         "button",
         "https://ui.balick.dev/r/blur-fade.json",

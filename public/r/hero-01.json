@@ -19,6 +19,11 @@
       "type": "registry:component"
     }
   ],
+  "meta": {
+    "includes": [
+      "logos"
+    ]
+  },
   "categories": [
     "hero"
   ]

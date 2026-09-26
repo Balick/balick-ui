@@ -17,6 +17,7 @@ export const mainNav: NavItem[] = [
   { title: "Docs", href: "/docs" },
   { title: "Components", href: "/docs/components" },
   { title: "Blocks", href: "/blocks" },
+  { title: "Compose", href: "/compose" },
   { title: "Templates", href: "/templates" },
 ]
 

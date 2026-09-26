@@ -21,7 +21,8 @@ and check a block against the list at the end before adding it.
 - One block is one full-width section, in
   `registry/balick/blocks/<category>-NN/<category>-NN.tsx`.
 - It exports one component named after the file (`Pricing01`), with no
-  required props.
+  required props. The composer generates imports from this name, and
+  `pnpm registry:build` fails if a block breaks the convention.
 - Placeholder content lives in constants at the top of the file, so users edit
   data, not markup.
 - Links are plain `<a href="#">`. No framework-specific imports

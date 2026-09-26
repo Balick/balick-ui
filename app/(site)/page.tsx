@@ -3,7 +3,6 @@ import { ArrowRight, Blocks, Code2, Sparkles, Terminal } from "lucide-react"
 
 import { FrameSection } from "@/components/home/frame"
 import { InstallPill } from "@/components/home/install-pill"
-import { componentDocs } from "@/content/components"
 import { cn } from "@/lib/utils"
 import { BlurFade } from "@/registry/balick/ui/blur-fade"
 import { GridPattern } from "@/registry/balick/ui/grid-pattern"
@@ -19,8 +18,6 @@ const features = [
   { icon: Sparkles, title: "Considered motion", body: "Subtle by default and respectful of reduced-motion settings." },
   { icon: Blocks, title: "Open in v0", body: "Every demo opens in v0 to remix it with AI in one click." },
 ]
-
-const featured = componentDocs.find((doc) => doc.isNew) ?? componentDocs[0]
 
 function Cell({
   href,
@@ -63,11 +60,11 @@ export default function HomePage() {
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
           <BlurFade>
             <Link
-              href={`/docs/components/${featured.slug}`}
+              href="/compose"
               className="inline-flex items-center gap-2 rounded-full border bg-background py-1 pr-3 pl-1 text-xs transition-colors hover:bg-accent"
             >
               <span className="rounded-full bg-foreground px-2 py-0.5 font-medium text-background">New</span>
-              <span className="text-muted-foreground">{featured.title} is available</span>
+              <span className="text-muted-foreground">Compose a page, install it in one command</span>
               <ArrowRight className="size-3 text-muted-foreground" />
             </Link>
           </BlurFade>

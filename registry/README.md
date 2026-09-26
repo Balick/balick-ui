@@ -33,7 +33,10 @@ combination of blocks looks like one page.
    `categories` entry and every `registryDependencies` entry, including the
    `section` URL.
 3. Register it in the `blocks` map of `registry/__index__.ts`. The gallery at
-   `/blocks` and the standalone preview at `/view/<name>` pick it up.
+   `/blocks`, the standalone preview at `/view/<name>` and the composer at
+   `/compose` pick it up. If the block already contains another category
+   (a hero with a logo strip), declare it in `meta.includes` so the composer
+   can warn about duplicates.
 4. Run `pnpm registry:build`.
 
 ## Theme
