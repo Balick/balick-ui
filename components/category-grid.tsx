@@ -61,8 +61,9 @@ export function CategoryGrid({ compact = false }: { compact?: boolean }) {
                 </span>
               )}
               <span className="mt-4 flex flex-1 items-end justify-between gap-4">
+                {/* The full grid already shows the description; the compact one gets a one-line summary. */}
                 <span className="min-w-0 truncate text-sm text-muted-foreground">
-                  {category.summary}
+                  {compact && category.summary}
                 </span>
                 <ArrowRight
                   className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
