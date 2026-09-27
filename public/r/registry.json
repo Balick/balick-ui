@@ -295,6 +295,27 @@
       ]
     },
     {
+      "name": "hero-03",
+      "type": "registry:block",
+      "title": "Personal hero",
+      "description": "Personal introduction with availability status, social links and a scrolling list of tools. Made for portfolios.",
+      "categories": [
+        "hero"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.me/r/blur-fade.json",
+        "https://ui.balick.me/r/marquee.json",
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/hero-03/hero-03.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "logos-01",
       "type": "registry:block",
       "title": "Logo grid",
@@ -308,6 +329,24 @@
       "files": [
         {
           "path": "registry/balick/blocks/logos-01/logos-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "about-01",
+      "type": "registry:block",
+      "title": "About with key figures",
+      "description": "Two-column introduction with paragraphs, key figures and skills.",
+      "categories": [
+        "about"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/about-01/about-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -345,6 +384,24 @@
       "files": [
         {
           "path": "registry/balick/blocks/features-02/features-02.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "projects-01",
+      "type": "registry:block",
+      "title": "Project grid",
+      "description": "Grid of projects with screenshots, summary, year and stack. Draws a placeholder when a project has no image.",
+      "categories": [
+        "projects"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/projects-01/projects-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -443,6 +500,24 @@
       "files": [
         {
           "path": "registry/balick/blocks/cta-01/cta-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "contact-01",
+      "type": "registry:block",
+      "title": "Contact with channels",
+      "description": "Contact panel with a copyable email address and a list of channels.",
+      "categories": [
+        "contact"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/contact-01/contact-01.tsx",
           "type": "registry:component"
         }
       ]
