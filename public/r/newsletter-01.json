@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-01",
+  "type": "registry:block",
+  "title": "Newsletter signup",
+  "description": "Email signup card with a confirmation state; posts to a configurable endpoint.",
+  "registryDependencies": [
+    "button",
+    "input",
+    "https://ui.balick.me/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/newsletter-01/newsletter-01.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Check } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { Input } from \"@/components/ui/input\"\nimport { Section } from \"@/registry/balick/ui/section\"\n\nconst content = {\n  eyebrow: \"Newsletter\",\n  title: \"Stay in the loop.\",\n  description: \"One email a month with product updates, guides and what we are building next.\",\n  note: \"No spam. Unsubscribe in one click.\",\n}\n\n/** Where the email is sent. Leave empty to only show the confirmation. */\nconst endpoint = \"\"\n\nexport function Newsletter01({ id = \"newsletter\" }: { id?: string }) {\n  const [status, setStatus] = React.useState<\"idle\" | \"sending\" | \"sent\" | \"error\">(\"idle\")\n\n  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {\n    event.preventDefault()\n    setStatus(\"sending\")\n    try {\n      if (endpoint) {\n        const response = await fetch(endpoint, {\n          method: \"POST\",\n          body: new FormData(event.currentTarget),\n        })\n        if (!response.ok) throw new Error(response.statusText)\n      }\n      setStatus(\"sent\")\n    } catch {\n      setStatus(\"error\")\n    }\n  }\n\n  return (\n    <Section id={id}>\n      <div className=\"grid grid-cols-1 items-center gap-8 rounded-2xl border p-8 sm:p-12 lg:grid-cols-2 lg:gap-16\">\n        <div>\n          <p className=\"font-mono text-xs tracking-wider text-muted-foreground uppercase\">\n            {content.eyebrow}\n          </p>\n          <h2 className=\"mt-3 text-3xl font-semibold tracking-tighter text-balance sm:text-4xl\">\n            {content.title}\n          </h2>\n          <p className=\"mt-3 text-balance text-muted-foreground\">{content.description}</p>\n        </div>\n        <div>\n          {status === \"sent\" ? (\n            <p role=\"status\" className=\"flex items-center gap-3 text-sm font-medium\">\n              <span className=\"flex size-8 shrink-0 items-center justify-center rounded-full bg-foreground text-background\">\n                <Check className=\"size-4\" aria-hidden />\n              </span>\n              Thanks! Check your inbox to confirm your subscription.\n            </p>\n          ) : (\n            <form onSubmit={onSubmit} className=\"flex flex-col gap-3 sm:flex-row\">\n              <label htmlFor={`${id}-email`} className=\"sr-only\">\n                Email address\n              </label>\n              <Input\n                id={`${id}-email`}\n                name=\"email\"\n                type=\"email\"\n                autoComplete=\"email\"\n                placeholder=\"you@example.com\"\n                required\n                className=\"h-10 flex-1\"\n              />\n              <Button type=\"submit\" size=\"lg\" disabled={status === \"sending\"}>\n                {status === \"sending\" ? \"Subscribing…\" : \"Subscribe\"}\n              </Button>\n            </form>\n          )}\n          {status !== \"sent\" && (\n            <p aria-live=\"polite\" className=\"mt-3 text-xs text-muted-foreground\">\n              {status === \"error\" ? \"Something went wrong. Please try again.\" : content.note}\n            </p>\n          )}\n        </div>\n      </div>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "newsletter"
+  ]
+}

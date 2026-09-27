@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "team-01",
+  "type": "registry:block",
+  "title": "Team grid",
+  "description": "Team members with an avatar, role, short bio and social links.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/team-01/team-01.tsx",
+      "content": "import { Github, Linkedin, Twitter } from \"lucide-react\"\n\nimport { Section, SectionHeader } from \"@/registry/balick/ui/section\"\n\nconst header = {\n  eyebrow: \"Team\",\n  title: \"The people behind Acme.\",\n  description: \"A small, senior team that has built and scaled products at companies you know.\",\n}\n\nconst members = [\n  {\n    name: \"Claire Martin\",\n    role: \"Co-founder, CEO\",\n    bio: \"Previously led product at Northwind. Obsessed with fast feedback loops.\",\n    links: { linkedin: \"#\", twitter: \"#\" },\n  },\n  {\n    name: \"David Chen\",\n    role: \"Co-founder, CTO\",\n    bio: \"Built the deploy pipeline at Lumen. Writes Rust for fun.\",\n    links: { github: \"#\", linkedin: \"#\" },\n  },\n  {\n    name: \"Amara Okafor\",\n    role: \"Head of Design\",\n    bio: \"Designed systems used by millions at Arcadia. Loves a good grid.\",\n    links: { linkedin: \"#\", twitter: \"#\" },\n  },\n  {\n    name: \"Leo Fischer\",\n    role: \"Founding Engineer\",\n    bio: \"Maintainer of two popular open-source tools. Performance nerd.\",\n    links: { github: \"#\", twitter: \"#\" },\n  },\n]\n\nconst socials = [\n  { key: \"github\", label: \"GitHub\", icon: Github },\n  { key: \"linkedin\", label: \"LinkedIn\", icon: Linkedin },\n  { key: \"twitter\", label: \"X\", icon: Twitter },\n] as const\n\nfunction initials(name: string) {\n  return name\n    .split(\" \")\n    .map((part) => part[0])\n    .join(\"\")\n}\n\nexport function Team01({ id = \"team\" }: { id?: string }) {\n  return (\n    <Section id={id}>\n      <SectionHeader {...header} />\n      <ul className=\"mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4\">\n        {members.map((member) => (\n          <li key={member.name} className=\"flex flex-col rounded-xl border p-6\">\n            {/* Replace with a photo: <img src=\"...\" alt=\"\" className=\"aspect-square w-full rounded-lg object-cover\" /> */}\n            <div\n              aria-hidden\n              className=\"flex aspect-square w-full items-center justify-center rounded-lg bg-muted text-4xl font-semibold tracking-tighter text-muted-foreground\"\n            >\n              {initials(member.name)}\n            </div>\n            <h3 className=\"mt-6 font-medium\">{member.name}</h3>\n            <p className=\"text-sm text-muted-foreground\">{member.role}</p>\n            <p className=\"mt-4 flex-1 text-sm leading-6 text-muted-foreground\">{member.bio}</p>\n            <div className=\"mt-6 flex gap-1\">\n              {socials.map(({ key, label, icon: Icon }) => {\n                const href = (member.links as Partial<Record<string, string>>)[key]\n                return href ? (\n                  <a\n                    key={key}\n                    href={href}\n                    aria-label={`${member.name} on ${label}`}\n                    className=\"flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground\"\n                  >\n                    <Icon className=\"size-4\" aria-hidden />\n                  </a>\n                ) : null\n              })}\n            </div>\n          </li>\n        ))}\n      </ul>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "team"
+  ]
+}

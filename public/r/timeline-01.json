@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-01",
+  "type": "registry:block",
+  "title": "Timeline",
+  "description": "Company story as a vertical timeline, with a sticky header.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/timeline-01/timeline-01.tsx",
+      "content": "import { Section, SectionHeader } from \"@/registry/balick/ui/section\"\n\nconst header = {\n  eyebrow: \"Our story\",\n  title: \"Five years of shipping.\",\n  description: \"From a side project to the platform thousands of teams deploy with every day.\",\n}\n\nconst milestones = [\n  {\n    date: \"2021\",\n    title: \"The first commit\",\n    description: \"Two engineers tired of slow deploys build the tool they wish they had.\",\n  },\n  {\n    date: \"2022\",\n    title: \"Public launch\",\n    description: \"Ten thousand developers sign up in the first month. Preview deployments ship.\",\n  },\n  {\n    date: \"2023\",\n    title: \"Seed round and first hires\",\n    description: \"We raise $4M and grow to a team of twelve across three time zones.\",\n  },\n  {\n    date: \"2024\",\n    title: \"Global edge network\",\n    description: \"Sites are now served from over 300 locations, a few milliseconds from every visitor.\",\n  },\n  {\n    date: \"2026\",\n    title: \"One million deploys a day\",\n    description: \"Teams of every size, from solo founders to public companies, ship with Acme.\",\n  },\n]\n\nexport function Timeline01({ id = \"timeline\" }: { id?: string }) {\n  return (\n    <Section id={id}>\n      <div className=\"grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16\">\n        <div className=\"lg:sticky lg:top-24 lg:self-start\">\n          <SectionHeader {...header} align=\"left\" />\n        </div>\n        <ol className=\"relative border-l\">\n          {milestones.map((milestone, index) => (\n            <li key={milestone.title} className=\"relative pb-12 pl-8 last:pb-0\">\n              <span\n                aria-hidden\n                className={\n                  index === milestones.length - 1\n                    ? \"absolute top-1.5 -left-[5px] size-2.5 rounded-full bg-foreground ring-4 ring-background\"\n                    : \"absolute top-1.5 -left-[5px] size-2.5 rounded-full bg-muted-foreground/40 ring-4 ring-background\"\n                }\n              />\n              <p className=\"font-mono text-xs tracking-wider text-muted-foreground uppercase\">\n                <time dateTime={milestone.date}>{milestone.date}</time>\n              </p>\n              <h3 className=\"mt-2 text-lg font-medium\">{milestone.title}</h3>\n              <p className=\"mt-2 text-sm leading-6 text-muted-foreground\">{milestone.description}</p>\n            </li>\n          ))}\n        </ol>\n      </div>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "timeline"
+  ]
+}

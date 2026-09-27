@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "steps-01",
+  "type": "registry:block",
+  "title": "How it works steps",
+  "description": "Four numbered steps joined by a connector, horizontal on desktop and vertical on mobile.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/steps-01/steps-01.tsx",
+      "content": "import { Section, SectionHeader } from \"@/registry/balick/ui/section\"\n\nconst header = {\n  eyebrow: \"How it works\",\n  title: \"From idea to production in four steps.\",\n  description: \"No servers to manage and no pipeline to maintain. Connect a repository and ship.\",\n}\n\nconst steps = [\n  {\n    title: \"Connect your repository\",\n    description: \"Import a project from GitHub, GitLab or Bitbucket. Acme detects the framework.\",\n    duration: \"1 min\",\n  },\n  {\n    title: \"Configure once\",\n    description: \"Add environment variables and a domain. Sensible defaults cover the rest.\",\n    duration: \"5 min\",\n  },\n  {\n    title: \"Preview every change\",\n    description: \"Each pull request gets its own URL, so the whole team reviews real pages.\",\n    duration: \"Every push\",\n  },\n  {\n    title: \"Ship with confidence\",\n    description: \"Merge to deploy worldwide. Roll back in one click if anything goes wrong.\",\n    duration: \"Instant\",\n  },\n]\n\nexport function Steps01({ id = \"steps\" }: { id?: string }) {\n  return (\n    <Section id={id}>\n      <SectionHeader {...header} />\n      <ol className=\"mt-16 grid grid-cols-1 gap-12 lg:grid-cols-4 lg:gap-8\">\n        {steps.map((step, index) => (\n          <li key={step.title} className=\"relative pl-14 lg:pt-14 lg:pl-0\">\n            {/* Connector to the next step: vertical on mobile, horizontal from lg. */}\n            {index < steps.length - 1 && (\n              <span\n                aria-hidden\n                className=\"absolute top-8 -bottom-12 left-4 w-px bg-border lg:top-4 lg:-right-8 lg:bottom-auto lg:left-8 lg:h-px lg:w-auto\"\n              />\n            )}\n            <span\n              aria-hidden\n              className=\"absolute top-0 left-0 flex size-8 items-center justify-center rounded-full border bg-background font-mono text-xs\"\n            >\n              {String(index + 1).padStart(2, \"0\")}\n            </span>\n            <p className=\"font-mono text-xs tracking-wider text-muted-foreground uppercase\">\n              {step.duration}\n            </p>\n            <h3 className=\"mt-2 font-medium\">{step.title}</h3>\n            <p className=\"mt-2 text-sm leading-6 text-muted-foreground\">{step.description}</p>\n          </li>\n        ))}\n      </ol>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "steps"
+  ]
+}

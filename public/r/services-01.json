@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "services-01",
+  "type": "registry:block",
+  "title": "Services list",
+  "description": "Numbered list of services with a starting price, deliverables and a link.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/services-01/services-01.tsx",
+      "content": "import { ArrowUpRight } from \"lucide-react\"\n\nimport { Section, SectionHeader } from \"@/registry/balick/ui/section\"\n\nconst header = {\n  eyebrow: \"Services\",\n  title: \"What I can do for you.\",\n  description:\n    \"Focused engagements with a clear scope, a fixed price and a date you can plan around.\",\n}\n\nconst services = [\n  {\n    title: \"Product design\",\n    description:\n      \"Research, flows and high-fidelity interfaces, tested with real users before a line of code is written.\",\n    deliverables: [\"User research\", \"Wireframes\", \"Prototypes\"],\n    price: \"From $4,000\",\n    href: \"#\",\n  },\n  {\n    title: \"Web development\",\n    description:\n      \"Fast, accessible sites and web apps built with React and Next.js, ready to grow with your product.\",\n    deliverables: [\"Next.js\", \"CMS\", \"Performance\"],\n    price: \"From $6,000\",\n    href: \"#\",\n  },\n  {\n    title: \"Design systems\",\n    description:\n      \"Tokens, components and documentation that keep every screen consistent as your team scales.\",\n    deliverables: [\"Tokens\", \"Component library\", \"Docs\"],\n    price: \"From $8,000\",\n    href: \"#\",\n  },\n  {\n    title: \"Audits and consulting\",\n    description:\n      \"A clear report on accessibility, performance and UX, with a prioritised plan your team can act on.\",\n    deliverables: [\"Accessibility\", \"Core Web Vitals\", \"UX review\"],\n    price: \"From $1,500\",\n    href: \"#\",\n  },\n]\n\nexport function Services01({ id = \"services\" }: { id?: string }) {\n  return (\n    <Section id={id}>\n      <SectionHeader {...header} align=\"left\" />\n      <ul className=\"mt-16 divide-y border-y\">\n        {services.map((service, index) => (\n          <li key={service.title}>\n            <a\n              href={service.href}\n              className=\"group grid grid-cols-1 gap-4 py-8 transition-colors sm:grid-cols-[3rem_1fr_auto] sm:gap-6 lg:grid-cols-[3rem_1fr_1.5fr_auto] lg:gap-10\"\n            >\n              <span className=\"font-mono text-xs text-muted-foreground sm:pt-1.5\">\n                {String(index + 1).padStart(2, \"0\")}\n              </span>\n              <div>\n                <h3 className=\"text-2xl font-semibold tracking-tight\">{service.title}</h3>\n                <p className=\"mt-2 text-sm text-muted-foreground\">{service.price}</p>\n              </div>\n              <div className=\"sm:col-start-2 lg:col-start-auto\">\n                <p className=\"text-sm leading-6 text-muted-foreground\">{service.description}</p>\n                <ul aria-label=\"Deliverables\" className=\"mt-4 flex flex-wrap gap-2\">\n                  {service.deliverables.map((deliverable) => (\n                    <li key={deliverable} className=\"rounded-full border px-3 py-1 text-xs\">\n                      {deliverable}\n                    </li>\n                  ))}\n                </ul>\n              </div>\n              <span className=\"hidden size-10 items-center justify-center rounded-full border transition-colors group-hover:bg-foreground group-hover:text-background sm:col-start-3 sm:row-start-1 sm:flex lg:col-start-4\">\n                <ArrowUpRight className=\"size-4\" aria-hidden />\n              </span>\n            </a>\n          </li>\n        ))}\n      </ul>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "services"
+  ]
+}
