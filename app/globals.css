@@ -94,6 +94,10 @@
   html:has([data-site-header]) {
     scroll-padding-top: 5rem;
   }
+  /* The blocks gallery adds its category tabs under the header. */
+  html:has([data-blocks-tabs]) {
+    scroll-padding-top: 8rem;
+  }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;

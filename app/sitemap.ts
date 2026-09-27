@@ -2,12 +2,14 @@ import type { MetadataRoute } from "next"
 
 import { siteConfig } from "@/config/site"
 import { componentDocs } from "@/content/components"
+import { galleryCategories } from "@/lib/blocks-gallery"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
   const pages = [
     { path: "", priority: 1 },
     { path: "/blocks", priority: 0.9 },
+    ...galleryCategories().map((category) => ({ path: `/blocks/${category.slug}`, priority: 0.8 })),
     { path: "/compose", priority: 0.9 },
     { path: "/docs", priority: 0.8 },
     { path: "/docs/installation", priority: 0.8 },
