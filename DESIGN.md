@@ -144,8 +144,9 @@ the site only; blocks never use them.
 - Hatching (`bg-hatch`) marks reserved or empty space: empty grid cells, the
   free space around a narrowed preview, planned templates.
 - Code sits on graphite (`surface-code`) in both modes.
+- The margins outside the rails are hatched; the column stays plain.
 - The footer is the sheet's title block: project, current sheet (the path),
-  scale, revision (the deployed commit), author and licence.
+  number of blocks, date of the last build, author and licence.
 
 ## Checklist for a new block
 

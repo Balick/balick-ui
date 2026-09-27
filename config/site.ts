@@ -7,8 +7,8 @@ export const siteConfig = {
     github: "https://github.com/balick/balick-ui",
   },
   author: { name: "Théo Balick", url: "https://balick.me" },
-  /** Short commit of the deployment, shown in the footer's title block. */
-  revision: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "local",
+  /** Date of the build, shown in the footer's title block. */
+  updated: process.env.BUILD_DATE ?? "",
 }
 
 export function registryUrl(name: string) {

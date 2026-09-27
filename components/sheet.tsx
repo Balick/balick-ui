@@ -6,11 +6,14 @@ import { cn } from "@/lib/utils"
  * crosses a rail. Blocks never use these; they are the site's own frame.
  */
 
-/** The two vertical rails of the sheet, fixed behind the page content. */
+/**
+ * The two vertical rails of the sheet, fixed behind the page content. The
+ * margins outside them are hatched; the column between them stays plain.
+ */
 export function Rails() {
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-      <div className="sheet h-full border-x border-rule" />
+    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-hatch">
+      <div className="sheet h-full border-x border-rule bg-background" />
     </div>
   )
 }

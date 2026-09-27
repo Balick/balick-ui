@@ -5,6 +5,8 @@ import { LogoMark } from "@/components/logo"
 import { Mark } from "@/components/sheet"
 import { SheetPath } from "@/components/sheet-path"
 import { siteConfig } from "@/config/site"
+import { blockList } from "@/content/blocks"
+import { galleryCategories } from "@/lib/blocks-gallery"
 import { cn } from "@/lib/utils"
 
 const index = [
@@ -35,7 +37,7 @@ function Cell({
 
 /**
  * The footer is drawn as the title block of a technical sheet: what the
- * project is, which sheet you are on, its revision and who drew it.
+ * project is, which sheet you are on, when it was updated and who drew it.
  */
 export function SiteFooter() {
   return (
@@ -67,9 +69,13 @@ export function SiteFooter() {
             <Cell label="Sheet" className="col-span-2 md:col-span-3">
               <SheetPath />
             </Cell>
-            <Cell label="Scale" className="md:col-span-2">1:1, live previews</Cell>
-            <Cell label="Rev." className="md:col-span-2">
-              <span className="font-mono text-[13px]">{siteConfig.revision}</span>
+            <Cell label="Blocks" className="md:col-span-2">
+              {blockList.length} in {galleryCategories().length} categories
+            </Cell>
+            <Cell label="Updated" className="md:col-span-2">
+              <time dateTime={siteConfig.updated} className="font-mono text-[13px]">
+                {siteConfig.updated}
+              </time>
             </Cell>
             <Cell label="Index" className="col-span-2 md:col-span-5">
               <nav aria-label="Footer" className="flex flex-wrap gap-x-4 gap-y-1">
