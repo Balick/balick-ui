@@ -11,7 +11,7 @@ export function InstallPill({ command }: { command: string }) {
     <button
       type="button"
       onClick={() => copy(command)}
-      className="group inline-flex h-10 max-w-full cursor-pointer items-center gap-3 rounded-md border bg-background px-4 font-mono text-[13px] transition-colors hover:bg-accent/60"
+      className="group surface-code inline-flex h-10 max-w-full cursor-pointer items-center gap-3 rounded-md px-4 font-mono text-[13px] shadow-xs transition-shadow hover:shadow-md"
     >
       <span className="text-muted-foreground select-none">$</span>
       <span className="truncate">{command}</span>

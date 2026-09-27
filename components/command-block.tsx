@@ -20,7 +20,7 @@ export function CommandBlock({
   const [manager, setManager] = usePackageManager()
 
   return (
-    <div className={cn("overflow-hidden rounded-lg border bg-code", className)}>
+    <div className={cn("surface-code overflow-hidden rounded-lg shadow-xs", className)}>
       <div className="flex h-10 items-center gap-1 border-b pr-2 pl-3">
         <Terminal className="mr-1.5 size-3.5 text-muted-foreground" />
         <div role="tablist" aria-label="Package manager" className="flex flex-1 gap-1">

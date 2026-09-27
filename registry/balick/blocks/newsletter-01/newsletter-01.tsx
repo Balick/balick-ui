@@ -39,7 +39,7 @@ export function Newsletter01({ id = "newsletter" }: { id?: string }) {
 
   return (
     <Section id={id}>
-      <div className="grid grid-cols-1 items-center gap-8 rounded-2xl border p-8 sm:p-12 lg:grid-cols-2 lg:gap-16">
+      <div className="grid grid-cols-1 items-center gap-8 rounded-2xl border bg-card p-8 sm:p-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="font-mono text-xs tracking-wider text-muted-foreground uppercase">
             {content.eyebrow}

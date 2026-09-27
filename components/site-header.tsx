@@ -5,20 +5,26 @@ import { GitHubIcon } from "@/components/icons"
 import { Logo } from "@/components/logo"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
+import { Mark } from "@/components/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { siteConfig } from "@/config/site"
 
 export function SiteHeader() {
   return (
-    <header data-site-header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-14 max-w-screen-2xl items-center gap-4 px-4 md:px-6">
-        <MobileNav className="md:hidden" />
+    <header
+      data-site-header
+      className="sticky top-0 z-40 w-full border-b border-rule bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/65"
+    >
+      <div className="sheet relative flex h-14 items-center gap-4 px-4 md:px-6">
+        <Mark className="bottom-0 left-0 -translate-x-1/2 translate-y-1/2" />
+        <Mark className="right-0 bottom-0 translate-1/2" />
+        <MobileNav className="-ml-1.5 md:hidden" />
         <Link href="/" aria-label={`${siteConfig.name} home`} className="mr-2">
           <Logo />
         </Link>
         <MainNav className="hidden md:flex" />
         <div className="ml-auto flex items-center gap-1.5">
-          <CommandMenu className="size-8 sm:h-8 sm:w-40 lg:w-56" />
+          <CommandMenu className="size-8 lg:h-8 lg:w-56" />
           <a
             href={siteConfig.links.github}
             target="_blank"

@@ -17,10 +17,13 @@ export function DocsHeader({
 }) {
   return (
     <header className="flex flex-col gap-3">
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm text-muted-foreground">
+      <nav
+        aria-label="Breadcrumb"
+        className="flex items-center gap-1.5 font-mono text-[11px] tracking-wider text-muted-foreground uppercase"
+      >
         {crumbs.map((crumb, i) => (
-          <span key={crumb.title} className="flex items-center gap-1">
-            {i > 0 && <ChevronRight className="size-3.5" />}
+          <span key={crumb.title} className="flex items-center gap-1.5">
+            {i > 0 && <ChevronRight className="size-3" aria-hidden />}
             {crumb.href ? (
               <Link href={crumb.href} className="hover:text-foreground">{crumb.title}</Link>
             ) : (

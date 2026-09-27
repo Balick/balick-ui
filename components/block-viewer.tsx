@@ -67,7 +67,7 @@ export function BlockViewer({
             rel="noreferrer"
             aria-label="Open in a new tab"
             title="Open in a new tab"
-            className="inline-flex size-8 items-center justify-center rounded-md border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            className="inline-flex size-8 items-center justify-center rounded-md border bg-card text-muted-foreground shadow-xs transition-colors hover:bg-accent hover:text-foreground"
           >
             <ExternalLink className="size-3.5" />
           </a>
@@ -78,7 +78,7 @@ export function BlockViewer({
       <div className="mt-4">
         <div
           hidden={view !== "preview"}
-          className="relative rounded-xl border bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px]"
+          className="relative rounded-xl border bg-hatch"
         >
           <ResizableFrame
             src={`/view/${name}`}
@@ -89,7 +89,7 @@ export function BlockViewer({
         </div>
 
         {view === "code" && (
-          <div className="overflow-hidden rounded-xl border md:grid md:grid-cols-[220px_minmax(0,1fr)]">
+          <div className="overflow-hidden rounded-xl border bg-card shadow-xs md:grid md:grid-cols-[220px_minmax(0,1fr)]">
             <div className="flex flex-col gap-4 border-b bg-muted/30 p-3 md:border-r md:border-b-0">
               <div>
                 <p className="px-2 pb-1.5 font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
@@ -119,7 +119,7 @@ export function BlockViewer({
                   </p>
                   <ul className="flex flex-wrap gap-1 px-2">
                     {dependencies.map((dep) => (
-                      <li key={dep} className="rounded border bg-background px-1.5 py-0.5 font-mono text-[11px]">
+                      <li key={dep} className="rounded border bg-card px-1.5 py-0.5 font-mono text-[11px]">
                         {dep}
                       </li>
                     ))}
@@ -149,7 +149,7 @@ function Segmented<T extends string>({
   options: { value: T; label: string }[]
 }) {
   return (
-    <div role="radiogroup" aria-label={label} className="flex h-8 items-center gap-0.5 rounded-md border p-0.5">
+    <div role="radiogroup" aria-label={label} className="flex h-8 items-center gap-0.5 rounded-md border bg-card p-0.5 shadow-xs">
       {options.map((option) => (
         <button
           key={option.value}
@@ -160,7 +160,7 @@ function Segmented<T extends string>({
           className={cn(
             "h-6.5 cursor-pointer rounded-sm px-2.5 text-xs font-medium transition-colors",
             value === option.value
-              ? "bg-accent text-foreground"
+              ? "bg-muted text-foreground"
               : "text-muted-foreground hover:text-foreground"
           )}
         >
@@ -180,7 +180,7 @@ function CopyCommand({ name, commands }: { name: string; commands: Commands }) {
       type="button"
       onClick={() => copy(commands[manager])}
       title={commands[manager]}
-      className="inline-flex h-8 cursor-pointer items-center gap-2 rounded-md border px-2.5 font-mono text-xs transition-colors hover:bg-accent"
+      className="inline-flex h-8 cursor-pointer items-center gap-2 rounded-md border bg-card px-2.5 font-mono text-xs shadow-xs transition-colors hover:bg-accent"
     >
       {copied ? <Check className="size-3.5" /> : <Terminal className="size-3.5 text-muted-foreground" />}
       <span>{copied ? "Copied" : `add ${name}`}</span>

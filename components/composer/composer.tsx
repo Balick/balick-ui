@@ -49,6 +49,8 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
   const ready = React.useRef(false)
   const pendingFocus = React.useRef<number | null>(null)
   const { copied, copy } = useCopy()
+  // Small screens show one panel at a time.
+  const [panel, setPanel] = React.useState<"sections" | "preview">("sections")
 
   const blocks = React.useMemo(() => items.map((item) => item.name), [items])
   const hints = compositionHints(blocks)
@@ -100,9 +102,37 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
     setItems((current) => current.filter((item) => item.id !== id))
 
   return (
-    <div className="grid flex-1 grid-cols-1 lg:h-[calc(100svh-3.5rem)] lg:grid-cols-[340px_minmax(0,1fr)]">
-      <aside className="flex flex-col border-b lg:overflow-y-auto lg:border-r lg:border-b-0">
-        <div className="flex items-center justify-between gap-2 border-b px-4 py-3">
+    // On large screens the composer is a workspace the height of the viewport,
+    // with columns that scroll on their own. flex-none lets that height apply.
+    <div className="sheet grid flex-1 grid-cols-1 grid-rows-[auto_minmax(0,1fr)] lg:h-[calc(100svh-3.5rem)] lg:flex-none lg:grid-cols-[340px_minmax(0,1fr)] lg:grid-rows-[minmax(0,1fr)]">
+      <div className="sticky top-14 z-20 flex items-center justify-between gap-2 border-b border-rule bg-background/80 px-4 py-2 backdrop-blur-md lg:hidden">
+        <div role="tablist" aria-label="Composer panels" className="flex h-8 items-center gap-0.5 rounded-md border bg-card p-0.5 shadow-xs">
+          {(["sections", "preview"] as const).map((value) => (
+            <button
+              key={value}
+              type="button"
+              role="tab"
+              aria-selected={panel === value}
+              onClick={() => setPanel(value)}
+              className={cn(
+                "h-6.5 cursor-pointer rounded-sm px-2.5 text-xs font-medium capitalize transition-colors",
+                panel === value ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {value === "sections" ? `Sections (${blocks.length})` : "Preview"}
+            </button>
+          ))}
+        </div>
+        <InstallDialog blocks={blocks} />
+      </div>
+
+      <aside
+        className={cn(
+          "flex-col border-rule lg:flex lg:overflow-y-auto lg:border-r",
+          panel === "sections" ? "flex" : "hidden"
+        )}
+      >
+        <div className="flex items-center justify-between gap-2 border-b border-rule px-4 py-3">
           <div>
             <h1 className="text-sm font-medium">Your page</h1>
             <p className="text-xs text-muted-foreground">
@@ -172,7 +202,7 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
           )}
         </div>
 
-        <div className="border-t p-3">
+        <div className="border-t border-rule p-3">
           <h2 className="px-1 pt-1 pb-2 font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
             Add a section
           </h2>
@@ -215,14 +245,17 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
         </div>
       </aside>
 
-      <section aria-label="Preview" className="flex min-w-0 flex-col">
-        <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2">
+      <section
+        aria-label="Preview"
+        className={cn("min-w-0 flex-col lg:flex", panel === "preview" ? "flex" : "hidden")}
+      >
+        <div className="flex flex-wrap items-center gap-2 border-b border-rule px-4 py-2">
           <ViewportToggle width={width} onChange={setWidth} className="hidden md:flex" />
           <div className="ml-auto flex items-center gap-2">
             <button
               type="button"
               onClick={() => copy(window.location.href)}
-              className="inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border px-2.5 text-xs font-medium transition-colors hover:bg-accent"
+              className="inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border bg-card px-2.5 text-xs font-medium shadow-xs transition-colors hover:bg-accent"
             >
               {copied ? <Check className="size-3.5" /> : <Link2 className="size-3.5" />}
               {copied ? "Copied" : "Copy link"}
@@ -233,7 +266,7 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
               rel="noreferrer"
               aria-label="Open the page in a new tab"
               title="Open the page in a new tab"
-              className="inline-flex size-8 items-center justify-center rounded-md border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              className="inline-flex size-8 items-center justify-center rounded-md border bg-card text-muted-foreground shadow-xs transition-colors hover:bg-accent hover:text-foreground"
             >
               <ExternalLink className="size-3.5" />
             </a>
@@ -244,10 +277,12 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
                 className="h-8"
               />
             )}
-            <InstallDialog blocks={blocks} />
+            <span className="hidden lg:contents">
+              <InstallDialog blocks={blocks} />
+            </span>
           </div>
         </div>
-        <div className="h-[75svh] bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px] p-3 sm:p-4 lg:h-auto lg:flex-1">
+        <div className="h-[75svh] bg-hatch p-3 sm:p-4 lg:h-auto lg:min-h-0 lg:flex-1">
           <ResizableFrame
             src={src}
             title="Composed page preview"
@@ -291,7 +326,7 @@ function Row({
       value={item}
       dragListener={false}
       dragControls={controls}
-      className="group flex items-center gap-1 rounded-lg border bg-background py-1 pr-1 pl-1"
+      className="group flex items-center gap-1 rounded-lg border bg-card py-1 pr-1 pl-1 shadow-xs"
     >
       <button
         type="button"

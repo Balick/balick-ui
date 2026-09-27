@@ -51,7 +51,7 @@ export function MobileNav({ className }: { className?: string }) {
             </div>
             {docsNav.map((section) => (
               <div key={section.title} className="mb-6">
-                <p className="mb-2 text-xs text-muted-foreground">{section.title}</p>
+                <p className="mb-2 font-mono text-[11px] tracking-wider text-muted-foreground uppercase">{section.title}</p>
                 <div className="flex flex-col gap-1">
                   {section.items.map((item) =>
                     item.disabled ? (

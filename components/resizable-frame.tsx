@@ -28,7 +28,7 @@ export function ViewportToggle({
     <div
       role="radiogroup"
       aria-label="Viewport"
-      className={cn("h-8 items-center gap-0.5 rounded-md border p-0.5", className)}
+      className={cn("h-8 items-center gap-0.5 rounded-md border bg-card p-0.5 shadow-xs", className)}
     >
       {viewports.map(({ label, icon: Icon, width: w }) => (
         <button
@@ -42,7 +42,7 @@ export function ViewportToggle({
           className={cn(
             "inline-flex size-6.5 cursor-pointer items-center justify-center rounded-sm transition-colors",
             width === w
-              ? "bg-accent text-foreground"
+              ? "bg-muted text-foreground"
               : "text-muted-foreground hover:text-foreground"
           )}
         >

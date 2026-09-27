@@ -21,7 +21,7 @@ export function CollapsibleCode({ children }: { children: React.ReactNode }) {
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="h-8 cursor-pointer rounded-md border bg-background px-3 text-xs font-medium shadow-xs transition-colors hover:bg-accent"
+          className="h-8 cursor-pointer rounded-md border bg-card px-3 text-xs font-medium shadow-xs transition-colors hover:bg-accent"
         >
           {open ? "Collapse" : "Expand"}
         </button>

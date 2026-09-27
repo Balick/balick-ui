@@ -49,7 +49,7 @@ export function Features02({ id = "features" }: { id?: string }) {
       {/* Each cell draws its own right and bottom border, and the grid overflows
           by one pixel so the outer edges stay hidden. Any number of features
           works: an incomplete last row leaves blank space, not a filled cell. */}
-      <div className="mt-16 overflow-hidden rounded-2xl border">
+      <div className="mt-16 overflow-hidden rounded-2xl border bg-card">
         <div className="-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ icon: Icon, title, description }) => (
             <div key={title} className="border-r border-b p-8 transition-colors hover:bg-muted/30">

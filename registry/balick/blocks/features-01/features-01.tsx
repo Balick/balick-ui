@@ -42,7 +42,7 @@ function Cell({
   children: React.ReactNode
 }) {
   return (
-    <div className={cn("group flex flex-col bg-background", className)}>
+    <div className={cn("group flex flex-col bg-card", className)}>
       <div className="relative flex h-56 items-center justify-center overflow-hidden border-b">
         {children}
       </div>
@@ -119,7 +119,7 @@ export function Features01({ id = "features" }: { id?: string }) {
         >
           <div className="relative flex items-center justify-center">
             <span className="absolute size-36 rounded-3xl border bg-muted/40 transition-transform duration-500 group-hover:rotate-6" />
-            <span className="absolute size-24 rounded-2xl border bg-background transition-transform duration-500 group-hover:-rotate-6" />
+            <span className="absolute size-24 rounded-2xl border bg-card transition-transform duration-500 group-hover:-rotate-6" />
             <span className="relative flex size-12 items-center justify-center rounded-xl bg-foreground text-background">
               <KeyRound className="size-5" />
             </span>
@@ -138,7 +138,7 @@ export function Features01({ id = "features" }: { id?: string }) {
                 {integrations.map((Icon, i) => (
                   <span
                     key={i}
-                    className="flex size-14 items-center justify-center rounded-xl border bg-background shadow-xs"
+                    className="flex size-14 items-center justify-center rounded-xl border bg-card shadow-xs"
                   >
                     <Icon className="size-5 text-muted-foreground" />
                   </span>

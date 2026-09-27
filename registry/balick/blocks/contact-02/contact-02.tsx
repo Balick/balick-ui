@@ -72,7 +72,7 @@ export function Contact02({ id = "contact" }: { id?: string }) {
             ))}
           </dl>
         </div>
-        <div className="rounded-2xl border p-6 sm:p-8">
+        <div className="rounded-2xl border bg-card p-6 sm:p-8">
           {status === "sent" ? (
             <div role="status" className="flex h-full min-h-80 flex-col items-center justify-center text-center">
               <span className="flex size-12 items-center justify-center rounded-full bg-foreground text-background">

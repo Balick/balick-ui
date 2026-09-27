@@ -30,7 +30,7 @@ const bars = [32, 48, 40, 64, 52, 72, 60, 84, 70, 92, 78, 100]
 
 function ProductPreview() {
   return (
-    <div className="overflow-hidden rounded-xl border bg-background shadow-[0_24px_64px_-24px_rgb(0_0_0/0.25)]">
+    <div className="overflow-hidden rounded-xl border bg-card shadow-[0_24px_64px_-24px_rgb(0_0_0/0.25)]">
       <div className="flex h-10 items-center gap-1.5 border-b px-4">
         <span className="size-2.5 rounded-full bg-foreground/15" />
         <span className="size-2.5 rounded-full bg-foreground/15" />
@@ -90,7 +90,7 @@ export function Hero01({ id = "hero" }: { id?: string }) {
         <BlurFade>
           <a
             href="#"
-            className="inline-flex items-center gap-2 rounded-full border bg-background py-1 pr-3 pl-1 text-xs transition-colors hover:bg-accent"
+            className="inline-flex items-center gap-2 rounded-full border bg-card py-1 pr-3 pl-1 text-xs transition-colors hover:bg-accent"
           >
             <span className="rounded-full bg-foreground px-2 py-0.5 font-medium text-background">
               v2.0

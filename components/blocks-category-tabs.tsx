@@ -35,11 +35,11 @@ export function BlocksCategoryTabs({
     <nav
       aria-label="Block categories"
       data-blocks-tabs
-      className="sticky top-14 z-30 -mx-4 border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 md:-mx-6"
+      className="sticky top-14 z-30 border-y border-rule bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/65"
     >
       <div
         ref={listRef}
-        className="flex gap-2 overflow-x-auto px-4 py-2 [mask-image:linear-gradient(to_right,transparent,black_1rem,black_calc(100%-1rem),transparent)] [scrollbar-width:none] md:px-6 [&::-webkit-scrollbar]:hidden"
+        className="sheet relative flex gap-2 overflow-x-auto px-4 py-2 [mask-image:linear-gradient(to_right,transparent,black_1rem,black_calc(100%-1rem),transparent)] [scrollbar-width:none] md:px-6 [&::-webkit-scrollbar]:hidden"
       >
         <Tab href="/blocks" title="All" count={total} current={false} />
         {categories.map((category) => (
@@ -73,7 +73,7 @@ function Tab({
       aria-current={current ? "page" : undefined}
       className={cn(
         "inline-flex h-8 shrink-0 items-center gap-2 rounded-full border px-3 text-sm whitespace-nowrap transition-colors",
-        current ? "border-foreground bg-foreground text-background" : "bg-background hover:bg-accent"
+        current ? "border-foreground bg-foreground text-background" : "bg-card shadow-xs hover:bg-accent"
       )}
     >
       {title}

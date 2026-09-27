@@ -33,7 +33,7 @@ export async function CodeBlock({
   return (
     <figure
       className={cn(
-        "relative overflow-hidden rounded-lg border bg-code",
+        "surface-code relative overflow-hidden rounded-lg shadow-xs",
         className
       )}
     >

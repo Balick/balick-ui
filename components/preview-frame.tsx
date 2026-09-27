@@ -41,7 +41,7 @@ export function PreviewFrame({
         </div>
       </div>
       <TabsContent value="preview" className="mt-2">
-        <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-lg border bg-background bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px] p-6 sm:p-10">
+        <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-lg border bg-card bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px] p-6 shadow-xs sm:p-10">
           <div key={key} className="flex w-full items-center justify-center">
             {children}
           </div>

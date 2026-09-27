@@ -60,12 +60,14 @@ export default function ThemingPage() {
 
       <H2 id="tokens">Tokens</H2>
       <P className="mb-4">
-        A monochrome palette: contrast does the work, and emphasis comes from
-        inverting <InlineCode>foreground</InlineCode> and{" "}
+        Paper and ink: one cool hue family instead of pure black and white.
+        Light mode is ink on paper, dark mode is paper on ink. Cards and
+        popovers sit above the canvas, muted surfaces below it, and emphasis
+        comes from inverting <InlineCode>foreground</InlineCode> and{" "}
         <InlineCode>background</InlineCode> rather than from an accent colour.
         Radius: <InlineCode>{radius}</InlineCode>.
       </P>
-      <div className="overflow-x-auto rounded-lg border">
+      <div className="overflow-x-auto rounded-lg border bg-card shadow-xs">
         <table className="w-full text-left text-sm">
           <thead className="border-b bg-muted/40 text-xs text-muted-foreground">
             <tr>

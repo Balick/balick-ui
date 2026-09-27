@@ -54,7 +54,7 @@ export function Team01({ id = "team" }: { id?: string }) {
       <SectionHeader {...header} />
       <ul className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {members.map((member) => (
-          <li key={member.name} className="flex flex-col rounded-xl border p-6">
+          <li key={member.name} className="flex flex-col rounded-xl border bg-card p-6">
             {/* Replace with a photo: <img src="..." alt="" className="aspect-square w-full rounded-lg object-cover" /> */}
             <div
               aria-hidden

@@ -25,6 +25,8 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-code: var(--code);
+  --color-rule: var(--rule);
+  --color-mark: var(--mark);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -36,55 +38,77 @@
   --animate-shimmer-spin: shimmer-spin var(--shimmer-duration) linear infinite;
 }
 
-/* Monochrome palette: pure contrast, hairline borders, no accent color. */
+/*
+ * Paper and ink: one cool hue family instead of pure black and white.
+ * Light mode is ink on paper, dark mode is paper on ink. Raised surfaces
+ * (cards, popovers) are lighter than the canvas in both modes, recessed ones
+ * (muted) are darker in light mode, so every layer reads at a glance.
+ * Emphasis still comes from inverting foreground and background, not from an
+ * accent colour.
+ */
 :root {
   --radius: 0.5rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.9543 0.0067 295.4);
+  --foreground: oklch(0.1094 0.0374 256.1);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.1094 0.0374 256.1);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.145 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.52 0 0);
-  --accent: oklch(0.965 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.1094 0.0374 256.1);
+  --primary: oklch(0.1094 0.0374 256.1);
+  --primary-foreground: oklch(0.9543 0.0067 295.4);
+  --secondary: oklch(0.925 0.01 290);
+  --secondary-foreground: oklch(0.1094 0.0374 256.1);
+  --muted: oklch(0.925 0.01 290);
+  --muted-foreground: oklch(0.5 0.022 275);
+  --accent: oklch(0.93 0.01 290);
+  --accent-foreground: oklch(0.1094 0.0374 256.1);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0 0);
-  --input: oklch(0.92 0 0);
-  --ring: oklch(0.708 0 0);
-  --code: oklch(0.985 0 0);
+  --border: oklch(0.1094 0.0374 256.1 / 12%);
+  --input: oklch(0.1094 0.0374 256.1 / 18%);
+  --ring: oklch(0.62 0.02 275);
+  /* Site only (see scripts/sync-theme.mjs) */
+  --code: oklch(0.2237 0.0084 334.5);
+  --rule: oklch(0.1094 0.0374 256.1 / 8%);
+  --mark: oklch(0.1094 0.0374 256.1 / 32%);
 }
 
 .dark {
-  --background: oklch(0 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.16 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.145 0 0);
-  --secondary: oklch(0.22 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.2 0 0);
-  --muted-foreground: oklch(0.7 0 0);
-  --accent: oklch(0.22 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.1094 0.0374 256.1);
+  --foreground: oklch(0.9543 0.0067 295.4);
+  --card: oklch(0.175 0.03 264);
+  --card-foreground: oklch(0.9543 0.0067 295.4);
+  --popover: oklch(0.19 0.03 265);
+  --popover-foreground: oklch(0.9543 0.0067 295.4);
+  --primary: oklch(0.9543 0.0067 295.4);
+  --primary-foreground: oklch(0.1094 0.0374 256.1);
+  --secondary: oklch(0.215 0.026 268);
+  --secondary-foreground: oklch(0.9543 0.0067 295.4);
+  --muted: oklch(0.215 0.026 268);
+  --muted-foreground: oklch(0.72 0.018 285);
+  --accent: oklch(0.235 0.025 270);
+  --accent-foreground: oklch(0.9543 0.0067 295.4);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --code: oklch(0.1 0 0);
+  --border: oklch(0.9543 0.0067 295.4 / 12%);
+  --input: oklch(0.9543 0.0067 295.4 / 16%);
+  --ring: oklch(0.5 0.03 275);
+  /* Site only (see scripts/sync-theme.mjs) */
+  --code: oklch(0.2237 0.0084 334.5);
+  --rule: oklch(0.9543 0.0067 295.4 / 8%);
+  --mark: oklch(0.9543 0.0067 295.4 / 32%);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  /* Space between the viewport edge and the sheet's rails. */
+  :root {
+    --sheet-gutter: 0.5rem;
+  }
+  @media (width >= 48rem) {
+    :root {
+      --sheet-gutter: 2rem;
+    }
   }
   html {
     @apply scroll-smooth;
@@ -121,15 +145,43 @@
   to { rotate: 360deg; }
 }
 
-/* Syntax highlighting (Shiki dual themes) */
+/* The column every site page is laid out in, bounded by the rails. */
+@utility sheet {
+  width: min(88rem, 100% - 2 * var(--sheet-gutter));
+  margin-inline: auto;
+}
+
+/* Diagonal hatching: space that is reserved or intentionally empty. */
+@utility bg-hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in oklab, var(--foreground) 9%, transparent) 0 1px,
+    transparent 0 7px
+  );
+}
+
+/*
+ * Graphite surface for code, in both modes. It redefines the colour tokens
+ * locally, so buttons and labels inside it adapt without extra classes.
+ */
+@utility surface-code {
+  background-color: var(--code);
+  color: oklch(0.9543 0.0067 295.4);
+  color-scheme: dark;
+  --background: oklch(0.2237 0.0084 334.5);
+  --card: oklch(0.27 0.01 330);
+  --foreground: oklch(0.9543 0.0067 295.4);
+  --muted-foreground: oklch(0.74 0.012 330);
+  --border: oklch(0.9543 0.0067 295.4 / 10%);
+  --accent: oklch(0.9543 0.0067 295.4 / 9%);
+  --ring: oklch(0.74 0.012 330);
+}
+
+/* Syntax highlighting: code always sits on graphite, so use Shiki's dark colours. */
 .shiki,
 .shiki span {
-  color: var(--shiki-light);
-  background-color: transparent !important;
-}
-.dark .shiki,
-.dark .shiki span {
   color: var(--shiki-dark);
+  background-color: transparent !important;
 }
 /* Keep blank lines visible: Shiki renders them as empty spans. */
 .shiki .line:empty::before {

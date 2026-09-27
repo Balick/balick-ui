@@ -10,10 +10,10 @@ export function DocsSidebar() {
   const pathname = usePathname()
 
   return (
-    <nav aria-label="Documentation" className="flex flex-col gap-6 py-8 pr-4 text-sm">
+    <nav aria-label="Documentation" className="flex flex-col gap-6 px-3 py-8 text-sm lg:px-4">
       {docsNav.map((section) => (
         <div key={section.title}>
-          <p className="mb-2 px-2 font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
+          <p className="mb-2 px-3 font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
             {section.title}
           </p>
           <ul className="flex flex-col gap-0.5">
@@ -22,7 +22,7 @@ export function DocsSidebar() {
               return (
                 <li key={item.title}>
                   {item.disabled ? (
-                    <span className="flex h-8 items-center px-2 text-muted-foreground/50">
+                    <span className="flex h-8 items-center px-3 text-muted-foreground/60">
                       {item.title}
                     </span>
                   ) : (
@@ -30,10 +30,10 @@ export function DocsSidebar() {
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "flex h-8 items-center gap-2 rounded-md px-2 transition-colors",
+                        "flex h-8 items-center gap-2 rounded-md px-3 transition-colors",
                         active
-                          ? "bg-accent font-medium text-foreground"
-                          : "text-muted-foreground hover:bg-accent/60 hover:text-foreground"
+                          ? "bg-card font-medium text-foreground shadow-xs ring-1 ring-border"
+                          : "text-muted-foreground hover:bg-foreground/[0.04] hover:text-foreground"
                       )}
                     >
                       {item.title}

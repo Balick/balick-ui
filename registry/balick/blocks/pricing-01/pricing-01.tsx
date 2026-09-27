@@ -152,7 +152,7 @@ export function Pricing01({ id = "pricing" }: { id?: string }) {
               "relative flex flex-col rounded-2xl border p-8",
               plan.featured
                 ? "border-foreground bg-foreground text-background shadow-[0_24px_64px_-24px_rgb(0_0_0/0.35)]"
-                : "bg-background"
+                : "bg-card"
             )}
           >
             <div className="flex items-center justify-between">

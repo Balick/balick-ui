@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
+import { Rails, Row, SheetLabel, Spacer } from "@/components/sheet"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
-import { GridPattern } from "@/registry/balick/ui/grid-pattern"
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -11,32 +12,46 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-svh flex-col">
+    <div className="flex min-h-svh flex-col overflow-x-clip">
+      <Rails />
       <SiteHeader />
-      <main className="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-4 py-24 text-center">
-        <GridPattern className="[mask-image:radial-gradient(420px_circle_at_center,white,transparent)]" />
-        <span className="relative rounded-full border bg-background px-3 py-1 font-mono text-xs text-muted-foreground">
-          404
-        </span>
-        <h1 className="relative mt-6 text-4xl font-semibold tracking-tighter sm:text-5xl">
-          Page not found
-        </h1>
-        <p className="relative mt-4 max-w-md text-balance text-muted-foreground">
-          This page does not exist, or it has moved. Try one of these instead.
-        </p>
-        <div className="relative mt-10 flex flex-col items-center gap-3 sm:flex-row">
-          <Link
-            href="/"
-            className="inline-flex h-10 items-center rounded-md bg-foreground px-5 text-sm font-medium text-background transition-opacity hover:opacity-85"
-          >
-            Back to home
-          </Link>
-          <Link
-            href="/blocks"
-            className="inline-flex h-10 items-center rounded-md border bg-background px-5 text-sm font-medium transition-colors hover:bg-accent"
-          >
-            Browse blocks
-          </Link>
+      <main className="flex flex-1 flex-col">
+        <div className="sheet">
+          <Spacer className="h-16 sm:h-24" />
+          <Row>
+            <SheetLabel index="404" className="px-4 py-3 md:px-6">
+              Page not found
+            </SheetLabel>
+          </Row>
+          <h1 className="text-5xl font-semibold tracking-tighter sm:text-7xl">
+            <Row as="span" className="px-4 py-2 md:px-6">
+              This sheet is missing.
+            </Row>
+          </h1>
+          <Row>
+            <p className="max-w-xl px-4 py-3 text-lg text-balance text-muted-foreground md:px-6">
+              The page you are looking for is not in the set. It may have moved, or it never
+              existed.
+            </p>
+          </Row>
+          <Row>
+            <div className="flex flex-wrap items-center gap-3 px-4 py-4 md:px-6">
+              <Link
+                href="/"
+                className="inline-flex h-10 items-center gap-2 rounded-md bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-85"
+              >
+                Back to home
+                <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                href="/blocks"
+                className="inline-flex h-10 items-center rounded-md border bg-card px-4 text-sm font-medium shadow-xs transition-colors hover:bg-accent"
+              >
+                Browse blocks
+              </Link>
+            </div>
+          </Row>
+          <Spacer className="h-24 sm:h-32" />
         </div>
       </main>
       <SiteFooter />

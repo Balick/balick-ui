@@ -49,7 +49,7 @@ function CopyEmail({ email }: { email: string }) {
 export function Contact01({ id = "contact" }: { id?: string }) {
   return (
     <Section id={id}>
-      <div className="grid grid-cols-1 overflow-hidden rounded-2xl border lg:grid-cols-2">
+      <div className="grid grid-cols-1 overflow-hidden rounded-2xl border bg-card lg:grid-cols-2">
         <div className="flex flex-col justify-between gap-10 p-8 sm:p-12">
           <div>
             <p className="font-mono text-xs tracking-wider text-muted-foreground uppercase">
@@ -79,7 +79,7 @@ export function Contact01({ id = "contact" }: { id?: string }) {
                 href={href}
                 className="group flex items-center gap-4 px-8 py-6 transition-colors hover:bg-muted/60 sm:px-12"
               >
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border bg-background">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border bg-card">
                   <Icon className="size-4" aria-hidden />
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col">

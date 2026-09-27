@@ -83,7 +83,7 @@ export function Pricing03({ id = "pricing" }: { id?: string }) {
         {plans.map((plan, planIndex) => (
           <div
             key={plan.name}
-            className={cn("rounded-xl border p-6", plan.featured && "bg-muted/40")}
+            className={cn("rounded-xl border p-6", plan.featured ? "bg-muted/40" : "bg-card")}
           >
             <h3 className="flex items-center gap-2 font-medium">
               {plan.name}

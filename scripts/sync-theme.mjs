@@ -3,7 +3,7 @@
 import { readFileSync, writeFileSync } from "node:fs"
 
 /** Tokens used by the docs site only, not part of the installable theme. */
-const SITE_ONLY = new Set(["code"])
+const SITE_ONLY = new Set(["code", "rule", "mark"])
 
 const css = readFileSync("app/globals.css", "utf8")
 
