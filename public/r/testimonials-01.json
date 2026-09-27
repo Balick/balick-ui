@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "testimonials-01",
-  "type": "registry:block",
   "title": "Testimonial wall",
   "description": "Masonry wall of customer quotes with names, roles and initials avatars.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "testimonials"
-  ]
+  ],
+  "type": "registry:block"
 }

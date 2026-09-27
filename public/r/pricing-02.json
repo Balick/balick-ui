@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pricing-02",
-  "type": "registry:block",
   "title": "Single plan",
   "description": "One all-inclusive plan: what's included on one side, price and call to action on the other.",
   "registryDependencies": [
@@ -17,5 +16,6 @@
   ],
   "categories": [
     "pricing"
-  ]
+  ],
+  "type": "registry:block"
 }

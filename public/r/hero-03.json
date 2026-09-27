@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-03",
-  "type": "registry:block",
   "title": "Personal hero",
   "description": "Personal introduction with availability status, social links and a scrolling list of tools. Made for portfolios.",
   "registryDependencies": [
@@ -19,5 +18,6 @@
   ],
   "categories": [
     "hero"
-  ]
+  ],
+  "type": "registry:block"
 }

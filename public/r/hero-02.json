@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-02",
-  "type": "registry:block",
   "title": "Split hero with deploy terminal",
   "description": "Left-aligned hero with key figures and an animated deploy terminal. No logo strip, so it pairs with logos-01.",
   "registryDependencies": [
@@ -18,5 +17,6 @@
   ],
   "categories": [
     "hero"
-  ]
+  ],
+  "type": "registry:block"
 }

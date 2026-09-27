@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "footer-01",
-  "type": "registry:block",
   "title": "Footer with newsletter",
   "description": "Multi-column footer with newsletter form, status indicator, social links and an oversized wordmark.",
   "registryDependencies": [
@@ -18,5 +17,6 @@
   ],
   "categories": [
     "footer"
-  ]
+  ],
+  "type": "registry:block"
 }

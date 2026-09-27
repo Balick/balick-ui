@@ -32,8 +32,7 @@ regenerated `public/r/` files.
 - One branch per change; never reuse a branch whose pull request was merged.
 - Commit messages: an imperative summary line, a blank line, then what
   changed and why.
-- Commits are authored by Théo Balick <balickmethens@gmail.com>, without
-  Claude attribution (see `.claude/settings.json`).
+- No AI attribution in commits or pull requests (see `.claude/settings.json`).
 
 ## Conventions
 
@@ -42,11 +41,8 @@ regenerated `public/r/` files.
 - Balick components live in `registry/balick/ui/` and are imported as
   `@/registry/balick/ui/*` (the CLI rewrites this to `@/components/ui/*`).
 - Everything in this repository is written in English: code, comments, site
-  copy, docs, notes and commit messages. Conversations with the owner are in
-  French.
-- The repository holds code and contributor docs only. Roadmap, strategy,
-  business model and internal decisions are private: they live in the
-  owner's Google Drive ("Balick UI — Strategy (private)") and must never be
-  written here.
+  copy, docs and commit messages.
+- The repository holds code and contributor docs only; no roadmap, strategy
+  or internal notes.
 - Verify visual changes in the browser, in light and dark mode, on desktop and
   mobile.

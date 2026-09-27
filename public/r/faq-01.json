@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "faq-01",
-  "type": "registry:block",
   "title": "FAQ with accordion",
   "description": "Two-column FAQ: sticky header with a contact link, and an accessible accordion.",
   "registryDependencies": [
@@ -17,5 +16,6 @@
   ],
   "categories": [
     "faq"
-  ]
+  ],
+  "type": "registry:block"
 }

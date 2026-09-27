@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "integrations-01",
-  "type": "registry:block",
   "title": "Integrations grid",
   "description": "Twelve integrations in a hairline grid, next to a sticky header and a link to the full list.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "integrations"
-  ]
+  ],
+  "type": "registry:block"
 }

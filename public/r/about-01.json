@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "about-01",
-  "type": "registry:block",
   "title": "About with key figures",
   "description": "Two-column introduction with paragraphs, key figures and skills.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "about"
-  ]
+  ],
+  "type": "registry:block"
 }

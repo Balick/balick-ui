@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-01",
-  "type": "registry:block",
   "title": "Hero with product preview",
   "description": "Centred hero with announcement pill, animated headline, product preview and a scrolling logo cloud.",
   "registryDependencies": [
@@ -26,5 +25,6 @@
   },
   "categories": [
     "hero"
-  ]
+  ],
+  "type": "registry:block"
 }

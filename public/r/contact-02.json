@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "contact-02",
-  "type": "registry:block",
   "title": "Contact form with details",
   "description": "Contact form with a confirmation state, next to email, phone, address and opening hours.",
   "registryDependencies": [
@@ -20,5 +19,6 @@
   ],
   "categories": [
     "contact"
-  ]
+  ],
+  "type": "registry:block"
 }

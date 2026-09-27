@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "cta-01",
-  "type": "registry:block",
   "title": "Inverted call to action",
   "description": "High-contrast call to action panel with a subtle grid and two actions.",
   "registryDependencies": [
@@ -18,5 +17,6 @@
   ],
   "categories": [
     "cta"
-  ]
+  ],
+  "type": "registry:block"
 }

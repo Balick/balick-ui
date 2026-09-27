@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "features-01",
-  "type": "registry:block",
   "title": "Bento features",
   "description": "Bento grid of four illustrated features, followed by a row of secondary features.",
   "registryDependencies": [
@@ -17,5 +16,6 @@
   ],
   "categories": [
     "features"
-  ]
+  ],
+  "type": "registry:block"
 }

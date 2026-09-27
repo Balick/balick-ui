@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "theme",
-  "type": "registry:theme",
   "title": "Balick Theme",
   "description": "The monochrome colour palette, radius and dark mode used by every Balick UI component and block.",
   "files": [],
@@ -47,5 +46,6 @@
       "input": "oklch(0.9543 0.0067 295.4 / 16%)",
       "ring": "oklch(0.5 0.03 275)"
     }
-  }
+  },
+  "type": "registry:theme"
 }

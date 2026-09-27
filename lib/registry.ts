@@ -3,7 +3,7 @@ import path from "node:path"
 
 import registry from "@/registry.json"
 
-export type RegistryItem = (typeof registry.items)[number] & {
+type RegistryItem = (typeof registry.items)[number] & {
   dependencies?: string[]
   registryDependencies?: string[]
 }

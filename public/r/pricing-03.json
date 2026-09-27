@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pricing-03",
-  "type": "registry:block",
   "title": "Plan comparison table",
   "description": "Accessible feature comparison across three plans, grouped by category, with the featured plan highlighted.",
   "registryDependencies": [
@@ -17,5 +16,6 @@
   ],
   "categories": [
     "pricing"
-  ]
+  ],
+  "type": "registry:block"
 }

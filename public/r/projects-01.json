@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "projects-01",
-  "type": "registry:block",
   "title": "Project grid",
   "description": "Grid of projects with screenshots, summary, year and stack. Draws a placeholder when a project has no image.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "projects"
-  ]
+  ],
+  "type": "registry:block"
 }

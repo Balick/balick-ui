@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "navbar-01",
-  "type": "registry:block",
   "title": "Navbar with mobile menu",
   "description": "Sticky navigation bar that turns translucent on scroll, with an accessible mobile menu.",
   "registryDependencies": [
@@ -17,5 +16,6 @@
   ],
   "categories": [
     "navbar"
-  ]
+  ],
+  "type": "registry:block"
 }

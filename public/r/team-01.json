@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "team-01",
-  "type": "registry:block",
   "title": "Team grid",
   "description": "Team members with an avatar, role, short bio and social links.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "team"
-  ]
+  ],
+  "type": "registry:block"
 }
