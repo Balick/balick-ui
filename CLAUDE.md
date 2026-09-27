@@ -5,8 +5,6 @@ A shadcn/ui registry of components, blocks and templates, with its docs site
 
 ## Read first
 
-- `ROADMAP.md`: positioning, plan and decisions. Tick items when you finish
-  them and log new decisions there.
 - `DESIGN.md`: rules every component and block must follow. Check a block
   against its checklist before adding it.
 - `registry/README.md`: how to add a component or a block.
@@ -43,7 +41,12 @@ regenerated `public/r/` files.
   gallery and `/view/[name]` previews are generated from it.
 - Balick components live in `registry/balick/ui/` and are imported as
   `@/registry/balick/ui/*` (the CLI rewrites this to `@/components/ui/*`).
-- Site copy and code are in English; conversations with the owner are in
+- Everything in this repository is written in English: code, comments, site
+  copy, docs, notes and commit messages. Conversations with the owner are in
   French.
+- The repository holds code and contributor docs only. Roadmap, strategy,
+  business model and internal decisions are private: they live in the
+  owner's Google Drive ("Balick UI — Strategy (private)") and must never be
+  written here.
 - Verify visual changes in the browser, in light and dark mode, on desktop and
   mobile.
