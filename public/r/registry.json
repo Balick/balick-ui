@@ -523,6 +523,100 @@
       ]
     },
     {
+      "name": "contact-02",
+      "type": "registry:block",
+      "title": "Contact form with details",
+      "description": "Contact form with a confirmation state, next to email, phone, address and opening hours.",
+      "categories": [
+        "contact"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "textarea",
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/contact-02/contact-02.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "stats-01",
+      "type": "registry:block",
+      "title": "Stats grid",
+      "description": "Four key figures with short descriptions, in a hairline grid.",
+      "categories": [
+        "stats"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/stats-01/stats-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "services-01",
+      "type": "registry:block",
+      "title": "Services list",
+      "description": "Numbered list of services with a starting price, deliverables and a link.",
+      "categories": [
+        "services"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/services-01/services-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "steps-01",
+      "type": "registry:block",
+      "title": "How it works steps",
+      "description": "Four numbered steps joined by a connector, horizontal on desktop and vertical on mobile.",
+      "categories": [
+        "steps"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/steps-01/steps-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "team-01",
+      "type": "registry:block",
+      "title": "Team grid",
+      "description": "Team members with an avatar, role, short bio and social links.",
+      "categories": [
+        "team"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/team-01/team-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "footer-01",
       "type": "registry:block",
       "title": "Footer with newsletter",
