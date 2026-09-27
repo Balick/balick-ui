@@ -52,14 +52,14 @@ export function Integrations01({ id = "integrations" }: { id?: string }) {
             </a>
           </SectionHeader>
         </div>
-        <div className="overflow-hidden rounded-2xl border">
+        <div className="overflow-hidden rounded-2xl border bg-card">
           <ul className="-mr-px -mb-px grid grid-cols-2 sm:grid-cols-3">
             {integrations.map(({ name, category, icon: Icon }) => (
               <li
                 key={name}
                 className="flex flex-col items-center gap-3 border-r border-b px-4 py-8 text-center transition-colors hover:bg-muted/30"
               >
-                <span className="flex size-12 items-center justify-center rounded-xl border bg-background shadow-xs">
+                <span className="flex size-12 items-center justify-center rounded-xl border bg-card shadow-xs">
                   <Icon className="size-5" aria-hidden />
                 </span>
                 <span className="flex flex-col">

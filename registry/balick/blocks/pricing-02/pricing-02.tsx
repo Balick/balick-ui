@@ -33,7 +33,7 @@ export function Pricing02({ id = "pricing" }: { id?: string }) {
   return (
     <Section id={id}>
       <SectionHeader {...header} />
-      <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 overflow-hidden rounded-2xl border lg:grid-cols-[1.4fr_1fr]">
+      <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 overflow-hidden rounded-2xl border bg-card lg:grid-cols-[1.4fr_1fr]">
         <div className="p-8 sm:p-10">
           <h3 className="text-xl font-semibold tracking-tight">{plan.name}</h3>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">{plan.description}</p>

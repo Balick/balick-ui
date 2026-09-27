@@ -58,7 +58,7 @@ export function Testimonials01({ id = "testimonials" }: { id?: string }) {
         {testimonials.map((testimonial) => (
           <figure
             key={testimonial.name}
-            className="mb-4 break-inside-avoid rounded-xl border bg-background p-6"
+            className="mb-4 break-inside-avoid rounded-xl border bg-card p-6"
           >
             <blockquote className="text-sm leading-6">
               &ldquo;{testimonial.quote}&rdquo;

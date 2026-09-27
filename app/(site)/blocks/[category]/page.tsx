@@ -5,6 +5,7 @@ import { ChevronRight } from "lucide-react"
 
 import { BlockViewer } from "@/components/block-viewer"
 import { BlocksCategoryTabs } from "@/components/blocks-category-tabs"
+import { Row, Spacer } from "@/components/sheet"
 import { CodeBlock } from "@/components/code-block"
 import { registryUrl } from "@/config/site"
 import { blockList } from "@/content/blocks"
@@ -62,34 +63,41 @@ export default async function BlockCategoryPage({ params }: Props) {
   )
 
   return (
-    <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-6">
-      <header className="py-12 md:py-16">
-        <nav aria-label="Breadcrumb">
-          <ol className="flex items-center gap-1.5 text-sm text-muted-foreground">
-            <li>
-              <Link href="/blocks" className="transition-colors hover:text-foreground">
-                Blocks
-              </Link>
-            </li>
-            <li aria-hidden>
-              <ChevronRight className="size-3.5" />
-            </li>
-            <li aria-current="page" className="text-foreground">
-              {category.title}
-            </li>
-          </ol>
-        </nav>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tighter sm:text-5xl">
-          {category.title} blocks
+    <>
+      <div className="sheet">
+        <Spacer className="h-12 sm:h-16" />
+        <Row>
+          <nav aria-label="Breadcrumb" className="px-4 py-3 md:px-6">
+            <ol className="flex items-center gap-1.5 font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
+              <li>
+                <Link href="/blocks" className="transition-colors hover:text-foreground">
+                  Blocks
+                </Link>
+              </li>
+              <li aria-hidden>
+                <ChevronRight className="size-3" />
+              </li>
+              <li aria-current="page" className="text-foreground">
+                {category.title}
+              </li>
+            </ol>
+          </nav>
+        </Row>
+        <h1 className="text-4xl font-semibold tracking-tighter sm:text-5xl">
+          <Row as="span" className="px-4 py-2 md:px-6">
+            {category.title} blocks
+          </Row>
         </h1>
-        <p className="mt-4 max-w-xl text-lg text-balance text-muted-foreground">
-          {category.description}
-        </p>
-      </header>
+        <Row bottom={false}>
+          <p className="max-w-2xl px-4 py-3 text-lg text-balance text-muted-foreground md:px-6">
+            {category.description}
+          </p>
+        </Row>
+      </div>
 
       <BlocksCategoryTabs categories={galleryTabs()} active={category.slug} total={blockList.length} />
 
-      <div className="flex flex-col gap-16 py-12 md:py-16">
+      <div className="sheet flex flex-col gap-16 px-4 py-12 md:px-6 md:py-16">
         {blocks.map((block) => (
           <BlockViewer
             key={block.name}
@@ -102,6 +110,6 @@ export default async function BlockCategoryPage({ params }: Props) {
           />
         ))}
       </div>
-    </div>
+    </>
   )
 }

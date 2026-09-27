@@ -13,12 +13,12 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#000",
+          background: "#000411",
         }}
       >
         <svg width="112" height="112" viewBox="0 0 24 24">
-          <rect x="2" y="2" width="13" height="13" rx="3" fill="#fff" />
-          <rect x="9.75" y="9.75" width="12.25" height="12.25" rx="3" fill="none" stroke="#fff" strokeWidth="1.5" />
+          <rect x="2" y="2" width="13" height="13" rx="3" fill="#F0EFF4" />
+          <rect x="9.75" y="9.75" width="12.25" height="12.25" rx="3" fill="none" stroke="#F0EFF4" strokeWidth="1.5" />
         </svg>
       </div>
     ),

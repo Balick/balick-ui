@@ -18,7 +18,7 @@ export function Stats01({ id = "stats" }: { id?: string }) {
   return (
     <Section id={id}>
       <SectionHeader {...header} align="left" />
-      <div className="mt-16 overflow-hidden rounded-2xl border">
+      <div className="mt-16 overflow-hidden rounded-2xl border bg-card">
         <dl className="-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col border-r border-b p-8">

@@ -40,14 +40,14 @@ export function CommandMenu({ className }: { className?: string }) {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "inline-flex h-8 cursor-pointer items-center justify-center gap-2 rounded-md border bg-muted/50 px-2 sm:justify-start sm:pr-1.5 sm:pl-2.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
+          "inline-flex h-8 cursor-pointer items-center justify-center gap-2 rounded-md border bg-card px-2 text-sm text-muted-foreground shadow-xs transition-colors hover:text-foreground lg:justify-start lg:pr-1.5 lg:pl-2.5",
           className
         )}
       >
         <Search className="size-3.5" />
-        <span className="sr-only sm:hidden">Search</span>
-        <span className="hidden flex-1 text-left sm:inline">Search…</span>
-        <kbd className="pointer-events-none hidden h-5 items-center rounded border bg-background px-1.5 font-mono text-[10px] font-medium sm:inline-flex">
+        <span className="sr-only lg:hidden">Search</span>
+        <span className="hidden flex-1 text-left lg:inline">Search…</span>
+        <kbd className="pointer-events-none hidden h-5 items-center rounded border bg-muted px-1.5 font-mono text-[10px] font-medium lg:inline-flex">
           ⌘K
         </kbd>
       </button>

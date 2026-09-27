@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 import { DocsHeader, H2, InlineCode, P } from "@/components/docs"
 import { DocsPage } from "@/components/docs-page"
@@ -30,7 +30,7 @@ export default function IntroductionPage() {
       <DocsHeader
         crumbs={[{ title: "Docs", href: "/docs" }, { title: "Introduction" }]}
         title="Introduction"
-        description="Beautifully minimal components, blocks and templates, built on top of shadcn/ui."
+        description="Blocks, components and templates for shadcn/ui, designed to fit together."
       />
       <P className="mt-8">
         Balick UI is a collection of copy-and-paste building blocks for React. It is
@@ -39,9 +39,9 @@ export default function IntroductionPage() {
       </P>
 
       <H2 id="principles">Principles</H2>
-      <div className="grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border bg-border shadow-xs sm:grid-cols-2">
         {principles.map((item) => (
-          <div key={item.title} className="bg-background p-5">
+          <div key={item.title} className="bg-card p-5">
             <h3 className="font-medium">{item.title}</h3>
             <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{item.body}</p>
           </div>
@@ -49,19 +49,19 @@ export default function IntroductionPage() {
       </div>
 
       <H2 id="what-is-inside">What&apos;s inside</H2>
-      <ul className="flex flex-col divide-y rounded-lg border">
+      <ul className="flex flex-col divide-y overflow-hidden rounded-lg border bg-card shadow-xs">
         {[
           { title: "Components", body: "Standalone, animated or original UI elements.", href: "/docs/components" },
           { title: "Blocks", body: "Complete sections: heroes, pricing, testimonials, footers.", href: "/blocks" },
           { title: "Templates", body: "Full pages assembled from blocks, ready to deploy.", href: "/templates" },
         ].map((item) => (
           <li key={item.title}>
-            <Link href={item.href} className="group flex items-center justify-between gap-4 p-4 transition-colors hover:bg-accent/50">
+            <Link href={item.href} className="group flex items-center justify-between gap-4 p-4 transition-colors hover:bg-accent">
               <span>
                 <span className="font-medium">{item.title}</span>
                 <span className="block text-sm text-muted-foreground">{item.body}</span>
               </span>
-              <ArrowUpRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
             </Link>
           </li>
         ))}

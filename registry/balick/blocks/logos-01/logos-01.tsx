@@ -21,7 +21,7 @@ export function Logos01({ id = "logos" }: { id?: string }) {
       </p>
       {/* Cells draw their own borders so any number of logos leaves no filled
           empty cell (see features-02). */}
-      <div className="mt-10 overflow-hidden rounded-2xl border">
+      <div className="mt-10 overflow-hidden rounded-2xl border bg-card">
         <ul className="-mr-px -mb-px grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
           {logos.map(({ name, icon: Icon }) => (
             <li

@@ -70,14 +70,14 @@ export function Blog01({ id = "blog" }: { id?: string }) {
           <li key={post.title}>
             <a
               href={post.href}
-              className="group flex h-full flex-col rounded-xl border p-2 transition-colors hover:bg-muted/30"
+              className="group flex h-full flex-col rounded-xl border bg-card p-2 transition-colors hover:border-foreground/20"
             >
               {/* Replace with a cover image: <img src="..." alt="" className="aspect-[16/10] w-full rounded-lg object-cover" /> */}
               <div
                 aria-hidden
                 className="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-lg border bg-muted/40 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:24px_24px]"
               >
-                <span className="flex size-14 items-center justify-center rounded-xl border bg-background shadow-sm transition-transform group-hover:-translate-y-0.5">
+                <span className="flex size-14 items-center justify-center rounded-xl border bg-card shadow-sm transition-transform group-hover:-translate-y-0.5">
                   <Icon className="size-6" />
                 </span>
               </div>

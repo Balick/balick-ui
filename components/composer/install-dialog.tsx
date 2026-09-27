@@ -48,7 +48,7 @@ export function InstallDialog({ blocks }: { blocks: string[] }) {
               framework, install the blocks the same way and render them from
               your own route.
             </p>
-            <div className="overflow-hidden rounded-lg border bg-code">
+            <div className="surface-code overflow-hidden rounded-lg">
               <div className="flex h-10 items-center justify-between border-b pr-2 pl-4 font-mono text-xs text-muted-foreground">
                 app/page.tsx
                 <CopyButton value={source} />

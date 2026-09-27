@@ -20,14 +20,14 @@ export default function ComponentsPage() {
         title="Components"
         description="Animated and original components. Preview them live, then add them with a single command."
       />
-      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {componentDocs.map((doc) => {
           const Example = examples[doc.example]
           return (
             <Link
               key={doc.slug}
               href={`/docs/components/${doc.slug}`}
-              className="group overflow-hidden rounded-xl border transition-colors hover:border-foreground/20"
+              className="group overflow-hidden rounded-xl border bg-card shadow-xs transition-colors hover:border-foreground/20"
             >
               <div
                 inert

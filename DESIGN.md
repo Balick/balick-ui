@@ -77,8 +77,16 @@ Only heroes use `h1`. Everything else starts at `h2`.
 
 ## Colour
 
-- Use semantic tokens only: `background`, `foreground`, `muted`,
+The Balick theme is paper and ink: one cool hue family instead of pure black
+and white. Light mode is ink on paper, dark mode is paper on ink, and the
+layers are distinct in both.
+
+- Use semantic tokens only: `background`, `foreground`, `card`, `muted`,
   `muted-foreground`, `border`, `accent`, `primary`, `secondary`.
+- Layers: `background` is the canvas. Raised elements (cards, panels, product
+  previews, icon tiles, bordered containers) use `bg-card`. Recessed fills
+  use `bg-muted`. An element that must blend with its section, such as a
+  badge masking a connector line, uses `bg-background`.
 - Subtle fills use opacity on foreground: `bg-foreground/10`.
 - Highlight one element by inverting it: `bg-foreground text-background`
   (the featured pricing plan, the last bar of a chart).
@@ -122,6 +130,23 @@ Only heroes use `h1`. Everything else starts at `h2`.
 - Icons: `lucide-react` only.
 - Add `motion` only when a block animates itself; animated Balick components
   already bring it.
+
+## The docs site
+
+The site frames the blocks like a technical sheet. These elements belong to
+the site only; blocks never use them.
+
+- Pages sit in the `sheet` column, bounded by two rails
+  (`components/sheet.tsx`).
+- Text is set on ruled rows (`Row`): each row draws an edge-to-edge rule
+  below it. Section boundaries get register marks where the rules cross the
+  rails.
+- Hatching (`bg-hatch`) marks reserved or empty space: empty grid cells, the
+  free space around a narrowed preview, planned templates.
+- Code sits on graphite (`surface-code`) in both modes.
+- The margins outside the rails are hatched; the column stays plain.
+- The footer is the sheet's title block: project, current sheet (the path),
+  number of blocks, date of the last build, author and licence.
 
 ## Checklist for a new block
 

@@ -48,12 +48,11 @@ export function BlurFade({
   const reduceMotion = useReducedMotion()
   const [key, sign] = axis[direction]
 
+  // The hidden state is the same on the server and the client, so hydration
+  // matches. With reduced motion, the offset resets instantly: only the fade
+  // is animated.
   const variants: Variants = {
-    hidden: {
-      opacity: 0,
-      filter: `blur(${blur})`,
-      [key]: reduceMotion ? 0 : offset * sign,
-    },
+    hidden: { opacity: 0, filter: `blur(${blur})`, [key]: offset * sign },
     visible: { opacity: 1, filter: "blur(0px)", [key]: 0 },
   }
 
@@ -65,7 +64,12 @@ export function BlurFade({
         ? { whileInView: "visible", viewport: { once: true, margin: inViewMargin } }
         : { animate: "visible" })}
       variants={variants}
-      transition={{ delay: 0.04 + delay, duration, ease: "easeOut" }}
+      transition={{
+        delay: 0.04 + delay,
+        duration,
+        ease: "easeOut",
+        ...(reduceMotion && { [key]: { duration: 0 } }),
+      }}
       className={cn(className)}
       {...props}
     >
