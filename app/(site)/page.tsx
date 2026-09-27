@@ -89,7 +89,7 @@ function Intro({
   return (
     <>
       <Row>
-        <SheetLabel index={index} className={cn(pad, "py-3")}>
+        <SheetLabel index={index} className={cn(pad, "justify-center py-3")}>
           {label}
         </SheetLabel>
       </Row>
