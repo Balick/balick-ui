@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shimmer-button",
-  "type": "registry:ui",
   "title": "Shimmer Button",
   "description": "A button with a beam of light travelling around its border.",
   "files": [
@@ -22,5 +21,6 @@
         "rotate": "360deg"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

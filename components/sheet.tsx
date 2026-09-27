@@ -32,7 +32,7 @@ export function Mark({ className }: { className?: string }) {
 }
 
 /** A hairline that runs across the whole viewport. */
-export function Line({ className }: { className?: string }) {
+function Line({ className }: { className?: string }) {
   return (
     <span
       aria-hidden

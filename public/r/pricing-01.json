@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pricing-01",
-  "type": "registry:block",
   "title": "Pricing with billing toggle",
   "description": "Three-tier pricing with an animated monthly / yearly toggle and a highlighted plan.",
   "dependencies": [
@@ -20,5 +19,6 @@
   ],
   "categories": [
     "pricing"
-  ]
+  ],
+  "type": "registry:block"
 }

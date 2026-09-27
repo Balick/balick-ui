@@ -22,7 +22,7 @@ export const starterComposition = [
 ]
 
 /** "pricing-01" → "Pricing01", the component every block exports. */
-export function componentName(block: string) {
+function componentName(block: string) {
   return block
     .split("-")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))

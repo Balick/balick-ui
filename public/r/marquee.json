@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "marquee",
-  "type": "registry:ui",
   "title": "Marquee",
   "description": "An infinite scrolling track for logos, testimonials or anything else.",
   "files": [
@@ -34,5 +33,6 @@
         "transform": "translateY(calc(-100% - var(--gap)))"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

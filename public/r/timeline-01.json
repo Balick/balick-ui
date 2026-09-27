@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "timeline-01",
-  "type": "registry:block",
   "title": "Timeline",
   "description": "Company story as a vertical timeline, with a sticky header.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "timeline"
-  ]
+  ],
+  "type": "registry:block"
 }

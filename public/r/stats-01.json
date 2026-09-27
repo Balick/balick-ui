@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "stats-01",
-  "type": "registry:block",
   "title": "Stats grid",
   "description": "Four key figures with short descriptions, in a hairline grid.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "stats"
-  ]
+  ],
+  "type": "registry:block"
 }

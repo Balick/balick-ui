@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "contact-01",
-  "type": "registry:block",
   "title": "Contact with channels",
   "description": "Contact panel with a copyable email address and a list of channels.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "contact"
-  ]
+  ],
+  "type": "registry:block"
 }

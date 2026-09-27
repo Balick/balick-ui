@@ -5,7 +5,7 @@ export interface PropDef {
   description: string
 }
 
-export interface PropGroup {
+interface PropGroup {
   title: string
   props: PropDef[]
 }

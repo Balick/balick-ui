@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "newsletter-01",
-  "type": "registry:block",
   "title": "Newsletter signup",
   "description": "Email signup card with a confirmation state; posts to a configurable endpoint.",
   "registryDependencies": [
@@ -18,5 +17,6 @@
   ],
   "categories": [
     "newsletter"
-  ]
+  ],
+  "type": "registry:block"
 }

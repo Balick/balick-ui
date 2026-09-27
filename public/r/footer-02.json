@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "footer-02",
-  "type": "registry:block",
   "title": "Compact footer",
   "description": "Single-row footer with links and socials, and a legal line.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "footer"
-  ]
+  ],
+  "type": "registry:block"
 }

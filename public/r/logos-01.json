@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "logos-01",
-  "type": "registry:block",
   "title": "Logo grid",
   "description": "Hairline grid of customer logos with a short introduction.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "logos"
-  ]
+  ],
+  "type": "registry:block"
 }

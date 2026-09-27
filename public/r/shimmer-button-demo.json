@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shimmer-button-demo",
-  "type": "registry:example",
   "title": "Shimmer Button Demo",
   "description": "Example usage of Shimmer Button.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { ShimmerButton } from \"@/registry/balick/ui/shimmer-button\"\n\nexport default function ShimmerButtonDemo() {\n  return <ShimmerButton>Get started</ShimmerButton>\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

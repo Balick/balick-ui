@@ -7,8 +7,10 @@ also be declared in `registry.json` at the repository root.
 | ------------- | ------------------ | --------------------------------------------------- |
 | `ui/`         | `registry:ui`      | Standalone components (animated or original)        |
 | `blocks/`     | `registry:block`   | Full page sections: hero, pricing, footer…          |
-| `templates/`  | `registry:block`   | Complete pages or multi-section landing pages       |
 | `examples/`   | `registry:example` | Demos rendered in the docs and opened in v0         |
+
+Templates (complete sites assembled from blocks) will get their own folder
+when the first one lands.
 
 ## Adding a component
 

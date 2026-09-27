@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "steps-01",
-  "type": "registry:block",
   "title": "How it works steps",
   "description": "Four numbered steps joined by a connector, horizontal on desktop and vertical on mobile.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "steps"
-  ]
+  ],
+  "type": "registry:block"
 }

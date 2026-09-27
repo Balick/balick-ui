@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "features-02",
-  "type": "registry:block",
   "title": "Feature grid",
   "description": "Six features in a hairline grid, with a left-aligned header.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "features"
-  ]
+  ],
+  "type": "registry:block"
 }

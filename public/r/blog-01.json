@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "blog-01",
-  "type": "registry:block",
   "title": "Latest posts",
   "description": "Three recent articles with a cover, category, date, author and reading time.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
   ],
   "categories": [
     "blog"
-  ]
+  ],
+  "type": "registry:block"
 }
