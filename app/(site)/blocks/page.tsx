@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 import { BlockViewer } from "@/components/block-viewer"
+import { BlocksCategoryNav } from "@/components/blocks-category-nav"
 import { CodeBlock } from "@/components/code-block"
 import { registryUrl } from "@/config/site"
 import { blockCategories, blockList } from "@/content/blocks"
@@ -58,26 +59,19 @@ export default async function BlocksPage() {
             Complete, responsive sections built with Balick UI components.
             Preview them at any width, then add them with one command.
           </p>
-          <nav aria-label="Categories" className="mt-8 flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <a
-                key={category.slug}
-                href={`#${category.slug}`}
-                className="inline-flex h-8 items-center gap-2 rounded-full border bg-background px-3 text-sm transition-colors hover:bg-accent"
-              >
-                {category.title}
-                <span className="font-mono text-xs text-muted-foreground">
-                  {category.blocks.length}
-                </span>
-              </a>
-            ))}
-          </nav>
+          <BlocksCategoryNav
+            categories={categories.map(({ slug, title, blocks }) => ({
+              slug,
+              title,
+              count: blocks.length,
+            }))}
+          />
         </div>
       </header>
 
       <div className="flex flex-col gap-20 py-16">
         {categories.map((category) => (
-          <div key={category.slug} id={category.slug} className="scroll-mt-20">
+          <div key={category.slug} id={category.slug} className="scroll-mt-8">
             <h2 className="mb-6 flex items-center gap-3 text-2xl font-semibold tracking-tight">
               {category.title}
               <span className="h-px flex-1 bg-border" />
