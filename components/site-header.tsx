@@ -10,7 +10,7 @@ import { siteConfig } from "@/config/site"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+    <header data-site-header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-14 max-w-screen-2xl items-center gap-4 px-4 md:px-6">
         <MobileNav className="md:hidden" />
         <Link href="/" aria-label={`${siteConfig.name} home`} className="mr-2">

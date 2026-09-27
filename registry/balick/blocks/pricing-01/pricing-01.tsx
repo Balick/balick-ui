@@ -131,11 +131,11 @@ function Price({ plan, billing }: { plan: Plan; billing: Billing }) {
   )
 }
 
-export function Pricing01() {
+export function Pricing01({ id = "pricing" }: { id?: string }) {
   const [billing, setBilling] = React.useState<Billing>("yearly")
 
   return (
-    <Section>
+    <Section id={id}>
       <SectionHeader
         eyebrow="Pricing"
         title="Simple pricing that scales with you."

@@ -79,9 +79,9 @@ function DeployTerminal() {
   )
 }
 
-export function Hero02() {
+export function Hero02({ id = "hero" }: { id?: string }) {
   return (
-    <Section spacing="none">
+    <Section id={id} spacing="none">
       <div className="grid grid-cols-1 items-center gap-16 py-24 sm:py-32 lg:grid-cols-2">
         <div className="flex flex-col items-start">
           <BlurFade>

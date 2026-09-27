@@ -11,9 +11,9 @@ const content = {
   secondary: { label: "Talk to sales", href: "#" },
 }
 
-export function Cta01() {
+export function Cta01({ id = "cta" }: { id?: string }) {
   return (
-    <Section>
+    <Section id={id}>
       <div className="relative isolate overflow-hidden rounded-2xl bg-foreground px-6 py-20 text-center text-background sm:px-16 sm:py-24">
         <GridPattern
           width={40}

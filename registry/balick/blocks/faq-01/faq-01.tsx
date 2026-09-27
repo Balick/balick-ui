@@ -49,9 +49,9 @@ const faqs = [
   },
 ]
 
-export function Faq01() {
+export function Faq01({ id = "faq" }: { id?: string }) {
   return (
-    <Section>
+    <Section id={id}>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
         <div className="lg:sticky lg:top-24 lg:self-start">
           <SectionHeader {...header} align="left">

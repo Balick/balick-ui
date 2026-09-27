@@ -18,9 +18,9 @@ const stats = [
 
 const skills = ["React", "Next.js", "TypeScript", "Tailwind CSS", "Design systems", "Accessibility", "Motion", "Performance"]
 
-export function About01() {
+export function About01({ id = "about" }: { id?: string }) {
   return (
-    <Section>
+    <Section id={id}>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
         <SectionHeader {...header} align="left" />
         <div>

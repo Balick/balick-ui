@@ -47,19 +47,67 @@ export function composeRegistryUrl(blocks: string[]) {
   return `${siteConfig.url}/r/compose/${serializeComposition(blocks)}.json`
 }
 
+/**
+ * Splits a composition into the leading navbars, the page content and the
+ * trailing footers, so the content can be wrapped in <main>.
+ */
+export function splitComposition(blocks: string[]) {
+  const category = (block: string) => getBlock(block)?.category
+  let start = 0
+  while (start < blocks.length && category(blocks[start]) === "navbar") start++
+  let end = blocks.length
+  while (end > start && category(blocks[end - 1]) === "footer") end--
+  return {
+    before: blocks.slice(0, start),
+    content: blocks.slice(start, end),
+    after: blocks.slice(end),
+  }
+}
+
+/**
+ * Anchor id for each block that needs one. Blocks default to their category
+ * (`pricing`); a category used again gets a numbered id (`pricing-2`) so the
+ * page never repeats an id.
+ */
+export function compositionIds(blocks: string[]) {
+  const seen = new Map<string, number>()
+  return blocks.map((block) => {
+    const category = getBlock(block)?.category
+    if (!category || category === "navbar" || category === "footer") return undefined
+    const count = (seen.get(category) ?? 0) + 1
+    seen.set(category, count)
+    return count === 1 ? undefined : `${category}-${count}`
+  })
+}
+
 /** The app/page.tsx file that renders the blocks in order. */
 export function composePageSource(blocks: string[]) {
   const imports = [...new Set(blocks)]
     .map((block) => `import { ${componentName(block)} } from "@/components/${block}"`)
     .join("\n")
-  const body = blocks.map((block) => `      <${componentName(block)} />`).join("\n")
+  const ids = compositionIds(blocks)
+  const { before, content, after } = splitComposition(blocks)
+  const element = (block: string, index: number, indent: string) =>
+    `${indent}<${componentName(block)}${ids[index] ? ` id="${ids[index]}"` : ""} />`
+
+  const lines = [
+    ...before.map((block, i) => element(block, i, "      ")),
+    ...(content.length
+      ? [
+          "      <main>",
+          ...content.map((block, i) => element(block, before.length + i, "        ")),
+          "      </main>",
+        ]
+      : []),
+    ...after.map((block, i) => element(block, before.length + content.length + i, "      ")),
+  ]
 
   return `${imports}
 
 export default function Page() {
   return (
     <>
-${body}
+${lines.join("\n")}
     </>
   )
 }
