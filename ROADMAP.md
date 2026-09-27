@@ -99,8 +99,11 @@ d'édition des textes dans l'interface.
 
 ### E. Lancement
 
-- [ ] Déploiement sur `ui.balick.me` : application Node.js Hostinger (plan
-      Business) connectée au dépôt, redéployée à chaque push sur `main`
+- [ ] Déploiement sur `ui.balick.me` : projet Vercel connecté au dépôt
+      (redéployé à chaque push sur `main`), `NEXT_PUBLIC_BASE_URL`, et un
+      `CNAME` `ui` vers Vercel dans la zone DNS Hostinger de `balick.me`
+- [ ] Passer au plan payant de Vercel avant de lancer l'offre Pro : le plan
+      gratuit (Hobby) est réservé à un usage non commercial
 - [ ] Dépôt public et licence MIT
 - [ ] Inscription dans l'annuaire shadcn (`@balick`), puis dépendances en
       `@balick/...` au lieu des URL complètes
@@ -123,6 +126,7 @@ d'édition des textes dans l'interface.
 | 2026-09-25 | Domaine : `ui.balick.dev` (portfolio sur `balick.me`) |
 | 2026-09-27 | Domaine : `ui.balick.me` à la place de `ui.balick.dev`, en attendant de pouvoir réactiver `balick.dev` |
 | 2026-09-27 | Hébergement : application Node.js sur Hostinger (plan Business, usage commercial autorisé) plutôt que Vercel |
+| 2026-09-27 | Hébergement : finalement Vercel (déploiement et aperçus par pull request) ; le DNS reste chez Hostinger |
 | 2026-09-25 | Namespace du registre : `@balick` |
 | 2026-09-25 | Site et code en anglais pour viser un public international |
 | 2026-09-25 | Identité minimaliste et monochrome, inspirée de Vercel |
