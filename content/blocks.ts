@@ -1,26 +1,106 @@
 import registry from "@/registry.json"
 
 export const blockCategories = [
-  { slug: "navbar", title: "Navbar" },
-  { slug: "hero", title: "Hero" },
-  { slug: "logos", title: "Logos" },
-  { slug: "stats", title: "Stats" },
-  { slug: "about", title: "About" },
-  { slug: "timeline", title: "Timeline" },
-  { slug: "services", title: "Services" },
-  { slug: "features", title: "Features" },
-  { slug: "steps", title: "How it works" },
-  { slug: "integrations", title: "Integrations" },
-  { slug: "projects", title: "Projects" },
-  { slug: "testimonials", title: "Testimonials" },
-  { slug: "team", title: "Team" },
-  { slug: "pricing", title: "Pricing" },
-  { slug: "faq", title: "FAQ" },
-  { slug: "blog", title: "Blog" },
-  { slug: "newsletter", title: "Newsletter" },
-  { slug: "cta", title: "Call to action" },
-  { slug: "contact", title: "Contact" },
-  { slug: "footer", title: "Footer" },
+  {
+    slug: "navbar",
+    title: "Navbar",
+    description: "Sticky navigation bars with a mobile menu, transparent until the page scrolls.",
+  },
+  {
+    slug: "hero",
+    title: "Hero",
+    description: "Opening sections with a headline, calls to action and a product preview.",
+  },
+  {
+    slug: "logos",
+    title: "Logos",
+    description: "Customer and partner logos that build trust at a glance.",
+  },
+  {
+    slug: "stats",
+    title: "Stats",
+    description: "Key figures that back up your claims with numbers.",
+  },
+  {
+    slug: "about",
+    title: "About",
+    description: "Introductions that tell visitors who you are and what you care about.",
+  },
+  {
+    slug: "timeline",
+    title: "Timeline",
+    description: "Company stories, careers and milestones, told in order.",
+  },
+  {
+    slug: "services",
+    title: "Services",
+    description: "Service lists with scope, deliverables and starting prices.",
+  },
+  {
+    slug: "features",
+    title: "Features",
+    description: "Feature grids and bento layouts that explain what your product does.",
+  },
+  {
+    slug: "steps",
+    title: "How it works",
+    description: "Step-by-step sections that show how your product or process works.",
+  },
+  {
+    slug: "integrations",
+    title: "Integrations",
+    description: "Integration grids that show how you fit into an existing stack.",
+  },
+  {
+    slug: "projects",
+    title: "Projects",
+    description: "Project and case study showcases for portfolios and agencies.",
+  },
+  {
+    slug: "testimonials",
+    title: "Testimonials",
+    description: "Customer quotes that turn visitors into believers.",
+  },
+  {
+    slug: "team",
+    title: "Team",
+    description: "Team sections that put faces and roles behind the product.",
+  },
+  {
+    slug: "pricing",
+    title: "Pricing",
+    description: "Pricing tables, single plans and feature comparisons.",
+  },
+  {
+    slug: "faq",
+    title: "FAQ",
+    description: "Frequently asked questions that answer objections before they are raised.",
+  },
+  {
+    slug: "blog",
+    title: "Blog",
+    description: "Latest posts and articles, with covers, dates and authors.",
+  },
+  {
+    slug: "newsletter",
+    title: "Newsletter",
+    description: "Email signup sections that grow your audience.",
+  },
+  {
+    slug: "cta",
+    title: "Call to action",
+    description: "Closing calls to action that turn interest into sign-ups.",
+  },
+  {
+    slug: "contact",
+    title: "Contact",
+    description: "Contact sections with forms, channels, addresses and opening hours.",
+  },
+  {
+    slug: "footer",
+    title: "Footer",
+    description: "Footers with navigation, social links and legal information.",
+  },
 ] as const
 
 export type BlockCategory = (typeof blockCategories)[number]["slug"]

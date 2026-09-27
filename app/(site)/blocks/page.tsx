@@ -1,102 +1,76 @@
 import type { Metadata } from "next"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
-import { BlockViewer } from "@/components/block-viewer"
-import { CodeBlock } from "@/components/code-block"
-import { registryUrl } from "@/config/site"
-import { blockCategories, blockList } from "@/content/blocks"
-import { shadcnAdd } from "@/lib/commands"
-import { getRegistryFiles, getRegistryItem } from "@/lib/registry"
+import { BlocksHashRedirect } from "@/components/blocks-category-tabs"
+import { blockList } from "@/content/blocks"
+import { galleryCategories } from "@/lib/blocks-gallery"
 import { GridPattern } from "@/registry/balick/ui/grid-pattern"
 
 export const metadata: Metadata = {
   title: "Blocks",
   description:
-    "Complete, responsive sections built with Balick UI components. Preview, resize, copy.",
+    "Complete, responsive sections for shadcn/ui, designed to go together. Preview, resize, install with one command.",
+  alternates: { canonical: "/blocks" },
 }
 
-/** Turns "https://…/r/marquee.json" into "marquee", and keeps shadcn names as is. */
-function dependencyName(dependency: string) {
-  return dependency.split("/").pop()!.replace(/\.json$/, "")
-}
-
-export default async function BlocksPage() {
-  const categories = await Promise.all(
-    blockCategories.map(async (category) => ({
-      ...category,
-      blocks: await Promise.all(
-        blockList
-          .filter((block) => block.category === category.slug)
-          .map(async (block) => {
-            const item = getRegistryItem(block.name)
-            const files = await getRegistryFiles(block.name)
-            return {
-              ...block,
-              dependencies: [
-                ...(item?.registryDependencies ?? []).map(dependencyName),
-                ...(item?.dependencies ?? []),
-              ],
-              files: files.map((file) => ({
-                path: file.path,
-                code: <CodeBlock code={file.code} title={file.path} />,
-              })),
-            }
-          })
-      ),
-    }))
-  )
+export default function BlocksPage() {
+  const categories = galleryCategories()
 
   return (
     <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-6">
-      <header className="relative -mx-4 overflow-hidden border-b px-4 py-16 md:-mx-6 md:px-6 md:py-20">
+      <BlocksHashRedirect
+        targets={Object.fromEntries([
+          ...categories.map((category) => [category.slug, `/blocks/${category.slug}`]),
+          ...blockList.map((block) => [block.name, `/blocks/${block.category}#${block.name}`]),
+        ])}
+      />
+      <header className="relative -mx-4 overflow-hidden px-4 py-16 md:-mx-6 md:px-6 md:py-20">
         <GridPattern className="[mask-image:radial-gradient(ellipse_50%_80%_at_0%_0%,white,transparent)]" />
         <div className="relative">
           <p className="font-mono text-xs tracking-wider text-muted-foreground uppercase">
-            {blockList.length} blocks
+            {blockList.length} blocks · {categories.length} categories
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tighter sm:text-5xl">Blocks</h1>
           <p className="mt-4 max-w-xl text-lg text-balance text-muted-foreground">
             Complete, responsive sections built with Balick UI components.
             Preview them at any width, then add them with one command.
           </p>
-          <nav aria-label="Categories" className="mt-8 flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <a
-                key={category.slug}
-                href={`#${category.slug}`}
-                className="inline-flex h-8 items-center gap-2 rounded-full border bg-background px-3 text-sm transition-colors hover:bg-accent"
-              >
-                {category.title}
-                <span className="font-mono text-xs text-muted-foreground">
-                  {category.blocks.length}
-                </span>
-              </a>
-            ))}
-          </nav>
         </div>
       </header>
 
-      <div className="flex flex-col gap-20 py-16">
-        {categories.map((category) => (
-          <div key={category.slug} id={category.slug} className="scroll-mt-20">
-            <h2 className="mb-6 flex items-center gap-3 text-2xl font-semibold tracking-tight">
-              {category.title}
-              <span className="h-px flex-1 bg-border" />
-            </h2>
-            <div className="flex flex-col gap-16">
-              {category.blocks.map((block) => (
-                <BlockViewer
-                  key={block.name}
-                  name={block.name}
-                  title={block.title}
-                  description={block.description}
-                  commands={shadcnAdd(registryUrl(block.name))}
-                  dependencies={block.dependencies}
-                  files={block.files}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="pb-16 md:pb-20">
+        <div className="overflow-hidden rounded-2xl border">
+          <ul className="-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {categories.map((category) => (
+              <li key={category.slug} className="border-r border-b">
+                <Link
+                  href={`/blocks/${category.slug}`}
+                  className="group flex h-full flex-col p-6 transition-colors hover:bg-muted/40"
+                >
+                  <span className="flex items-center justify-between gap-4">
+                    <span className="font-medium">{category.title}</span>
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {category.blocks.length} {category.blocks.length === 1 ? "block" : "blocks"}
+                    </span>
+                  </span>
+                  <span className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {category.description}
+                  </span>
+                  <span className="mt-6 flex flex-1 items-end justify-between gap-4">
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {category.blocks.map((block) => block.name).join(" · ")}
+                    </span>
+                    <ArrowRight
+                      className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
+                      aria-hidden
+                    />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   )

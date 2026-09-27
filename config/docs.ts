@@ -42,7 +42,7 @@ export const docsNav: NavSection[] = [
     title: "Blocks",
     items: blockCategories.map((category) => ({
       title: category.title,
-      href: `/blocks#${category.slug}`,
+      href: `/blocks/${category.slug}`,
     })),
   },
   {

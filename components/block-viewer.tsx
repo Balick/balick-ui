@@ -32,7 +32,7 @@ export function BlockViewer({
   const [activeFile, setActiveFile] = React.useState(0)
 
   return (
-    <section id={name} className="scroll-mt-20">
+    <section id={name}>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <h3 className="font-medium">
