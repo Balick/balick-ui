@@ -27,17 +27,17 @@ export default function BlocksPage() {
       />
       <Spacer className="h-12 sm:h-16" />
       <Row>
-        <SheetLabel className="px-4 py-3 md:px-6">
+        <SheetLabel className="justify-center px-4 py-3 md:px-6">
           {blockList.length} blocks · {categories.length} categories
         </SheetLabel>
       </Row>
-      <h1 className="text-5xl font-semibold tracking-tighter sm:text-6xl">
+      <h1 className="text-center text-5xl font-semibold tracking-tighter sm:text-6xl">
         <Row as="span" className="px-4 py-2 md:px-6">
           Blocks
         </Row>
       </h1>
       <Row>
-        <p className="max-w-2xl px-4 py-3 text-lg text-balance text-muted-foreground md:px-6">
+        <p className="mx-auto max-w-2xl px-4 py-3 text-center text-lg text-balance text-muted-foreground md:px-6">
           Complete, responsive sections built on shared primitives. Preview them at any
           width, add them one by one, or{" "}
           <Link href="/compose" className="text-foreground underline underline-offset-4">

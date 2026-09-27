@@ -23,21 +23,21 @@ export default function TemplatesPage() {
     <div className="sheet">
       <Spacer className="h-12 sm:h-16" />
       <Row>
-        <SheetLabel className="px-4 py-3 md:px-6">Coming soon</SheetLabel>
+        <SheetLabel className="justify-center px-4 py-3 md:px-6">Coming soon</SheetLabel>
       </Row>
-      <h1 className="text-5xl font-semibold tracking-tighter sm:text-6xl">
+      <h1 className="text-center text-5xl font-semibold tracking-tighter sm:text-6xl">
         <Row as="span" className="px-4 py-2 md:px-6">
           Templates
         </Row>
       </h1>
       <Row>
-        <p className="max-w-2xl px-4 py-3 text-lg text-balance text-muted-foreground md:px-6">
+        <p className="mx-auto max-w-2xl px-4 py-3 text-center text-lg text-balance text-muted-foreground md:px-6">
           Complete sites assembled from blocks: install, customise, deploy. Until they land,
           compose your own page from the same blocks.
         </p>
       </Row>
       <Row>
-        <div className="px-4 py-4 md:px-6">
+        <div className="px-4 py-4 text-center md:px-6">
           <Link
             href="/compose"
             className="inline-flex h-10 items-center gap-2 rounded-md bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-85"
