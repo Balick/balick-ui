@@ -50,9 +50,9 @@ function initials(name: string) {
     .join("")
 }
 
-export function Testimonials01() {
+export function Testimonials01({ id = "testimonials" }: { id?: string }) {
   return (
-    <Section>
+    <Section id={id}>
       <SectionHeader {...header} />
       <div className="mt-16 columns-1 gap-4 md:columns-2 lg:columns-3">
         {testimonials.map((testimonial) => (

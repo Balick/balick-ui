@@ -57,9 +57,9 @@ function Cell({
   )
 }
 
-export function Features01() {
+export function Features01({ id = "features" }: { id?: string }) {
   return (
-    <Section>
+    <Section id={id}>
       <SectionHeader
         eyebrow="Features"
         title="Everything you need. Nothing you don't."

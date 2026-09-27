@@ -46,9 +46,9 @@ function CopyEmail({ email }: { email: string }) {
   )
 }
 
-export function Contact01() {
+export function Contact01({ id = "contact" }: { id?: string }) {
   return (
-    <Section>
+    <Section id={id}>
       <div className="grid grid-cols-1 overflow-hidden rounded-2xl border lg:grid-cols-2">
         <div className="flex flex-col justify-between gap-10 p-8 sm:p-12">
           <div>

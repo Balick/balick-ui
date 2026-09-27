@@ -88,6 +88,10 @@
   }
   html {
     @apply scroll-smooth;
+  }
+  /* Clear the docs site header. Block previews (/view) have no site header,
+     so they keep the same anchor offset as a user's project. */
+  html:has([data-site-header]) {
     scroll-padding-top: 5rem;
   }
   body {

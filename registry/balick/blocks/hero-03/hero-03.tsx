@@ -24,9 +24,9 @@ const socials = [
 
 const stack = ["React", "Next.js", "TypeScript", "Tailwind CSS", "Motion", "Node.js", "Figma"]
 
-export function Hero03() {
+export function Hero03({ id = "hero" }: { id?: string }) {
   return (
-    <Section spacing="none">
+    <Section id={id} spacing="none">
       <div className="flex flex-col items-start pt-24 pb-16 sm:pt-32">
         <BlurFade>
           <p className="inline-flex items-center gap-2 rounded-full border py-1 pr-3 pl-2.5 text-xs text-muted-foreground">

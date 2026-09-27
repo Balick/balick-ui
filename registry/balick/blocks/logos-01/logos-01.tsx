@@ -13,23 +13,27 @@ const logos = [
   { name: "Stratum", icon: Layers },
 ]
 
-export function Logos01() {
+export function Logos01({ id = "logos" }: { id?: string }) {
   return (
-    <Section spacing="compact">
+    <Section id={id} spacing="compact">
       <p className="mx-auto max-w-md text-center text-sm text-balance text-muted-foreground">
         {title}
       </p>
-      <ul className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-3 lg:grid-cols-6">
-        {logos.map(({ name, icon: Icon }) => (
-          <li
-            key={name}
-            className="group flex h-24 items-center justify-center gap-2 bg-background text-lg font-semibold tracking-tight text-muted-foreground/70 transition-colors hover:text-foreground"
-          >
-            <Icon className="size-5" strokeWidth={2.25} aria-hidden />
-            {name}
-          </li>
-        ))}
-      </ul>
+      {/* Cells draw their own borders so any number of logos leaves no filled
+          empty cell (see features-02). */}
+      <div className="mt-10 overflow-hidden rounded-2xl border">
+        <ul className="-mr-px -mb-px grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+          {logos.map(({ name, icon: Icon }) => (
+            <li
+              key={name}
+              className="group flex h-24 items-center justify-center gap-2 border-r border-b text-lg font-semibold tracking-tight text-muted-foreground/70 transition-colors hover:text-foreground"
+            >
+              <Icon className="size-5" strokeWidth={2.25} aria-hidden />
+              {name}
+            </li>
+          ))}
+        </ul>
+      </div>
     </Section>
   )
 }

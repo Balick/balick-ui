@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { COMPOSE_MESSAGE } from "@/lib/compose"
+import { COMPOSE_MESSAGE, compositionIds, splitComposition } from "@/lib/compose"
 import { blocks as registryBlocks } from "@/registry/__index__"
 
 /**
@@ -56,12 +56,29 @@ export function ComposeCanvas({ initialBlocks }: { initialBlocks: string[] }) {
     )
   }
 
-  return blocks.map((name, index) => {
-    const Block = registryBlocks[name]
+  // Mirror the installed page: same <main> landmark and the same ids.
+  const ids = compositionIds(blocks)
+  const { before, content } = splitComposition(blocks)
+  const render = (name: string, index: number) => {
+    const Block = registryBlocks[name] as React.ComponentType<{ id?: string }>
     return (
       <div key={`${index}-${name}`} data-compose-index={index} className="contents">
-        <Block />
+        <Block id={ids[index]} />
       </div>
     )
-  })
+  }
+  const main = before.length
+  const end = before.length + content.length
+
+  return (
+    <>
+      {blocks.slice(0, main).map((name, i) => render(name, i))}
+      {content.length > 0 && (
+        <main>
+          {blocks.slice(main, end).map((name, i) => render(name, main + i))}
+        </main>
+      )}
+      {blocks.slice(end).map((name, i) => render(name, end + i))}
+    </>
+  )
 }

@@ -77,9 +77,9 @@ function ProductPreview() {
   )
 }
 
-export function Hero01() {
+export function Hero01({ id = "hero" }: { id?: string }) {
   return (
-    <Section spacing="none" className="overflow-hidden">
+    <Section id={id} spacing="none" className="overflow-hidden">
       <GridPattern
         width={48}
         height={48}

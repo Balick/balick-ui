@@ -48,6 +48,7 @@ export interface SectionProps extends React.ComponentProps<"section"> {
 /**
  * Outer shell of a block: full-width background, vertical rhythm and
  * a centred container. Blocks that share it stack without gaps or overlaps.
+ * Anchor links land below a sticky navbar thanks to the scroll margin.
  */
 export function Section({
   spacing = "default",
@@ -60,7 +61,7 @@ export function Section({
   return (
     <section
       data-slot="section"
-      className={cn("relative", sectionSpacings[spacing], className)}
+      className={cn("relative scroll-mt-16", sectionSpacings[spacing], className)}
       {...props}
     >
       <Container width={width} className={containerClassName}>

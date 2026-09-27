@@ -21,7 +21,9 @@ and check a block against the list at the end before adding it.
 - One block is one full-width section, in
   `registry/balick/blocks/<category>-NN/<category>-NN.tsx`.
 - It exports one component named after the file (`Pricing01`), with no
-  required props. The composer generates imports from this name, and
+  required props. Section-based blocks take an optional `id`, defaulting to
+  their category (`pricing`), so `/#pricing` links work out of the box;
+  `Section` adds a scroll margin that clears the sticky navbar. The composer generates imports from this name, and
   `pnpm registry:build` fails if a block breaks the convention.
 - Placeholder content lives in constants at the top of the file, so users edit
   data, not markup.
@@ -51,8 +53,11 @@ Every block is built on the `section` primitive (`@/registry/balick/ui/section`)
 - Navbars are a `header` built on `Container` (not `Section`), `sticky top-0`,
   `h-16`, and transparent until the page scrolls. Their mobile menu closes on
   Escape, on link click and when the viewport reaches the desktop breakpoint.
-- Card grids use `gap-4`. Bento grids use `gap-px bg-border` inside a bordered,
-  rounded container, so the gaps become hairlines.
+- Card grids use `gap-4`. Hairline grids (features, logos) put `border-r
+  border-b` on each cell, inside a bordered, rounded, `overflow-hidden`
+  container whose grid has `-mr-px -mb-px`. Unlike `gap-px bg-border`, an
+  incomplete last row then stays blank, so any number of items works. Fixed
+  bento layouts, where every cell is always filled, may keep `gap-px`.
 - Every grid sets its base column count (`grid-cols-1 md:grid-cols-3`), never
   an implicit column: a wide child such as a marquee would otherwise stretch
   the column past the screen on mobile.

@@ -29,9 +29,9 @@ const plan = {
   ],
 }
 
-export function Pricing02() {
+export function Pricing02({ id = "pricing" }: { id?: string }) {
   return (
-    <Section>
+    <Section id={id}>
       <SectionHeader {...header} />
       <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 overflow-hidden rounded-2xl border lg:grid-cols-[1.4fr_1fr]">
         <div className="p-8 sm:p-10">
