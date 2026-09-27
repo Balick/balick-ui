@@ -5,7 +5,7 @@ Minimal, animated components, blocks and templates built on top of
 through the shadcn CLI.
 
 ```bash
-npx shadcn@latest add https://ui.balick.dev/r/marquee.json
+npx shadcn@latest add https://ui.balick.me/r/marquee.json
 ```
 
 ## Development

@@ -89,7 +89,7 @@ d'édition des textes dans l'interface.
       (`/r/compose/<blocks>.json`), aussi ouvrable dans v0
 - [x] Suggestions de structure (navbar en premier, footer en dernier, doublons)
 - [ ] Tester l'installation réelle une fois le site déployé (le CLI ne peut
-      pas joindre `ui.balick.dev` avant le déploiement)
+      pas joindre `ui.balick.me` avant le déploiement)
 
 ### D. Utilisation réelle
 
@@ -99,7 +99,8 @@ d'édition des textes dans l'interface.
 
 ### E. Lancement
 
-- [ ] Déploiement sur `ui.balick.dev` (DNS, Vercel, `NEXT_PUBLIC_BASE_URL`)
+- [ ] Déploiement sur `ui.balick.me` : application Node.js Hostinger (plan
+      Business) connectée au dépôt, redéployée à chaque push sur `main`
 - [ ] Dépôt public et licence MIT
 - [ ] Inscription dans l'annuaire shadcn (`@balick`), puis dépendances en
       `@balick/...` au lieu des URL complètes
@@ -120,6 +121,8 @@ d'édition des textes dans l'interface.
 | Date | Décision |
 | --- | --- |
 | 2026-09-25 | Domaine : `ui.balick.dev` (portfolio sur `balick.me`) |
+| 2026-09-27 | Domaine : `ui.balick.me` à la place de `ui.balick.dev`, en attendant de pouvoir réactiver `balick.dev` |
+| 2026-09-27 | Hébergement : application Node.js sur Hostinger (plan Business, usage commercial autorisé) plutôt que Vercel |
 | 2026-09-25 | Namespace du registre : `@balick` |
 | 2026-09-25 | Site et code en anglais pour viser un public international |
 | 2026-09-25 | Identité minimaliste et monochrome, inspirée de Vercel |

@@ -6,7 +6,7 @@
   "description": "Sticky navigation bar that turns translucent on scroll, with an accessible mobile menu.",
   "registryDependencies": [
     "button",
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

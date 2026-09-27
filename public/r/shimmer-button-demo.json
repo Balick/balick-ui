@@ -5,7 +5,7 @@
   "title": "Shimmer Button Demo",
   "description": "Example usage of Shimmer Button.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/shimmer-button.json"
+    "https://ui.balick.me/r/shimmer-button.json"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Section Demo",
   "description": "Example usage of Section.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

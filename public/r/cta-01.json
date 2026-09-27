@@ -6,8 +6,8 @@
   "description": "High-contrast call to action panel with a subtle grid and two actions.",
   "registryDependencies": [
     "button",
-    "https://ui.balick.dev/r/grid-pattern.json",
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/grid-pattern.json",
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

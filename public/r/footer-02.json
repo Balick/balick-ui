@@ -5,7 +5,7 @@
   "title": "Compact footer",
   "description": "Single-row footer with links and socials, and a legal line.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {
