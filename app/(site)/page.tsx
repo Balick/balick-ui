@@ -17,7 +17,7 @@ import { registryUrl } from "@/config/site"
 import { blockList } from "@/content/blocks"
 import { componentDocs } from "@/content/components"
 import { galleryCategories } from "@/lib/blocks-gallery"
-import { composeRegistryUrl, serializeComposition, starterComposition } from "@/lib/compose"
+import { composeRegistryUrl, starterComposition } from "@/lib/compose"
 import { cn } from "@/lib/utils"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
 import { GridPattern } from "@/registry/balick/ui/grid-pattern"
@@ -94,12 +94,12 @@ function Intro({
         </SheetLabel>
       </Row>
       <Row>
-        <h2 className={cn(pad, "py-2 text-4xl font-semibold tracking-tighter text-balance sm:text-5xl")}>
+        <h2 className={cn(pad, "py-2 text-center text-4xl font-semibold tracking-tighter text-balance sm:text-5xl")}>
           {title}
         </h2>
       </Row>
       <Row>
-        <p className={cn(pad, "max-w-2xl py-3 text-lg text-balance text-muted-foreground")}>
+        <p className={cn(pad, "mx-auto max-w-2xl py-3 text-center text-lg text-balance text-muted-foreground")}>
           {description}
         </p>
       </Row>
@@ -109,14 +109,13 @@ function Intro({
 
 export default function HomePage() {
   const categories = galleryCategories()
-  const composed = serializeComposition(starterComposition)
 
   return (
     <div className="sheet">
       {/* Hero */}
       <Spacer className="h-16 sm:h-24" />
       <Row>
-        <div className={cn(pad, "py-3")}>
+        <div className={cn(pad, "py-3 text-center")}>
           <Link
             href="/compose"
             className="inline-flex max-w-full items-center gap-2 rounded-full border bg-card py-1 pr-3 pl-1 text-xs shadow-xs transition-colors hover:bg-accent"
@@ -129,7 +128,7 @@ export default function HomePage() {
           </Link>
         </div>
       </Row>
-      <h1 className="text-[clamp(2.25rem,10.5vw,3rem)] font-semibold tracking-[-0.045em] sm:text-7xl lg:text-8xl">
+      <h1 className="text-center text-[clamp(2.25rem,10.5vw,3rem)] font-semibold tracking-[-0.045em] sm:text-7xl lg:text-8xl">
         <Row as="span" className={cn(pad, "pt-2 pb-1 leading-[1.05]")}>
           Blocks designed
         </Row>
@@ -138,19 +137,19 @@ export default function HomePage() {
         </Row>
       </h1>
       <Row>
-        <p className={cn(pad, "max-w-2xl py-4 text-lg text-balance text-muted-foreground")}>
+        <p className={cn(pad, "mx-auto max-w-2xl py-4 text-center text-lg text-balance text-muted-foreground")}>
           Sections for shadcn/ui built on one set of primitives. Pick them, arrange them in the
           composer, then install the whole page with a single command.
         </p>
       </Row>
       <Row>
-        <div className={cn(pad, "flex flex-wrap items-center gap-3 py-4")}>
+        <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
           <PrimaryLink href="/compose">Open the composer</PrimaryLink>
           <SecondaryLink href="/blocks">Browse blocks</SecondaryLink>
         </div>
       </Row>
       <Row>
-        <div className={cn(pad, "py-4")}>
+        <div className={cn(pad, "py-4 text-center")}>
           <InstallPill command={`npx shadcn@latest add ${registryUrl("hero-01")}`} />
         </div>
       </Row>
@@ -169,8 +168,8 @@ export default function HomePage() {
         </div>
       </Row>
       <Row>
-        <div className={cn(pad, "flex flex-wrap items-center gap-3 py-4")}>
-          <PrimaryLink href={`/compose?blocks=${composed}`}>Open this page in the composer</PrimaryLink>
+        <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
+          <PrimaryLink href="/compose">Try the composer</PrimaryLink>
         </div>
       </Row>
 
@@ -216,7 +215,7 @@ export default function HomePage() {
         <CategoryGrid compact />
       </Row>
       <Row>
-        <div className={cn(pad, "flex flex-wrap items-center gap-3 py-4")}>
+        <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
           <PrimaryLink href="/blocks">Browse all blocks</PrimaryLink>
         </div>
       </Row>
@@ -271,7 +270,7 @@ export default function HomePage() {
         </ol>
       </Row>
       <Row>
-        <div className={cn(pad, "flex flex-wrap items-center gap-3 py-4")}>
+        <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
           <PrimaryLink href="/compose">Open the composer</PrimaryLink>
         </div>
       </Row>
@@ -349,13 +348,13 @@ export default function HomePage() {
 
       {/* Closing */}
       <Spacer marks className="h-16 sm:h-24" />
-      <h2 className="text-4xl font-semibold tracking-tighter sm:text-6xl">
+      <h2 className="text-center text-4xl font-semibold tracking-tighter sm:text-6xl">
         <Row as="span" className={cn(pad, "py-2")}>
           Start with a page.
         </Row>
       </h2>
       <Row>
-        <div className={cn(pad, "flex flex-wrap items-center gap-3 py-4")}>
+        <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
           <PrimaryLink href="/compose">Open the composer</PrimaryLink>
           <SecondaryLink href="/docs/installation">Read the installation guide</SecondaryLink>
         </div>
