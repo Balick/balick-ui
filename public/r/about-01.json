@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "about-01",
+  "type": "registry:block",
+  "title": "About with key figures",
+  "description": "Two-column introduction with paragraphs, key figures and skills.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/about-01/about-01.tsx",
+      "content": "import { Section, SectionHeader } from \"@/registry/balick/ui/section\"\n\nconst header = {\n  eyebrow: \"About\",\n  title: \"Design-minded engineer.\",\n}\n\nconst paragraphs = [\n  \"I'm a frontend developer who cares about the details users feel but rarely notice: timing, spacing, and interfaces that respond instantly.\",\n  \"For the past six years I've helped startups and studios turn ideas into products, from the first prototype to the design system that keeps them consistent as they grow.\",\n]\n\nconst stats = [\n  { value: \"6+\", label: \"Years of experience\" },\n  { value: \"40+\", label: \"Projects shipped\" },\n  { value: \"25\", label: \"Happy clients\" },\n]\n\nconst skills = [\"React\", \"Next.js\", \"TypeScript\", \"Tailwind CSS\", \"Design systems\", \"Accessibility\", \"Motion\", \"Performance\"]\n\nexport function About01() {\n  return (\n    <Section>\n      <div className=\"grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16\">\n        <SectionHeader {...header} align=\"left\" />\n        <div>\n          <div className=\"flex flex-col gap-5 text-lg leading-8 text-muted-foreground\">\n            {paragraphs.map((paragraph) => (\n              <p key={paragraph}>{paragraph}</p>\n            ))}\n          </div>\n          <dl className=\"mt-12 grid grid-cols-3 divide-x border-y\">\n            {stats.map((stat) => (\n              <div key={stat.label} className=\"flex flex-col-reverse px-4 py-6 first:pl-0\">\n                <dt className=\"mt-1 text-xs text-muted-foreground sm:text-sm\">{stat.label}</dt>\n                <dd className=\"text-3xl font-semibold tracking-tight sm:text-4xl\">{stat.value}</dd>\n              </div>\n            ))}\n          </dl>\n          <ul aria-label=\"Skills\" className=\"mt-8 flex flex-wrap gap-2\">\n            {skills.map((skill) => (\n              <li key={skill} className=\"rounded-full border px-3 py-1 text-sm\">\n                {skill}\n              </li>\n            ))}\n          </ul>\n        </div>\n      </div>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "about"
+  ]
+}

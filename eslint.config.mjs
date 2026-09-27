@@ -12,6 +12,12 @@ const compat = new FlatCompat({
 const eslintConfig = [
   { ignores: [".next/**", "node_modules/**", "public/**", "next-env.d.ts"] },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    // Registry items are installed into any React app, so they use plain
+    // <img> instead of next/image.
+    files: ["registry/balick/**"],
+    rules: { "@next/next/no-img-element": "off" },
+  },
 ];
 
 export default eslintConfig;

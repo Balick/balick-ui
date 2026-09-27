@@ -4,11 +4,14 @@ export const blockCategories = [
   { slug: "navbar", title: "Navbar" },
   { slug: "hero", title: "Hero" },
   { slug: "logos", title: "Logos" },
+  { slug: "about", title: "About" },
   { slug: "features", title: "Features" },
+  { slug: "projects", title: "Projects" },
   { slug: "testimonials", title: "Testimonials" },
   { slug: "pricing", title: "Pricing" },
   { slug: "faq", title: "FAQ" },
   { slug: "cta", title: "Call to action" },
+  { slug: "contact", title: "Contact" },
   { slug: "footer", title: "Footer" },
 ] as const
 
