@@ -3,6 +3,7 @@ import { ArrowRight, Blocks, Code2, Sparkles, Terminal } from "lucide-react"
 
 import { FrameSection } from "@/components/home/frame"
 import { InstallPill } from "@/components/home/install-pill"
+import { registryUrl } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { BlurFade } from "@/registry/balick/ui/blur-fade"
 import { GridPattern } from "@/registry/balick/ui/grid-pattern"
@@ -95,7 +96,7 @@ export default function HomePage() {
             </Link>
           </BlurFade>
           <BlurFade delay={0.4} className="mt-8 max-w-full">
-            <InstallPill command="npx shadcn@latest add @balick/marquee" />
+            <InstallPill command={`npx shadcn@latest add ${registryUrl("marquee")}`} />
           </BlurFade>
         </div>
       </section>
