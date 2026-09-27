@@ -6,7 +6,7 @@
   "description": "One all-inclusive plan: what's included on one side, price and call to action on the other.",
   "registryDependencies": [
     "button",
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

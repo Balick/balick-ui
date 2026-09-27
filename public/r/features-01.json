@@ -5,8 +5,8 @@
   "title": "Bento features",
   "description": "Bento grid of four illustrated features, followed by a row of secondary features.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/marquee.json",
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/marquee.json",
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

@@ -1,7 +1,7 @@
 # Balick UI
 
 A shadcn/ui registry of components, blocks and templates, with its docs site
-(Next.js 15, React 19, Tailwind CSS v4). Served from https://ui.balick.dev.
+(Next.js 15, React 19, Tailwind CSS v4). Served from https://ui.balick.me.
 
 ## Read first
 

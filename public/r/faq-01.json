@@ -6,7 +6,7 @@
   "description": "Two-column FAQ: sticky header with a contact link, and an accessible accordion.",
   "registryDependencies": [
     "accordion",
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

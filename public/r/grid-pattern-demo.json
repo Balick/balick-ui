@@ -5,7 +5,7 @@
   "title": "Grid Pattern Demo",
   "description": "Example usage of Grid Pattern.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/grid-pattern.json"
+    "https://ui.balick.me/r/grid-pattern.json"
   ],
   "files": [
     {

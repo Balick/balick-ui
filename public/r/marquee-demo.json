@@ -5,7 +5,7 @@
   "title": "Marquee Demo",
   "description": "Example usage of Marquee.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/marquee.json"
+    "https://ui.balick.me/r/marquee.json"
   ],
   "files": [
     {

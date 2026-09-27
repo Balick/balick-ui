@@ -5,7 +5,7 @@
   "title": "Feature grid",
   "description": "Six features in a hairline grid, with a left-aligned header.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

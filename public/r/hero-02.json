@@ -6,8 +6,8 @@
   "description": "Left-aligned hero with key figures and an animated deploy terminal. No logo strip, so it pairs with logos-01.",
   "registryDependencies": [
     "button",
-    "https://ui.balick.dev/r/blur-fade.json",
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/blur-fade.json",
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

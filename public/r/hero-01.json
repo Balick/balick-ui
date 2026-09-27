@@ -6,11 +6,11 @@
   "description": "Centred hero with announcement pill, animated headline, product preview and a scrolling logo cloud.",
   "registryDependencies": [
     "button",
-    "https://ui.balick.dev/r/blur-fade.json",
-    "https://ui.balick.dev/r/grid-pattern.json",
-    "https://ui.balick.dev/r/marquee.json",
-    "https://ui.balick.dev/r/shimmer-button.json",
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/blur-fade.json",
+    "https://ui.balick.me/r/grid-pattern.json",
+    "https://ui.balick.me/r/marquee.json",
+    "https://ui.balick.me/r/shimmer-button.json",
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

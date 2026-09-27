@@ -5,7 +5,7 @@
   "title": "Logo grid",
   "description": "Hairline grid of customer logos with a short introduction.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {

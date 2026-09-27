@@ -5,7 +5,7 @@
   "title": "Testimonial wall",
   "description": "Masonry wall of customer quotes with names, roles and initials avatars.",
   "registryDependencies": [
-    "https://ui.balick.dev/r/section.json"
+    "https://ui.balick.me/r/section.json"
   ],
   "files": [
     {
