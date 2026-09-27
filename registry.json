@@ -389,6 +389,24 @@
       ]
     },
     {
+      "name": "integrations-01",
+      "type": "registry:block",
+      "title": "Integrations grid",
+      "description": "Twelve integrations in a hairline grid, next to a sticky header and a link to the full list.",
+      "categories": [
+        "integrations"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/integrations-01/integrations-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "projects-01",
       "type": "registry:block",
       "title": "Project grid",
@@ -466,6 +484,25 @@
       ]
     },
     {
+      "name": "pricing-03",
+      "type": "registry:block",
+      "title": "Plan comparison table",
+      "description": "Accessible feature comparison across three plans, grouped by category, with the featured plan highlighted.",
+      "categories": [
+        "pricing"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/pricing-03/pricing-03.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "faq-01",
       "type": "registry:block",
       "title": "FAQ with accordion",
@@ -480,6 +517,44 @@
       "files": [
         {
           "path": "registry/balick/blocks/faq-01/faq-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "blog-01",
+      "type": "registry:block",
+      "title": "Latest posts",
+      "description": "Three recent articles with a cover, category, date, author and reading time.",
+      "categories": [
+        "blog"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/blog-01/blog-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "newsletter-01",
+      "type": "registry:block",
+      "title": "Newsletter signup",
+      "description": "Email signup card with a confirmation state; posts to a configurable endpoint.",
+      "categories": [
+        "newsletter"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/newsletter-01/newsletter-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -558,6 +633,24 @@
       "files": [
         {
           "path": "registry/balick/blocks/stats-01/stats-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "timeline-01",
+      "type": "registry:block",
+      "title": "Timeline",
+      "description": "Company story as a vertical timeline, with a sticky header.",
+      "categories": [
+        "timeline"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/section.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/blocks/timeline-01/timeline-01.tsx",
           "type": "registry:component"
         }
       ]

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "integrations-01",
+  "type": "registry:block",
+  "title": "Integrations grid",
+  "description": "Twelve integrations in a hairline grid, next to a sticky header and a link to the full list.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/section.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/blocks/integrations-01/integrations-01.tsx",
+      "content": "import {\n  ArrowRight,\n  BarChart3,\n  Bell,\n  CreditCard,\n  Database,\n  HardDrive,\n  KeyRound,\n  Mail,\n  MessageSquare,\n  Activity,\n  PenTool,\n  Webhook,\n  Workflow,\n} from \"lucide-react\"\n\nimport { Section, SectionHeader } from \"@/registry/balick/ui/section\"\n\nconst header = {\n  eyebrow: \"Integrations\",\n  title: \"Works with the tools you already use.\",\n  description:\n    \"Connect your stack in a few clicks. Data flows both ways, and every integration is included on every plan.\",\n}\n\nconst all = { label: \"Browse all integrations\", href: \"#\" }\n\nconst integrations = [\n  { name: \"Atlas\", category: \"Database\", icon: Database },\n  { name: \"Ledger\", category: \"Payments\", icon: CreditCard },\n  { name: \"Relay\", category: \"Messaging\", icon: MessageSquare },\n  { name: \"Parcel\", category: \"Email\", icon: Mail },\n  { name: \"Beacon\", category: \"Analytics\", icon: BarChart3 },\n  { name: \"Pulse\", category: \"Monitoring\", icon: Activity },\n  { name: \"Vault\", category: \"Secrets\", icon: KeyRound },\n  { name: \"Harbor\", category: \"Storage\", icon: HardDrive },\n  { name: \"Forge\", category: \"Automation\", icon: Workflow },\n  { name: \"Canvas\", category: \"Design\", icon: PenTool },\n  { name: \"Signal\", category: \"Alerts\", icon: Bell },\n  { name: \"Hooks\", category: \"Webhooks\", icon: Webhook },\n]\n\nexport function Integrations01({ id = \"integrations\" }: { id?: string }) {\n  return (\n    <Section id={id}>\n      <div className=\"grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16\">\n        <div className=\"lg:sticky lg:top-24 lg:self-start\">\n          <SectionHeader {...header} align=\"left\">\n            <a href={all.href} className=\"group inline-flex items-center gap-1 text-sm font-medium\">\n              {all.label}\n              <ArrowRight className=\"size-4 transition-transform group-hover:translate-x-0.5\" />\n            </a>\n          </SectionHeader>\n        </div>\n        <div className=\"overflow-hidden rounded-2xl border\">\n          <ul className=\"-mr-px -mb-px grid grid-cols-2 sm:grid-cols-3\">\n            {integrations.map(({ name, category, icon: Icon }) => (\n              <li\n                key={name}\n                className=\"flex flex-col items-center gap-3 border-r border-b px-4 py-8 text-center transition-colors hover:bg-muted/30\"\n              >\n                <span className=\"flex size-12 items-center justify-center rounded-xl border bg-background shadow-xs\">\n                  <Icon className=\"size-5\" aria-hidden />\n                </span>\n                <span className=\"flex flex-col\">\n                  <span className=\"text-sm font-medium\">{name}</span>\n                  <span className=\"text-xs text-muted-foreground\">{category}</span>\n                </span>\n              </li>\n            ))}\n          </ul>\n        </div>\n      </div>\n    </Section>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "integrations"
+  ]
+}
