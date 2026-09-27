@@ -18,8 +18,8 @@ export function BlocksCategoryTabs({
   total,
 }: {
   categories: Category[]
-  /** Slug of the current category, or undefined on the overview. */
-  active?: string
+  /** Slug of the current category. */
+  active: string
   total: number
 }) {
   const listRef = React.useRef<HTMLDivElement>(null)
@@ -41,7 +41,7 @@ export function BlocksCategoryTabs({
         ref={listRef}
         className="flex gap-2 overflow-x-auto px-4 py-2 [mask-image:linear-gradient(to_right,transparent,black_1rem,black_calc(100%-1rem),transparent)] [scrollbar-width:none] md:px-6 [&::-webkit-scrollbar]:hidden"
       >
-        <Tab href="/blocks" title="All" count={total} current={!active} />
+        <Tab href="/blocks" title="All" count={total} current={false} />
         {categories.map((category) => (
           <Tab
             key={category.slug}

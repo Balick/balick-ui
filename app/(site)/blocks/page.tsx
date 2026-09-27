@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
-import { BlocksCategoryTabs, BlocksHashRedirect } from "@/components/blocks-category-tabs"
+import { BlocksHashRedirect } from "@/components/blocks-category-tabs"
 import { blockList } from "@/content/blocks"
-import { galleryCategories, galleryTabs } from "@/lib/blocks-gallery"
+import { galleryCategories } from "@/lib/blocks-gallery"
 import { GridPattern } from "@/registry/balick/ui/grid-pattern"
 
 export const metadata: Metadata = {
@@ -39,9 +39,7 @@ export default function BlocksPage() {
         </div>
       </header>
 
-      <BlocksCategoryTabs categories={galleryTabs()} total={blockList.length} />
-
-      <div className="py-12 md:py-16">
+      <div className="pb-16 md:pb-20">
         <div className="overflow-hidden rounded-2xl border">
           <ul className="-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {categories.map((category) => (
