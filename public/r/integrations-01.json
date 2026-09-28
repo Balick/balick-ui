@@ -3,6 +3,9 @@
   "name": "integrations-01",
   "title": "Integrations grid",
   "description": "Twelve integrations in a hairline grid, next to a sticky header and a link to the full list.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://ui.balick.me/r/section.json"
   ],

@@ -3,6 +3,9 @@
   "name": "pricing-02",
   "title": "Single plan",
   "description": "One all-inclusive plan: what's included on one side, price and call to action on the other.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "button",
     "https://ui.balick.me/r/section.json"

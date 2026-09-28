@@ -3,6 +3,9 @@
   "name": "navbar-01",
   "title": "Navbar with mobile menu",
   "description": "Sticky navigation bar that turns translucent on scroll, with an accessible mobile menu.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "button",
     "https://ui.balick.me/r/section.json"

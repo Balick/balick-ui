@@ -3,6 +3,9 @@
   "name": "contact-02",
   "title": "Contact form with details",
   "description": "Contact form with a confirmation state, next to email, phone, address and opening hours.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "button",
     "input",

@@ -1,6 +1,6 @@
-import { Github, Linkedin, Twitter } from "lucide-react"
 
 import { Section, SectionHeader } from "@/registry/balick/ui/section"
+import { GitHubIcon, LinkedInIcon, XIcon } from "@/registry/balick/ui/social-icons"
 
 const header = {
   eyebrow: "Team",
@@ -36,9 +36,9 @@ const members = [
 ]
 
 const socials = [
-  { key: "github", label: "GitHub", icon: Github },
-  { key: "linkedin", label: "LinkedIn", icon: Linkedin },
-  { key: "twitter", label: "X", icon: Twitter },
+  { key: "github", label: "GitHub", icon: GitHubIcon },
+  { key: "linkedin", label: "LinkedIn", icon: LinkedInIcon },
+  { key: "twitter", label: "X", icon: XIcon },
 ] as const
 
 function initials(name: string) {

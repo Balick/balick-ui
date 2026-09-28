@@ -3,6 +3,9 @@
   "name": "hero-01",
   "title": "Hero with product preview",
   "description": "Centred hero with announcement pill, animated headline, product preview and a scrolling logo cloud.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "button",
     "https://ui.balick.me/r/blur-fade.json",

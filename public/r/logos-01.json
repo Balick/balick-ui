@@ -3,6 +3,9 @@
   "name": "logos-01",
   "title": "Logo grid",
   "description": "Hairline grid of customer logos with a short introduction.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://ui.balick.me/r/section.json"
   ],

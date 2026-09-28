@@ -3,6 +3,9 @@
   "name": "cta-01",
   "title": "Inverted call to action",
   "description": "High-contrast call to action panel with a subtle grid and two actions.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "button",
     "https://ui.balick.me/r/grid-pattern.json",
