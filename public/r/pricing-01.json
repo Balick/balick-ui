@@ -4,6 +4,7 @@
   "title": "Pricing with billing toggle",
   "description": "Three-tier pricing with an animated monthly / yearly toggle and a highlighted plan.",
   "dependencies": [
+    "lucide-react",
     "motion"
   ],
   "registryDependencies": [

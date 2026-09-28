@@ -1,13 +1,13 @@
 import Link from "next/link"
 
 import { CommandMenu } from "@/components/command-menu"
-import { GitHubIcon } from "@/components/icons"
 import { Logo } from "@/components/logo"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { Mark } from "@/components/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { siteConfig } from "@/config/site"
+import { GitHubIcon } from "@/registry/balick/ui/social-icons"
 
 export function SiteHeader() {
   return (

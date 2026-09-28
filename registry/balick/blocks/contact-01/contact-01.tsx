@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { ArrowUpRight, Check, Copy, Github, Linkedin, Mail, MessageCircle } from "lucide-react"
+import { ArrowUpRight, Check, Copy, Mail, MessageCircle } from "lucide-react"
 
 import { Section } from "@/registry/balick/ui/section"
+import { GitHubIcon, LinkedInIcon } from "@/registry/balick/ui/social-icons"
 
 const content = {
   eyebrow: "Contact",
@@ -16,8 +17,8 @@ const content = {
 const channels = [
   { label: "Email", value: "hello@acme.com", icon: Mail, href: "mailto:hello@acme.com" },
   { label: "WhatsApp", value: "Message me", icon: MessageCircle, href: "#" },
-  { label: "LinkedIn", value: "/in/alexmorgan", icon: Linkedin, href: "#" },
-  { label: "GitHub", value: "@alexmorgan", icon: Github, href: "#" },
+  { label: "LinkedIn", value: "/in/alexmorgan", icon: LinkedInIcon, href: "#" },
+  { label: "GitHub", value: "@alexmorgan", icon: GitHubIcon, href: "#" },
 ]
 
 function CopyEmail({ email }: { email: string }) {

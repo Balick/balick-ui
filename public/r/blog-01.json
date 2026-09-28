@@ -3,6 +3,9 @@
   "name": "blog-01",
   "title": "Latest posts",
   "description": "Three recent articles with a cover, category, date, author and reading time.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://ui.balick.me/r/section.json"
   ],

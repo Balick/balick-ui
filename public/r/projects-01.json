@@ -3,6 +3,9 @@
   "name": "projects-01",
   "title": "Project grid",
   "description": "Grid of projects with screenshots, summary, year and stack. Draws a placeholder when a project has no image.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://ui.balick.me/r/section.json"
   ],

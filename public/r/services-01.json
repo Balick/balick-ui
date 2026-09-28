@@ -3,6 +3,9 @@
   "name": "services-01",
   "title": "Services list",
   "description": "Numbered list of services with a starting price, deliverables and a link.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://ui.balick.me/r/section.json"
   ],

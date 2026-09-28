@@ -3,6 +3,9 @@
   "name": "newsletter-01",
   "title": "Newsletter signup",
   "description": "Email signup card with a confirmation state; posts to a configurable endpoint.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "button",
     "input",

@@ -153,6 +153,18 @@
       ]
     },
     {
+      "name": "social-icons",
+      "type": "registry:ui",
+      "title": "Social icons",
+      "description": "Brand icons for social links (GitHub, LinkedIn, X, YouTube), which lucide-react no longer ships.",
+      "files": [
+        {
+          "path": "registry/balick/ui/social-icons.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "marquee-demo",
       "type": "registry:example",
       "title": "Marquee Demo",
@@ -235,6 +247,9 @@
       "categories": [
         "navbar"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "https://ui.balick.me/r/section.json"
@@ -259,6 +274,9 @@
           "logos"
         ]
       },
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "https://ui.balick.me/r/blur-fade.json",
@@ -282,6 +300,9 @@
       "categories": [
         "hero"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "https://ui.balick.me/r/blur-fade.json",
@@ -302,11 +323,15 @@
       "categories": [
         "hero"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "https://ui.balick.me/r/blur-fade.json",
         "https://ui.balick.me/r/marquee.json",
-        "https://ui.balick.me/r/section.json"
+        "https://ui.balick.me/r/section.json",
+        "https://ui.balick.me/r/social-icons.json"
       ],
       "files": [
         {
@@ -322,6 +347,9 @@
       "description": "Hairline grid of customer logos with a short introduction.",
       "categories": [
         "logos"
+      ],
+      "dependencies": [
+        "lucide-react"
       ],
       "registryDependencies": [
         "https://ui.balick.me/r/section.json"
@@ -359,6 +387,9 @@
       "categories": [
         "features"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://ui.balick.me/r/marquee.json",
         "https://ui.balick.me/r/section.json"
@@ -378,6 +409,9 @@
       "categories": [
         "features"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://ui.balick.me/r/section.json"
       ],
@@ -396,6 +430,9 @@
       "categories": [
         "integrations"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://ui.balick.me/r/section.json"
       ],
@@ -413,6 +450,9 @@
       "description": "Grid of projects with screenshots, summary, year and stack. Draws a placeholder when a project has no image.",
       "categories": [
         "projects"
+      ],
+      "dependencies": [
+        "lucide-react"
       ],
       "registryDependencies": [
         "https://ui.balick.me/r/section.json"
@@ -451,6 +491,7 @@
         "pricing"
       ],
       "dependencies": [
+        "lucide-react",
         "motion"
       ],
       "registryDependencies": [
@@ -472,6 +513,9 @@
       "categories": [
         "pricing"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "https://ui.balick.me/r/section.json"
@@ -491,6 +535,9 @@
       "categories": [
         "pricing"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "https://ui.balick.me/r/section.json"
@@ -506,12 +553,14 @@
       "name": "faq-01",
       "type": "registry:block",
       "title": "FAQ with accordion",
-      "description": "Two-column FAQ: sticky header with a contact link, and an accessible accordion.",
+      "description": "Two-column FAQ: sticky header with a contact link, and an accessible accordion built on native disclosure elements.",
       "categories": [
         "faq"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "accordion",
         "https://ui.balick.me/r/section.json"
       ],
       "files": [
@@ -528,6 +577,9 @@
       "description": "Three recent articles with a cover, category, date, author and reading time.",
       "categories": [
         "blog"
+      ],
+      "dependencies": [
+        "lucide-react"
       ],
       "registryDependencies": [
         "https://ui.balick.me/r/section.json"
@@ -546,6 +598,9 @@
       "description": "Email signup card with a confirmation state; posts to a configurable endpoint.",
       "categories": [
         "newsletter"
+      ],
+      "dependencies": [
+        "lucide-react"
       ],
       "registryDependencies": [
         "button",
@@ -567,6 +622,9 @@
       "categories": [
         "cta"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "https://ui.balick.me/r/grid-pattern.json",
@@ -587,8 +645,12 @@
       "categories": [
         "contact"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://ui.balick.me/r/section.json"
+        "https://ui.balick.me/r/section.json",
+        "https://ui.balick.me/r/social-icons.json"
       ],
       "files": [
         {
@@ -604,6 +666,9 @@
       "description": "Contact form with a confirmation state, next to email, phone, address and opening hours.",
       "categories": [
         "contact"
+      ],
+      "dependencies": [
+        "lucide-react"
       ],
       "registryDependencies": [
         "button",
@@ -663,6 +728,9 @@
       "categories": [
         "services"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://ui.balick.me/r/section.json"
       ],
@@ -700,7 +768,8 @@
         "team"
       ],
       "registryDependencies": [
-        "https://ui.balick.me/r/section.json"
+        "https://ui.balick.me/r/section.json",
+        "https://ui.balick.me/r/social-icons.json"
       ],
       "files": [
         {
@@ -717,10 +786,14 @@
       "categories": [
         "footer"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "input",
-        "https://ui.balick.me/r/section.json"
+        "https://ui.balick.me/r/section.json",
+        "https://ui.balick.me/r/social-icons.json"
       ],
       "files": [
         {
@@ -737,8 +810,12 @@
       "categories": [
         "footer"
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://ui.balick.me/r/section.json"
+        "https://ui.balick.me/r/section.json",
+        "https://ui.balick.me/r/social-icons.json"
       ],
       "files": [
         {

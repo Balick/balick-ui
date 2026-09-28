@@ -1,6 +1,7 @@
-import { Github, Linkedin, Triangle, Twitter } from "lucide-react"
+import { Triangle } from "lucide-react"
 
 import { Container } from "@/registry/balick/ui/section"
+import { GitHubIcon, LinkedInIcon, XIcon } from "@/registry/balick/ui/social-icons"
 
 const brand = { name: "Acme", href: "#" }
 
@@ -18,9 +19,9 @@ const legal = [
 ]
 
 const socials = [
-  { name: "GitHub", icon: Github, href: "#" },
-  { name: "X", icon: Twitter, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
+  { name: "GitHub", icon: GitHubIcon, href: "#" },
+  { name: "X", icon: XIcon, href: "#" },
+  { name: "LinkedIn", icon: LinkedInIcon, href: "#" },
 ]
 
 export function Footer02() {

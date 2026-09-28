@@ -1,9 +1,10 @@
-import { ArrowRight, Github, Linkedin, MapPin, Twitter } from "lucide-react"
+import { ArrowRight, MapPin } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { BlurFade } from "@/registry/balick/ui/blur-fade"
 import { Marquee } from "@/registry/balick/ui/marquee"
 import { Section } from "@/registry/balick/ui/section"
+import { GitHubIcon, LinkedInIcon, XIcon } from "@/registry/balick/ui/social-icons"
 
 const person = {
   name: "Alex Morgan",
@@ -17,9 +18,9 @@ const person = {
 }
 
 const socials = [
-  { name: "GitHub", icon: Github, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "X", icon: Twitter, href: "#" },
+  { name: "GitHub", icon: GitHubIcon, href: "#" },
+  { name: "LinkedIn", icon: LinkedInIcon, href: "#" },
+  { name: "X", icon: XIcon, href: "#" },
 ]
 
 const stack = ["React", "Next.js", "TypeScript", "Tailwind CSS", "Motion", "Node.js", "Figma"]

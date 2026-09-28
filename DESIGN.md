@@ -127,7 +127,8 @@ layers are distinct in both.
 - Balick components: import from `@/registry/balick/ui/*` and list their
   registry URL in `registryDependencies`. The CLI rewrites the imports to
   `@/components/ui/*`.
-- Icons: `lucide-react` only.
+- Icons: `lucide-react`. Brand icons, which lucide no longer ships, come from
+  the `social-icons` Balick component.
 - Add `motion` only when a block animates itself; animated Balick components
   already bring it.
 

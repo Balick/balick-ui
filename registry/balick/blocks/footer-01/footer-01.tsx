@@ -1,8 +1,9 @@
-import { ArrowRight, Github, Linkedin, Triangle, Twitter, Youtube } from "lucide-react"
+import { ArrowRight, Triangle } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Container } from "@/registry/balick/ui/section"
+import { GitHubIcon, LinkedInIcon, XIcon, YouTubeIcon } from "@/registry/balick/ui/social-icons"
 
 const columns = [
   { title: "Product", links: ["Features", "Pricing", "Integrations", "Changelog", "Roadmap"] },
@@ -12,10 +13,10 @@ const columns = [
 ]
 
 const socials = [
-  { name: "GitHub", icon: Github },
-  { name: "X", icon: Twitter },
-  { name: "LinkedIn", icon: Linkedin },
-  { name: "YouTube", icon: Youtube },
+  { name: "GitHub", icon: GitHubIcon },
+  { name: "X", icon: XIcon },
+  { name: "LinkedIn", icon: LinkedInIcon },
+  { name: "YouTube", icon: YouTubeIcon },
 ]
 
 export function Footer01() {

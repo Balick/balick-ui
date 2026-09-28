@@ -3,6 +3,9 @@
   "name": "hero-02",
   "title": "Split hero with deploy terminal",
   "description": "Left-aligned hero with key figures and an animated deploy terminal. No logo strip, so it pairs with logos-01.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "button",
     "https://ui.balick.me/r/blur-fade.json",

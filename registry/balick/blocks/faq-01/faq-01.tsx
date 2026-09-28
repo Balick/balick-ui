@@ -1,11 +1,5 @@
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 import { Section, SectionHeader } from "@/registry/balick/ui/section"
 
 const header = {
@@ -64,18 +58,28 @@ export function Faq01({ id = "faq" }: { id?: string }) {
             </a>
           </SectionHeader>
         </div>
-        <Accordion type="single" collapsible className="border-t">
+        {/*
+          Native disclosure: accessible without JavaScript and independent of the
+          project's shadcn/ui style. Sharing a name keeps one answer open at a time.
+        */}
+        <div className="border-t">
           {faqs.map((faq) => (
-            <AccordionItem key={faq.question} value={faq.question}>
-              <AccordionTrigger className="py-5 text-base hover:no-underline">
+            <details
+              key={faq.question}
+              name="faq"
+              className="group border-b [interpolate-size:allow-keywords] details-content:h-0 details-content:overflow-hidden details-content:transition-[height,content-visibility] details-content:transition-discrete details-content:duration-200 details-content:ease-out open:details-content:h-auto motion-reduce:details-content:transition-none"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-base font-medium [&::-webkit-details-marker]:hidden">
                 {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="pb-5 leading-6 text-muted-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+                <ChevronDown
+                  aria-hidden
+                  className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none"
+                />
+              </summary>
+              <p className="pb-5 leading-6 text-muted-foreground">{faq.answer}</p>
+            </details>
           ))}
-        </Accordion>
+        </div>
       </div>
     </Section>
   )

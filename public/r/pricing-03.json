@@ -3,6 +3,9 @@
   "name": "pricing-03",
   "title": "Plan comparison table",
   "description": "Accessible feature comparison across three plans, grouped by category, with the featured plan highlighted.",
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "button",
     "https://ui.balick.me/r/section.json"
