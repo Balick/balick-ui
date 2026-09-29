@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "countdown",
+  "title": "Countdown",
+  "description": "Days, hours, minutes and seconds left until a date, each rolling to its new value.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/animated-number.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/countdown.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { AnimatedNumber } from \"@/registry/balick/ui/animated-number\"\n\nexport interface CountdownProps extends Omit<React.ComponentProps<\"div\">, \"children\"> {\n  /** The moment the countdown reaches zero. */\n  to: Date | string | number\n  /** Called once, when the countdown reaches zero. */\n  onComplete?: () => void\n  /** Labels under each unit. */\n  labels?: { days: string; hours: string; minutes: string; seconds: string }\n}\n\nconst second = 1000\nconst units = [\n  { key: \"days\", size: 86_400 * second, modulo: Infinity },\n  { key: \"hours\", size: 3_600 * second, modulo: 24 },\n  { key: \"minutes\", size: 60 * second, modulo: 60 },\n  { key: \"seconds\", size: second, modulo: 60 },\n] as const\n\nconst pad = (value: number) => String(value).padStart(2, \"0\")\n\n/**\n * Days, hours, minutes and seconds left until a date, each rolling to its\n * new value. The time is only known in the browser, so the server renders\n * placeholders. Size it with a text size on the root.\n */\nexport function Countdown({\n  to,\n  onComplete,\n  labels = { days: \"Days\", hours: \"Hours\", minutes: \"Minutes\", seconds: \"Seconds\" },\n  className,\n  ...props\n}: CountdownProps) {\n  const target = new Date(to).getTime()\n  const [now, setNow] = React.useState<number>()\n  const completed = React.useRef(false)\n  const remaining = now === undefined ? undefined : Math.max(0, target - now)\n\n  React.useEffect(() => {\n    setNow(Date.now())\n    const timer = setInterval(() => setNow(Date.now()), second)\n    return () => clearInterval(timer)\n  }, [])\n\n  React.useEffect(() => {\n    if (remaining === 0 && !completed.current) {\n      completed.current = true\n      onComplete?.()\n    }\n  }, [remaining, onComplete])\n\n  return (\n    <div\n      role=\"timer\"\n      className={cn(\"inline-flex items-start gap-4 text-4xl font-semibold tracking-tighter tabular-nums sm:gap-6\", className)}\n      {...props}\n    >\n      {units.map((unit) => {\n        const value =\n          remaining === undefined ? undefined : Math.floor(remaining / unit.size) % unit.modulo\n        return (\n          <div key={unit.key} className=\"flex flex-col items-center\">\n            {value === undefined ? (\n              <span className=\"text-muted-foreground\">--</span>\n            ) : (\n              <AnimatedNumber value={value} format={pad} />\n            )}\n            <span className=\"mt-1 font-mono text-[10px] font-normal tracking-wider text-muted-foreground uppercase\">\n              {labels[unit.key]}\n            </span>\n          </div>\n        )\n      })}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

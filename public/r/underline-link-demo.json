@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "underline-link-demo",
+  "title": "Underline Link Demo",
+  "description": "Example usage of Underline Link.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/underline-link.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/underline-link-demo.tsx",
+      "content": "import { UnderlineLink } from \"@/registry/balick/ui/underline-link\"\n\nexport default function UnderlineLinkDemo() {\n  return (\n    <UnderlineLink href=\"#\" className=\"text-lg font-medium\">\n      Read the changelog\n    </UnderlineLink>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

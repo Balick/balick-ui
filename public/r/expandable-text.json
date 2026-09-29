@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expandable-text",
+  "title": "Expandable Text",
+  "description": "Long text clamped to a few lines, with a button that unfolds the rest.",
+  "files": [
+    {
+      "path": "registry/balick/ui/expandable-text.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ExpandableTextProps extends React.ComponentProps<\"div\"> {\n  /** Lines shown while collapsed. */\n  lines?: number\n  moreLabel?: string\n  lessLabel?: string\n}\n\n/**\n * Long text clamped to a few lines, with a button that unfolds the rest.\n * The button only shows when the text overflows. Before JavaScript runs, the\n * text is already clamped.\n */\nexport function ExpandableText({\n  lines = 3,\n  moreLabel = \"Show more\",\n  lessLabel = \"Show less\",\n  className,\n  children,\n  ...props\n}: ExpandableTextProps) {\n  const id = React.useId()\n  const content = React.useRef<HTMLDivElement>(null)\n  const [expanded, setExpanded] = React.useState(false)\n  const [heights, setHeights] = React.useState<{ collapsed: number; full: number }>()\n\n  React.useLayoutEffect(() => {\n    const node = content.current\n    if (!node) return\n    const measure = () => {\n      const style = getComputedStyle(node)\n      const lineHeight = parseFloat(style.lineHeight) || parseFloat(style.fontSize) * 1.5\n      setHeights({ collapsed: Math.round(lineHeight * lines), full: node.scrollHeight })\n    }\n    measure()\n    const observer = new ResizeObserver(measure)\n    observer.observe(node)\n    return () => observer.disconnect()\n  }, [lines])\n\n  const overflows = !heights || heights.full > heights.collapsed + 1\n  const open = expanded || !overflows\n\n  return (\n    <div className={cn(className)} {...props}>\n      <div\n        id={id}\n        className={cn(\n          \"overflow-hidden transition-[height] duration-300 ease-out motion-reduce:transition-none\",\n          !open && \"[mask-image:linear-gradient(to_bottom,black_55%,transparent)]\"\n        )}\n        // Clamped by CSS until measured, then sized in pixels so the height can transition.\n        style={heights ? { height: open ? heights.full : heights.collapsed } : { maxHeight: `${lines}lh` }}\n      >\n        <div ref={content}>{children}</div>\n      </div>\n      {overflows && (\n        <button\n          type=\"button\"\n          aria-expanded={expanded}\n          aria-controls={id}\n          onClick={() => setExpanded((value) => !value)}\n          className=\"mt-2 cursor-pointer text-sm font-medium text-foreground underline-offset-4 hover:underline\"\n        >\n          {expanded ? lessLabel : moreLabel}\n        </button>\n      )}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

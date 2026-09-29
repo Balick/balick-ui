@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "countdown-demo",
+  "title": "Countdown Demo",
+  "description": "Example usage of Countdown.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/countdown.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/countdown-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Countdown } from \"@/registry/balick/ui/countdown\"\n\nexport default function CountdownDemo() {\n  // A launch three days and a few hours away, whenever the demo is opened.\n  const [launch] = React.useState(() => Date.now() + ((3 * 24 + 7) * 60 + 42) * 60 * 1000)\n\n  return <Countdown to={launch} className=\"text-3xl sm:text-4xl\" />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

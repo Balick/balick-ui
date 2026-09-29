@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-reveal-demo",
+  "title": "Text Reveal Demo",
+  "description": "Example usage of Text Reveal.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/text-reveal.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/text-reveal-demo.tsx",
+      "content": "import { TextReveal } from \"@/registry/balick/ui/text-reveal\"\n\nexport default function TextRevealDemo() {\n  return (\n    <TextReveal as=\"h2\" className=\"max-w-sm text-center text-3xl font-semibold tracking-tighter sm:text-4xl\">\n      Blocks designed to fit together.\n    </TextReveal>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

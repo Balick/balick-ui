@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter-demo",
+  "title": "Typewriter Demo",
+  "description": "Example usage of Typewriter.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/typewriter.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/typewriter-demo.tsx",
+      "content": "import { Typewriter } from \"@/registry/balick/ui/typewriter\"\n\nexport default function TypewriterDemo() {\n  return (\n    <p className=\"font-mono text-sm\">\n      <span className=\"text-muted-foreground select-none\">$ </span>\n      <Typewriter\n        text={[\"npx shadcn@latest add @balick/hero-01\", \"npx shadcn@latest add @balick/pricing-01\"]}\n      />\n    </p>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

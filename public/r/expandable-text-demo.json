@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expandable-text-demo",
+  "title": "Expandable Text Demo",
+  "description": "Example usage of Expandable Text.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/expandable-text.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/expandable-text-demo.tsx",
+      "content": "import { ExpandableText } from \"@/registry/balick/ui/expandable-text\"\n\nexport default function ExpandableTextDemo() {\n  return (\n    <ExpandableText lines={3} className=\"max-w-sm text-sm leading-6 text-muted-foreground\">\n      Balick UI started as the set of sections behind a handful of client sites. Every block\n      is built on the same Section, Container and SectionHeader primitives, so a hero from\n      one page and a pricing table from another still look like they belong together. The\n      composer turns that into a workflow: pick the blocks, preview the page at any width,\n      then install everything with a single command.\n    </ExpandableText>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

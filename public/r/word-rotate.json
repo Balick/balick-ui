@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "word-rotate",
+  "title": "Word Rotate",
+  "description": "Cycles through words in place, each one sliding up into view.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/word-rotate.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion, useReducedMotion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface WordRotateProps extends Omit<React.ComponentProps<\"span\">, \"children\"> {\n  /** Words shown in turn, starting with the first. */\n  words: string[]\n  /** Time each word stays, in milliseconds. */\n  interval?: number\n}\n\n/**\n * Cycles through words in place, each one sliding up into view. Screen\n * readers get the whole list once; under reduced motion the first word stays.\n */\nexport function WordRotate({ words, interval = 2500, className, ...props }: WordRotateProps) {\n  const reduceMotion = useReducedMotion()\n  const [index, setIndex] = React.useState(0)\n\n  React.useEffect(() => {\n    if (reduceMotion || words.length < 2) return\n    const timer = setInterval(() => setIndex((value) => (value + 1) % words.length), interval)\n    return () => clearInterval(timer)\n  }, [reduceMotion, words.length, interval])\n\n  return (\n    <span className={cn(\"relative inline-flex overflow-hidden align-bottom\", className)} {...props}>\n      <span className=\"sr-only\">{words.join(\", \")}</span>\n      <AnimatePresence mode=\"popLayout\" initial={false}>\n        <motion.span\n          key={index}\n          aria-hidden\n          className=\"inline-block whitespace-nowrap\"\n          initial={{ y: \"100%\", opacity: 0, filter: \"blur(4px)\" }}\n          animate={{ y: \"0%\", opacity: 1, filter: \"blur(0px)\" }}\n          exit={{ y: \"-100%\", opacity: 0, filter: \"blur(4px)\" }}\n          transition={{ duration: 0.35, ease: \"easeOut\" }}\n        >\n          {words[index]}\n        </motion.span>\n      </AnimatePresence>\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

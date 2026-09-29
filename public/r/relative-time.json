@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "relative-time",
+  "title": "Relative Time",
+  "description": "A date described relative to now, kept up to date.",
+  "files": [
+    {
+      "path": "registry/balick/ui/relative-time.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nexport interface RelativeTimeProps extends Omit<React.ComponentProps<\"time\">, \"children\" | \"dateTime\"> {\n  /** The moment to describe. */\n  date: Date | string | number\n  /** Language of the text, as a BCP 47 tag. */\n  locale?: string\n}\n\nconst steps: [Intl.RelativeTimeFormatUnit, number][] = [\n  [\"second\", 60],\n  [\"minute\", 60],\n  [\"hour\", 24],\n  [\"day\", 7],\n  [\"week\", 4.35],\n  [\"month\", 12],\n  [\"year\", Infinity],\n]\n\nfunction describe(date: number, now: number, locale: string) {\n  let value = (date - now) / 1000\n  for (const [unit, size] of steps) {\n    if (Math.abs(value) < size) {\n      return new Intl.RelativeTimeFormat(locale, { numeric: \"auto\" }).format(Math.round(value), unit)\n    }\n    value /= size\n  }\n  return \"\"\n}\n\n/**\n * \"5 minutes ago\", \"in 3 days\": a date described relative to now, kept up\n * to date while the page is open. The exact date is in the `title` and the\n * `datetime` attribute.\n */\nexport function RelativeTime({ date, locale = \"en\", ...props }: RelativeTimeProps) {\n  const time = new Date(date).getTime()\n  const [now, setNow] = React.useState(() => Date.now())\n\n  React.useEffect(() => {\n    // Refresh often while the date is close, then once a minute.\n    const refresh = Math.abs(time - Date.now()) < 60_000 ? 10_000 : 60_000\n    const timer = setTimeout(() => setNow(Date.now()), refresh)\n    return () => clearTimeout(timer)\n  }, [now, time])\n\n  return (\n    <time\n      dateTime={new Date(time).toISOString()}\n      title={new Date(time).toLocaleString(locale, { dateStyle: \"long\", timeStyle: \"short\" })}\n      // The server and the browser read the clock at different moments.\n      suppressHydrationWarning\n      {...props}\n    >\n      {describe(time, now, locale)}\n    </time>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

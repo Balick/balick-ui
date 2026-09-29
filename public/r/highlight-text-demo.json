@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlight-text-demo",
+  "title": "Highlight Text Demo",
+  "description": "Example usage of Highlight Text.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/highlight-text.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/highlight-text-demo.tsx",
+      "content": "import { HighlightText } from \"@/registry/balick/ui/highlight-text\"\n\nexport default function HighlightTextDemo() {\n  return (\n    <p className=\"max-w-sm text-center text-xl leading-9 font-medium tracking-tight text-balance\">\n      Every block shares the same primitives, so{\" \"}\n      <HighlightText delay={0.3}>any combination looks like one page</HighlightText>.\n    </p>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

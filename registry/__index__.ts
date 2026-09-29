@@ -31,22 +31,32 @@ import AnimatedNumberDemo from "@/registry/balick/examples/animated-number-demo"
 import ArrowButtonDemo from "@/registry/balick/examples/arrow-button-demo"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
 import CopyButtonDemo from "@/registry/balick/examples/copy-button-demo"
+import CountdownDemo from "@/registry/balick/examples/countdown-demo"
 import ExpandButtonDemo from "@/registry/balick/examples/expand-button-demo"
+import ExpandableTextDemo from "@/registry/balick/examples/expandable-text-demo"
 import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
+import HighlightTextDemo from "@/registry/balick/examples/highlight-text-demo"
 import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
 import MagneticButtonDemo from "@/registry/balick/examples/magnetic-button-demo"
 import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
 import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
+import RelativeTimeDemo from "@/registry/balick/examples/relative-time-demo"
 import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
+import ScrambleTextDemo from "@/registry/balick/examples/scramble-text-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
 import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
+import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
 import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
 import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
 import StatusButtonDemo from "@/registry/balick/examples/status-button-demo"
 import StatusDotDemo from "@/registry/balick/examples/status-dot-demo"
+import TextRevealDemo from "@/registry/balick/examples/text-reveal-demo"
 import TextRollButtonDemo from "@/registry/balick/examples/text-roll-button-demo"
 import ThemeToggleButtonDemo from "@/registry/balick/examples/theme-toggle-button-demo"
+import TypewriterDemo from "@/registry/balick/examples/typewriter-demo"
+import UnderlineLinkDemo from "@/registry/balick/examples/underline-link-demo"
+import WordRotateDemo from "@/registry/balick/examples/word-rotate-demo"
 
 /** Demo components rendered by <ComponentPreview />, keyed by registry item name. */
 export const examples: Record<string, React.ComponentType> = {
@@ -54,22 +64,32 @@ export const examples: Record<string, React.ComponentType> = {
   "arrow-button-demo": ArrowButtonDemo,
   "blur-fade-demo": BlurFadeDemo,
   "copy-button-demo": CopyButtonDemo,
+  "countdown-demo": CountdownDemo,
   "expand-button-demo": ExpandButtonDemo,
+  "expandable-text-demo": ExpandableTextDemo,
   "grid-pattern-demo": GridPatternDemo,
+  "highlight-text-demo": HighlightTextDemo,
   "hold-button-demo": HoldButtonDemo,
   "magnetic-button-demo": MagneticButtonDemo,
   "marquee-demo": MarqueeDemo,
   "number-ticker-demo": NumberTickerDemo,
+  "relative-time-demo": RelativeTimeDemo,
   "ripple-button-demo": RippleButtonDemo,
+  "scramble-text-demo": ScrambleTextDemo,
   "section-demo": SectionDemo,
   "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
+  "shimmer-text-demo": ShimmerTextDemo,
   "social-icons-demo": SocialIconsDemo,
   "spotlight-button-demo": SpotlightButtonDemo,
   "status-button-demo": StatusButtonDemo,
   "status-dot-demo": StatusDotDemo,
+  "text-reveal-demo": TextRevealDemo,
   "text-roll-button-demo": TextRollButtonDemo,
   "theme-toggle-button-demo": ThemeToggleButtonDemo,
+  "typewriter-demo": TypewriterDemo,
+  "underline-link-demo": UnderlineLinkDemo,
+  "word-rotate-demo": WordRotateDemo,
 }
 
 /** Blocks rendered on their own at /view/[name], keyed by registry item name. */

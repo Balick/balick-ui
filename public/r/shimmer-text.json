@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-text",
+  "title": "Shimmer Text",
+  "description": "A light sweeps across the text, for work in progress.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/shimmer-text.tsx",
+      "content": "\"use client\"\n\nimport { motion, useReducedMotion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ShimmerTextProps extends React.ComponentProps<\"span\"> {\n  /** Duration of one sweep, in seconds. */\n  duration?: number\n}\n\n/**\n * A light sweeps across the text, for work in progress such as\n * \"Generating…\". The sweep loops, and stops under reduced motion.\n */\nexport function ShimmerText({ duration = 2, className, children, ...props }: ShimmerTextProps) {\n  const reduceMotion = useReducedMotion()\n\n  return (\n    <motion.span\n      className={cn(\n        \"inline-block bg-[linear-gradient(110deg,var(--muted-foreground)_35%,var(--foreground)_50%,var(--muted-foreground)_65%)] bg-[length:250%_100%] bg-clip-text text-transparent\",\n        className\n      )}\n      initial={{ backgroundPosition: \"100% 0%\" }}\n      animate={reduceMotion ? undefined : { backgroundPosition: \"0% 0%\" }}\n      transition={{ duration, repeat: Infinity, ease: \"linear\" }}\n      {...(props as React.ComponentProps<typeof motion.span>)}\n    >\n      {children}\n    </motion.span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

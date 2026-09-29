@@ -548,6 +548,206 @@ export function Header() {
       { name: "size", type: "Button size", default: '"icon"', description: "Size of the button." },
     ],
   },
+  {
+    slug: "word-rotate",
+    category: "text",
+    title: "Word Rotate",
+    description: "Cycles through words in place, each one sliding up into view. Stops on the first word under reduced motion.",
+    example: "word-rotate-demo",
+    usage: `import { WordRotate } from "@/components/ui/word-rotate"
+
+export function Headline() {
+  return (
+    <h1>
+      Ship pages <WordRotate words={["faster", "calmer", "together"]} />
+    </h1>
+  )
+}`,
+    props: [
+      { name: "words", type: "string[]", description: "Words shown in turn, starting with the first. Required." },
+      { name: "interval", type: "number", default: "2500", description: "Time each word stays, in milliseconds." },
+    ],
+  },
+  {
+    slug: "text-reveal",
+    category: "text",
+    title: "Text Reveal",
+    description: "Reveals a line word by word, each part fading in from a light blur. The full text stays readable by screen readers.",
+    example: "text-reveal-demo",
+    usage: `import { TextReveal } from "@/components/ui/text-reveal"
+
+export function Hero() {
+  return <TextReveal as="h1">Blocks designed to fit together.</TextReveal>
+}`,
+    props: [
+      { name: "children", type: "string", description: "The text to reveal. Required." },
+      { name: "as", type: '"h1" | "h2" | "h3" | "p" | "span"', default: '"p"', description: "Element rendered around the text." },
+      { name: "by", type: '"word" | "character"', default: '"word"', description: "Reveal word by word, or character by character." },
+      { name: "delay", type: "number", default: "0", description: "Delay before the first part, in seconds." },
+      { name: "stagger", type: "number", default: "0.06", description: "Delay between two parts, in seconds." },
+      { name: "inView", type: "boolean", default: "false", description: "Wait until the text scrolls into view." },
+    ],
+  },
+  {
+    slug: "typewriter",
+    category: "text",
+    title: "Typewriter",
+    description: "Types phrases character by character, erases them and types the next, with a blinking caret.",
+    example: "typewriter-demo",
+    usage: `import { Typewriter } from "@/components/ui/typewriter"
+
+export function Prompt() {
+  return <Typewriter text={["Build a landing page", "Add a pricing table"]} />
+}`,
+    props: [
+      { name: "text", type: "string | string[]", description: "A phrase, or phrases typed one after the other. Required." },
+      { name: "speed", type: "number", default: "45", description: "Time to type one character, in milliseconds." },
+      { name: "deleteSpeed", type: "number", default: "25", description: "Time to erase one character, in milliseconds." },
+      { name: "pause", type: "number", default: "1800", description: "Time a finished phrase stays before it is erased, in milliseconds." },
+      { name: "loop", type: "boolean", default: "true", description: "Start over after the last phrase." },
+      { name: "caret", type: "boolean", default: "true", description: "Show a blinking caret." },
+    ],
+  },
+  {
+    slug: "scramble-text",
+    category: "text",
+    title: "Scramble Text",
+    description: "Letters start scrambled and settle from left to right. The final text keeps its width, so nothing around it moves.",
+    example: "scramble-text-demo",
+    usage: `import { ScrambleText } from "@/components/ui/scramble-text"
+
+export function Status() {
+  return <ScrambleText text="SYSTEMS NOMINAL" scrambleOnHover className="font-mono" />
+}`,
+    props: [
+      { name: "text", type: "string", description: "The text to decode. Required." },
+      { name: "trigger", type: '"mount" | "inView"', default: '"inView"', description: "When the text decodes: on load, or once it scrolls into view." },
+      { name: "scrambleOnHover", type: "boolean", default: "false", description: "Decode again each time the pointer enters the text." },
+      { name: "duration", type: "number", default: "800", description: "Duration of the decoding, in milliseconds." },
+      { name: "characters", type: "string", default: '"A–Z 0–9"', description: "Characters drawn while the text is scrambled." },
+    ],
+  },
+  {
+    slug: "shimmer-text",
+    category: "text",
+    title: "Shimmer Text",
+    description: "A light sweeps across the text, for work in progress such as “Generating…”. Stops under reduced motion.",
+    example: "shimmer-text-demo",
+    usage: `import { ShimmerText } from "@/components/ui/shimmer-text"
+
+export function Pending() {
+  return <ShimmerText>Generating your page…</ShimmerText>
+}`,
+    props: [
+      { name: "duration", type: "number", default: "2", description: "Duration of one sweep, in seconds." },
+    ],
+  },
+  {
+    slug: "highlight-text",
+    category: "text",
+    title: "Highlight Text",
+    description: "A marker stroke draws behind the words once they scroll into view, and follows them across line breaks.",
+    example: "highlight-text-demo",
+    usage: `import { HighlightText } from "@/components/ui/highlight-text"
+
+export function Pitch() {
+  return (
+    <p>
+      Every block shares the same primitives, so{" "}
+      <HighlightText>any combination looks like one page</HighlightText>.
+    </p>
+  )
+}`,
+    props: [
+      { name: "color", type: "string", default: "text colour at 14%", description: "Colour of the highlight, as any CSS colour." },
+      { name: "duration", type: "number", default: "0.8", description: "Duration of the stroke, in seconds." },
+      { name: "delay", type: "number", default: "0", description: "Delay once in view, in seconds." },
+    ],
+  },
+  {
+    slug: "underline-link",
+    category: "text",
+    title: "Underline Link",
+    description: "A link whose underline draws in from the left on hover and focus, and leaves to the right.",
+    example: "underline-link-demo",
+    usage: `import Link from "next/link"
+
+import { UnderlineLink, underlineLinkClassName } from "@/components/ui/underline-link"
+
+export function Links() {
+  return (
+    <>
+      <UnderlineLink href="https://github.com">GitHub</UnderlineLink>
+      <Link href="/changelog" className={underlineLinkClassName}>Changelog</Link>
+    </>
+  )
+}`,
+    propGroups: [
+      {
+        title: "UnderlineLink",
+        props: [
+          { name: "...props", type: 'ComponentProps<"a">', description: "Any anchor attribute, such as href." },
+        ],
+      },
+      {
+        title: "underlineLinkClassName",
+        props: [
+          { name: "string", type: "string", description: "The classes that draw the underline, for your router's link component." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "expandable-text",
+    category: "text",
+    title: "Expandable Text",
+    description: "Long text clamped to a few lines, with a button that unfolds the rest. The button only shows when the text overflows.",
+    example: "expandable-text-demo",
+    usage: `import { ExpandableText } from "@/components/ui/expandable-text"
+
+export function Review({ text }: { text: string }) {
+  return <ExpandableText lines={4}>{text}</ExpandableText>
+}`,
+    props: [
+      { name: "lines", type: "number", default: "3", description: "Lines shown while collapsed." },
+      { name: "moreLabel", type: "string", default: '"Show more"', description: "Label of the button while collapsed." },
+      { name: "lessLabel", type: "string", default: '"Show less"', description: "Label of the button while expanded." },
+    ],
+  },
+  {
+    slug: "countdown",
+    category: "text",
+    title: "Countdown",
+    description: "Days, hours, minutes and seconds left until a date, each rolling to its new value.",
+    example: "countdown-demo",
+    usage: `import { Countdown } from "@/components/ui/countdown"
+
+export function Launch() {
+  return <Countdown to="2026-12-01T09:00:00Z" onComplete={() => location.reload()} />
+}`,
+    props: [
+      { name: "to", type: "Date | string | number", description: "The moment the countdown reaches zero. Required." },
+      { name: "onComplete", type: "() => void", description: "Called once, when the countdown reaches zero." },
+      { name: "labels", type: "{ days, hours, minutes, seconds }", description: "Labels under each unit, e.g. for another language." },
+      { name: "className", type: "string", description: "Size the numbers with a text size on the root (text-4xl by default)." },
+    ],
+  },
+  {
+    slug: "relative-time",
+    category: "text",
+    title: "Relative Time",
+    description: "“5 minutes ago”, “in 3 days”: a date described relative to now, kept up to date while the page is open.",
+    example: "relative-time-demo",
+    usage: `import { RelativeTime } from "@/components/ui/relative-time"
+
+export function Published({ date }: { date: string }) {
+  return <RelativeTime date={date} />
+}`,
+    props: [
+      { name: "date", type: "Date | string | number", description: "The moment to describe. Required." },
+      { name: "locale", type: "string", default: '"en"', description: 'Language of the text, as a BCP 47 tag such as "fr".' },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

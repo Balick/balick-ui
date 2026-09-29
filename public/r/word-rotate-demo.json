@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "word-rotate-demo",
+  "title": "Word Rotate Demo",
+  "description": "Example usage of Word Rotate.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/word-rotate.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/word-rotate-demo.tsx",
+      "content": "import { WordRotate } from \"@/registry/balick/ui/word-rotate\"\n\nexport default function WordRotateDemo() {\n  return (\n    <h2 className=\"text-3xl font-semibold tracking-tighter sm:text-4xl\">\n      Ship pages <WordRotate words={[\"faster\", \"calmer\", \"together\"]} />\n    </h2>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-text-demo",
+  "title": "Shimmer Text Demo",
+  "description": "Example usage of Shimmer Text.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/shimmer-text.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/shimmer-text-demo.tsx",
+      "content": "import { ShimmerText } from \"@/registry/balick/ui/shimmer-text\"\n\nexport default function ShimmerTextDemo() {\n  return <ShimmerText className=\"text-lg font-medium\">Generating your page…</ShimmerText>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
