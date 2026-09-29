@@ -1,11 +1,14 @@
-import { blockCategories } from "@/content/blocks"
-import { componentsByCategory } from "@/content/components"
+import { categoryHref, componentHref, componentsByCategory } from "@/content/components"
 
 export interface NavItem {
   title: string
   href: string
   label?: string
   disabled?: boolean
+  /** Shown next to the title, e.g. the number of components in a category. */
+  count?: number
+  /** Children revealed when the item or one of them is the current page. */
+  items?: NavItem[]
 }
 
 export interface NavSection {
@@ -21,6 +24,11 @@ export const mainNav: NavItem[] = [
   { title: "Templates", href: "/templates" },
 ]
 
+/**
+ * The docs sidebar. Blocks and templates have their own pages and are reached
+ * from the main navigation; components are listed by category, and a
+ * category unfolds to show its components.
+ */
 export const docsNav: NavSection[] = [
   {
     title: "Getting Started",
@@ -30,28 +38,34 @@ export const docsNav: NavSection[] = [
       { title: "Theming", href: "/docs/theming" },
     ],
   },
-  ...componentsByCategory().map((category) => ({
-    title: `Components · ${category.title}`,
-    items: category.components.map((doc) => ({
-      title: doc.title,
-      href: `/docs/components/${doc.slug}`,
-      label: doc.isNew ? "New" : undefined,
-    })),
-  })),
   {
-    title: "Blocks",
-    items: blockCategories.map((category) => ({
-      title: category.title,
-      href: `/blocks/${category.slug}`,
-    })),
-  },
-  {
-    title: "Templates",
-    items: [{ title: "Coming soon", href: "/templates", disabled: true }],
+    title: "Components",
+    items: [
+      { title: "Overview", href: "/docs/components" },
+      ...componentsByCategory().map((category) => ({
+        title: category.title,
+        href: categoryHref(category.slug),
+        count: category.components.length,
+        items: category.components.map((doc) => ({
+          title: doc.title,
+          href: componentHref(doc.slug),
+          label: doc.isNew ? "New" : undefined,
+        })),
+      })),
+    ],
   },
 ]
 
-/** Docs pages in reading order, used for previous/next links. */
+function flatten(items: NavItem[]): NavItem[] {
+  return items.flatMap((item) => [item, ...flatten(item.items ?? [])])
+}
+
+/** Docs pages in reading order, used for previous/next links and search. */
 export const flatDocs = docsNav
-  .flatMap((section) => section.items)
+  .flatMap((section) => flatten(section.items))
   .filter((item) => !item.disabled && item.href.startsWith("/docs"))
+
+/** Whether `pathname` is `item` or one of its children. */
+export function isInNavItem(item: NavItem, pathname: string): boolean {
+  return item.href === pathname || (item.items ?? []).some((child) => isInNavItem(child, pathname))
+}

@@ -118,8 +118,8 @@
   html:has([data-site-header]) {
     scroll-padding-top: 5rem;
   }
-  /* The blocks gallery adds its category tabs under the header. */
-  html:has([data-blocks-tabs]) {
+  /* Category tabs (blocks gallery, component categories) sit under the header. */
+  html:has([data-category-tabs]) {
     scroll-padding-top: 8rem;
   }
   body {

@@ -9,14 +9,22 @@ import { DocsPage } from "@/components/docs-page"
 import { PropsTable } from "@/components/props-table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { installTarget, registryUrl } from "@/config/site"
-import { componentDocs, getComponentDoc } from "@/content/components"
+import {
+  categoryHref,
+  componentDocs,
+  componentHref,
+  getComponentCategory,
+  getComponentDoc,
+} from "@/content/components"
 import { installDependencies, shadcnAdd } from "@/lib/commands"
 import { getRegistryItem, getRegistrySource } from "@/lib/registry"
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = { params: Promise<{ category: string; slug: string }> }
+
+export const dynamicParams = false
 
 export function generateStaticParams() {
-  return componentDocs.map((doc) => ({ slug: doc.slug }))
+  return componentDocs.map((doc) => ({ category: doc.category, slug: doc.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -26,17 +34,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ComponentPage({ params }: Props) {
-  const { slug } = await params
+  const { category: categorySlug, slug } = await params
   const doc = getComponentDoc(slug)
+  const category = getComponentCategory(categorySlug)
   const item = getRegistryItem(slug)
   const source = await getRegistrySource(slug)
-  if (!doc || !item || !source) notFound()
+  if (!doc || !category || doc.category !== category.slug || !item || !source) notFound()
 
   const dependencies = item.dependencies ?? []
 
   return (
     <DocsPage
-      href={`/docs/components/${slug}`}
+      href={componentHref(slug)}
       toc={[
         { id: "installation", title: "Installation" },
         { id: "usage", title: "Usage" },
@@ -47,6 +56,7 @@ export default async function ComponentPage({ params }: Props) {
         crumbs={[
           { title: "Docs", href: "/docs" },
           { title: "Components", href: "/docs/components" },
+          { title: category.title, href: categoryHref(category.slug) },
           { title: doc.title },
         ]}
         title={doc.title}

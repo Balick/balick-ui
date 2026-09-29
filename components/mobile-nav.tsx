@@ -2,16 +2,15 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import * as Dialog from "@radix-ui/react-dialog"
 import { Menu, X } from "lucide-react"
 
-import { docsNav, mainNav } from "@/config/docs"
+import { DocsNavTree } from "@/components/docs-nav-tree"
+import { mainNav } from "@/config/docs"
 import { cn } from "@/lib/utils"
 
 export function MobileNav({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false)
-  const pathname = usePathname()
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -36,8 +35,8 @@ export function MobileNav({ className }: { className?: string }) {
               <X className="size-4" />
             </Dialog.Close>
           </div>
-          <nav className="flex-1 overflow-y-auto p-4">
-            <div className="mb-6 flex flex-col gap-1">
+          <div className="flex-1 overflow-y-auto p-4">
+            <nav aria-label="Main" className="mb-6 flex flex-col gap-1 px-3">
               {mainNav.map((item) => (
                 <Link
                   key={item.href}
@@ -48,34 +47,9 @@ export function MobileNav({ className }: { className?: string }) {
                   {item.title}
                 </Link>
               ))}
-            </div>
-            {docsNav.map((section) => (
-              <div key={section.title} className="mb-6">
-                <p className="mb-2 font-mono text-[11px] tracking-wider text-muted-foreground uppercase">{section.title}</p>
-                <div className="flex flex-col gap-1">
-                  {section.items.map((item) =>
-                    item.disabled ? (
-                      <span key={item.title} className="py-1 text-sm text-muted-foreground/60">
-                        {item.title}
-                      </span>
-                    ) : (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setOpen(false)}
-                        className={cn(
-                          "py-1 text-sm",
-                          pathname === item.href ? "text-foreground" : "text-muted-foreground"
-                        )}
-                      >
-                        {item.title}
-                      </Link>
-                    )
-                  )}
-                </div>
-              </div>
-            ))}
-          </nav>
+            </nav>
+            <DocsNavTree onNavigate={() => setOpen(false)} />
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

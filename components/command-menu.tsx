@@ -6,8 +6,27 @@ import { Command } from "cmdk"
 import { ArrowRight, Moon, Search, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { docsNav } from "@/config/docs"
+import { docsNav, type NavItem } from "@/config/docs"
 import { cn } from "@/lib/utils"
+
+/**
+ * Search results: one group per sidebar section, and one per component
+ * category, which lists the category page first.
+ */
+const searchGroups = docsNav.flatMap((section) => {
+  const pages = section.items.filter((item) => !item.items && !item.disabled)
+  const categories = section.items.filter((item) => item.items)
+  return [
+    ...(pages.length ? [{ heading: section.title, items: pages }] : []),
+    ...categories.map((category) => ({
+      heading: `${section.title} · ${category.title}`,
+      items: [
+        { ...category, title: `All ${category.title.toLowerCase()}` },
+        ...(category.items ?? []),
+      ] as NavItem[],
+    })),
+  ]
+})
 
 export function CommandMenu({ className }: { className?: string }) {
   const router = useRouter()
@@ -69,24 +88,22 @@ export function CommandMenu({ className }: { className?: string }) {
           <Command.Empty className="py-10 text-center text-sm text-muted-foreground">
             No results found.
           </Command.Empty>
-          {docsNav.map((section) => (
+          {searchGroups.map((group) => (
             <Command.Group
-              key={section.title}
-              heading={section.title}
+              key={group.heading}
+              heading={group.heading}
               className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:pt-2 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:text-muted-foreground"
             >
-              {section.items
-                .filter((item) => !item.disabled)
-                .map((item) => (
-                  <Item
-                    key={item.href}
-                    value={`${section.title} ${item.title}`}
-                    onSelect={() => run(() => router.push(item.href))}
-                  >
-                    <ArrowRight className="size-3.5 text-muted-foreground" />
-                    {item.title}
-                  </Item>
-                ))}
+              {group.items.map((item) => (
+                <Item
+                  key={item.href}
+                  value={`${group.heading} ${item.title}`}
+                  onSelect={() => run(() => router.push(item.href))}
+                >
+                  <ArrowRight className="size-3.5 text-muted-foreground" />
+                  {item.title}
+                </Item>
+              ))}
             </Command.Group>
           ))}
           <Command.Group

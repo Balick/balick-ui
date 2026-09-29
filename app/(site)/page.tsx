@@ -15,7 +15,7 @@ import { InstallPill } from "@/components/home/install-pill"
 import { Row, SheetLabel, Spacer } from "@/components/sheet"
 import { installTarget } from "@/config/site"
 import { blockList } from "@/content/blocks"
-import { componentDocs } from "@/content/components"
+import { componentDocs, componentHref } from "@/content/components"
 import { galleryCategories } from "@/lib/blocks-gallery"
 import { composeInstallTarget, starterComposition } from "@/lib/compose"
 import { cn } from "@/lib/utils"
@@ -316,13 +316,13 @@ export default function HomePage() {
       <Spacer className="h-8 sm:h-10" />
       <Row>
         <div className="grid grid-cols-1 md:grid-cols-3">
-          <Showcase href="/docs/components/blur-fade" title="Blur Fade" className="md:col-span-2 md:border-r">
+          <Showcase href={componentHref("blur-fade")} title="Blur Fade" className="md:col-span-2 md:border-r">
             <BlurFadeDemo />
           </Showcase>
-          <Showcase href="/docs/components/shimmer-button" title="Shimmer Button" className="border-t md:border-t-0">
+          <Showcase href={componentHref("shimmer-button")} title="Shimmer Button" className="border-t md:border-t-0">
             <ShimmerButton>Get started</ShimmerButton>
           </Showcase>
-          <Showcase href="/docs/components/grid-pattern" title="Grid Pattern" className="border-t md:border-r">
+          <Showcase href={componentHref("grid-pattern")} title="Grid Pattern" className="border-t md:border-r">
             <GridPattern
               width={24}
               height={24}
@@ -330,7 +330,7 @@ export default function HomePage() {
               className="[mask-image:radial-gradient(180px_circle_at_center,white,transparent)]"
             />
           </Showcase>
-          <Showcase href="/docs/components/marquee" title="Marquee" className="border-t md:col-span-2">
+          <Showcase href={componentHref("marquee")} title="Marquee" className="border-t md:col-span-2">
             <div className="flex w-full flex-col gap-2">
               {[false, true].map((reverse) => (
                 <Marquee key={String(reverse)} reverse={reverse} fade duration="25s">

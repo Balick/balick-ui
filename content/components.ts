@@ -19,19 +19,21 @@ export type ComponentCategory =
   | "icons"
   | "layout"
 
-/** Categories in display order, used by the sidebar and the components index. */
+/** Categories in display order, used by the sidebar, the category tabs and the overview. */
 export const componentCategories: {
   slug: ComponentCategory
   title: string
   description: string
+  /** Component whose demo stands for the category on the overview. */
+  featured: string
 }[] = [
-  { slug: "buttons", title: "Buttons", description: "Buttons and controls with quiet, deliberate feedback." },
-  { slug: "text", title: "Text & numbers", description: "Words and figures that change without shouting." },
-  { slug: "motion", title: "Motion", description: "Reveals and loops that support the content." },
-  { slug: "backgrounds", title: "Backgrounds", description: "Patterns that sit behind a section." },
-  { slug: "indicators", title: "Indicators", description: "Small signals of state." },
-  { slug: "icons", title: "Icons", description: "Icons lucide-react does not ship." },
-  { slug: "layout", title: "Layout", description: "The primitives every block is built on." },
+  { slug: "buttons", title: "Buttons", description: "Buttons and controls with quiet, deliberate feedback.", featured: "shimmer-button" },
+  { slug: "text", title: "Text & numbers", description: "Words and figures that change without shouting.", featured: "number-ticker" },
+  { slug: "motion", title: "Motion", description: "Reveals and loops that support the content.", featured: "marquee" },
+  { slug: "backgrounds", title: "Backgrounds", description: "Patterns that sit behind a section.", featured: "grid-pattern" },
+  { slug: "indicators", title: "Indicators", description: "Small signals of state.", featured: "status-dot" },
+  { slug: "icons", title: "Icons", description: "Icons lucide-react does not ship.", featured: "social-icons" },
+  { slug: "layout", title: "Layout", description: "The primitives every block is built on.", featured: "section" },
 ]
 
 export interface ComponentDoc {
@@ -562,4 +564,20 @@ export function componentsByCategory() {
 
 export function getComponentDoc(slug: string) {
   return componentDocs.find((doc) => doc.slug === slug)
+}
+
+export function getComponentCategory(slug: string) {
+  return componentsByCategory().find((category) => category.slug === slug)
+}
+
+/** Page of a category: /docs/components/buttons. */
+export function categoryHref(category: ComponentCategory) {
+  return `/docs/components/${category}`
+}
+
+/** Page of a component: /docs/components/buttons/arrow-button. */
+export function componentHref(slug: string) {
+  const doc = getComponentDoc(slug)
+  if (!doc) throw new Error(`Unknown component: ${slug}`)
+  return `${categoryHref(doc.category)}/${doc.slug}`
 }

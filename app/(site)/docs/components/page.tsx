@@ -1,76 +1,70 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 
-import { DocsHeader, H2, P } from "@/components/docs"
+import { ComponentCategoryTabs } from "@/components/component-category-tabs"
+import { DocsHeader } from "@/components/docs"
 import { DocsPage } from "@/components/docs-page"
-import { NewBadge } from "@/components/docs-sidebar"
-import { componentsByCategory } from "@/content/components"
+import { categoryHref, componentDocs, componentsByCategory, getComponentDoc } from "@/content/components"
 import { examples } from "@/registry/__index__"
 
 export const metadata: Metadata = {
   title: "Components",
-  description: "Every Balick UI component, with a live preview.",
+  description: "Every Balick UI component, by category, with a live preview.",
 }
 
 export default function ComponentsPage() {
   const categories = componentsByCategory()
 
   return (
-    <DocsPage
-      href="/docs/components"
-      toc={categories.map((category) => ({ id: category.slug, title: category.title }))}
-    >
+    <DocsPage href="/docs/components" tabs={<ComponentCategoryTabs />}>
       <DocsHeader
         crumbs={[{ title: "Docs", href: "/docs" }, { title: "Components" }]}
         title="Components"
-        description="Animated and original components. Preview them live, then add them with a single command."
-      />
-      {categories.map((category) => (
-        <section key={category.slug} aria-labelledby={category.slug}>
-          <H2 id={category.slug}>
-            {category.title}{" "}
-            <span className="font-mono text-sm font-normal text-muted-foreground">
-              {category.components.length}
-            </span>
-          </H2>
-          <P className="text-sm [&:not(:first-child)]:mt-0">{category.description}</P>
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {category.components.map((doc) => {
-              const Example = examples[doc.example]
-              return (
-                <div
-                  key={doc.slug}
-                  className="group relative overflow-hidden rounded-xl border bg-card shadow-xs transition-colors hover:border-foreground/20"
-                >
-                  <div
-                    inert
-                    className="pointer-events-none relative flex h-52 items-center justify-center overflow-hidden border-b bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px] p-4"
-                  >
-                    <div className="flex w-full origin-center scale-[0.8] items-center justify-center">
-                      {Example && <Example />}
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-medium">
-                        {/* The link covers the whole card, so the preview stays outside it. */}
-                        <Link
-                          href={`/docs/components/${doc.slug}`}
-                          className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none after:focus-visible:ring-2 after:focus-visible:ring-ring"
-                        >
-                          {doc.title}
-                        </Link>
-                      </h3>
-                      {doc.isNew && <NewBadge>New</NewBadge>}
-                    </div>
-                    <p className="mt-1 text-sm text-muted-foreground">{doc.description}</p>
-                  </div>
+        description="Animated and original components, grouped by category. Open a category to try them, then add them with a single command."
+      >
+        <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
+          {componentDocs.length} components · {categories.length} categories
+        </p>
+      </DocsHeader>
+      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {categories.map((category) => {
+          const featured = getComponentDoc(category.featured)
+          const Example = featured && examples[featured.example]
+          return (
+            <div
+              key={category.slug}
+              className="relative overflow-hidden rounded-xl border bg-card shadow-xs transition-colors hover:border-foreground/20"
+            >
+              <div
+                inert
+                className="pointer-events-none relative flex h-44 items-center justify-center overflow-hidden border-b bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px] p-4"
+              >
+                <div className="flex w-full origin-center scale-[0.8] items-center justify-center">
+                  {Example && <Example />}
                 </div>
-              )
-            })}
-          </div>
-        </section>
-      ))}
+              </div>
+              <div className="p-4">
+                <div className="flex items-baseline justify-between gap-3">
+                  <h2 className="font-medium">
+                    {/* The link covers the whole card, so the preview stays outside it. */}
+                    <Link
+                      href={categoryHref(category.slug)}
+                      className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none after:focus-visible:ring-2 after:focus-visible:ring-ring"
+                    >
+                      {category.title}
+                    </Link>
+                  </h2>
+                  <span className="shrink-0 font-mono text-xs text-muted-foreground">
+                    {category.components.length}{" "}
+                    {category.components.length === 1 ? "component" : "components"}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm text-muted-foreground">{category.description}</p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
     </DocsPage>
   )
 }
