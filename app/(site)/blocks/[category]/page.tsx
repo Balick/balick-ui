@@ -7,7 +7,7 @@ import { BlockViewer } from "@/components/block-viewer"
 import { BlocksCategoryTabs } from "@/components/blocks-category-tabs"
 import { Row, Spacer } from "@/components/sheet"
 import { CodeBlock } from "@/components/code-block"
-import { registryUrl } from "@/config/site"
+import { installTarget } from "@/config/site"
 import { blockList } from "@/content/blocks"
 import { galleryCategories, galleryTabs } from "@/lib/blocks-gallery"
 import { shadcnAdd } from "@/lib/commands"
@@ -104,7 +104,7 @@ export default async function BlockCategoryPage({ params }: Props) {
             name={block.name}
             title={block.title}
             description={block.description}
-            commands={shadcnAdd(registryUrl(block.name))}
+            commands={shadcnAdd(installTarget(block.name))}
             dependencies={block.dependencies}
             files={block.files}
           />

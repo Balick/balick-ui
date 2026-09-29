@@ -4,7 +4,7 @@ import { CodeBlock } from "@/components/code-block"
 import { CommandBlock } from "@/components/command-block"
 import { DocsHeader, H2, InlineCode, P } from "@/components/docs"
 import { DocsPage } from "@/components/docs-page"
-import { registryUrl } from "@/config/site"
+import { installTarget } from "@/config/site"
 import { shadcnAdd } from "@/lib/commands"
 import { getRegistryItem } from "@/lib/registry"
 
@@ -51,7 +51,7 @@ export default function ThemingPage() {
       />
 
       <H2 id="install">Install the theme</H2>
-      <CommandBlock commands={shadcnAdd(registryUrl("theme"))} />
+      <CommandBlock commands={shadcnAdd(installTarget("theme"))} />
       <P>
         The CLI writes the colour tokens, the radius and their dark variants to
         your global CSS file. Review the diff before committing if you already

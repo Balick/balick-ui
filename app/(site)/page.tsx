@@ -13,11 +13,11 @@ import { CategoryGrid } from "@/components/category-grid"
 import { Anatomy } from "@/components/home/anatomy"
 import { InstallPill } from "@/components/home/install-pill"
 import { Row, SheetLabel, Spacer } from "@/components/sheet"
-import { registryUrl } from "@/config/site"
+import { installTarget } from "@/config/site"
 import { blockList } from "@/content/blocks"
 import { componentDocs } from "@/content/components"
 import { galleryCategories } from "@/lib/blocks-gallery"
-import { composeRegistryUrl, starterComposition } from "@/lib/compose"
+import { composeInstallTarget, starterComposition } from "@/lib/compose"
 import { cn } from "@/lib/utils"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
 import { GridPattern } from "@/registry/balick/ui/grid-pattern"
@@ -150,7 +150,7 @@ export default function HomePage() {
       </Row>
       <Row>
         <div className={cn(pad, "py-4 text-center")}>
-          <InstallPill command={`npx shadcn@latest add ${registryUrl("hero-01")}`} />
+          <InstallPill command={`npx shadcn@latest add ${installTarget("hero-01")}`} />
         </div>
       </Row>
 
@@ -263,7 +263,7 @@ export default function HomePage() {
               <span className="text-muted-foreground">$ </span>
               npx shadcn@latest add
               <span className="block truncate text-muted-foreground">
-                {composeRegistryUrl(starterComposition.slice(0, 4))}
+                {composeInstallTarget(starterComposition.slice(0, 4))}
               </span>
             </span>
           </Step>

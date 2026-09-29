@@ -4,7 +4,7 @@ import { CodeBlock } from "@/components/code-block"
 import { CommandBlock } from "@/components/command-block"
 import { DocsHeader, H2, InlineCode, P, Step, Steps } from "@/components/docs"
 import { DocsPage } from "@/components/docs-page"
-import { registryUrl } from "@/config/site"
+import { installTarget, registryUrl } from "@/config/site"
 import { shadcn, shadcnAdd } from "@/lib/commands"
 
 export const metadata: Metadata = {
@@ -34,8 +34,11 @@ export default function InstallationPage() {
           <CommandBlock commands={shadcn("init")} />
         </Step>
         <Step title="Add a component">
-          <P className="mb-3">Pass the URL of any component to the <InlineCode>add</InlineCode> command.</P>
-          <CommandBlock commands={shadcnAdd(registryUrl("marquee"))} />
+          <P className="mb-3">
+            Balick UI is listed in the shadcn registry directory: pass the name of
+            any component or block to the <InlineCode>add</InlineCode> command.
+          </P>
+          <CommandBlock commands={shadcnAdd(installTarget("marquee"))} />
         </Step>
         <Step title="Use it">
           <CodeBlock
@@ -50,8 +53,10 @@ export default function Page() {
 
       <H2 id="namespace">Registry namespace</H2>
       <P>
-        Register Balick UI once in <InlineCode>components.json</InlineCode> to use
-        short names like <InlineCode>@balick/marquee</InlineCode> instead of URLs.
+        The CLI resolves <InlineCode>@balick</InlineCode> through the shadcn
+        registry directory, so there is nothing to configure. To install from
+        another deployment, such as a mirror or a preview, map the namespace in{" "}
+        <InlineCode>components.json</InlineCode>. Full URLs work too.
       </P>
       <CodeBlock
         className="mt-4"
@@ -63,7 +68,6 @@ export default function Page() {
   }
 }`}
       />
-      <CommandBlock className="mt-4" commands={shadcnAdd("@balick/marquee")} />
     </DocsPage>
   )
 }
