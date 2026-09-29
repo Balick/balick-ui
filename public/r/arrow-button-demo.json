@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/balick/examples/arrow-button-demo.tsx",
-      "content": "import { ArrowButton, ArrowLink } from \"@/registry/balick/ui/arrow-button\"\n\nexport default function ArrowButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-3\">\n      <ArrowButton>Get started</ArrowButton>\n      <ArrowLink href=\"#\" variant=\"outline\">\n        Read the docs\n      </ArrowLink>\n    </div>\n  )\n}\n",
+      "content": "import { ArrowButton } from \"@/registry/balick/ui/arrow-button\"\n\nexport default function ArrowButtonDemo() {\n  return <ArrowButton>Get started</ArrowButton>\n}\n",
       "type": "registry:example"
     }
   ],

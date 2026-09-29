@@ -72,7 +72,7 @@ export function CopyButton({
       size={size}
       aria-label={label}
       onClick={copy}
-      className={cn("relative", className)}
+      className={cn("relative cursor-pointer", className)}
       {...props}
     >
       <Copy aria-hidden className={cn(icon, copied ? "scale-50 opacity-0" : "scale-100 opacity-100")} />

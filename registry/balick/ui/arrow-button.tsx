@@ -13,7 +13,7 @@ export function ArrowButton({
   ...props
 }: React.ComponentProps<typeof Button>) {
   return (
-    <Button className={cn("group/arrow", className)} {...props}>
+    <Button className={cn("group/arrow cursor-pointer", className)} {...props}>
       {children}
       <ArrowRight aria-hidden className={arrow} />
     </Button>

@@ -49,7 +49,7 @@ export function HoldButton({
     <Button
       type="button"
       variant={variant}
-      className={cn("relative overflow-hidden select-none", className)}
+      className={cn("relative cursor-pointer overflow-hidden select-none", className)}
       {...props}
       // The hold logic owns these handlers, so they come after the spread props.
       onPointerDown={(event) => {

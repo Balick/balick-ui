@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/balick/examples/spotlight-button-demo.tsx",
-      "content": "import { SpotlightButton } from \"@/registry/balick/ui/spotlight-button\"\n\nexport default function SpotlightButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-3\">\n      <SpotlightButton size=\"lg\">Start building</SpotlightButton>\n      <SpotlightButton size=\"lg\" variant=\"outline\">\n        Talk to sales\n      </SpotlightButton>\n    </div>\n  )\n}\n",
+      "content": "import { SpotlightButton } from \"@/registry/balick/ui/spotlight-button\"\n\nexport default function SpotlightButtonDemo() {\n  return <SpotlightButton size=\"lg\">Start building</SpotlightButton>\n}\n",
       "type": "registry:example"
     }
   ],

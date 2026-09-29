@@ -31,7 +31,7 @@ export function ThemeToggleButton({
       size={size}
       aria-label="Toggle theme"
       aria-pressed={mounted ? resolvedTheme === "dark" : undefined}
-      className={cn(className)}
+      className={cn("cursor-pointer", className)}
       {...props}
       // Capture phase: leaves the consumer's own onClick untouched.
       onClickCapture={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}

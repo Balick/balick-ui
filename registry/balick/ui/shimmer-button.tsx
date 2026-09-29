@@ -31,8 +31,10 @@ export function ShimmerButton({
           ...style,
         } as React.CSSProperties
       }
+      // The 1px ring takes the button's own background, so the beam travels
+      // on a dark track and stays visible on light pages too.
       className={cn(
-        "group relative isolate inline-flex cursor-pointer overflow-hidden rounded-full p-px transition-transform duration-200 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50",
+        "group relative isolate inline-flex cursor-pointer overflow-hidden rounded-full bg-(--shimmer-bg) p-px transition-transform duration-200 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50",
         "shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_8px_24px_-8px_rgb(0_0_0/0.5)] dark:shadow-[0_0_0_1px_rgb(255_255_255/0.22),0_8px_24px_-8px_rgb(0_0_0/0.5)]",
         className
       )}

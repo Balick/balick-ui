@@ -49,7 +49,7 @@ export function MagneticButton({
       onPointerMove={onPointerMove}
       onPointerLeave={reset}
     >
-      <Button className={cn(className)} {...props} />
+      <Button className={cn("cursor-pointer", className)} {...props} />
     </motion.span>
   )
 }

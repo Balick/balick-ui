@@ -14,7 +14,7 @@ export function TextRollButton({
   ...props
 }: React.ComponentProps<typeof Button>) {
   return (
-    <Button className={cn("group/roll", className)} {...props}>
+    <Button className={cn("group/roll cursor-pointer", className)} {...props}>
       <span className="relative block overflow-hidden">
         <span
           className={cn(

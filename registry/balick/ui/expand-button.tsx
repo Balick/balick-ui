@@ -20,7 +20,7 @@ export function ExpandButton({
   return (
     <Button
       variant={variant}
-      className={cn("group/expand gap-0 rounded-full px-2.5 has-[>svg]:px-2.5", className)}
+      className={cn("group/expand cursor-pointer gap-0 rounded-full px-2.5 has-[>svg]:px-2.5", className)}
       {...props}
     >
       {icon}

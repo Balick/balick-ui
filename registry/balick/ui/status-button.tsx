@@ -71,7 +71,7 @@ export function StatusButton({
       aria-busy={status === "loading"}
       disabled={disabled || status === "loading"}
       className={cn(
-        "relative justify-start overflow-hidden transition-[width,background-color] duration-200 ease-out motion-reduce:transition-none",
+        "relative cursor-pointer justify-start overflow-hidden transition-[width,background-color] duration-200 ease-out motion-reduce:transition-none",
         className
       )}
       style={{ width, ...style }}

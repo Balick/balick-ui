@@ -36,7 +36,7 @@ export function RippleButton({
 
   return (
     <Button
-      className={cn("relative overflow-hidden", className)}
+      className={cn("relative cursor-pointer overflow-hidden", className)}
       // Capture phase: leaves the consumer's own onPointerDown untouched.
       onPointerDownCapture={addRipple}
       {...props}

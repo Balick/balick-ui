@@ -59,7 +59,6 @@ export const componentDocs: ComponentDoc[] = [
     description:
       "A number that rolls up or down to its new value when it changes, such as a price or a total.",
     example: "animated-number-demo",
-    isNew: true,
     usage: `import { AnimatedNumber } from "@/components/ui/animated-number"
 
 export function Price({ amount }: { amount: number }) {
@@ -174,7 +173,6 @@ export function Logos() {
     description:
       "Counts up to a number once, when it scrolls into view. The final value is rendered on the server.",
     example: "number-ticker-demo",
-    isNew: true,
     usage: `import { NumberTicker } from "@/components/ui/number-ticker"
 
 export function Uptime() {
@@ -246,7 +244,6 @@ export function Faq() {
     description:
       "A single choice between a few options, with a pill that slides to the selected one.",
     example: "segmented-control-demo",
-    isNew: true,
     usage: `"use client"
 
 import * as React from "react"
@@ -306,7 +303,6 @@ export function Cta() {
     description:
       "Brand icons for social links: GitHub, LinkedIn, X and YouTube. lucide-react no longer ships them.",
     example: "social-icons-demo",
-    isNew: true,
     usage: `import { GitHubIcon } from "@/components/ui/social-icons"
 
 export function GitHubLink() {
@@ -331,7 +327,6 @@ export function GitHubLink() {
     title: "Status Dot",
     description: "A small live indicator with a pulsing halo, in four tones.",
     example: "status-dot-demo",
-    isNew: true,
     usage: `import { StatusDot } from "@/components/ui/status-dot"
 
 export function Status() {
@@ -354,7 +349,6 @@ export function Status() {
     title: "Arrow Button",
     description: "A button or link whose arrow nudges forward on hover and focus.",
     example: "arrow-button-demo",
-    isNew: true,
     usage: `import { ArrowButton, ArrowLink } from "@/components/ui/arrow-button"
 
 export function Actions() {
@@ -388,7 +382,6 @@ export function Actions() {
     title: "Copy Button",
     description: "Copies a text to the clipboard; the icon turns into a check mark.",
     example: "copy-button-demo",
-    isNew: true,
     usage: `import { CopyButton } from "@/components/ui/copy-button"
 
 export function Command() {
@@ -407,7 +400,6 @@ export function Command() {
     title: "Expand Button",
     description: "An icon button whose label slides out on hover and keyboard focus.",
     example: "expand-button-demo",
-    isNew: true,
     usage: `import { Star } from "lucide-react"
 
 import { ExpandButton } from "@/components/ui/expand-button"
@@ -427,7 +419,6 @@ export function StarButton() {
     title: "Hold Button",
     description: "Hold to confirm, for actions that are hard to undo. Releasing early cancels.",
     example: "hold-button-demo",
-    isNew: true,
     usage: `import { HoldButton } from "@/components/ui/hold-button"
 
 export function DeleteProject() {
@@ -445,7 +436,6 @@ export function DeleteProject() {
     title: "Magnetic Button",
     description: "A button that leans a few pixels towards the pointer and settles back when it leaves.",
     example: "magnetic-button-demo",
-    isNew: true,
     usage: `import { MagneticButton } from "@/components/ui/magnetic-button"
 
 export function Cta() {
@@ -462,7 +452,6 @@ export function Cta() {
     title: "Ripple Button",
     description: "A button that sends a soft ripple out from where it is pressed.",
     example: "ripple-button-demo",
-    isNew: true,
     usage: `import { RippleButton } from "@/components/ui/ripple-button"
 
 export function Submit() {
@@ -478,7 +467,6 @@ export function Submit() {
     title: "Spotlight Button",
     description: "A soft light follows the pointer inside the button, in the colour of its text.",
     example: "spotlight-button-demo",
-    isNew: true,
     usage: `import { SpotlightButton } from "@/components/ui/spotlight-button"
 
 export function Cta() {
@@ -494,7 +482,6 @@ export function Cta() {
     title: "Status Button",
     description: "A button that shows the progress of its action: idle, loading, success or error.",
     example: "status-button-demo",
-    isNew: true,
     usage: `"use client"
 
 import * as React from "react"
@@ -533,7 +520,6 @@ export function SaveButton() {
     title: "Text Roll Button",
     description: "On hover and focus, the label rolls up and an identical copy takes its place.",
     example: "text-roll-button-demo",
-    isNew: true,
     usage: `import { TextRollButton } from "@/components/ui/text-roll-button"
 
 export function Demo() {
@@ -550,7 +536,6 @@ export function Demo() {
     title: "Theme Toggle Button",
     description: "Switches between light and dark with next-themes; the sun grows into a moon.",
     example: "theme-toggle-button-demo",
-    isNew: true,
     usage: `import { ThemeToggleButton } from "@/components/ui/theme-toggle-button"
 
 export function Header() {

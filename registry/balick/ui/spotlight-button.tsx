@@ -15,7 +15,7 @@ export function SpotlightButton({
 }: React.ComponentProps<typeof Button>) {
   return (
     <Button
-      className={cn("group/spotlight relative overflow-hidden", className)}
+      className={cn("group/spotlight relative cursor-pointer overflow-hidden", className)}
       // Capture phase: leaves the consumer's own onPointerMove untouched.
       onPointerMoveCapture={(event: React.PointerEvent<HTMLButtonElement>) => {
         const rect = event.currentTarget.getBoundingClientRect()

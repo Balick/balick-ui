@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/balick/examples/ripple-button-demo.tsx",
-      "content": "import { RippleButton } from \"@/registry/balick/ui/ripple-button\"\n\nexport default function RippleButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-3\">\n      <RippleButton>Click me</RippleButton>\n      <RippleButton variant=\"outline\">Or me</RippleButton>\n    </div>\n  )\n}\n",
+      "content": "import { RippleButton } from \"@/registry/balick/ui/ripple-button\"\n\nexport default function RippleButtonDemo() {\n  return <RippleButton>Click me</RippleButton>\n}\n",
       "type": "registry:example"
     }
   ],
