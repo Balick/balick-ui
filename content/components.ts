@@ -10,9 +10,34 @@ interface PropGroup {
   props: PropDef[]
 }
 
+export type ComponentCategory =
+  | "buttons"
+  | "text"
+  | "motion"
+  | "backgrounds"
+  | "indicators"
+  | "icons"
+  | "layout"
+
+/** Categories in display order, used by the sidebar and the components index. */
+export const componentCategories: {
+  slug: ComponentCategory
+  title: string
+  description: string
+}[] = [
+  { slug: "buttons", title: "Buttons", description: "Buttons and controls with quiet, deliberate feedback." },
+  { slug: "text", title: "Text & numbers", description: "Words and figures that change without shouting." },
+  { slug: "motion", title: "Motion", description: "Reveals and loops that support the content." },
+  { slug: "backgrounds", title: "Backgrounds", description: "Patterns that sit behind a section." },
+  { slug: "indicators", title: "Indicators", description: "Small signals of state." },
+  { slug: "icons", title: "Icons", description: "Icons lucide-react does not ship." },
+  { slug: "layout", title: "Layout", description: "The primitives every block is built on." },
+]
+
 export interface ComponentDoc {
   slug: string
   title: string
+  category: ComponentCategory
   description: string
   /** Registry item name of the demo rendered in the preview. */
   example: string
@@ -29,6 +54,7 @@ export interface ComponentDoc {
 export const componentDocs: ComponentDoc[] = [
   {
     slug: "animated-number",
+    category: "text",
     title: "Animated Number",
     description:
       "A number that rolls up or down to its new value when it changes, such as a price or a total.",
@@ -50,6 +76,7 @@ export function Price({ amount }: { amount: number }) {
   },
   {
     slug: "blur-fade",
+    category: "motion",
     title: "Blur Fade",
     description:
       "Reveal content with a soft blur and fade, on mount or when scrolled into view.",
@@ -75,6 +102,7 @@ export function Hero() {
   },
   {
     slug: "grid-pattern",
+    category: "backgrounds",
     title: "Grid Pattern",
     description:
       "A lightweight SVG grid background with optional highlighted cells.",
@@ -99,6 +127,7 @@ export function Background() {
   },
   {
     slug: "marquee",
+    category: "motion",
     title: "Marquee",
     description:
       "An infinite scrolling track for logos, testimonials or anything else.",
@@ -140,6 +169,7 @@ export function Logos() {
   },
   {
     slug: "number-ticker",
+    category: "text",
     title: "Number Ticker",
     description:
       "Counts up to a number once, when it scrolls into view. The final value is rendered on the server.",
@@ -162,6 +192,7 @@ export function Uptime() {
   },
   {
     slug: "section",
+    category: "layout",
     title: "Section",
     description:
       "Layout primitives shared by every block: Section, Container and SectionHeader.",
@@ -210,6 +241,7 @@ export function Faq() {
   },
   {
     slug: "segmented-control",
+    category: "buttons",
     title: "Segmented Control",
     description:
       "A single choice between a few options, with a pill that slides to the selected one.",
@@ -245,6 +277,7 @@ export function BillingToggle() {
   },
   {
     slug: "shimmer-button",
+    category: "buttons",
     title: "Shimmer Button",
     description: "A button with a beam of light travelling around its border.",
     example: "shimmer-button-demo",
@@ -268,6 +301,7 @@ export function Cta() {
   },
   {
     slug: "social-icons",
+    category: "icons",
     title: "Social Icons",
     description:
       "Brand icons for social links: GitHub, LinkedIn, X and YouTube. lucide-react no longer ships them.",
@@ -293,6 +327,7 @@ export function GitHubLink() {
   },
   {
     slug: "status-dot",
+    category: "indicators",
     title: "Status Dot",
     description: "A small live indicator with a pulsing halo, in four tones.",
     example: "status-dot-demo",
@@ -314,6 +349,18 @@ export function Status() {
     ],
   },
 ]
+
+/** Components of each category, in category order, titles sorted. */
+export function componentsByCategory() {
+  return componentCategories
+    .map((category) => ({
+      ...category,
+      components: componentDocs
+        .filter((doc) => doc.category === category.slug)
+        .sort((a, b) => a.title.localeCompare(b.title)),
+    }))
+    .filter((category) => category.components.length > 0)
+}
 
 export function getComponentDoc(slug: string) {
   return componentDocs.find((doc) => doc.slug === slug)

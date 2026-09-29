@@ -1,5 +1,5 @@
 import { blockCategories } from "@/content/blocks"
-import { componentDocs } from "@/content/components"
+import { componentsByCategory } from "@/content/components"
 
 export interface NavItem {
   title: string
@@ -30,14 +30,14 @@ export const docsNav: NavSection[] = [
       { title: "Theming", href: "/docs/theming" },
     ],
   },
-  {
-    title: "Components",
-    items: componentDocs.map((doc) => ({
+  ...componentsByCategory().map((category) => ({
+    title: `Components · ${category.title}`,
+    items: category.components.map((doc) => ({
       title: doc.title,
       href: `/docs/components/${doc.slug}`,
       label: doc.isNew ? "New" : undefined,
     })),
-  },
+  })),
   {
     title: "Blocks",
     items: blockCategories.map((category) => ({
