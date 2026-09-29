@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-button-demo",
+  "title": "Ripple Button Demo",
+  "description": "Example usage of Ripple Button.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/ripple-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/ripple-button-demo.tsx",
+      "content": "import { RippleButton } from \"@/registry/balick/ui/ripple-button\"\n\nexport default function RippleButtonDemo() {\n  return <RippleButton>Click me</RippleButton>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -2,7 +2,7 @@ import type { PropDef } from "@/content/components"
 
 export function PropsTable({ props }: { props: PropDef[] }) {
   return (
-    <div className="overflow-x-auto rounded-lg border bg-card shadow-xs">
+    <div className="scrollbar-thin overflow-x-auto rounded-lg border bg-card shadow-xs">
       <table className="w-full text-left text-sm">
         <thead className="border-b bg-muted/40 text-xs text-muted-foreground">
           <tr>

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-button-demo",
+  "title": "Status Button Demo",
+  "description": "Example usage of Status Button.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/status-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/status-button-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { StatusButton, type ButtonStatus } from \"@/registry/balick/ui/status-button\"\n\nexport default function StatusButtonDemo() {\n  const [status, setStatus] = React.useState<ButtonStatus>(\"idle\")\n\n  function save() {\n    setStatus(\"loading\")\n    setTimeout(() => {\n      setStatus(\"success\")\n      setTimeout(() => setStatus(\"idle\"), 1500)\n    }, 1200)\n  }\n\n  return (\n    <StatusButton status={status} onClick={save}>\n      Save changes\n    </StatusButton>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

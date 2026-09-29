@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-button-demo",
+  "title": "Magnetic Button Demo",
+  "description": "Example usage of Magnetic Button.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/magnetic-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/magnetic-button-demo.tsx",
+      "content": "import { MagneticButton } from \"@/registry/balick/ui/magnetic-button\"\n\nexport default function MagneticButtonDemo() {\n  return (\n    <MagneticButton size=\"lg\" className=\"rounded-full\">\n      Hover me\n    </MagneticButton>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-toggle-button-demo",
+  "title": "Theme Toggle Button Demo",
+  "description": "Example usage of Theme Toggle Button.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/theme-toggle-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/theme-toggle-button-demo.tsx",
+      "content": "import { ThemeToggleButton } from \"@/registry/balick/ui/theme-toggle-button\"\n\nexport default function ThemeToggleButtonDemo() {\n  return <ThemeToggleButton variant=\"outline\" />\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

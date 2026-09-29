@@ -27,19 +27,49 @@ import { Steps01 } from "@/registry/balick/blocks/steps-01/steps-01"
 import { Team01 } from "@/registry/balick/blocks/team-01/team-01"
 import { Testimonials01 } from "@/registry/balick/blocks/testimonials-01/testimonials-01"
 import { Timeline01 } from "@/registry/balick/blocks/timeline-01/timeline-01"
+import AnimatedNumberDemo from "@/registry/balick/examples/animated-number-demo"
+import ArrowButtonDemo from "@/registry/balick/examples/arrow-button-demo"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
+import CopyButtonDemo from "@/registry/balick/examples/copy-button-demo"
+import ExpandButtonDemo from "@/registry/balick/examples/expand-button-demo"
 import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
+import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
+import MagneticButtonDemo from "@/registry/balick/examples/magnetic-button-demo"
 import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
+import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
+import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
+import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
+import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
+import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
+import StatusButtonDemo from "@/registry/balick/examples/status-button-demo"
+import StatusDotDemo from "@/registry/balick/examples/status-dot-demo"
+import TextRollButtonDemo from "@/registry/balick/examples/text-roll-button-demo"
+import ThemeToggleButtonDemo from "@/registry/balick/examples/theme-toggle-button-demo"
 
 /** Demo components rendered by <ComponentPreview />, keyed by registry item name. */
 export const examples: Record<string, React.ComponentType> = {
+  "animated-number-demo": AnimatedNumberDemo,
+  "arrow-button-demo": ArrowButtonDemo,
   "blur-fade-demo": BlurFadeDemo,
+  "copy-button-demo": CopyButtonDemo,
+  "expand-button-demo": ExpandButtonDemo,
   "grid-pattern-demo": GridPatternDemo,
+  "hold-button-demo": HoldButtonDemo,
+  "magnetic-button-demo": MagneticButtonDemo,
   "marquee-demo": MarqueeDemo,
+  "number-ticker-demo": NumberTickerDemo,
+  "ripple-button-demo": RippleButtonDemo,
   "section-demo": SectionDemo,
+  "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
+  "social-icons-demo": SocialIconsDemo,
+  "spotlight-button-demo": SpotlightButtonDemo,
+  "status-button-demo": StatusButtonDemo,
+  "status-dot-demo": StatusDotDemo,
+  "text-roll-button-demo": TextRollButtonDemo,
+  "theme-toggle-button-demo": ThemeToggleButtonDemo,
 }
 
 /** Blocks rendered on their own at /view/[name], keyed by registry item name. */

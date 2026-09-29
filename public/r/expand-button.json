@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expand-button",
+  "title": "Expand Button",
+  "description": "An icon button whose label slides out on hover and focus.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/expand-button.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ExpandButtonProps\n  extends Omit<React.ComponentProps<typeof Button>, \"children\"> {\n  /** Icon shown on its own at rest. */\n  icon: React.ReactNode\n  /** Label that unfolds on hover and focus. It is always the accessible name. */\n  label: string\n}\n\n/** An icon button whose label slides out on hover and keyboard focus. */\nexport function ExpandButton({\n  icon,\n  label,\n  variant = \"outline\",\n  className,\n  ...props\n}: ExpandButtonProps) {\n  return (\n    <Button\n      variant={variant}\n      className={cn(\"group/expand cursor-pointer gap-0 rounded-full px-2.5 has-[>svg]:px-2.5\", className)}\n      {...props}\n    >\n      {icon}\n      <span className=\"grid grid-cols-[0fr] transition-[grid-template-columns] duration-300 ease-out group-hover/expand:grid-cols-[1fr] group-focus-visible/expand:grid-cols-[1fr] motion-reduce:transition-none\">\n        <span className=\"overflow-hidden whitespace-nowrap\">\n          <span className=\"block pl-2 opacity-0 transition-opacity duration-300 group-hover/expand:opacity-100 group-focus-visible/expand:opacity-100\">\n            {label}\n          </span>\n        </span>\n      </span>\n    </Button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

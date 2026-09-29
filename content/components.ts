@@ -10,9 +10,36 @@ interface PropGroup {
   props: PropDef[]
 }
 
+export type ComponentCategory =
+  | "buttons"
+  | "text"
+  | "motion"
+  | "backgrounds"
+  | "indicators"
+  | "icons"
+  | "layout"
+
+/** Categories in display order, used by the sidebar, the category tabs and the overview. */
+export const componentCategories: {
+  slug: ComponentCategory
+  title: string
+  description: string
+  /** Component whose demo stands for the category on the overview. */
+  featured: string
+}[] = [
+  { slug: "buttons", title: "Buttons", description: "Buttons and controls with quiet, deliberate feedback.", featured: "shimmer-button" },
+  { slug: "text", title: "Text & numbers", description: "Words and figures that change without shouting.", featured: "number-ticker" },
+  { slug: "motion", title: "Motion", description: "Reveals and loops that support the content.", featured: "marquee" },
+  { slug: "backgrounds", title: "Backgrounds", description: "Patterns that sit behind a section.", featured: "grid-pattern" },
+  { slug: "indicators", title: "Indicators", description: "Small signals of state.", featured: "status-dot" },
+  { slug: "icons", title: "Icons", description: "Icons lucide-react does not ship.", featured: "social-icons" },
+  { slug: "layout", title: "Layout", description: "The primitives every block is built on.", featured: "section" },
+]
+
 export interface ComponentDoc {
   slug: string
   title: string
+  category: ComponentCategory
   description: string
   /** Registry item name of the demo rendered in the preview. */
   example: string
@@ -28,12 +55,33 @@ export interface ComponentDoc {
 
 export const componentDocs: ComponentDoc[] = [
   {
+    slug: "animated-number",
+    category: "text",
+    title: "Animated Number",
+    description:
+      "A number that rolls up or down to its new value when it changes, such as a price or a total.",
+    example: "animated-number-demo",
+    usage: `import { AnimatedNumber } from "@/components/ui/animated-number"
+
+export function Price({ amount }: { amount: number }) {
+  return (
+    <p className="text-4xl font-semibold">
+      $<AnimatedNumber value={amount} />
+    </p>
+  )
+}`,
+    props: [
+      { name: "value", type: "number", description: "The number to display. Required." },
+      { name: "format", type: "(value: number) => string", description: "Turns the value into text. Defaults to en-US digit grouping." },
+    ],
+  },
+  {
     slug: "blur-fade",
+    category: "motion",
     title: "Blur Fade",
     description:
       "Reveal content with a soft blur and fade, on mount or when scrolled into view.",
     example: "blur-fade-demo",
-    isNew: true,
     usage: `import { BlurFade } from "@/components/ui/blur-fade"
 
 export function Hero() {
@@ -55,6 +103,7 @@ export function Hero() {
   },
   {
     slug: "grid-pattern",
+    category: "backgrounds",
     title: "Grid Pattern",
     description:
       "A lightweight SVG grid background with optional highlighted cells.",
@@ -79,6 +128,7 @@ export function Background() {
   },
   {
     slug: "marquee",
+    category: "motion",
     title: "Marquee",
     description:
       "An infinite scrolling track for logos, testimonials or anything else.",
@@ -119,7 +169,30 @@ export function Logos() {
     ],
   },
   {
+    slug: "number-ticker",
+    category: "text",
+    title: "Number Ticker",
+    description:
+      "Counts up to a number once, when it scrolls into view. The final value is rendered on the server.",
+    example: "number-ticker-demo",
+    usage: `import { NumberTicker } from "@/components/ui/number-ticker"
+
+export function Uptime() {
+  return <NumberTicker value={99.99} decimals={2} suffix="%" />
+}`,
+    props: [
+      { name: "value", type: "number", description: "The number to count up to. Required." },
+      { name: "from", type: "number", default: "0", description: "Number the count starts from." },
+      { name: "decimals", type: "number", default: "0", description: "Digits after the decimal point." },
+      { name: "prefix", type: "string", description: 'Text before the number, such as "$" or "<".' },
+      { name: "suffix", type: "string", description: 'Text after the number, such as "%" or "M+".' },
+      { name: "duration", type: "number", default: "1.2", description: "Duration of the count, in seconds." },
+      { name: "delay", type: "number", default: "0", description: "Delay before the count starts once in view, in seconds." },
+    ],
+  },
+  {
     slug: "section",
+    category: "layout",
     title: "Section",
     description:
       "Layout primitives shared by every block: Section, Container and SectionHeader.",
@@ -167,7 +240,43 @@ export function Faq() {
     ],
   },
   {
+    slug: "segmented-control",
+    category: "buttons",
+    title: "Segmented Control",
+    description:
+      "A single choice between a few options, with a pill that slides to the selected one.",
+    example: "segmented-control-demo",
+    usage: `"use client"
+
+import * as React from "react"
+
+import { SegmentedControl } from "@/components/ui/segmented-control"
+
+export function BillingToggle() {
+  const [billing, setBilling] = React.useState("yearly")
+
+  return (
+    <SegmentedControl
+      aria-label="Billing period"
+      value={billing}
+      onValueChange={setBilling}
+      options={[
+        { value: "monthly", label: "Monthly" },
+        { value: "yearly", label: "Yearly", badge: "−20%" },
+      ]}
+    />
+  )
+}`,
+    props: [
+      { name: "value", type: "string", description: "The selected option. Required." },
+      { name: "onValueChange", type: "(value: string) => void", description: "Called with the option the user picks. Required." },
+      { name: "options", type: "{ value: string; label: ReactNode; badge?: ReactNode }[]", description: "The options, in order. Required." },
+      { name: "aria-label", type: "string", description: "Names the group for assistive technology." },
+    ],
+  },
+  {
     slug: "shimmer-button",
+    category: "buttons",
     title: "Shimmer Button",
     description: "A button with a beam of light travelling around its border.",
     example: "shimmer-button-demo",
@@ -189,8 +298,286 @@ export function Cta() {
       { name: "background", type: "string", default: '"#0a0a0a"', description: "Background of the button." },
     ],
   },
+  {
+    slug: "social-icons",
+    category: "icons",
+    title: "Social Icons",
+    description:
+      "Brand icons for social links: GitHub, LinkedIn, X and YouTube. lucide-react no longer ships them.",
+    example: "social-icons-demo",
+    usage: `import { GitHubIcon } from "@/components/ui/social-icons"
+
+export function GitHubLink() {
+  return (
+    <a href="https://github.com" aria-label="GitHub">
+      <GitHubIcon className="size-4" />
+    </a>
+  )
+}`,
+    propGroups: [
+      {
+        title: "GitHubIcon, LinkedInIcon, XIcon, YouTubeIcon",
+        props: [
+          { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "status-dot",
+    category: "indicators",
+    title: "Status Dot",
+    description: "A small live indicator with a pulsing halo, in four tones.",
+    example: "status-dot-demo",
+    usage: `import { StatusDot } from "@/components/ui/status-dot"
+
+export function Status() {
+  return (
+    <p className="flex items-center gap-2 text-sm">
+      <StatusDot />
+      All systems operational
+    </p>
+  )
+}`,
+    props: [
+      { name: "tone", type: '"success" | "warning" | "danger" | "neutral"', default: '"success"', description: "Colour of the dot." },
+      { name: "pulse", type: "boolean", default: "true", description: "Draw an expanding halo. It stops under reduced motion." },
+      { name: "className", type: "string", description: "Size the dot with size-* utilities (size-2 by default)." },
+    ],
+  },
+  {
+    slug: "arrow-button",
+    category: "buttons",
+    title: "Arrow Button",
+    description: "A button or link whose arrow nudges forward on hover and focus.",
+    example: "arrow-button-demo",
+    usage: `import { ArrowButton, ArrowLink } from "@/components/ui/arrow-button"
+
+export function Actions() {
+  return (
+    <>
+      <ArrowButton>Get started</ArrowButton>
+      <ArrowLink href="/docs" variant="outline">Read the docs</ArrowLink>
+    </>
+  )
+}`,
+    propGroups: [
+      {
+        title: "ArrowButton",
+        props: [
+          { name: "...props", type: "ComponentProps<typeof Button>", description: "Every prop of the shadcn/ui Button, including variant and size." },
+        ],
+      },
+      {
+        title: "ArrowLink",
+        props: [
+          { name: "variant", type: '"default" | "outline" | "secondary" | "ghost" | "link"', default: '"default"', description: "Button style applied to the link." },
+          { name: "size", type: '"default" | "sm" | "lg"', default: '"default"', description: "Button size applied to the link." },
+          { name: "...props", type: 'ComponentProps<"a">', description: "Any anchor attribute, such as href." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "copy-button",
+    category: "buttons",
+    title: "Copy Button",
+    description: "Copies a text to the clipboard; the icon turns into a check mark.",
+    example: "copy-button-demo",
+    usage: `import { CopyButton } from "@/components/ui/copy-button"
+
+export function Command() {
+  return <CopyButton value="npm install motion" label="Copy command" />
+}`,
+    props: [
+      { name: "value", type: "string", description: "Text written to the clipboard. Required." },
+      { name: "label", type: "string", default: '"Copy"', description: "Accessible name of the button." },
+      { name: "timeout", type: "number", default: "2000", description: "How long the check mark stays, in milliseconds." },
+      { name: "onCopy", type: "() => void", description: "Called once the text is copied." },
+    ],
+  },
+  {
+    slug: "expand-button",
+    category: "buttons",
+    title: "Expand Button",
+    description: "An icon button whose label slides out on hover and keyboard focus.",
+    example: "expand-button-demo",
+    usage: `import { Star } from "lucide-react"
+
+import { ExpandButton } from "@/components/ui/expand-button"
+
+export function StarButton() {
+  return <ExpandButton icon={<Star />} label="Star on GitHub" />
+}`,
+    props: [
+      { name: "icon", type: "ReactNode", description: "Icon shown on its own at rest. Required." },
+      { name: "label", type: "string", description: "Label that unfolds on hover and focus. Always the accessible name. Required." },
+      { name: "variant", type: "Button variant", default: '"outline"', description: "Style of the shadcn/ui Button underneath." },
+    ],
+  },
+  {
+    slug: "hold-button",
+    category: "buttons",
+    title: "Hold Button",
+    description: "Hold to confirm, for actions that are hard to undo. Releasing early cancels.",
+    example: "hold-button-demo",
+    usage: `import { HoldButton } from "@/components/ui/hold-button"
+
+export function DeleteProject() {
+  return <HoldButton onConfirm={() => deleteProject()}>Hold to delete</HoldButton>
+}`,
+    props: [
+      { name: "onConfirm", type: "() => void", description: "Called once the button has been held long enough. Required." },
+      { name: "duration", type: "number", default: "1200", description: "How long to hold, in milliseconds." },
+      { name: "variant", type: "Button variant", default: '"destructive"', description: "Style of the shadcn/ui Button underneath." },
+    ],
+  },
+  {
+    slug: "magnetic-button",
+    category: "buttons",
+    title: "Magnetic Button",
+    description: "A button that leans a few pixels towards the pointer and settles back when it leaves.",
+    example: "magnetic-button-demo",
+    usage: `import { MagneticButton } from "@/components/ui/magnetic-button"
+
+export function Cta() {
+  return <MagneticButton size="lg">Hover me</MagneticButton>
+}`,
+    props: [
+      { name: "strength", type: "number", default: "0.3", description: "Share of the pointer's distance the button follows, from 0 to 1." },
+      { name: "max", type: "number", default: "8", description: "Largest shift, in pixels." },
+    ],
+  },
+  {
+    slug: "ripple-button",
+    category: "buttons",
+    title: "Ripple Button",
+    description: "A button that sends a soft ripple out from where it is pressed.",
+    example: "ripple-button-demo",
+    usage: `import { RippleButton } from "@/components/ui/ripple-button"
+
+export function Submit() {
+  return <RippleButton type="submit">Submit</RippleButton>
+}`,
+    props: [
+      { name: "...props", type: "ComponentProps<typeof Button>", description: "Every prop of the shadcn/ui Button. The ripple takes the colour of the text." },
+    ],
+  },
+  {
+    slug: "spotlight-button",
+    category: "buttons",
+    title: "Spotlight Button",
+    description: "A soft light follows the pointer inside the button, in the colour of its text.",
+    example: "spotlight-button-demo",
+    usage: `import { SpotlightButton } from "@/components/ui/spotlight-button"
+
+export function Cta() {
+  return <SpotlightButton size="lg">Start building</SpotlightButton>
+}`,
+    props: [
+      { name: "...props", type: "ComponentProps<typeof Button>", description: "Every prop of the shadcn/ui Button." },
+    ],
+  },
+  {
+    slug: "status-button",
+    category: "buttons",
+    title: "Status Button",
+    description: "A button that shows the progress of its action: idle, loading, success or error.",
+    example: "status-button-demo",
+    usage: `"use client"
+
+import * as React from "react"
+
+import { StatusButton, type ButtonStatus } from "@/components/ui/status-button"
+
+export function SaveButton() {
+  const [status, setStatus] = React.useState<ButtonStatus>("idle")
+
+  async function save() {
+    setStatus("loading")
+    try {
+      await saveChanges()
+      setStatus("success")
+    } catch {
+      setStatus("error")
+    }
+  }
+
+  return (
+    <StatusButton status={status} onClick={save}>
+      Save changes
+    </StatusButton>
+  )
+}`,
+    props: [
+      { name: "status", type: '"idle" | "loading" | "success" | "error"', default: '"idle"', description: "Current state. The button is disabled while loading." },
+      { name: "loadingText", type: "ReactNode", default: '"Saving"', description: "Label while loading." },
+      { name: "successText", type: "ReactNode", default: '"Saved"', description: "Label after a success." },
+      { name: "errorText", type: "ReactNode", default: '"Try again"', description: "Label after an error." },
+    ],
+  },
+  {
+    slug: "text-roll-button",
+    category: "buttons",
+    title: "Text Roll Button",
+    description: "On hover and focus, the label rolls up and an identical copy takes its place.",
+    example: "text-roll-button-demo",
+    usage: `import { TextRollButton } from "@/components/ui/text-roll-button"
+
+export function Demo() {
+  return <TextRollButton>Book a demo</TextRollButton>
+}`,
+    props: [
+      { name: "children", type: "ReactNode", description: "The label. Keep it to plain text." },
+      { name: "...props", type: "ComponentProps<typeof Button>", description: "Every prop of the shadcn/ui Button." },
+    ],
+  },
+  {
+    slug: "theme-toggle-button",
+    category: "buttons",
+    title: "Theme Toggle Button",
+    description: "Switches between light and dark with next-themes; the sun grows into a moon.",
+    example: "theme-toggle-button-demo",
+    usage: `import { ThemeToggleButton } from "@/components/ui/theme-toggle-button"
+
+export function Header() {
+  return <ThemeToggleButton />
+}`,
+    props: [
+      { name: "variant", type: "Button variant", default: '"ghost"', description: "Style of the shadcn/ui Button underneath." },
+      { name: "size", type: "Button size", default: '"icon"', description: "Size of the button." },
+    ],
+  },
 ]
+
+/** Components of each category, in category order, titles sorted. */
+export function componentsByCategory() {
+  return componentCategories
+    .map((category) => ({
+      ...category,
+      components: componentDocs
+        .filter((doc) => doc.category === category.slug)
+        .sort((a, b) => a.title.localeCompare(b.title)),
+    }))
+    .filter((category) => category.components.length > 0)
+}
 
 export function getComponentDoc(slug: string) {
   return componentDocs.find((doc) => doc.slug === slug)
+}
+
+export function getComponentCategory(slug: string) {
+  return componentsByCategory().find((category) => category.slug === slug)
+}
+
+/** Gallery of a category: /components/buttons. */
+export function categoryHref(category: ComponentCategory) {
+  return `/components/${category}`
+}
+
+/** Docs page of a component: /components/buttons/arrow-button. */
+export function componentHref(slug: string) {
+  const doc = getComponentDoc(slug)
+  if (!doc) throw new Error(`Unknown component: ${slug}`)
+  return `${categoryHref(doc.category)}/${doc.slug}`
 }

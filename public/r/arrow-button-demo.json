@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "arrow-button-demo",
+  "title": "Arrow Button Demo",
+  "description": "Example usage of Arrow Button.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/arrow-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/arrow-button-demo.tsx",
+      "content": "import { ArrowButton } from \"@/registry/balick/ui/arrow-button\"\n\nexport default function ArrowButtonDemo() {\n  return <ArrowButton>Get started</ArrowButton>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

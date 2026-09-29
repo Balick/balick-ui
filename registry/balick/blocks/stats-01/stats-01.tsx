@@ -1,3 +1,4 @@
+import { NumberTicker } from "@/registry/balick/ui/number-ticker"
 import { Section, SectionHeader } from "@/registry/balick/ui/section"
 
 const header = {
@@ -7,11 +8,30 @@ const header = {
     "From weekend projects to global launches, Acme keeps up with the teams who rely on it.",
 }
 
-const stats = [
-  { value: "99.99%", label: "Uptime", description: "Measured over the last twelve months." },
-  { value: "312", label: "Edge locations", description: "A few milliseconds from every visitor." },
-  { value: "40M+", label: "Deploys a month", description: "From teams of one to ten thousand." },
-  { value: "<1 min", label: "Average build", description: "Cached, incremental and parallel." },
+const stats: {
+  value: number
+  decimals?: number
+  prefix?: string
+  suffix?: string
+  label: string
+  description: string
+}[] = [
+  {
+    value: 99.99,
+    decimals: 2,
+    suffix: "%",
+    label: "Uptime",
+    description: "Measured over the last twelve months.",
+  },
+  { value: 312, label: "Edge locations", description: "A few milliseconds from every visitor." },
+  { value: 40, suffix: "M+", label: "Deploys a month", description: "From teams of one to ten thousand." },
+  {
+    value: 1,
+    prefix: "<",
+    suffix: " min",
+    label: "Average build",
+    description: "Cached, incremental and parallel.",
+  },
 ]
 
 export function Stats01({ id = "stats" }: { id?: string }) {
@@ -26,7 +46,12 @@ export function Stats01({ id = "stats" }: { id?: string }) {
                 {stat.label}
               </dt>
               <dd className="order-first mb-6 text-4xl font-semibold tracking-tighter tabular-nums sm:text-5xl">
-                {stat.value}
+                <NumberTicker
+                  value={stat.value}
+                  decimals={stat.decimals}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                />
               </dd>
               <dd className="mt-2 text-sm leading-6 text-muted-foreground">{stat.description}</dd>
             </div>

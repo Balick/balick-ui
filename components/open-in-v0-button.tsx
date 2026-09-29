@@ -1,13 +1,14 @@
-import { siteConfig, registryUrl } from "@/config/site"
+import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
+import { v0RegistryUrl } from "@/lib/v0"
 
 export function OpenInV0Button({
   name,
-  url = registryUrl(name),
+  url = v0RegistryUrl(name),
   className,
 }: {
   name: string
-  /** Registry item to open. Defaults to the item called `name`. */
+  /** Registry item to open. Defaults to the v0 variant of the item called `name`. */
   url?: string
   className?: string
 }) {

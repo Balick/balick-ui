@@ -42,11 +42,6 @@ export function serializeComposition(blocks: string[]) {
   return blocks.join(",")
 }
 
-/** URL of the registry item that installs the whole page at once. */
-export function composeRegistryUrl(blocks: string[]) {
-  return `${siteConfig.url}/r/compose/${serializeComposition(blocks)}.json`
-}
-
 /** The same item, as passed to `shadcn add` (see `installTarget`). */
 export function composeInstallTarget(blocks: string[]) {
   return installTarget(`compose/${serializeComposition(blocks)}`)
@@ -181,4 +176,9 @@ export function compositionHints(blocks: string[]) {
     }
   }
   return hints
+}
+
+/** v0 variant of the composition item (see lib/v0.ts). */
+export function composeV0Url(blocks: string[]) {
+  return `${siteConfig.url}/r/v0/compose/${serializeComposition(blocks)}.json`
 }

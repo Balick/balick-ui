@@ -2,11 +2,12 @@
 
 import * as React from "react"
 import { Check } from "lucide-react"
-import { AnimatePresence, motion } from "motion/react"
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { AnimatedNumber } from "@/registry/balick/ui/animated-number"
 import { Section, SectionHeader } from "@/registry/balick/ui/section"
+import { SegmentedControl } from "@/registry/balick/ui/segmented-control"
 
 type Billing = "monthly" | "yearly"
 
@@ -56,52 +57,10 @@ const plans: Plan[] = [
   },
 ]
 
-function BillingToggle({
-  value,
-  onChange,
-}: {
-  value: Billing
-  onChange: (value: Billing) => void
-}) {
-  return (
-    <div role="radiogroup" aria-label="Billing period" className="inline-flex rounded-full border bg-muted/50 p-1">
-      {(["monthly", "yearly"] as const).map((option) => (
-        <button
-          key={option}
-          type="button"
-          role="radio"
-          aria-checked={value === option}
-          onClick={() => onChange(option)}
-          className={cn(
-            "relative h-8 cursor-pointer rounded-full px-4 text-sm font-medium capitalize transition-colors",
-            value === option ? "text-background" : "text-muted-foreground hover:text-foreground"
-          )}
-        >
-          {value === option && (
-            <motion.span
-              layoutId="pricing-01-billing"
-              transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-              className="absolute inset-0 rounded-full bg-foreground"
-            />
-          )}
-          <span className="relative flex items-center gap-1.5">
-            {option}
-            {option === "yearly" && (
-              <span
-                className={cn(
-                  "rounded-full px-1.5 py-px text-[10px] leading-4",
-                  value === option ? "bg-background/20" : "bg-foreground/10 text-foreground"
-                )}
-              >
-                −20%
-              </span>
-            )}
-          </span>
-        </button>
-      ))}
-    </div>
-  )
-}
+const billingOptions = [
+  { value: "monthly" as const, label: "Monthly" },
+  { value: "yearly" as const, label: "Yearly", badge: "−20%" },
+]
 
 function Price({ plan, billing }: { plan: Plan; billing: Billing }) {
   if (!plan.price) {
@@ -112,20 +71,7 @@ function Price({ plan, billing }: { plan: Plan; billing: Billing }) {
   return (
     <div className="flex items-baseline">
       <span className="text-4xl font-semibold tracking-tighter">$</span>
-      <span className="relative inline-flex overflow-hidden">
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.span
-            key={amount}
-            initial={{ y: 16, opacity: 0, filter: "blur(4px)" }}
-            animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-            exit={{ y: -16, opacity: 0, filter: "blur(4px)" }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="text-4xl font-semibold tracking-tighter tabular-nums"
-          >
-            {amount}
-          </motion.span>
-        </AnimatePresence>
-      </span>
+      <AnimatedNumber value={amount} className="text-4xl font-semibold tracking-tighter" />
       <span className="ml-2 text-sm opacity-60">/ user / month</span>
     </div>
   )
@@ -141,7 +87,12 @@ export function Pricing01({ id = "pricing" }: { id?: string }) {
         title="Simple pricing that scales with you."
         description="Start for free, upgrade when you need to. No hidden fees."
       >
-        <BillingToggle value={billing} onChange={setBilling} />
+        <SegmentedControl
+          aria-label="Billing period"
+          value={billing}
+          onValueChange={setBilling}
+          options={billingOptions}
+        />
       </SectionHeader>
 
       <div className="mt-16 grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-start">

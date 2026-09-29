@@ -24,7 +24,7 @@ export async function CodeBlock({
   const html = await highlight(code.trim(), lang)
   const body = (
     <div
-      className="overflow-x-auto p-4 font-mono text-[13px] leading-6 [&_pre]:outline-none"
+      className="scrollbar-thin overflow-x-auto p-4 font-mono text-[13px] leading-6 [&_pre]:outline-none"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-button",
+  "title": "Magnetic Button",
+  "description": "A button that leans a few pixels towards the pointer.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/magnetic-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion, useSpring } from \"motion/react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface MagneticButtonProps extends React.ComponentProps<typeof Button> {\n  /** Share of the pointer's distance the button follows, from 0 to 1. */\n  strength?: number\n  /** Largest shift, in pixels. */\n  max?: number\n}\n\nconst spring = { stiffness: 300, damping: 20, mass: 0.5 }\n\n/**\n * A button that leans a few pixels towards the pointer and settles back when\n * it leaves. Only with a mouse or trackpad, and never under reduced motion.\n */\nexport function MagneticButton({\n  strength = 0.3,\n  max = 8,\n  className,\n  ...props\n}: MagneticButtonProps) {\n  const reduceMotion = useReducedMotion()\n  const x = useSpring(0, spring)\n  const y = useSpring(0, spring)\n\n  function onPointerMove(event: React.PointerEvent<HTMLSpanElement>) {\n    if (reduceMotion || event.pointerType !== \"mouse\") return\n    const rect = event.currentTarget.getBoundingClientRect()\n    const clamp = (value: number) => Math.max(-max, Math.min(max, value * strength))\n    x.set(clamp(event.clientX - (rect.left + rect.width / 2)))\n    y.set(clamp(event.clientY - (rect.top + rect.height / 2)))\n  }\n\n  function reset() {\n    x.set(0)\n    y.set(0)\n  }\n\n  return (\n    <motion.span\n      className=\"inline-flex\"\n      style={{ x, y }}\n      onPointerMove={onPointerMove}\n      onPointerLeave={reset}\n    >\n      <Button className={cn(\"cursor-pointer\", className)} {...props} />\n    </motion.span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

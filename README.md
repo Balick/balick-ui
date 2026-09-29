@@ -48,7 +48,7 @@ and "Open in v0" links at another deployment. Without it, they use
 ## Project structure
 
 ```
-app/(site)/            Site pages: home, docs, blocks gallery, composer
+app/(site)/            Site pages: home, docs, blocks and components galleries, composer
 app/view/              Bare block previews, embedded in the site as iframes
 app/r/compose/         Registry item generated on the fly for a composed page
 components/            Site UI (header, previews, composer, code blocks…)

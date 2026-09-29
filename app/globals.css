@@ -118,8 +118,8 @@
   html:has([data-site-header]) {
     scroll-padding-top: 5rem;
   }
-  /* The blocks gallery adds its category tabs under the header. */
-  html:has([data-blocks-tabs]) {
+  /* Category tabs (blocks gallery, component categories) sit under the header. */
+  html:has([data-category-tabs]) {
     scroll-padding-top: 8rem;
   }
   body {
@@ -158,6 +158,35 @@
     color-mix(in oklab, var(--foreground) 9%, transparent) 0 1px,
     transparent 0 7px
   );
+}
+
+/*
+ * A thin scrollbar for the site's inner scroll areas (sidebar, menus,
+ * panels). Chromium and Safari use the ::-webkit-scrollbar styles; Firefox
+ * only knows the standard properties. They are kept away from Chromium,
+ * which ignores ::-webkit-scrollbar as soon as they are set. The thumb
+ * follows --foreground, so it adapts to both modes and to graphite surfaces.
+ */
+@utility scrollbar-thin {
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--foreground) 20%, transparent) transparent;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--foreground) 15%, transparent);
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--foreground) 30%, transparent);
+  }
 }
 
 /*

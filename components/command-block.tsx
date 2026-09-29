@@ -44,7 +44,7 @@ export function CommandBlock({
         </div>
         <CopyButton value={commands[manager]} />
       </div>
-      <pre className="overflow-x-auto p-4 font-mono text-[13px] leading-6">
+      <pre className="scrollbar-thin overflow-x-auto p-4 font-mono text-[13px] leading-6">
         <code>{commands[manager]}</code>
       </pre>
     </div>

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-dot-demo",
+  "title": "Status Dot Demo",
+  "description": "Example usage of Status Dot.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/status-dot.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/status-dot-demo.tsx",
+      "content": "import { StatusDot } from \"@/registry/balick/ui/status-dot\"\n\nconst statuses = [\n  { tone: \"success\", label: \"All systems operational\", pulse: true },\n  { tone: \"warning\", label: \"Degraded performance\", pulse: true },\n  { tone: \"danger\", label: \"Partial outage\", pulse: true },\n  { tone: \"neutral\", label: \"Maintenance scheduled\", pulse: false },\n] as const\n\nexport default function StatusDotDemo() {\n  return (\n    <ul className=\"flex flex-col gap-3 text-sm\">\n      {statuses.map((status) => (\n        <li key={status.tone} className=\"flex items-center gap-2.5\">\n          <StatusDot tone={status.tone} pulse={status.pulse} />\n          {status.label}\n        </li>\n      ))}\n    </ul>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,17 +1,13 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 
-import { cn } from "@/lib/utils"
+import { CategoryTabs } from "@/components/category-tabs"
 
 type Category = { slug: string; title: string; count: number }
 
-/**
- * Category tabs of the blocks gallery, sticky under the site header. They
- * scroll sideways when they overflow and keep the current tab in view.
- */
+/** Category tabs of the blocks gallery, across the whole sheet. */
 export function BlocksCategoryTabs({
   categories,
   active,
@@ -22,65 +18,19 @@ export function BlocksCategoryTabs({
   active: string
   total: number
 }) {
-  const listRef = React.useRef<HTMLDivElement>(null)
-
-  React.useEffect(() => {
-    const list = listRef.current
-    const tab = list?.querySelector<HTMLElement>("[aria-current='page']")
-    if (!list || !tab) return
-    list.scrollLeft = tab.offsetLeft - list.clientWidth / 2 + tab.offsetWidth / 2
-  }, [active])
-
   return (
-    <nav
-      aria-label="Block categories"
-      data-blocks-tabs
-      className="sticky top-14 z-30 border-y border-rule bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/65"
-    >
-      <div
-        ref={listRef}
-        className="sheet relative flex gap-2 overflow-x-auto px-4 py-2 [mask-image:linear-gradient(to_right,transparent,black_1rem,black_calc(100%-1rem),transparent)] [scrollbar-width:none] md:px-6 [&::-webkit-scrollbar]:hidden"
-      >
-        <Tab href="/blocks" title="All" count={total} current={false} />
-        {categories.map((category) => (
-          <Tab
-            key={category.slug}
-            href={`/blocks/${category.slug}`}
-            title={category.title}
-            count={category.count}
-            current={category.slug === active}
-          />
-        ))}
-      </div>
-    </nav>
-  )
-}
-
-function Tab({
-  href,
-  title,
-  count,
-  current,
-}: {
-  href: string
-  title: string
-  count: number
-  current: boolean
-}) {
-  return (
-    <Link
-      href={href}
-      aria-current={current ? "page" : undefined}
-      className={cn(
-        "inline-flex h-8 shrink-0 items-center gap-2 rounded-full border px-3 text-sm whitespace-nowrap transition-colors",
-        current ? "border-foreground bg-foreground text-background" : "bg-card shadow-xs hover:bg-accent"
-      )}
-    >
-      {title}
-      <span className={cn("font-mono text-xs", current ? "text-background/70" : "text-muted-foreground")}>
-        {count}
-      </span>
-    </Link>
+    <CategoryTabs
+      label="Block categories"
+      tabs={[
+        { href: "/blocks", title: "All", count: total, current: false },
+        ...categories.map((category) => ({
+          href: `/blocks/${category.slug}`,
+          title: category.title,
+          count: category.count,
+          current: category.slug === active,
+        })),
+      ]}
+    />
   )
 }
 
