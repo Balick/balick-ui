@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Container } from "@/registry/balick/ui/section"
 import { GitHubIcon, LinkedInIcon, XIcon, YouTubeIcon } from "@/registry/balick/ui/social-icons"
+import { StatusDot } from "@/registry/balick/ui/status-dot"
 
 const columns = [
   { title: "Product", links: ["Features", "Pricing", "Integrations", "Changelog", "Roadmap"] },
@@ -75,10 +76,7 @@ export function Footer01() {
           <div className="flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:gap-6">
             <span>© {new Date().getFullYear()} Acme, Inc.</span>
             <a href="#" className="inline-flex items-center gap-2 transition-colors hover:text-foreground">
-              <span className="relative flex size-2">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500/60 motion-reduce:animate-none" />
-                <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-              </span>
+              <StatusDot />
               All systems operational
             </a>
           </div>

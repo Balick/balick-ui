@@ -165,6 +165,63 @@
       ]
     },
     {
+      "name": "status-dot",
+      "type": "registry:ui",
+      "title": "Status Dot",
+      "description": "A small live indicator with a pulsing halo, in four tones.",
+      "files": [
+        {
+          "path": "registry/balick/ui/status-dot.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "Segmented Control",
+      "description": "A single choice between a few options, with a pill that slides to the selected one.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/segmented-control.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-number",
+      "type": "registry:ui",
+      "title": "Animated Number",
+      "description": "A number that rolls up or down to its new value when it changes.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/animated-number.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "title": "Number Ticker",
+      "description": "Counts up to a number once, when it scrolls into view.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/number-ticker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "marquee-demo",
       "type": "registry:example",
       "title": "Marquee Demo",
@@ -205,6 +262,85 @@
       "files": [
         {
           "path": "registry/balick/examples/shimmer-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "status-dot-demo",
+      "type": "registry:example",
+      "title": "Status Dot Demo",
+      "description": "Example usage of Status Dot.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/status-dot.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/status-dot-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control-demo",
+      "type": "registry:example",
+      "title": "Segmented Control Demo",
+      "description": "Example usage of Segmented Control.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/segmented-control.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/segmented-control-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-number-demo",
+      "type": "registry:example",
+      "title": "Animated Number Demo",
+      "description": "Example usage of Animated Number.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.balick.me/r/animated-number.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/animated-number-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "number-ticker-demo",
+      "type": "registry:example",
+      "title": "Number Ticker Demo",
+      "description": "Example usage of Number Ticker.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/number-ticker.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/number-ticker-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "social-icons-demo",
+      "type": "registry:example",
+      "title": "Social Icons Demo",
+      "description": "Example usage of Social Icons.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/social-icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/social-icons-demo.tsx",
           "type": "registry:example"
         }
       ]
@@ -306,7 +442,8 @@
       "registryDependencies": [
         "button",
         "https://ui.balick.me/r/blur-fade.json",
-        "https://ui.balick.me/r/section.json"
+        "https://ui.balick.me/r/section.json",
+        "https://ui.balick.me/r/status-dot.json"
       ],
       "files": [
         {
@@ -331,7 +468,8 @@
         "https://ui.balick.me/r/blur-fade.json",
         "https://ui.balick.me/r/marquee.json",
         "https://ui.balick.me/r/section.json",
-        "https://ui.balick.me/r/social-icons.json"
+        "https://ui.balick.me/r/social-icons.json",
+        "https://ui.balick.me/r/status-dot.json"
       ],
       "files": [
         {
@@ -392,7 +530,8 @@
       ],
       "registryDependencies": [
         "https://ui.balick.me/r/marquee.json",
-        "https://ui.balick.me/r/section.json"
+        "https://ui.balick.me/r/section.json",
+        "https://ui.balick.me/r/status-dot.json"
       ],
       "files": [
         {
@@ -491,12 +630,13 @@
         "pricing"
       ],
       "dependencies": [
-        "lucide-react",
-        "motion"
+        "lucide-react"
       ],
       "registryDependencies": [
         "button",
-        "https://ui.balick.me/r/section.json"
+        "https://ui.balick.me/r/animated-number.json",
+        "https://ui.balick.me/r/section.json",
+        "https://ui.balick.me/r/segmented-control.json"
       ],
       "files": [
         {
@@ -693,6 +833,7 @@
         "stats"
       ],
       "registryDependencies": [
+        "https://ui.balick.me/r/number-ticker.json",
         "https://ui.balick.me/r/section.json"
       ],
       "files": [
@@ -793,7 +934,8 @@
         "button",
         "input",
         "https://ui.balick.me/r/section.json",
-        "https://ui.balick.me/r/social-icons.json"
+        "https://ui.balick.me/r/social-icons.json",
+        "https://ui.balick.me/r/status-dot.json"
       ],
       "files": [
         {

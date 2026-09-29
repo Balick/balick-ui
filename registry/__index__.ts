@@ -27,19 +27,29 @@ import { Steps01 } from "@/registry/balick/blocks/steps-01/steps-01"
 import { Team01 } from "@/registry/balick/blocks/team-01/team-01"
 import { Testimonials01 } from "@/registry/balick/blocks/testimonials-01/testimonials-01"
 import { Timeline01 } from "@/registry/balick/blocks/timeline-01/timeline-01"
+import AnimatedNumberDemo from "@/registry/balick/examples/animated-number-demo"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
 import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
 import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
+import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
+import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
+import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
+import StatusDotDemo from "@/registry/balick/examples/status-dot-demo"
 
 /** Demo components rendered by <ComponentPreview />, keyed by registry item name. */
 export const examples: Record<string, React.ComponentType> = {
+  "animated-number-demo": AnimatedNumberDemo,
   "blur-fade-demo": BlurFadeDemo,
   "grid-pattern-demo": GridPatternDemo,
   "marquee-demo": MarqueeDemo,
+  "number-ticker-demo": NumberTickerDemo,
   "section-demo": SectionDemo,
+  "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
+  "social-icons-demo": SocialIconsDemo,
+  "status-dot-demo": StatusDotDemo,
 }
 
 /** Blocks rendered on their own at /view/[name], keyed by registry item name. */

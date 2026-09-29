@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segmented-control-demo",
+  "title": "Segmented Control Demo",
+  "description": "Example usage of Segmented Control.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/segmented-control.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/segmented-control-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { SegmentedControl } from \"@/registry/balick/ui/segmented-control\"\n\nconst options = [\n  { value: \"monthly\" as const, label: \"Monthly\" },\n  { value: \"yearly\" as const, label: \"Yearly\", badge: \"−20%\" },\n]\n\nexport default function SegmentedControlDemo() {\n  const [billing, setBilling] = React.useState<\"monthly\" | \"yearly\">(\"yearly\")\n\n  return (\n    <SegmentedControl\n      aria-label=\"Billing period\"\n      value={billing}\n      onValueChange={setBilling}\n      options={options}\n    />\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

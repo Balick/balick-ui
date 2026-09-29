@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-number-demo",
+  "title": "Animated Number Demo",
+  "description": "Example usage of Animated Number.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "https://ui.balick.me/r/animated-number.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/animated-number-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Minus, Plus } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { AnimatedNumber } from \"@/registry/balick/ui/animated-number\"\n\nexport default function AnimatedNumberDemo() {\n  const [seats, setSeats] = React.useState(5)\n\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <p className=\"flex items-baseline text-4xl font-semibold tracking-tighter\">\n        $<AnimatedNumber value={seats * 19} />\n        <span className=\"ml-2 text-sm font-normal tracking-normal text-muted-foreground\">\n          / month\n        </span>\n      </p>\n      <div className=\"flex items-center gap-3\">\n        <Button\n          variant=\"outline\"\n          size=\"icon\"\n          aria-label=\"Remove a seat\"\n          disabled={seats <= 1}\n          onClick={() => setSeats((value) => value - 1)}\n        >\n          <Minus />\n        </Button>\n        <span className=\"w-16 text-center text-sm text-muted-foreground tabular-nums\">\n          {seats} {seats === 1 ? \"seat\" : \"seats\"}\n        </span>\n        <Button\n          variant=\"outline\"\n          size=\"icon\"\n          aria-label=\"Add a seat\"\n          onClick={() => setSeats((value) => value + 1)}\n        >\n          <Plus />\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

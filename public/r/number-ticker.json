@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-ticker",
+  "title": "Number Ticker",
+  "description": "Counts up to a number once, when it scrolls into view.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/number-ticker.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { animate, useInView, useReducedMotion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface NumberTickerProps extends Omit<React.ComponentProps<\"span\">, \"children\"> {\n  /** The number to count up to. */\n  value: number\n  /** Number the count starts from. */\n  from?: number\n  /** Digits after the decimal point. */\n  decimals?: number\n  /** Text before the number, such as \"$\" or \"<\". */\n  prefix?: string\n  /** Text after the number, such as \"%\" or \"M+\". */\n  suffix?: string\n  /** Duration of the count, in seconds. */\n  duration?: number\n  /** Delay before the count starts once in view, in seconds. */\n  delay?: number\n}\n\n/**\n * Counts up to a number once, when it scrolls into view. The final value is\n * rendered on the server, so the number is right without JavaScript and\n * under reduced motion.\n */\nexport function NumberTicker({\n  value,\n  from = 0,\n  decimals = 0,\n  prefix,\n  suffix,\n  duration = 1.2,\n  delay = 0,\n  className,\n  ...props\n}: NumberTickerProps) {\n  const ref = React.useRef<HTMLSpanElement>(null)\n  const inView = useInView(ref, { once: true, margin: \"0px 0px -10% 0px\" })\n  const reduceMotion = useReducedMotion()\n  const formatter = React.useMemo(\n    () =>\n      new Intl.NumberFormat(\"en-US\", {\n        minimumFractionDigits: decimals,\n        maximumFractionDigits: decimals,\n      }),\n    [decimals]\n  )\n\n  // Before the count starts, show the starting number instead of the final one.\n  React.useEffect(() => {\n    if (!reduceMotion && !inView && ref.current) {\n      ref.current.textContent = formatter.format(from)\n    }\n  }, [reduceMotion, inView, from, formatter])\n\n  React.useEffect(() => {\n    if (!inView || reduceMotion) return\n    const controls = animate(from, value, {\n      duration,\n      delay,\n      ease: \"easeOut\",\n      onUpdate: (latest) => {\n        if (ref.current) ref.current.textContent = formatter.format(latest)\n      },\n    })\n    return () => controls.stop()\n  }, [inView, reduceMotion, from, value, duration, delay, formatter])\n\n  return (\n    <span className={cn(\"tabular-nums\", className)} {...props}>\n      {prefix}\n      <span ref={ref}>{formatter.format(value)}</span>\n      {suffix}\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

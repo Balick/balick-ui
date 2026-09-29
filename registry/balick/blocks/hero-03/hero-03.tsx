@@ -5,6 +5,7 @@ import { BlurFade } from "@/registry/balick/ui/blur-fade"
 import { Marquee } from "@/registry/balick/ui/marquee"
 import { Section } from "@/registry/balick/ui/section"
 import { GitHubIcon, LinkedInIcon, XIcon } from "@/registry/balick/ui/social-icons"
+import { StatusDot } from "@/registry/balick/ui/status-dot"
 
 const person = {
   name: "Alex Morgan",
@@ -31,10 +32,7 @@ export function Hero03({ id = "hero" }: { id?: string }) {
       <div className="flex flex-col items-start pt-24 pb-16 sm:pt-32">
         <BlurFade>
           <p className="inline-flex items-center gap-2 rounded-full border py-1 pr-3 pl-2.5 text-xs text-muted-foreground">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500/60 motion-reduce:animate-none" />
-              <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-            </span>
+            <StatusDot />
             {person.status}
           </p>
         </BlurFade>

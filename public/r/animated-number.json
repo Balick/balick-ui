@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-number",
+  "title": "Animated Number",
+  "description": "A number that rolls up or down to its new value when it changes.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/animated-number.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion, useReducedMotion, type Variants } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface AnimatedNumberProps extends Omit<React.ComponentProps<\"span\">, \"children\"> {\n  value: number\n  /** Turns the value into the displayed text. Defaults to en-US grouping. */\n  format?: (value: number) => string\n}\n\nconst variants: Variants = {\n  enter: (direction: number) => ({ y: 16 * direction, opacity: 0, filter: \"blur(4px)\" }),\n  center: { y: 0, opacity: 1, filter: \"blur(0px)\" },\n  exit: (direction: number) => ({ y: -16 * direction, opacity: 0, filter: \"blur(4px)\" }),\n}\n\nconst defaultFormat = (value: number) => value.toLocaleString(\"en-US\")\n\n/**\n * A number that rolls to its new value when it changes: up when it grows,\n * down when it shrinks. The first render is static.\n */\nexport function AnimatedNumber({\n  value,\n  format = defaultFormat,\n  className,\n  ...props\n}: AnimatedNumberProps) {\n  const reduceMotion = useReducedMotion()\n  const [previous, setPrevious] = React.useState(value)\n  const [direction, setDirection] = React.useState(1)\n\n  // Derive the direction while rendering, so the new number enters from the right side.\n  if (value !== previous) {\n    setDirection(value > previous ? 1 : -1)\n    setPrevious(value)\n  }\n\n  return (\n    <span className={cn(\"relative inline-flex overflow-hidden tabular-nums\", className)} {...props}>\n      <AnimatePresence mode=\"popLayout\" initial={false} custom={direction}>\n        <motion.span\n          key={value}\n          custom={direction}\n          variants={variants}\n          initial={reduceMotion ? false : \"enter\"}\n          animate=\"center\"\n          exit={reduceMotion ? undefined : \"exit\"}\n          transition={{ duration: reduceMotion ? 0 : 0.25, ease: \"easeOut\" }}\n        >\n          {format(value)}\n        </motion.span>\n      </AnimatePresence>\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

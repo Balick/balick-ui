@@ -18,6 +18,7 @@ import {
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/registry/balick/ui/marquee"
 import { Section, SectionHeader } from "@/registry/balick/ui/section"
+import { StatusDot } from "@/registry/balick/ui/status-dot"
 
 const bars = [38, 52, 44, 68, 58, 76, 62, 88, 72, 96]
 const integrations = [Database, Cloud, Mail, CreditCard, MessageSquare, Webhook, GitBranch]
@@ -105,10 +106,7 @@ export function Features01({ id = "features" }: { id?: string }) {
             ].map((position) => (
               <span key={position} className={cn("absolute size-1.5 rounded-full bg-foreground/40", position)} />
             ))}
-            <span className="relative flex size-3">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-foreground/30 motion-reduce:animate-none" />
-              <span className="relative inline-flex size-3 rounded-full bg-foreground" />
-            </span>
+            <StatusDot tone="neutral" className="size-3" />
           </div>
         </Cell>
 

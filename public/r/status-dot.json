@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-dot",
+  "title": "Status Dot",
+  "description": "A small live indicator with a pulsing halo, in four tones.",
+  "files": [
+    {
+      "path": "registry/balick/ui/status-dot.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nconst tones = {\n  success: { dot: \"bg-emerald-500\", halo: \"bg-emerald-500/60\" },\n  warning: { dot: \"bg-amber-500\", halo: \"bg-amber-500/60\" },\n  danger: { dot: \"bg-red-500\", halo: \"bg-red-500/60\" },\n  neutral: { dot: \"bg-foreground\", halo: \"bg-foreground/30\" },\n}\n\nexport interface StatusDotProps extends React.ComponentProps<\"span\"> {\n  /** Colour of the dot. */\n  tone?: keyof typeof tones\n  /** Draw an expanding halo around the dot. Stops under reduced motion. */\n  pulse?: boolean\n}\n\n/**\n * A small live indicator. It is decorative: put the status it stands for in\n * the text next to it. Size it with `size-*` utilities.\n */\nexport function StatusDot({\n  tone = \"success\",\n  pulse = true,\n  className,\n  ...props\n}: StatusDotProps) {\n  return (\n    <span aria-hidden className={cn(\"relative flex size-2 shrink-0\", className)} {...props}>\n      {pulse && (\n        <span\n          className={cn(\n            \"absolute inline-flex size-full animate-ping rounded-full motion-reduce:animate-none\",\n            tones[tone].halo\n          )}\n        />\n      )}\n      <span className={cn(\"relative inline-flex size-full rounded-full\", tones[tone].dot)} />\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

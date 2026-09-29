@@ -28,12 +28,32 @@ export interface ComponentDoc {
 
 export const componentDocs: ComponentDoc[] = [
   {
+    slug: "animated-number",
+    title: "Animated Number",
+    description:
+      "A number that rolls up or down to its new value when it changes, such as a price or a total.",
+    example: "animated-number-demo",
+    isNew: true,
+    usage: `import { AnimatedNumber } from "@/components/ui/animated-number"
+
+export function Price({ amount }: { amount: number }) {
+  return (
+    <p className="text-4xl font-semibold">
+      $<AnimatedNumber value={amount} />
+    </p>
+  )
+}`,
+    props: [
+      { name: "value", type: "number", description: "The number to display. Required." },
+      { name: "format", type: "(value: number) => string", description: "Turns the value into text. Defaults to en-US digit grouping." },
+    ],
+  },
+  {
     slug: "blur-fade",
     title: "Blur Fade",
     description:
       "Reveal content with a soft blur and fade, on mount or when scrolled into view.",
     example: "blur-fade-demo",
-    isNew: true,
     usage: `import { BlurFade } from "@/components/ui/blur-fade"
 
 export function Hero() {
@@ -119,6 +139,28 @@ export function Logos() {
     ],
   },
   {
+    slug: "number-ticker",
+    title: "Number Ticker",
+    description:
+      "Counts up to a number once, when it scrolls into view. The final value is rendered on the server.",
+    example: "number-ticker-demo",
+    isNew: true,
+    usage: `import { NumberTicker } from "@/components/ui/number-ticker"
+
+export function Uptime() {
+  return <NumberTicker value={99.99} decimals={2} suffix="%" />
+}`,
+    props: [
+      { name: "value", type: "number", description: "The number to count up to. Required." },
+      { name: "from", type: "number", default: "0", description: "Number the count starts from." },
+      { name: "decimals", type: "number", default: "0", description: "Digits after the decimal point." },
+      { name: "prefix", type: "string", description: 'Text before the number, such as "$" or "<".' },
+      { name: "suffix", type: "string", description: 'Text after the number, such as "%" or "M+".' },
+      { name: "duration", type: "number", default: "1.2", description: "Duration of the count, in seconds." },
+      { name: "delay", type: "number", default: "0", description: "Delay before the count starts once in view, in seconds." },
+    ],
+  },
+  {
     slug: "section",
     title: "Section",
     description:
@@ -167,6 +209,41 @@ export function Faq() {
     ],
   },
   {
+    slug: "segmented-control",
+    title: "Segmented Control",
+    description:
+      "A single choice between a few options, with a pill that slides to the selected one.",
+    example: "segmented-control-demo",
+    isNew: true,
+    usage: `"use client"
+
+import * as React from "react"
+
+import { SegmentedControl } from "@/components/ui/segmented-control"
+
+export function BillingToggle() {
+  const [billing, setBilling] = React.useState("yearly")
+
+  return (
+    <SegmentedControl
+      aria-label="Billing period"
+      value={billing}
+      onValueChange={setBilling}
+      options={[
+        { value: "monthly", label: "Monthly" },
+        { value: "yearly", label: "Yearly", badge: "−20%" },
+      ]}
+    />
+  )
+}`,
+    props: [
+      { name: "value", type: "string", description: "The selected option. Required." },
+      { name: "onValueChange", type: "(value: string) => void", description: "Called with the option the user picks. Required." },
+      { name: "options", type: "{ value: string; label: ReactNode; badge?: ReactNode }[]", description: "The options, in order. Required." },
+      { name: "aria-label", type: "string", description: "Names the group for assistive technology." },
+    ],
+  },
+  {
     slug: "shimmer-button",
     title: "Shimmer Button",
     description: "A button with a beam of light travelling around its border.",
@@ -187,6 +264,53 @@ export function Cta() {
       { name: "shimmerColor", type: "string", default: '"#ffffff"', description: "Color of the light travelling around the border." },
       { name: "shimmerDuration", type: "string", default: '"3s"', description: "Duration of one full turn, as a CSS time." },
       { name: "background", type: "string", default: '"#0a0a0a"', description: "Background of the button." },
+    ],
+  },
+  {
+    slug: "social-icons",
+    title: "Social Icons",
+    description:
+      "Brand icons for social links: GitHub, LinkedIn, X and YouTube. lucide-react no longer ships them.",
+    example: "social-icons-demo",
+    isNew: true,
+    usage: `import { GitHubIcon } from "@/components/ui/social-icons"
+
+export function GitHubLink() {
+  return (
+    <a href="https://github.com" aria-label="GitHub">
+      <GitHubIcon className="size-4" />
+    </a>
+  )
+}`,
+    propGroups: [
+      {
+        title: "GitHubIcon, LinkedInIcon, XIcon, YouTubeIcon",
+        props: [
+          { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "status-dot",
+    title: "Status Dot",
+    description: "A small live indicator with a pulsing halo, in four tones.",
+    example: "status-dot-demo",
+    isNew: true,
+    usage: `import { StatusDot } from "@/components/ui/status-dot"
+
+export function Status() {
+  return (
+    <p className="flex items-center gap-2 text-sm">
+      <StatusDot />
+      All systems operational
+    </p>
+  )
+}`,
+    props: [
+      { name: "tone", type: '"success" | "warning" | "danger" | "neutral"', default: '"success"', description: "Colour of the dot." },
+      { name: "pulse", type: "boolean", default: "true", description: "Draw an expanding halo. It stops under reduced motion." },
+      { name: "className", type: "string", description: "Size the dot with size-* utilities (size-2 by default)." },
     ],
   },
 ]
