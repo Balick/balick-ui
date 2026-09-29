@@ -1,4 +1,4 @@
-import { registryUrl, siteConfig } from "@/config/site"
+import { installTarget, registryUrl, siteConfig } from "@/config/site"
 import {
   blockCategories,
   getBlock,
@@ -45,6 +45,11 @@ export function serializeComposition(blocks: string[]) {
 /** URL of the registry item that installs the whole page at once. */
 export function composeRegistryUrl(blocks: string[]) {
   return `${siteConfig.url}/r/compose/${serializeComposition(blocks)}.json`
+}
+
+/** The same item, as passed to `shadcn add` (see `installTarget`). */
+export function composeInstallTarget(blocks: string[]) {
+  return installTarget(`compose/${serializeComposition(blocks)}`)
 }
 
 /**

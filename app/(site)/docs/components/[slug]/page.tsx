@@ -8,7 +8,7 @@ import { DocsHeader, H2, InlineCode, P, Step, Steps } from "@/components/docs"
 import { DocsPage } from "@/components/docs-page"
 import { PropsTable } from "@/components/props-table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { registryUrl } from "@/config/site"
+import { installTarget, registryUrl } from "@/config/site"
 import { componentDocs, getComponentDoc } from "@/content/components"
 import { installDependencies, shadcnAdd } from "@/lib/commands"
 import { getRegistryItem, getRegistrySource } from "@/lib/registry"
@@ -79,10 +79,9 @@ export default async function ComponentPage({ params }: Props) {
           <TabsTrigger value="manual">Manual</TabsTrigger>
         </TabsList>
         <TabsContent value="cli" className="flex flex-col gap-3">
-          <CommandBlock commands={shadcnAdd(registryUrl(slug))} />
+          <CommandBlock commands={shadcnAdd(installTarget(slug))} />
           <P className="text-sm">
-            Or, with the <a href="/docs/installation#namespace" className="text-foreground underline underline-offset-4">namespace</a> configured:{" "}
-            <InlineCode>@balick/{slug}</InlineCode>
+            Or pass the full URL: <InlineCode>{registryUrl(slug)}</InlineCode>
           </P>
         </TabsContent>
         <TabsContent value="manual" className="pt-3">

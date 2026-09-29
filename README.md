@@ -16,12 +16,16 @@ source code through the shadcn CLI.
   preview the page live, then install the page and every block with one
   command.
 
+Balick UI is listed in the
+[shadcn registry directory](https://ui.shadcn.com/docs/directory), so every
+item installs by name:
+
 ```bash
 # Optional: the paper and ink theme used on the site
-npx shadcn@latest add https://ui.balick.me/r/theme.json
+npx shadcn@latest add @balick/theme
 
 # Any block or component
-npx shadcn@latest add https://ui.balick.me/r/hero-01.json
+npx shadcn@latest add @balick/hero-01
 ```
 
 ## Development
