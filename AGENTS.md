@@ -32,10 +32,11 @@ as done.
 
 ## Git
 
+The full branch and commit rules are in `CONTRIBUTING.md`. In short:
+
 - Start every change from an up-to-date `main`, on a new branch named
-  `type/short-topic` in kebab-case. Types: `feat` (component, block or
-  feature), `fix`, `docs`, `refactor`, `chore`. Examples: `feat/testimonials-02`,
-  `fix/composer-drag-order`, `docs/git-conventions`.
+  `type/short-topic` in kebab-case (`feat`, `fix`, `docs`, `refactor`,
+  `chore`), for example `feat/testimonials-02`.
 - One branch per change; never reuse a branch whose pull request was merged.
 - Commit messages: an imperative summary line, a blank line, then what
   changed and why.
