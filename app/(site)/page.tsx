@@ -16,7 +16,7 @@ import { Row, SheetLabel, Spacer } from "@/components/sheet"
 import { installTarget } from "@/config/site"
 import { blockList } from "@/content/blocks"
 import { componentDocs, componentHref } from "@/content/components"
-import { galleryCategories } from "@/lib/blocks-gallery"
+import { galleryCategories, galleryCells } from "@/lib/blocks-gallery"
 import { composeInstallTarget, starterComposition } from "@/lib/compose"
 import { cn } from "@/lib/utils"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
@@ -212,7 +212,7 @@ export default function HomePage() {
       />
       <Spacer className="h-8 sm:h-10" />
       <Row>
-        <CategoryGrid compact />
+        <CategoryGrid categories={galleryCells()} compact />
       </Row>
       <Row>
         <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>

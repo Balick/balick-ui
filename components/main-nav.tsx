@@ -7,10 +7,7 @@ import { mainNav } from "@/config/docs"
 import { cn } from "@/lib/utils"
 
 function isActive(pathname: string, href: string) {
-  if (href === "/docs") {
-    return pathname.startsWith("/docs") && !pathname.startsWith("/docs/components")
-  }
-  return pathname.startsWith(href)
+  return pathname === href || pathname.startsWith(`${href}/`)
 }
 
 export function MainNav({ className }: { className?: string }) {

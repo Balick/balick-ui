@@ -5,7 +5,7 @@ export interface NavItem {
   href: string
   label?: string
   disabled?: boolean
-  /** Children revealed when the item or one of them is the current page. */
+  /** Children, revealed when the item is unfolded. */
   items?: NavItem[]
 }
 
@@ -16,7 +16,7 @@ export interface NavSection {
 
 export const mainNav: NavItem[] = [
   { title: "Docs", href: "/docs" },
-  { title: "Components", href: "/docs/components" },
+  { title: "Components", href: "/components" },
   { title: "Blocks", href: "/blocks" },
   { title: "Compose", href: "/compose" },
   { title: "Templates", href: "/templates" },
@@ -24,8 +24,9 @@ export const mainNav: NavItem[] = [
 
 /**
  * The docs sidebar. Blocks and templates have their own pages and are reached
- * from the main navigation; components are listed by category, and a
- * category unfolds to show its components.
+ * from the main navigation. Components are listed by category: a category
+ * unfolds in place to show its components, and its href is the category
+ * gallery, used by search.
  */
 export const docsNav: NavSection[] = [
   {
@@ -39,7 +40,7 @@ export const docsNav: NavSection[] = [
   {
     title: "Components",
     items: [
-      { title: "Overview", href: "/docs/components" },
+      { title: "Overview", href: "/components" },
       ...componentsByCategory().map((category) => ({
         title: category.title,
         href: categoryHref(category.slug),
@@ -57,10 +58,10 @@ function flatten(items: NavItem[]): NavItem[] {
   return items.flatMap((item) => [item, ...flatten(item.items ?? [])])
 }
 
-/** Docs pages in reading order, used for previous/next links and search. */
+/** Pages in reading order, for previous/next links: every page, not the categories. */
 export const flatDocs = docsNav
   .flatMap((section) => flatten(section.items))
-  .filter((item) => !item.disabled && item.href.startsWith("/docs"))
+  .filter((item) => !item.items && !item.disabled)
 
 /** Whether `pathname` is `item` or one of its children. */
 export function isInNavItem(item: NavItem, pathname: string): boolean {

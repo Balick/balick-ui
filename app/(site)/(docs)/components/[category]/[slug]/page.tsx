@@ -54,8 +54,7 @@ export default async function ComponentPage({ params }: Props) {
     >
       <DocsHeader
         crumbs={[
-          { title: "Docs", href: "/docs" },
-          { title: "Components", href: "/docs/components" },
+          { title: "Components", href: "/components" },
           { title: category.title, href: categoryHref(category.slug) },
           { title: doc.title },
         ]}

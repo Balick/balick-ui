@@ -21,7 +21,6 @@ export function BlocksCategoryTabs({
   return (
     <CategoryTabs
       label="Block categories"
-      bleed
       tabs={[
         { href: "/blocks", title: "All", count: total, current: false },
         ...categories.map((category) => ({

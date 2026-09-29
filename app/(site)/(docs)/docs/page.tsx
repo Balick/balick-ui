@@ -51,7 +51,7 @@ export default function IntroductionPage() {
       <H2 id="what-is-inside">What&apos;s inside</H2>
       <ul className="flex flex-col divide-y overflow-hidden rounded-lg border bg-card shadow-xs">
         {[
-          { title: "Components", body: "Standalone, animated or original UI elements.", href: "/docs/components" },
+          { title: "Components", body: "Standalone, animated or original UI elements.", href: "/components" },
           { title: "Blocks", body: "Complete sections: heroes, pricing, testimonials, footers.", href: "/blocks" },
           { title: "Templates", body: "Full pages assembled from blocks, ready to deploy.", href: "/templates" },
         ].map((item) => (

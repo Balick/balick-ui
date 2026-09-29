@@ -13,19 +13,11 @@ export interface CategoryTab {
 }
 
 /**
- * Category tabs, sticky under the site header. They scroll sideways when
- * they overflow and keep the current tab in view. `bleed` spans the whole
- * sheet (blocks gallery); otherwise the bar spans the docs column.
+ * Category tabs across the sheet, sticky under the site header (blocks and
+ * components galleries). They scroll sideways when they overflow and keep
+ * the current tab in view.
  */
-export function CategoryTabs({
-  label,
-  tabs,
-  bleed = false,
-}: {
-  label: string
-  tabs: CategoryTab[]
-  bleed?: boolean
-}) {
+export function CategoryTabs({ label, tabs }: { label: string; tabs: CategoryTab[] }) {
   const listRef = React.useRef<HTMLDivElement>(null)
   const current = tabs.find((tab) => tab.current)?.href
 
@@ -40,17 +32,11 @@ export function CategoryTabs({
     <nav
       aria-label={label}
       data-category-tabs
-      className={cn(
-        "sticky top-14 z-30 border-rule bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/65",
-        bleed ? "border-y" : "-mx-4 border-b md:-mr-8 md:-ml-10 lg:-mr-12 lg:-ml-12"
-      )}
+      className="sticky top-14 z-30 border-y border-rule bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/65"
     >
       <div
         ref={listRef}
-        className={cn(
-          "relative flex gap-2 overflow-x-auto py-2 [mask-image:linear-gradient(to_right,transparent,black_1rem,black_calc(100%-1rem),transparent)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-          bleed ? "sheet px-4 md:px-6" : "px-4 md:pr-8 md:pl-10 lg:px-12"
-        )}
+        className="sheet relative flex gap-2 overflow-x-auto px-4 py-2 [mask-image:linear-gradient(to_right,transparent,black_1rem,black_calc(100%-1rem),transparent)] [scrollbar-width:none] md:px-6 [&::-webkit-scrollbar]:hidden"
       >
         {tabs.map((tab) => (
           <Link

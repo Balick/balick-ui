@@ -1,11 +1,27 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
-import { galleryCategories } from "@/lib/blocks-gallery"
 import { cn } from "@/lib/utils"
 
-/** Columns at each breakpoint, and the literal classes that show or hide a cell there. */
-const breakpoints = [
+export interface CategoryCell {
+  href: string
+  title: string
+  description: string
+  /** One-line summary, shown by the compact grid. */
+  summary?: string
+  /** Size of the category, with its unit: "3 blocks". */
+  count: string
+}
+
+export interface GridBreakpoint {
+  columns: number
+  /** Literal classes that show or hide a cell from this breakpoint up. */
+  show: string
+  hide: string
+}
+
+/** Columns of the category grid at each breakpoint. */
+const categoryBreakpoints: GridBreakpoint[] = [
   { columns: 1, show: "block", hide: "hidden" },
   { columns: 2, show: "sm:block", hide: "sm:hidden" },
   { columns: 3, show: "lg:block", hide: "lg:hidden" },
@@ -13,10 +29,11 @@ const breakpoints = [
 ]
 
 /**
- * Classes for the hatched cells that complete the last row. The k-th filler
- * is visible wherever the last row is short of at least k cells.
+ * Classes for the hatched cells that complete the last row of a hairline
+ * grid. The k-th filler is visible wherever the last row is short of at
+ * least k cells.
  */
-function fillerClasses(count: number) {
+export function fillerClasses(count: number, breakpoints: GridBreakpoint[]) {
   const max = Math.max(...breakpoints.map((bp) => bp.columns)) - 1
   return Array.from({ length: max }, (_, k) => {
     let previous: boolean | undefined
@@ -31,26 +48,28 @@ function fillerClasses(count: number) {
 }
 
 /**
- * Every block category as a hairline grid on the sheet. Place it in a
- * full-width row: the rails and the row's rules draw its outer edges.
+ * Categories as a hairline grid on the sheet (blocks, components). Place it
+ * in a full-width row: the rails and the row's rules draw its outer edges.
  */
-export function CategoryGrid({ compact = false }: { compact?: boolean }) {
-  const categories = galleryCategories()
-
+export function CategoryGrid({
+  categories,
+  compact = false,
+}: {
+  categories: CategoryCell[]
+  compact?: boolean
+}) {
   return (
     <div className="overflow-hidden">
       <ul className="-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {categories.map((category, index) => (
-          <li key={category.slug} className="border-r border-b border-rule">
+          <li key={category.href} className="border-r border-b border-rule">
             <Link
-              href={`/blocks/${category.slug}`}
+              href={category.href}
               className="group flex h-full flex-col p-6 transition-colors hover:bg-foreground/[0.03]"
             >
               <span className="flex items-center justify-between gap-4 font-mono text-[11px] text-muted-foreground">
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <span>
-                  {category.blocks.length} {category.blocks.length === 1 ? "block" : "blocks"}
-                </span>
+                <span>{category.count}</span>
               </span>
               <span className={cn("text-lg font-medium tracking-tight", compact ? "mt-8" : "mt-10")}>
                 {category.title}
@@ -73,7 +92,7 @@ export function CategoryGrid({ compact = false }: { compact?: boolean }) {
             </Link>
           </li>
         ))}
-        {fillerClasses(categories.length).map((classes, index) => (
+        {fillerClasses(categories.length, categoryBreakpoints).map((classes, index) => (
           <li key={index} aria-hidden className={cn("border-r border-b border-rule bg-hatch", classes)} />
         ))}
       </ul>

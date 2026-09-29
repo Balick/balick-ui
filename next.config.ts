@@ -7,14 +7,18 @@ const nextConfig: NextConfig = {
     // Shown as "Updated" in the footer; fixed at build time.
     BUILD_DATE: new Date().toISOString().slice(0, 10),
   },
-  // Component pages moved under their category:
-  // /docs/components/marquee is now /docs/components/motion/marquee.
+  // Components used to live under /docs/components/<slug>. They now have
+  // their own gallery, /components/<category>, and their docs pages sit at
+  // /components/<category>/<slug>.
   async redirects() {
-    return componentDocs.map((doc) => ({
-      source: `/docs/components/${doc.slug}`,
-      destination: componentHref(doc.slug),
-      permanent: true,
-    }));
+    return [
+      ...componentDocs.map((doc) => ({
+        source: `/docs/components/${doc.slug}`,
+        destination: componentHref(doc.slug),
+        permanent: true,
+      })),
+      { source: "/docs/components/:path*", destination: "/components/:path*", permanent: true },
+    ];
   },
 };
 

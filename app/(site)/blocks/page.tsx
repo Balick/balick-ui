@@ -5,7 +5,7 @@ import { BlocksHashRedirect } from "@/components/blocks-category-tabs"
 import { CategoryGrid } from "@/components/category-grid"
 import { Row, SheetLabel, Spacer } from "@/components/sheet"
 import { blockList } from "@/content/blocks"
-import { galleryCategories } from "@/lib/blocks-gallery"
+import { galleryCategories, galleryCells } from "@/lib/blocks-gallery"
 
 export const metadata: Metadata = {
   title: "Blocks",
@@ -48,7 +48,7 @@ export default function BlocksPage() {
       </Row>
       <Spacer className="h-8 sm:h-10" />
       <Row>
-        <CategoryGrid />
+        <CategoryGrid categories={galleryCells()} />
       </Row>
       <Spacer className="h-16 sm:h-24" />
     </div>

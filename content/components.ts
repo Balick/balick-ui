@@ -570,12 +570,12 @@ export function getComponentCategory(slug: string) {
   return componentsByCategory().find((category) => category.slug === slug)
 }
 
-/** Page of a category: /docs/components/buttons. */
+/** Gallery of a category: /components/buttons. */
 export function categoryHref(category: ComponentCategory) {
-  return `/docs/components/${category}`
+  return `/components/${category}`
 }
 
-/** Page of a component: /docs/components/buttons/arrow-button. */
+/** Docs page of a component: /components/buttons/arrow-button. */
 export function componentHref(slug: string) {
   const doc = getComponentDoc(slug)
   if (!doc) throw new Error(`Unknown component: ${slug}`)

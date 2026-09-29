@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 
 const index = [
   { title: "Docs", href: "/docs" },
-  { title: "Components", href: "/docs/components" },
+  { title: "Components", href: "/components" },
   { title: "Blocks", href: "/blocks" },
   { title: "Compose", href: "/compose" },
   { title: "Templates", href: "/templates" },
