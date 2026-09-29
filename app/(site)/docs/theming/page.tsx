@@ -67,7 +67,7 @@ export default function ThemingPage() {
         <InlineCode>background</InlineCode> rather than from an accent colour.
         Radius: <InlineCode>{radius}</InlineCode>.
       </P>
-      <div className="overflow-x-auto rounded-lg border bg-card shadow-xs">
+      <div className="scrollbar-thin overflow-x-auto rounded-lg border bg-card shadow-xs">
         <table className="w-full text-left text-sm">
           <thead className="border-b bg-muted/40 text-xs text-muted-foreground">
             <tr>

@@ -128,7 +128,7 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
 
       <aside
         className={cn(
-          "flex-col border-rule lg:flex lg:overflow-y-auto lg:border-r",
+          "scrollbar-thin flex-col border-rule lg:flex lg:overflow-y-auto lg:border-r",
           panel === "sections" ? "flex" : "hidden"
         )}
       >

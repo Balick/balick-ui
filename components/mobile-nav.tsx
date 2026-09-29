@@ -35,7 +35,7 @@ export function MobileNav({ className }: { className?: string }) {
               <X className="size-4" />
             </Dialog.Close>
           </div>
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="scrollbar-thin flex-1 overflow-y-auto p-4">
             <nav aria-label="Main" className="mb-6 flex flex-col gap-1 px-3">
               {mainNav.map((item) => (
                 <Link

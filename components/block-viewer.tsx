@@ -127,7 +127,7 @@ export function BlockViewer({
                 </div>
               )}
             </div>
-            <div className="max-h-[640px] overflow-auto [&_figure]:rounded-none [&_figure]:border-0">
+            <div className="scrollbar-thin max-h-[640px] overflow-auto [&_figure]:rounded-none [&_figure]:border-0">
               {files[activeFile]?.code}
             </div>
           </div>

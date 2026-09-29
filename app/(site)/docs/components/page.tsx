@@ -16,7 +16,7 @@ export default function ComponentsPage() {
   const categories = componentsByCategory()
 
   return (
-    <DocsPage href="/docs/components" tabs={<ComponentCategoryTabs />}>
+    <DocsPage href="/docs/components" tabs={<ComponentCategoryTabs />} wide>
       <DocsHeader
         crumbs={[{ title: "Docs", href: "/docs" }, { title: "Components" }]}
         title="Components"

@@ -45,7 +45,7 @@ export default async function ComponentCategoryPage({ params }: Props) {
     <DocsPage
       href={categoryHref(category.slug)}
       tabs={<ComponentCategoryTabs active={category.slug} />}
-      toc={category.components.map((doc) => ({ id: doc.slug, title: doc.title }))}
+      wide
     >
       <DocsHeader
         crumbs={[

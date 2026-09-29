@@ -5,8 +5,6 @@ export interface NavItem {
   href: string
   label?: string
   disabled?: boolean
-  /** Shown next to the title, e.g. the number of components in a category. */
-  count?: number
   /** Children revealed when the item or one of them is the current page. */
   items?: NavItem[]
 }
@@ -45,7 +43,6 @@ export const docsNav: NavSection[] = [
       ...componentsByCategory().map((category) => ({
         title: category.title,
         href: categoryHref(category.slug),
-        count: category.components.length,
         items: category.components.map((doc) => ({
           title: doc.title,
           href: componentHref(doc.slug),

@@ -44,6 +44,8 @@ function NavNode({
 }) {
   const current = pathname === item.href
   const open = !!item.items && isInNavItem(item, pathname)
+  // A category reads as an open section, never as a selected button.
+  const highlighted = current && !item.items
 
   if (item.disabled) {
     return (
@@ -63,7 +65,7 @@ function NavNode({
         title={item.title}
         className={cn(
           "flex h-8 items-center gap-2 rounded-md px-3 whitespace-nowrap transition-colors",
-          current
+          highlighted
             ? "bg-card font-medium text-foreground shadow-xs ring-1 ring-border"
             : open
               ? "font-medium text-foreground hover:bg-foreground/[0.04]"
@@ -77,16 +79,13 @@ function NavNode({
           </span>
         )}
         {item.items && (
-          <span className="ml-auto flex shrink-0 items-center gap-1.5 text-muted-foreground">
-            <span className="font-mono text-[11px] font-normal">{item.count}</span>
-            <ChevronRight
-              aria-hidden
-              className={cn(
-                "size-3.5 transition-transform duration-200 motion-reduce:transition-none",
-                open && "rotate-90"
-              )}
-            />
-          </span>
+          <ChevronRight
+            aria-hidden
+            className={cn(
+              "ml-auto size-3.5 shrink-0 text-muted-foreground transition-transform duration-200 motion-reduce:transition-none",
+              open && "rotate-90"
+            )}
+          />
         )}
       </Link>
       {item.items && (

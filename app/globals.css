@@ -161,6 +161,35 @@
 }
 
 /*
+ * A thin scrollbar for the site's inner scroll areas (sidebar, menus,
+ * panels). Chromium and Safari use the ::-webkit-scrollbar styles; Firefox
+ * only knows the standard properties. They are kept away from Chromium,
+ * which ignores ::-webkit-scrollbar as soon as they are set. The thumb
+ * follows --foreground, so it adapts to both modes and to graphite surfaces.
+ */
+@utility scrollbar-thin {
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--foreground) 20%, transparent) transparent;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--foreground) 15%, transparent);
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--foreground) 30%, transparent);
+  }
+}
+
+/*
  * Graphite surface for code, in both modes. It redefines the colour tokens
  * locally, so buttons and labels inside it adapt without extra classes.
  */

@@ -84,7 +84,7 @@ export function CommandMenu({ className }: { className?: string }) {
             className="h-12 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
         </div>
-        <Command.List className="max-h-80 scroll-py-2 overflow-y-auto p-2">
+        <Command.List className="scrollbar-thin max-h-80 scroll-py-2 overflow-y-auto p-2">
           <Command.Empty className="py-10 text-center text-sm text-muted-foreground">
             No results found.
           </Command.Empty>

@@ -41,7 +41,7 @@ export function InstallDialog({ blocks }: { blocks: string[] }) {
               <X className="size-4" />
             </Dialog.Close>
           </div>
-          <div className="grid grid-cols-1 gap-4 overflow-y-auto p-5">
+          <div className="scrollbar-thin grid grid-cols-1 gap-4 overflow-y-auto p-5">
             <CommandBlock commands={shadcnAdd(composeInstallTarget(blocks))} />
             <p className="text-xs text-muted-foreground">
               The CLI asks before overwriting an existing page. On another
@@ -53,7 +53,7 @@ export function InstallDialog({ blocks }: { blocks: string[] }) {
                 app/page.tsx
                 <CopyButton value={source} />
               </div>
-              <pre className="overflow-x-auto p-4 font-mono text-[13px] leading-6">
+              <pre className="scrollbar-thin overflow-x-auto p-4 font-mono text-[13px] leading-6">
                 <code>{source}</code>
               </pre>
             </div>
