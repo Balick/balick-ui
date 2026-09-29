@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-toggle-button",
+  "title": "Theme Toggle Button",
+  "description": "Switches between light and dark; the sun grows into a moon.",
+  "dependencies": [
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/theme-toggle-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { useTheme } from \"next-themes\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Switches between light and dark with next-themes. The sun grows into a\n * moon: its rays fold in and a shadow slides across. The drawing follows the\n * `dark` class, so it is right from the first paint.\n */\nexport function ThemeToggleButton({\n  className,\n  variant = \"ghost\",\n  size = \"icon\",\n  ...props\n}: React.ComponentProps<typeof Button>) {\n  const { resolvedTheme, setTheme } = useTheme()\n  const maskId = React.useId()\n  const [mounted, setMounted] = React.useState(false)\n\n  React.useEffect(() => setMounted(true), [])\n\n  const move = \"transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none\"\n\n  return (\n    <Button\n      variant={variant}\n      size={size}\n      aria-label=\"Toggle theme\"\n      aria-pressed={mounted ? resolvedTheme === \"dark\" : undefined}\n      className={cn(className)}\n      {...props}\n      // Capture phase: leaves the consumer's own onClick untouched.\n      onClickCapture={() => setTheme(resolvedTheme === \"dark\" ? \"light\" : \"dark\")}\n    >\n      <svg viewBox=\"0 0 24 24\" aria-hidden className=\"size-4 overflow-visible\">\n        <mask id={maskId}>\n          <rect width=\"24\" height=\"24\" fill=\"white\" />\n          <circle\n            cx=\"24\"\n            cy=\"4\"\n            r=\"8\"\n            fill=\"black\"\n            className={cn(move, \"dark:-translate-x-[7px] dark:translate-y-[3px]\")}\n          />\n        </mask>\n        <circle\n          cx=\"12\"\n          cy=\"12\"\n          r=\"5\"\n          fill=\"currentColor\"\n          mask={`url(#${maskId})`}\n          className={cn(move, \"origin-center [transform-box:fill-box] dark:scale-[1.6]\")}\n        />\n        <g\n          stroke=\"currentColor\"\n          strokeWidth=\"2\"\n          strokeLinecap=\"round\"\n          className={cn(\n            move,\n            \"origin-center [transform-box:view-box] transition-[transform,opacity] dark:scale-50 dark:rotate-45 dark:opacity-0\"\n          )}\n        >\n          <path d=\"M12 1.5v2M12 20.5v2M1.5 12h2M20.5 12h2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M4.6 19.4 6 18M18 6l1.4-1.4\" />\n        </g>\n      </svg>\n    </Button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

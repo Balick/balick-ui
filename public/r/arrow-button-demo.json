@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "arrow-button-demo",
+  "title": "Arrow Button Demo",
+  "description": "Example usage of Arrow Button.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/arrow-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/arrow-button-demo.tsx",
+      "content": "import { ArrowButton, ArrowLink } from \"@/registry/balick/ui/arrow-button\"\n\nexport default function ArrowButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-3\">\n      <ArrowButton>Get started</ArrowButton>\n      <ArrowLink href=\"#\" variant=\"outline\">\n        Read the docs\n      </ArrowLink>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-roll-button-demo",
+  "title": "Text Roll Button Demo",
+  "description": "Example usage of Text Roll Button.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/text-roll-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/text-roll-button-demo.tsx",
+      "content": "import { TextRollButton } from \"@/registry/balick/ui/text-roll-button\"\n\nexport default function TextRollButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-3\">\n      <TextRollButton>Book a demo</TextRollButton>\n      <TextRollButton variant=\"outline\">View pricing</TextRollButton>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

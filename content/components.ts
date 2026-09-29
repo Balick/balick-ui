@@ -348,6 +348,219 @@ export function Status() {
       { name: "className", type: "string", description: "Size the dot with size-* utilities (size-2 by default)." },
     ],
   },
+  {
+    slug: "arrow-button",
+    category: "buttons",
+    title: "Arrow Button",
+    description: "A button or link whose arrow nudges forward on hover and focus.",
+    example: "arrow-button-demo",
+    isNew: true,
+    usage: `import { ArrowButton, ArrowLink } from "@/components/ui/arrow-button"
+
+export function Actions() {
+  return (
+    <>
+      <ArrowButton>Get started</ArrowButton>
+      <ArrowLink href="/docs" variant="outline">Read the docs</ArrowLink>
+    </>
+  )
+}`,
+    propGroups: [
+      {
+        title: "ArrowButton",
+        props: [
+          { name: "...props", type: "ComponentProps<typeof Button>", description: "Every prop of the shadcn/ui Button, including variant and size." },
+        ],
+      },
+      {
+        title: "ArrowLink",
+        props: [
+          { name: "variant", type: '"default" | "outline" | "secondary" | "ghost" | "link"', default: '"default"', description: "Button style applied to the link." },
+          { name: "size", type: '"default" | "sm" | "lg"', default: '"default"', description: "Button size applied to the link." },
+          { name: "...props", type: 'ComponentProps<"a">', description: "Any anchor attribute, such as href." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "copy-button",
+    category: "buttons",
+    title: "Copy Button",
+    description: "Copies a text to the clipboard; the icon turns into a check mark.",
+    example: "copy-button-demo",
+    isNew: true,
+    usage: `import { CopyButton } from "@/components/ui/copy-button"
+
+export function Command() {
+  return <CopyButton value="npm install motion" label="Copy command" />
+}`,
+    props: [
+      { name: "value", type: "string", description: "Text written to the clipboard. Required." },
+      { name: "label", type: "string", default: '"Copy"', description: "Accessible name of the button." },
+      { name: "timeout", type: "number", default: "2000", description: "How long the check mark stays, in milliseconds." },
+      { name: "onCopy", type: "() => void", description: "Called once the text is copied." },
+    ],
+  },
+  {
+    slug: "expand-button",
+    category: "buttons",
+    title: "Expand Button",
+    description: "An icon button whose label slides out on hover and keyboard focus.",
+    example: "expand-button-demo",
+    isNew: true,
+    usage: `import { Star } from "lucide-react"
+
+import { ExpandButton } from "@/components/ui/expand-button"
+
+export function StarButton() {
+  return <ExpandButton icon={<Star />} label="Star on GitHub" />
+}`,
+    props: [
+      { name: "icon", type: "ReactNode", description: "Icon shown on its own at rest. Required." },
+      { name: "label", type: "string", description: "Label that unfolds on hover and focus. Always the accessible name. Required." },
+      { name: "variant", type: "Button variant", default: '"outline"', description: "Style of the shadcn/ui Button underneath." },
+    ],
+  },
+  {
+    slug: "hold-button",
+    category: "buttons",
+    title: "Hold Button",
+    description: "Hold to confirm, for actions that are hard to undo. Releasing early cancels.",
+    example: "hold-button-demo",
+    isNew: true,
+    usage: `import { HoldButton } from "@/components/ui/hold-button"
+
+export function DeleteProject() {
+  return <HoldButton onConfirm={() => deleteProject()}>Hold to delete</HoldButton>
+}`,
+    props: [
+      { name: "onConfirm", type: "() => void", description: "Called once the button has been held long enough. Required." },
+      { name: "duration", type: "number", default: "1200", description: "How long to hold, in milliseconds." },
+      { name: "variant", type: "Button variant", default: '"destructive"', description: "Style of the shadcn/ui Button underneath." },
+    ],
+  },
+  {
+    slug: "magnetic-button",
+    category: "buttons",
+    title: "Magnetic Button",
+    description: "A button that leans a few pixels towards the pointer and settles back when it leaves.",
+    example: "magnetic-button-demo",
+    isNew: true,
+    usage: `import { MagneticButton } from "@/components/ui/magnetic-button"
+
+export function Cta() {
+  return <MagneticButton size="lg">Hover me</MagneticButton>
+}`,
+    props: [
+      { name: "strength", type: "number", default: "0.3", description: "Share of the pointer's distance the button follows, from 0 to 1." },
+      { name: "max", type: "number", default: "8", description: "Largest shift, in pixels." },
+    ],
+  },
+  {
+    slug: "ripple-button",
+    category: "buttons",
+    title: "Ripple Button",
+    description: "A button that sends a soft ripple out from where it is pressed.",
+    example: "ripple-button-demo",
+    isNew: true,
+    usage: `import { RippleButton } from "@/components/ui/ripple-button"
+
+export function Submit() {
+  return <RippleButton type="submit">Submit</RippleButton>
+}`,
+    props: [
+      { name: "...props", type: "ComponentProps<typeof Button>", description: "Every prop of the shadcn/ui Button. The ripple takes the colour of the text." },
+    ],
+  },
+  {
+    slug: "spotlight-button",
+    category: "buttons",
+    title: "Spotlight Button",
+    description: "A soft light follows the pointer inside the button, in the colour of its text.",
+    example: "spotlight-button-demo",
+    isNew: true,
+    usage: `import { SpotlightButton } from "@/components/ui/spotlight-button"
+
+export function Cta() {
+  return <SpotlightButton size="lg">Start building</SpotlightButton>
+}`,
+    props: [
+      { name: "...props", type: "ComponentProps<typeof Button>", description: "Every prop of the shadcn/ui Button." },
+    ],
+  },
+  {
+    slug: "status-button",
+    category: "buttons",
+    title: "Status Button",
+    description: "A button that shows the progress of its action: idle, loading, success or error.",
+    example: "status-button-demo",
+    isNew: true,
+    usage: `"use client"
+
+import * as React from "react"
+
+import { StatusButton, type ButtonStatus } from "@/components/ui/status-button"
+
+export function SaveButton() {
+  const [status, setStatus] = React.useState<ButtonStatus>("idle")
+
+  async function save() {
+    setStatus("loading")
+    try {
+      await saveChanges()
+      setStatus("success")
+    } catch {
+      setStatus("error")
+    }
+  }
+
+  return (
+    <StatusButton status={status} onClick={save}>
+      Save changes
+    </StatusButton>
+  )
+}`,
+    props: [
+      { name: "status", type: '"idle" | "loading" | "success" | "error"', default: '"idle"', description: "Current state. The button is disabled while loading." },
+      { name: "loadingText", type: "ReactNode", default: '"Saving"', description: "Label while loading." },
+      { name: "successText", type: "ReactNode", default: '"Saved"', description: "Label after a success." },
+      { name: "errorText", type: "ReactNode", default: '"Try again"', description: "Label after an error." },
+    ],
+  },
+  {
+    slug: "text-roll-button",
+    category: "buttons",
+    title: "Text Roll Button",
+    description: "On hover and focus, the label rolls up and an identical copy takes its place.",
+    example: "text-roll-button-demo",
+    isNew: true,
+    usage: `import { TextRollButton } from "@/components/ui/text-roll-button"
+
+export function Demo() {
+  return <TextRollButton>Book a demo</TextRollButton>
+}`,
+    props: [
+      { name: "children", type: "ReactNode", description: "The label. Keep it to plain text." },
+      { name: "...props", type: "ComponentProps<typeof Button>", description: "Every prop of the shadcn/ui Button." },
+    ],
+  },
+  {
+    slug: "theme-toggle-button",
+    category: "buttons",
+    title: "Theme Toggle Button",
+    description: "Switches between light and dark with next-themes; the sun grows into a moon.",
+    example: "theme-toggle-button-demo",
+    isNew: true,
+    usage: `import { ThemeToggleButton } from "@/components/ui/theme-toggle-button"
+
+export function Header() {
+  return <ThemeToggleButton />
+}`,
+    props: [
+      { name: "variant", type: "Button variant", default: '"ghost"', description: "Style of the shadcn/ui Button underneath." },
+      { name: "size", type: "Button size", default: '"icon"', description: "Size of the button." },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

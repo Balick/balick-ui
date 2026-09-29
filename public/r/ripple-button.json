@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-button",
+  "title": "Ripple Button",
+  "description": "A button that sends a soft ripple out from where it is pressed.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/ripple-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion } from \"motion/react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\ninterface Ripple {\n  id: number\n  x: number\n  y: number\n  size: number\n}\n\n/** A button that sends a soft ripple out from where it is pressed. */\nexport function RippleButton({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof Button>) {\n  const reduceMotion = useReducedMotion()\n  const [ripples, setRipples] = React.useState<Ripple[]>([])\n  const nextId = React.useRef(0)\n\n  function addRipple(event: React.PointerEvent<HTMLButtonElement>) {\n    if (reduceMotion) return\n    const rect = event.currentTarget.getBoundingClientRect()\n    const size = Math.hypot(rect.width, rect.height) * 2\n    const id = nextId.current++\n    setRipples((current) => [\n      ...current,\n      { id, x: event.clientX - rect.left, y: event.clientY - rect.top, size },\n    ])\n  }\n\n  return (\n    <Button\n      className={cn(\"relative overflow-hidden\", className)}\n      // Capture phase: leaves the consumer's own onPointerDown untouched.\n      onPointerDownCapture={addRipple}\n      {...props}\n    >\n      {ripples.map((ripple) => (\n        <motion.span\n          key={ripple.id}\n          aria-hidden\n          className=\"pointer-events-none absolute rounded-full bg-current\"\n          style={{\n            left: ripple.x - ripple.size / 2,\n            top: ripple.y - ripple.size / 2,\n            width: ripple.size,\n            height: ripple.size,\n          }}\n          initial={{ scale: 0, opacity: 0.25 }}\n          animate={{ scale: 1, opacity: 0 }}\n          transition={{ duration: 0.6, ease: \"easeOut\" }}\n          onAnimationComplete={() =>\n            setRipples((current) => current.filter((item) => item.id !== ripple.id))\n          }\n        />\n      ))}\n      <span className=\"relative inline-flex items-center gap-2\">{children}</span>\n    </Button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

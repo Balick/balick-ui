@@ -222,6 +222,175 @@
       ]
     },
     {
+      "name": "arrow-button",
+      "type": "registry:ui",
+      "title": "Arrow Button",
+      "description": "A button or link whose arrow nudges forward on hover and focus.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/arrow-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "Copy Button",
+      "description": "Copies a text to the clipboard; the icon turns into a check mark.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "status-button",
+      "type": "registry:ui",
+      "title": "Status Button",
+      "description": "A button that shows the progress of its action: idle, loading, success or error.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/status-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hold-button",
+      "type": "registry:ui",
+      "title": "Hold Button",
+      "description": "Hold to confirm, for actions that are hard to undo.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/hold-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-roll-button",
+      "type": "registry:ui",
+      "title": "Text Roll Button",
+      "description": "On hover, the label rolls up and an identical copy takes its place.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/text-roll-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-button",
+      "type": "registry:ui",
+      "title": "Magnetic Button",
+      "description": "A button that leans a few pixels towards the pointer.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/magnetic-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "ripple-button",
+      "type": "registry:ui",
+      "title": "Ripple Button",
+      "description": "A button that sends a soft ripple out from where it is pressed.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/ripple-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-button",
+      "type": "registry:ui",
+      "title": "Spotlight Button",
+      "description": "A soft light follows the pointer inside the button.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/spotlight-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "expand-button",
+      "type": "registry:ui",
+      "title": "Expand Button",
+      "description": "An icon button whose label slides out on hover and focus.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/expand-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "theme-toggle-button",
+      "type": "registry:ui",
+      "title": "Theme Toggle Button",
+      "description": "Switches between light and dark; the sun grows into a moon.",
+      "dependencies": [
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/theme-toggle-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "marquee-demo",
       "type": "registry:example",
       "title": "Marquee Demo",
@@ -371,6 +540,162 @@
       "files": [
         {
           "path": "registry/balick/examples/section-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "arrow-button-demo",
+      "type": "registry:example",
+      "title": "Arrow Button Demo",
+      "description": "Example usage of Arrow Button.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/arrow-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/arrow-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "copy-button-demo",
+      "type": "registry:example",
+      "title": "Copy Button Demo",
+      "description": "Example usage of Copy Button.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/copy-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/copy-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "status-button-demo",
+      "type": "registry:example",
+      "title": "Status Button Demo",
+      "description": "Example usage of Status Button.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/status-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/status-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "hold-button-demo",
+      "type": "registry:example",
+      "title": "Hold Button Demo",
+      "description": "Example usage of Hold Button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/hold-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/hold-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "text-roll-button-demo",
+      "type": "registry:example",
+      "title": "Text Roll Button Demo",
+      "description": "Example usage of Text Roll Button.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/text-roll-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/text-roll-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-button-demo",
+      "type": "registry:example",
+      "title": "Magnetic Button Demo",
+      "description": "Example usage of Magnetic Button.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/magnetic-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/magnetic-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ripple-button-demo",
+      "type": "registry:example",
+      "title": "Ripple Button Demo",
+      "description": "Example usage of Ripple Button.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/ripple-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/ripple-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-button-demo",
+      "type": "registry:example",
+      "title": "Spotlight Button Demo",
+      "description": "Example usage of Spotlight Button.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/spotlight-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/spotlight-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "expand-button-demo",
+      "type": "registry:example",
+      "title": "Expand Button Demo",
+      "description": "Example usage of Expand Button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.balick.me/r/expand-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/expand-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "theme-toggle-button-demo",
+      "type": "registry:example",
+      "title": "Theme Toggle Button Demo",
+      "description": "Example usage of Theme Toggle Button.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/theme-toggle-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/theme-toggle-button-demo.tsx",
           "type": "registry:example"
         }
       ]

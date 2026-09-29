@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-button",
+  "title": "Status Button",
+  "description": "A button that shows the progress of its action: idle, loading, success or error.",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/status-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Check, LoaderCircle, X } from \"lucide-react\"\nimport { AnimatePresence, motion, useReducedMotion } from \"motion/react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\nexport type ButtonStatus = \"idle\" | \"loading\" | \"success\" | \"error\"\n\nexport interface StatusButtonProps extends React.ComponentProps<typeof Button> {\n  status?: ButtonStatus\n  /** Label while loading. */\n  loadingText?: React.ReactNode\n  /** Label after a success. */\n  successText?: React.ReactNode\n  /** Label after an error. */\n  errorText?: React.ReactNode\n}\n\n/**\n * A button that shows the progress of the action it starts: idle, loading,\n * success or error. Its width follows the label, and the new state is\n * announced to screen readers.\n */\nexport function StatusButton({\n  status = \"idle\",\n  loadingText = \"Saving\",\n  successText = \"Saved\",\n  errorText = \"Try again\",\n  children,\n  className,\n  style,\n  disabled,\n  ...props\n}: StatusButtonProps) {\n  const reduceMotion = useReducedMotion()\n  const button = React.useRef<HTMLButtonElement>(null)\n  const content = React.useRef<HTMLSpanElement>(null)\n  const [width, setWidth] = React.useState<number>()\n\n  // Size the button to its label plus its own padding and border, so the width\n  // can transition between states whatever the project's button style.\n  React.useLayoutEffect(() => {\n    const node = content.current\n    const root = button.current\n    if (!node || !root) return\n    const observer = new ResizeObserver(() => {\n      const style = getComputedStyle(root)\n      const frame = [\"paddingLeft\", \"paddingRight\", \"borderLeftWidth\", \"borderRightWidth\"]\n        .map((key) => parseFloat(style[key as keyof CSSStyleDeclaration] as string) || 0)\n        .reduce((sum, value) => sum + value, 0)\n      setWidth(node.offsetWidth + frame)\n    })\n    observer.observe(node)\n    return () => observer.disconnect()\n  }, [])\n\n  const states = {\n    idle: { icon: null, label: children },\n    loading: { icon: <LoaderCircle aria-hidden className=\"animate-spin\" />, label: loadingText },\n    success: { icon: <Check aria-hidden />, label: successText },\n    error: { icon: <X aria-hidden />, label: errorText },\n  }\n  const { icon, label } = states[status]\n\n  return (\n    <Button\n      ref={button}\n      aria-busy={status === \"loading\"}\n      disabled={disabled || status === \"loading\"}\n      className={cn(\n        \"relative justify-start overflow-hidden transition-[width,background-color] duration-200 ease-out motion-reduce:transition-none\",\n        className\n      )}\n      style={{ width, ...style }}\n      {...props}\n    >\n      <span ref={content} className=\"mx-auto inline-flex items-center gap-2 whitespace-nowrap\">\n        <AnimatePresence mode=\"popLayout\" initial={false}>\n          <motion.span\n            key={status}\n            className=\"inline-flex items-center gap-2\"\n            initial={reduceMotion ? false : { opacity: 0, y: 8, filter: \"blur(2px)\" }}\n            animate={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\n            exit={reduceMotion ? undefined : { opacity: 0, y: -8, filter: \"blur(2px)\" }}\n            transition={{ duration: reduceMotion ? 0 : 0.2, ease: \"easeOut\" }}\n          >\n            {icon}\n            {label}\n          </motion.span>\n        </AnimatePresence>\n      </span>\n      <span className=\"sr-only\" aria-live=\"polite\">\n        {status === \"idle\" ? \"\" : label}\n      </span>\n    </Button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

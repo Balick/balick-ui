@@ -38,10 +38,9 @@ export default function ComponentsPage() {
             {category.components.map((doc) => {
               const Example = examples[doc.example]
               return (
-                <Link
+                <div
                   key={doc.slug}
-                  href={`/docs/components/${doc.slug}`}
-                  className="group overflow-hidden rounded-xl border bg-card shadow-xs transition-colors hover:border-foreground/20"
+                  className="group relative overflow-hidden rounded-xl border bg-card shadow-xs transition-colors hover:border-foreground/20"
                 >
                   <div
                     inert
@@ -53,12 +52,20 @@ export default function ComponentsPage() {
                   </div>
                   <div className="p-4">
                     <div className="flex items-center gap-2">
-                      <h3 className="font-medium">{doc.title}</h3>
+                      <h3 className="font-medium">
+                        {/* The link covers the whole card, so the preview stays outside it. */}
+                        <Link
+                          href={`/docs/components/${doc.slug}`}
+                          className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none after:focus-visible:ring-2 after:focus-visible:ring-ring"
+                        >
+                          {doc.title}
+                        </Link>
+                      </h3>
                       {doc.isNew && <NewBadge>New</NewBadge>}
                     </div>
                     <p className="mt-1 text-sm text-muted-foreground">{doc.description}</p>
                   </div>
-                </Link>
+                </div>
               )
             })}
           </div>

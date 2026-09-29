@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expand-button-demo",
+  "title": "Expand Button Demo",
+  "description": "Example usage of Expand Button.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.balick.me/r/expand-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/expand-button-demo.tsx",
+      "content": "import { Download, Share2, Star } from \"lucide-react\"\n\nimport { ExpandButton } from \"@/registry/balick/ui/expand-button\"\n\nexport default function ExpandButtonDemo() {\n  return (\n    <div className=\"flex items-center gap-2\">\n      <ExpandButton icon={<Star aria-hidden />} label=\"Star on GitHub\" />\n      <ExpandButton icon={<Share2 aria-hidden />} label=\"Share\" />\n      <ExpandButton icon={<Download aria-hidden />} label=\"Download\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

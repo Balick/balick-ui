@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-button-demo",
+  "title": "Copy Button Demo",
+  "description": "Example usage of Copy Button.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/copy-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/copy-button-demo.tsx",
+      "content": "import { CopyButton } from \"@/registry/balick/ui/copy-button\"\n\nconst command = \"npx shadcn@latest add @balick/copy-button\"\n\nexport default function CopyButtonDemo() {\n  return (\n    <div className=\"flex max-w-full items-center gap-2 rounded-lg border bg-background py-1 pr-1 pl-4 font-mono text-sm\">\n      <span className=\"truncate\">{command}</span>\n      <CopyButton value={command} label=\"Copy command\" size=\"sm\" className=\"size-8\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

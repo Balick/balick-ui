@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hold-button-demo",
+  "title": "Hold Button Demo",
+  "description": "Example usage of Hold Button.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.balick.me/r/hold-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/hold-button-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Trash2 } from \"lucide-react\"\n\nimport { HoldButton } from \"@/registry/balick/ui/hold-button\"\n\nexport default function HoldButtonDemo() {\n  const [deleted, setDeleted] = React.useState(0)\n\n  return (\n    <div className=\"flex flex-col items-center gap-3\">\n      <HoldButton onConfirm={() => setDeleted((count) => count + 1)}>\n        <Trash2 aria-hidden />\n        Hold to delete\n      </HoldButton>\n      <p className=\"text-xs text-muted-foreground\" aria-live=\"polite\">\n        {deleted === 0 ? \"Press and hold the button.\" : `Deleted ${deleted} ${deleted === 1 ? \"time\" : \"times\"}.`}\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
