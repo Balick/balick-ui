@@ -21,7 +21,7 @@ import { blockCategories, blockList, getBlock, getCategory } from "@/content/blo
 import { useCopy } from "@/hooks/use-copy"
 import {
   COMPOSE_MESSAGE,
-  composeRegistryUrl,
+  composeV0Url,
   compositionHints,
   insertionIndex,
   serializeComposition,
@@ -273,7 +273,7 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
             {blocks.length > 0 && (
               <OpenInV0Button
                 name="composed page"
-                url={composeRegistryUrl(blocks)}
+                url={composeV0Url(blocks)}
                 className="h-8"
               />
             )}
