@@ -7,7 +7,7 @@ import { CommandBlock } from "@/components/command-block"
 import { CopyButton } from "@/components/copy-button"
 import { Button } from "@/components/ui/button"
 import { shadcnAdd } from "@/lib/commands"
-import { composePageSource, composeRegistryUrl } from "@/lib/compose"
+import { composeInstallTarget, composePageSource } from "@/lib/compose"
 
 export function InstallDialog({ blocks }: { blocks: string[] }) {
   const source = composePageSource(blocks)
@@ -42,7 +42,7 @@ export function InstallDialog({ blocks }: { blocks: string[] }) {
             </Dialog.Close>
           </div>
           <div className="grid grid-cols-1 gap-4 overflow-y-auto p-5">
-            <CommandBlock commands={shadcnAdd(composeRegistryUrl(blocks))} />
+            <CommandBlock commands={shadcnAdd(composeInstallTarget(blocks))} />
             <p className="text-xs text-muted-foreground">
               The CLI asks before overwriting an existing page. On another
               framework, install the blocks the same way and render them from
