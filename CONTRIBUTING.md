@@ -21,6 +21,9 @@ pnpm dev   # http://localhost:3000
 3. Write commit messages as an imperative summary line, a blank line, then
    what changed and why.
 4. Everything is written in English: code, comments, site copy and docs.
+5. Working with an AI agent? It follows [`AGENTS.md`](AGENTS.md) (Claude Code
+   reads it through `CLAUDE.md`): same rules, and no AI attribution in
+   commits or pull requests.
 
 ## Adding a component or a block
 
