@@ -70,7 +70,9 @@ The full branch and commit rules are in `CONTRIBUTING.md`. In short:
   to the shadcn/ui `Button` (listen in the capture phase instead).
 - Open in v0 reads its own variants of the items, `/r/v0/<name>.json`, built in
   `lib/v0-variant.ts`. v0 ignores `css` and `cssVars`, so the variants inline
-  the CSS of animations. A demo (`registry:example`) has a default export,
+  the CSS of animations. v0 does not resolve a bare name in
+  `registryDependencies` (`input`): the variants list URLs only, and the shadcn/ui
+  primitives are served by `/r/v0/shadcn/<name>.json`. A demo (`registry:example`) has a default export,
   because v0 imports it; a block keeps its named export and the variant adds
   the default one.
 - Everything in this repository is written in English: code, comments, site

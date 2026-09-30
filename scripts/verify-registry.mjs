@@ -89,11 +89,18 @@ function run(command, commandArgs, { cwd, env } = {}) {
   })
 }
 
-/** Runs a command that must succeed, retrying network hiccups once. */
+/**
+ * Runs a command that must succeed. The npm registry sometimes answers 404 or
+ * drops a connection for a minute, so it retries twice after a pause, and asks
+ * npm to revalidate what it cached.
+ */
 async function mustRun(command, commandArgs, options) {
+  const pauses = [0, 10_000, 30_000]
   let last
-  for (let attempt = 0; attempt < 2; attempt++) {
-    last = await run(command, commandArgs, options)
+  for (const [attempt, pause] of pauses.entries()) {
+    if (pause) await new Promise((resolve) => setTimeout(resolve, pause))
+    const env = attempt ? { ...options?.env, npm_config_prefer_online: "true" } : options?.env
+    last = await run(command, commandArgs, { ...options, env })
     if (last.ok) return last.output
   }
   const tail = last.output.split("\n").slice(-25).join("\n")
@@ -297,9 +304,10 @@ function checkFormat(item, { entry, site }) {
   for (const key of ["css", "cssVars", "envVars", "tailwind"]) {
     if (key in item) problems.push(`${key} is not supported by Open in v0`)
   }
+  // v0 does not resolve a bare name such as "input": only URLs of v0 variants.
   for (const dependency of item.registryDependencies ?? []) {
-    if (dependency.startsWith("http") && !dependency.startsWith(`${site}/r/v0/deps/`)) {
-      problems.push(`dependency ${dependency} is not a v0 dependency variant`)
+    if (!dependency.startsWith(`${site}/r/v0/deps/`) && !dependency.startsWith(`${site}/r/v0/shadcn/`)) {
+      problems.push(`dependency ${dependency} is not the URL of a v0 variant`)
     }
   }
   for (const file of item.files ?? []) {
@@ -348,7 +356,6 @@ async function emulateV0(site, stage, projectName, entries, work) {
   log(`Emulating Open in v0: ${stage}`)
   const files = new Map() // target -> { content, from }
   const npmDependencies = new Set()
-  const shadcnDependencies = new Set()
   const pages = [] // [route, source]
 
   const place = (file, from) => {
@@ -369,22 +376,15 @@ async function emulateV0(site, stage, projectName, entries, work) {
     const name = url.split("/").pop().replace(/\.json$/, "")
     for (const problem of checkFormat(item, { entry: false, site })) fail(stage, name, problem)
     for (const file of item.files ?? []) place(file, owner)
-    const info = { npm: new Set(item.dependencies ?? []), shadcn: new Set(), urls: [] }
+    const info = { npm: new Set(item.dependencies ?? []), urls: [] }
     dependencyInfo.set(url, info)
-    for (const dependency of item.registryDependencies ?? []) {
-      if (dependency.startsWith("http")) info.urls.push(dependency)
-      else info.shadcn.add(dependency)
-    }
+    info.urls.push(...(item.registryDependencies ?? []).filter((dependency) => dependency.startsWith("http")))
     return info
   }
   /** Everything an entry needs: its own dependencies, and theirs in turn. */
   async function collectNeeds(item, owner) {
-    const needs = { npm: new Set(item.dependencies ?? []), shadcn: new Set() }
-    const queue = []
-    for (const dependency of item.registryDependencies ?? []) {
-      if (dependency.startsWith("http")) queue.push(dependency)
-      else needs.shadcn.add(dependency)
-    }
+    const needs = { npm: new Set(item.dependencies ?? []) }
+    const queue = (item.registryDependencies ?? []).filter((dependency) => dependency.startsWith("http"))
     const seen = new Set()
     while (queue.length) {
       const url = queue.shift()
@@ -392,7 +392,6 @@ async function emulateV0(site, stage, projectName, entries, work) {
       seen.add(url)
       const info = await loadDependency(url, owner)
       info.npm.forEach((name) => needs.npm.add(name))
-      info.shadcn.forEach((name) => needs.shadcn.add(name))
       queue.push(...info.urls)
     }
     return needs
@@ -407,7 +406,6 @@ async function emulateV0(site, stage, projectName, entries, work) {
       for (const file of item.files ?? []) if (file !== page) place(file, entry.name)
       const needs = await collectNeeds(item, entry.name)
       needs.npm.forEach((name) => npmDependencies.add(name))
-      needs.shadcn.forEach((name) => shadcnDependencies.add(name))
 
       if (page) {
         pages.push([`entry/${entry.name}`, page.content])
@@ -441,9 +439,6 @@ async function emulateV0(site, stage, projectName, entries, work) {
     for (const [target, { content }] of files) writeFile(dir, target, content)
     for (const [route, source] of pages) writeFile(dir, `app/${route}/page.tsx`, source)
     if (npmDependencies.size) await mustRun("npm", ["install", ...npmDependencies], { cwd: dir })
-    if (shadcnDependencies.size) {
-      await mustRun("npx", ["-y", "shadcn@latest", "add", ...shadcnDependencies, "-y", "-o"], { cwd: dir })
-    }
     log(`Typechecking and building the ${stage} project`)
     await checkProject(dir, stage)
   } catch (error) {
