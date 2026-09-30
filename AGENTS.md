@@ -23,12 +23,20 @@ pnpm lint             # eslint
 npx tsc --noEmit      # typecheck
 pnpm registry:build   # sync the theme, check the items, regenerate public/r/*.json
 pnpm build            # production build
+pnpm registry:verify  # install every item into fresh projects, emulate Open in v0
 ```
 
 Run `pnpm registry:build` after any change to `registry.json`,
 `registry/balick/**` or the colour tokens in `app/globals.css`, and commit the
-regenerated `public/r/` files. Run all four checks before you report a change
-as done.
+regenerated `public/r/` files. Run the first four checks before you report a
+change as done.
+
+When you add or change anything under `registry/` or in `registry.json`, also
+run `pnpm registry:verify` (it needs network and takes a few minutes): it
+installs every item into fresh Radix and Base UI projects, and emulates what
+Open in v0 does with each item. Once the change is deployed, run
+`pnpm registry:verify --url https://ui.balick.me`, and open a few items in v0
+by hand: the emulation cannot replace that.
 
 ## Git
 
@@ -60,6 +68,11 @@ The full branch and commit rules are in `CONTRIBUTING.md`. In short:
 - Items must work in projects set up with either shadcn/ui style, Radix or
   Base UI: do not rely on `asChild`, and do not forward typed event handlers
   to the shadcn/ui `Button` (listen in the capture phase instead).
+- Open in v0 reads its own variants of the items, `/r/v0/<name>.json`, built in
+  `lib/v0-variant.ts`. v0 ignores `css` and `cssVars`, so the variants inline
+  the CSS of animations. A demo (`registry:example`) has a default export,
+  because v0 imports it; a block keeps its named export and the variant adds
+  the default one.
 - Everything in this repository is written in English: code, comments, site
   copy, docs and commit messages.
 - The repository holds code and contributor docs only; no roadmap, strategy

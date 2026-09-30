@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 import { componentHref, componentDocs } from "./content/components";
 
 const nextConfig: NextConfig = {
+  // `pnpm registry:verify` builds into its own folder, so it never disturbs `pnpm dev`.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   env: {
     // Shown as "Updated" in the footer; fixed at build time.
     BUILD_DATE: new Date().toISOString().slice(0, 10),

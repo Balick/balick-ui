@@ -26,3 +26,22 @@ jobs:
             exit 1
           }
       - run: pnpm build
+
+  # Installs every item into fresh projects and emulates "Open in v0". It takes
+  # a few minutes and is not required to merge; see scripts/verify-registry.mjs.
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [radix, base, v0]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm registry:verify --only ${{ matrix.target }}
