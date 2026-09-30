@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-reveal",
+  "title": "Text Reveal",
+  "description": "Reveals a line word by word, each part fading in from a light blur.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/text-reveal.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst tags = {\n  h1: motion.h1,\n  h2: motion.h2,\n  h3: motion.h3,\n  p: motion.p,\n  span: motion.span,\n}\n\ntype Tag = keyof typeof tags\n\nexport interface TextRevealProps {\n  /** The text to reveal. */\n  children: string\n  /** Element rendered around the text. */\n  as?: Tag\n  /** Reveal word by word, or character by character. */\n  by?: \"word\" | \"character\"\n  /** Delay before the first word, in seconds. */\n  delay?: number\n  /** Delay between two words or characters, in seconds. */\n  stagger?: number\n  /** Wait until the text scrolls into view. */\n  inView?: boolean\n  className?: string\n}\n\n/**\n * Reveals a line word by word (or character by character), each part\n * fading in from a light blur. The full text stays readable by screen\n * readers and search engines.\n */\nexport function TextReveal({\n  children,\n  as: Tag = \"p\",\n  by = \"word\",\n  delay = 0,\n  stagger = 0.06,\n  inView = false,\n  className,\n}: TextRevealProps) {\n  const reduceMotion = useReducedMotion()\n  const parts = by === \"word\" ? children.split(/(\\s+)/) : Array.from(children)\n  const MotionTag = tags[Tag]\n\n  return (\n    <MotionTag\n      className={cn(className)}\n      initial=\"hidden\"\n      {...(inView\n        ? { whileInView: \"visible\", viewport: { once: true, margin: \"-50px\" } }\n        : { animate: \"visible\" })}\n      transition={{ staggerChildren: reduceMotion ? 0 : stagger, delayChildren: delay }}\n    >\n      <span className=\"sr-only\">{children}</span>\n      {parts.map((part, index) =>\n        /^\\s+$/.test(part) ? (\n          part\n        ) : (\n          <motion.span\n            key={index}\n            aria-hidden\n            className=\"inline-block whitespace-pre\"\n            variants={{\n              hidden: { opacity: 0, y: 8, filter: \"blur(6px)\" },\n              visible: { opacity: 1, y: 0, filter: \"blur(0px)\" },\n            }}\n            // The hidden state matches on the server and the client. Under\n            // reduced motion, only the fade is animated.\n            transition={{\n              duration: 0.4,\n              ease: \"easeOut\",\n              ...(reduceMotion && { y: { duration: 0 }, filter: { duration: 0 } }),\n            }}\n          >\n            {part}\n          </motion.span>\n        )\n      )}\n    </MotionTag>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

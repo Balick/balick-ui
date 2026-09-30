@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter",
+  "title": "Typewriter",
+  "description": "Types phrases character by character, with a blinking caret.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/typewriter.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface TypewriterProps extends Omit<React.ComponentProps<\"span\">, \"children\"> {\n  /** A phrase, or phrases typed one after the other. */\n  text: string | string[]\n  /** Time to type one character, in milliseconds. */\n  speed?: number\n  /** Time to erase one character, in milliseconds. */\n  deleteSpeed?: number\n  /** Time a finished phrase stays before it is erased, in milliseconds. */\n  pause?: number\n  /** Start over after the last phrase. */\n  loop?: boolean\n  /** Show a blinking caret. */\n  caret?: boolean\n}\n\n/**\n * Types a phrase character by character, then erases it and types the next\n * one. Screen readers get the phrases as plain text; under reduced motion\n * the first phrase is shown whole.\n */\nexport function Typewriter({\n  text,\n  speed = 45,\n  deleteSpeed = 25,\n  pause = 1800,\n  loop = true,\n  caret = true,\n  className,\n  ...props\n}: TypewriterProps) {\n  // A stable list, even when the phrases are passed as a new array on every render.\n  const key = typeof text === \"string\" ? text : text.join(\"\\u0000\")\n  const phrases = React.useMemo(() => key.split(\"\\u0000\"), [key])\n  const reduceMotion = useReducedMotion()\n  const [phrase, setPhrase] = React.useState(0)\n  const [length, setLength] = React.useState(0)\n  const [deleting, setDeleting] = React.useState(false)\n\n  React.useEffect(() => {\n    if (reduceMotion) return\n    const current = phrases[phrase] ?? \"\"\n    const last = phrase === phrases.length - 1\n    let timer: ReturnType<typeof setTimeout> | undefined\n\n    if (!deleting && length < current.length) {\n      timer = setTimeout(() => setLength(length + 1), speed)\n    } else if (!deleting && phrases.length > 1 && (loop || !last)) {\n      timer = setTimeout(() => setDeleting(true), pause)\n    } else if (deleting && length > 0) {\n      timer = setTimeout(() => setLength(length - 1), deleteSpeed)\n    } else if (deleting) {\n      timer = setTimeout(() => {\n        setDeleting(false)\n        setPhrase((phrase + 1) % phrases.length)\n      }, speed)\n    }\n    return () => clearTimeout(timer)\n  }, [reduceMotion, phrases, phrase, length, deleting, speed, deleteSpeed, pause, loop])\n\n  const shown = reduceMotion ? phrases[0] : (phrases[phrase] ?? \"\").slice(0, length)\n\n  return (\n    <span className={cn(\"whitespace-pre-wrap\", className)} {...props}>\n      <span className=\"sr-only\">{phrases.join(\", \")}</span>\n      <span aria-hidden>{shown}</span>\n      {caret && (\n        <motion.span\n          aria-hidden\n          className=\"ml-0.5 inline-block h-[1em] w-[2px] translate-y-[0.15em] bg-current\"\n          animate={reduceMotion ? undefined : { opacity: [1, 1, 0, 0] }}\n          transition={{ duration: 1, repeat: Infinity, times: [0, 0.5, 0.5, 1], ease: \"linear\" }}\n        />\n      )}\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

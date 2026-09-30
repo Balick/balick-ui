@@ -391,6 +391,147 @@
       ]
     },
     {
+      "name": "word-rotate",
+      "type": "registry:ui",
+      "title": "Word Rotate",
+      "description": "Cycles through words in place, each one sliding up into view.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/word-rotate.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:ui",
+      "title": "Text Reveal",
+      "description": "Reveals a line word by word, each part fading in from a light blur.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/text-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typewriter",
+      "type": "registry:ui",
+      "title": "Typewriter",
+      "description": "Types phrases character by character, with a blinking caret.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/typewriter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scramble-text",
+      "type": "registry:ui",
+      "title": "Scramble Text",
+      "description": "Letters start scrambled and settle one after the other.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/scramble-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-text",
+      "type": "registry:ui",
+      "title": "Shimmer Text",
+      "description": "A light sweeps across the text, for work in progress.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/shimmer-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "highlight-text",
+      "type": "registry:ui",
+      "title": "Highlight Text",
+      "description": "A marker stroke draws behind the words once they scroll into view.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/highlight-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "underline-link",
+      "type": "registry:ui",
+      "title": "Underline Link",
+      "description": "A link whose underline draws in on hover and focus.",
+      "files": [
+        {
+          "path": "registry/balick/ui/underline-link.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "expandable-text",
+      "type": "registry:ui",
+      "title": "Expandable Text",
+      "description": "Long text clamped to a few lines, with a button that unfolds the rest.",
+      "files": [
+        {
+          "path": "registry/balick/ui/expandable-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "countdown",
+      "type": "registry:ui",
+      "title": "Countdown",
+      "description": "Days, hours, minutes and seconds left until a date, each rolling to its new value.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/animated-number.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/countdown.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "relative-time",
+      "type": "registry:ui",
+      "title": "Relative Time",
+      "description": "A date described relative to now, kept up to date.",
+      "files": [
+        {
+          "path": "registry/balick/ui/relative-time.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "marquee-demo",
       "type": "registry:example",
       "title": "Marquee Demo",
@@ -696,6 +837,156 @@
       "files": [
         {
           "path": "registry/balick/examples/theme-toggle-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "word-rotate-demo",
+      "type": "registry:example",
+      "title": "Word Rotate Demo",
+      "description": "Example usage of Word Rotate.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/word-rotate.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/word-rotate-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal-demo",
+      "type": "registry:example",
+      "title": "Text Reveal Demo",
+      "description": "Example usage of Text Reveal.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/text-reveal.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/text-reveal-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "typewriter-demo",
+      "type": "registry:example",
+      "title": "Typewriter Demo",
+      "description": "Example usage of Typewriter.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/typewriter.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/typewriter-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scramble-text-demo",
+      "type": "registry:example",
+      "title": "Scramble Text Demo",
+      "description": "Example usage of Scramble Text.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/scramble-text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/scramble-text-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-text-demo",
+      "type": "registry:example",
+      "title": "Shimmer Text Demo",
+      "description": "Example usage of Shimmer Text.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/shimmer-text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/shimmer-text-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "highlight-text-demo",
+      "type": "registry:example",
+      "title": "Highlight Text Demo",
+      "description": "Example usage of Highlight Text.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/highlight-text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/highlight-text-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "underline-link-demo",
+      "type": "registry:example",
+      "title": "Underline Link Demo",
+      "description": "Example usage of Underline Link.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/underline-link.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/underline-link-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "expandable-text-demo",
+      "type": "registry:example",
+      "title": "Expandable Text Demo",
+      "description": "Example usage of Expandable Text.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/expandable-text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/expandable-text-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "countdown-demo",
+      "type": "registry:example",
+      "title": "Countdown Demo",
+      "description": "Example usage of Countdown.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/countdown.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/countdown-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "relative-time-demo",
+      "type": "registry:example",
+      "title": "Relative Time Demo",
+      "description": "Example usage of Relative Time.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/relative-time.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/relative-time-demo.tsx",
           "type": "registry:example"
         }
       ]

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scramble-text",
+  "title": "Scramble Text",
+  "description": "Letters start scrambled and settle one after the other.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/scramble-text.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { useInView, useReducedMotion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrambleTextProps extends Omit<React.ComponentProps<\"span\">, \"children\"> {\n  /** The text to decode. */\n  text: string\n  /** When the text decodes: on load, or once it scrolls into view. */\n  trigger?: \"mount\" | \"inView\"\n  /** Decode again each time the pointer enters the text. */\n  scrambleOnHover?: boolean\n  /** Duration of the decoding, in milliseconds. */\n  duration?: number\n  /** Characters drawn while the text is scrambled. */\n  characters?: string\n}\n\nconst letters = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\"\n\n/**\n * Letters and digits start scrambled and settle one after the other, from\n * left to right. The final text is rendered on the server and keeps the\n * width, so nothing around it moves. Works best in a monospace font.\n */\nexport function ScrambleText({\n  text,\n  trigger = \"inView\",\n  scrambleOnHover = false,\n  duration = 800,\n  characters = letters,\n  className,\n  onPointerEnter,\n  ...props\n}: ScrambleTextProps) {\n  const ref = React.useRef<HTMLSpanElement>(null)\n  const frame = React.useRef(0)\n  const played = React.useRef(false)\n  const inView = useInView(ref, { once: true, margin: \"-50px\" })\n  const reduceMotion = useReducedMotion()\n  const [display, setDisplay] = React.useState(text)\n\n  const scramble = React.useCallback(() => {\n    if (reduceMotion) return\n    cancelAnimationFrame(frame.current)\n    const start = performance.now()\n    const tick = (now: number) => {\n      const progress = Math.min(1, (now - start) / duration)\n      const settled = Math.floor(progress * text.length)\n      setDisplay(\n        Array.from(text, (char, index) =>\n          index < settled || !/[\\p{L}\\p{N}]/u.test(char)\n            ? char\n            : characters[Math.floor(Math.random() * characters.length)]\n        ).join(\"\")\n      )\n      if (progress < 1) frame.current = requestAnimationFrame(tick)\n    }\n    frame.current = requestAnimationFrame(tick)\n  }, [reduceMotion, duration, text, characters])\n\n  React.useEffect(() => {\n    if (played.current || (trigger === \"inView\" && !inView)) return\n    played.current = true\n    scramble()\n  }, [trigger, inView, scramble])\n\n  React.useEffect(() => () => cancelAnimationFrame(frame.current), [])\n\n  return (\n    <span\n      ref={ref}\n      className={cn(\"relative inline-block\", className)}\n      onPointerEnter={(event) => {\n        onPointerEnter?.(event)\n        if (scrambleOnHover) scramble()\n      }}\n      {...props}\n    >\n      <span className=\"sr-only\">{text}</span>\n      <span aria-hidden className=\"invisible whitespace-pre\">\n        {text}\n      </span>\n      <span aria-hidden className=\"absolute inset-0 whitespace-pre\">\n        {display}\n      </span>\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

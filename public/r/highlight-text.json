@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlight-text",
+  "title": "Highlight Text",
+  "description": "A marker stroke draws behind the words once they scroll into view.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/highlight-text.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { useInView } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface HighlightTextProps extends React.ComponentProps<\"mark\"> {\n  /** Colour of the highlight. Defaults to a light tint of the text colour. */\n  color?: string\n  /** Duration of the stroke, in seconds. */\n  duration?: number\n  /** Delay once in view, in seconds. */\n  delay?: number\n}\n\n/**\n * A marker stroke draws behind the words once they scroll into view, and\n * follows them across line breaks. Under reduced motion it appears at once.\n */\nexport function HighlightText({\n  color = \"color-mix(in oklab, var(--foreground) 14%, transparent)\",\n  duration = 0.8,\n  delay = 0,\n  className,\n  style,\n  ...props\n}: HighlightTextProps) {\n  const ref = React.useRef<HTMLElement>(null)\n  const inView = useInView(ref, { once: true, margin: \"0px 0px -15% 0px\" })\n\n  return (\n    <mark\n      ref={ref}\n      className={cn(\n        \"-mx-0.5 box-decoration-clone rounded-sm bg-transparent bg-no-repeat px-0.5 text-inherit transition-[background-size] ease-out motion-reduce:transition-none\",\n        className\n      )}\n      style={{\n        backgroundImage: `linear-gradient(${color}, ${color})`,\n        backgroundSize: inView ? \"100% 100%\" : \"0% 100%\",\n        transitionDuration: `${duration}s`,\n        transitionDelay: `${delay}s`,\n        ...style,\n      }}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

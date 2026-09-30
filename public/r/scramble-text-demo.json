@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scramble-text-demo",
+  "title": "Scramble Text Demo",
+  "description": "Example usage of Scramble Text.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/scramble-text.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/scramble-text-demo.tsx",
+      "content": "import { ScrambleText } from \"@/registry/balick/ui/scramble-text\"\n\nexport default function ScrambleTextDemo() {\n  return (\n    <ScrambleText\n      text=\"SYSTEMS NOMINAL\"\n      scrambleOnHover\n      className=\"font-mono text-xl tracking-widest sm:text-2xl\"\n    />\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
