@@ -1,12 +1,8 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 
 import { LogoMark } from "@/components/logo"
 import { Mark } from "@/components/sheet"
-import { SheetPath } from "@/components/sheet-path"
 import { siteConfig } from "@/config/site"
-import { blockList } from "@/content/blocks"
-import { galleryCategories } from "@/lib/blocks-gallery"
 import { cn } from "@/lib/utils"
 
 const index = [
@@ -17,7 +13,7 @@ const index = [
   { title: "Templates", href: "/templates" },
 ]
 
-/** A cell of the title block: a mono label above its value. */
+/** A cell of the footer: a mono label above its value. */
 function Cell({
   label,
   className,
@@ -35,10 +31,7 @@ function Cell({
   )
 }
 
-/**
- * The footer is drawn as the title block of a technical sheet: what the
- * project is, which sheet you are on, when it was updated and who drew it.
- */
+/** Two cells on one row: what the project is, and where to go next. */
 export function SiteFooter() {
   return (
     <footer className="border-t border-rule">
@@ -47,8 +40,8 @@ export function SiteFooter() {
         <Mark className="top-0 right-0 translate-x-1/2 -translate-y-1/2" />
         {/* The grid overflows by a pixel so the outer cell borders hide under the rails. */}
         <div className="overflow-hidden">
-          <div className="-mr-px -mb-px grid grid-cols-2 md:grid-cols-12">
-            <Cell label="Project" className="col-span-2 md:col-span-5">
+          <div className="-mr-px -mb-px grid grid-cols-1 md:grid-cols-12">
+            <Cell label="Project" className="md:col-span-7">
               <span className="flex items-center gap-2 font-medium">
                 <LogoMark className="size-4" />
                 {siteConfig.name}
@@ -66,18 +59,7 @@ export function SiteFooter() {
                 , designed to fit together.
               </span>
             </Cell>
-            <Cell label="Sheet" className="col-span-2 md:col-span-3">
-              <SheetPath />
-            </Cell>
-            <Cell label="Blocks" className="md:col-span-2">
-              {blockList.length} in {galleryCategories().length} categories
-            </Cell>
-            <Cell label="Updated" className="md:col-span-2">
-              <time dateTime={siteConfig.updated} className="font-mono text-[13px]">
-                {siteConfig.updated}
-              </time>
-            </Cell>
-            <Cell label="Index" className="col-span-2 md:col-span-5">
+            <Cell label="Index" className="md:col-span-5">
               <nav aria-label="Footer" className="flex flex-wrap gap-x-4 gap-y-1">
                 {index.map((item) => (
                   <Link
@@ -89,28 +71,6 @@ export function SiteFooter() {
                   </Link>
                 ))}
               </nav>
-            </Cell>
-            <Cell label="Drawn by" className="col-span-2 md:col-span-3">
-              <a
-                href={siteConfig.author.url}
-                target="_blank"
-                rel="noreferrer"
-                className="underline-offset-4 hover:underline"
-              >
-                {siteConfig.author.name}
-              </a>
-            </Cell>
-            <Cell label="License" className="md:col-span-2">MIT</Cell>
-            <Cell label="Source" className="md:col-span-2">
-              <a
-                href={siteConfig.links.github}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 underline-offset-4 hover:underline"
-              >
-                GitHub
-                <ArrowUpRight className="size-3.5 text-muted-foreground" />
-              </a>
             </Cell>
           </div>
         </div>

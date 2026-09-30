@@ -146,8 +146,7 @@ the site only; blocks never use them.
   free space around a narrowed preview, planned templates.
 - Code sits on graphite (`surface-code`) in both modes.
 - The margins outside the rails are hatched; the column stays plain.
-- The footer is the sheet's title block: project, current sheet (the path),
-  number of blocks, date of the last build, author and licence.
+- The footer is two cells on one row: the project and the index of the site.
 
 ## Checklist for a new block
 

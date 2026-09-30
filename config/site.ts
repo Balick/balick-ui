@@ -8,9 +8,6 @@ export const siteConfig = {
   links: {
     github: "https://github.com/balick/balick-ui",
   },
-  author: { name: "Théo Balick", url: "https://balick.me" },
-  /** Date of the build, shown in the footer's title block. */
-  updated: process.env.BUILD_DATE ?? "",
 }
 
 export function registryUrl(name: string) {
