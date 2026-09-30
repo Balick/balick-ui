@@ -89,11 +89,18 @@ function run(command, commandArgs, { cwd, env } = {}) {
   })
 }
 
-/** Runs a command that must succeed, retrying network hiccups once. */
+/**
+ * Runs a command that must succeed. The npm registry sometimes answers 404 or
+ * drops a connection for a minute, so it retries twice after a pause, and asks
+ * npm to revalidate what it cached.
+ */
 async function mustRun(command, commandArgs, options) {
+  const pauses = [0, 10_000, 30_000]
   let last
-  for (let attempt = 0; attempt < 2; attempt++) {
-    last = await run(command, commandArgs, options)
+  for (const [attempt, pause] of pauses.entries()) {
+    if (pause) await new Promise((resolve) => setTimeout(resolve, pause))
+    const env = attempt ? { ...options?.env, npm_config_prefer_online: "true" } : options?.env
+    last = await run(command, commandArgs, { ...options, env })
     if (last.ok) return last.output
   }
   const tail = last.output.split("\n").slice(-25).join("\n")
