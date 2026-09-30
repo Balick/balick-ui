@@ -80,6 +80,11 @@ pnpm registry:build   # commit the regenerated public/r files
 pnpm build
 ```
 
+If you touched `registry/**` or `registry.json`, also run `pnpm registry:verify`.
+It installs every item into fresh Radix and Base UI projects, and emulates what
+Open in v0 does with each of them. It needs network and takes a few minutes; CI
+runs it too, without blocking the merge.
+
 Then check your change in the browser, in light and dark mode, on desktop and
 on a 320px-wide phone. CI runs the same checks and fails if `public/r` is out
 of date.

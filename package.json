@@ -28,7 +28,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "registry:build": "node scripts/sync-theme.mjs && node scripts/check-blocks.mjs && shadcn build"
+    "registry:build": "node scripts/sync-theme.mjs && node scripts/check-blocks.mjs && shadcn build",
+    "registry:verify": "node scripts/verify-registry.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.23",

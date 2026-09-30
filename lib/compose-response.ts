@@ -2,14 +2,16 @@ import { NextResponse } from "next/server"
 
 import { composeRegistryItem, parseComposition } from "@/lib/compose"
 
+type ComposeItem = ReturnType<typeof composeRegistryItem>
+
 /**
  * The HTTP response for a composition segment such as
  * "navbar-01,hero-01.json": the page item, or a 404 naming unknown blocks.
- * `transform` adapts the item, e.g. for v0.
+ * `transform` adapts the item and may be asynchronous, e.g. for v0.
  */
-export function composeResponse(
+export async function composeResponse(
   segment: string,
-  transform: <T extends ReturnType<typeof composeRegistryItem>>(item: T) => T = (item) => item
+  transform?: (item: ComposeItem, blocks: string[]) => unknown | Promise<unknown>
 ) {
   const requested = segment.replace(/\.json$/, "").split(",")
   const blocks = parseComposition(segment.replace(/\.json$/, ""))
@@ -22,7 +24,8 @@ export function composeResponse(
     )
   }
 
-  return NextResponse.json(transform(composeRegistryItem(blocks)), {
+  const item = composeRegistryItem(blocks)
+  return NextResponse.json(transform ? await transform(item, blocks) : item, {
     headers: { "Cache-Control": "public, max-age=3600, s-maxage=86400" },
   })
 }

@@ -10,7 +10,7 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  { ignores: [".next/**", "node_modules/**", "public/**", "next-env.d.ts"] },
+  { ignores: [".next/**", ".next-verify/**", "node_modules/**", "public/**", "next-env.d.ts"] },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     // Registry items are installed into any React app, so they use plain

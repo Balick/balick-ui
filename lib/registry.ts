@@ -8,6 +8,28 @@ type RegistryItem = (typeof registry.items)[number] & {
   registryDependencies?: string[]
 }
 
+/** An item as `shadcn build` wrote it to public/r, with the content of its files. */
+export interface BuiltItem {
+  name: string
+  type: string
+  files?: { path: string; type: string; target?: string; content?: string }[]
+  dependencies?: string[]
+  registryDependencies?: string[]
+  css?: Record<string, unknown>
+  cssVars?: { theme?: Record<string, string> } & Record<string, unknown>
+  [key: string]: unknown
+}
+
+/** Reads a built item (public/r/<name>.json), or nothing if there is none. */
+export async function readBuiltItem(name: string) {
+  try {
+    const file = path.join(process.cwd(), "public/r", `${name}.json`)
+    return JSON.parse(await fs.readFile(file, "utf8")) as BuiltItem
+  } catch {
+    return undefined
+  }
+}
+
 export function getRegistryItem(name: string) {
   return registry.items.find((item) => item.name === name) as
     | RegistryItem

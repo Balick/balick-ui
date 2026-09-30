@@ -80,8 +80,15 @@ export function compositionIds(blocks: string[]) {
   })
 }
 
-/** The app/page.tsx file that renders the blocks in order. */
-export function composePageSource(blocks: string[]) {
+/** A `<style>` element for a generated page, from plain CSS. */
+export const styleElement = (css: string) =>
+  `<style dangerouslySetInnerHTML={{ __html: ${JSON.stringify(css)} }} />`
+
+/**
+ * The app/page.tsx file that renders the blocks in order. `css` is added as a
+ * `<style>`, for hosts that cannot install the CSS of the blocks (v0).
+ */
+export function composePageSource(blocks: string[], { css }: { css?: string } = {}) {
   const imports = [...new Set(blocks)]
     .map((block) => `import { ${componentName(block)} } from "@/components/${block}"`)
     .join("\n")
@@ -91,6 +98,7 @@ export function composePageSource(blocks: string[]) {
     `${indent}<${componentName(block)}${ids[index] ? ` id="${ids[index]}"` : ""} />`
 
   const lines = [
+    ...(css ? [`      ${styleElement(css)}`] : []),
     ...before.map((block, i) => element(block, i, "      ")),
     ...(content.length
       ? [

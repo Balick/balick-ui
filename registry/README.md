@@ -14,12 +14,13 @@ when the first one lands.
 
 ## Adding a component
 
-1. Create `ui/<name>.tsx` and `examples/<name>-demo.tsx`.
+1. Create `ui/<name>.tsx` and `examples/<name>-demo.tsx`. The demo has a
+   default export: Open in v0 imports it.
 2. Declare both in `registry.json` (the demo lists the component's URL in
    `registryDependencies`).
 3. Register the demo in `registry/__index__.ts` and document it in
    `content/components.ts`.
-4. Run `pnpm registry:build`.
+4. Run `pnpm registry:build`, then `pnpm registry:verify`.
 
 ## Adding a block
 
@@ -39,8 +40,7 @@ combination of blocks looks like one page.
    `/compose` pick it up. If the block already contains another category
    (a hero with a logo strip), declare it in `meta.includes` so the composer
    can warn about duplicates.
-4. Run `pnpm registry:build`.
-
+4. Run `pnpm registry:build`, then `pnpm registry:verify`.
 ## Theme
 
 The `theme` item is generated: `pnpm registry:build` copies the colour tokens

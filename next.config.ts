@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
       { source: "/docs/components/:path*", destination: "/components/:path*", permanent: true },
     ];
   },
+  // `pnpm registry:verify` builds into its own folder, so it never disturbs `pnpm dev`.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
 };
 
 export default nextConfig;

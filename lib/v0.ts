@@ -1,68 +1,24 @@
 import { siteConfig } from "@/config/site"
 
 /*
- * v0 writes each file at its `target`, or at its `path` when there is none,
- * while the build rewrites imports to `@/components/ui/*`. Our files only have
- * a repository path, so v0 needs a variant of every item with explicit
- * targets. The shadcn CLI keeps using the plain items, which leave placement
- * to each project's aliases.
+ * "Open in v0" reads an item from a URL. We serve v0 its own variants of the
+ * items (see lib/v0-variant.ts), in two kinds:
+ *
+ * - the entry, /r/v0/<name>.json: what v0 is asked to open. For a block or a
+ *   demo, it carries the page that shows it;
+ * - the dependency, /r/v0/deps/<name>.json: the same item without a page. An
+ *   entry lists dependencies, never entries, so that a composed page (whose
+ *   blocks are dependencies) is the only one to write app/page.tsx.
  */
 
-interface RegistryFile {
-  path: string
-  type: string
-  target?: string
-  content?: string
-}
+const base = `${siteConfig.url}/r/v0`
 
-interface RegistryItem {
-  files?: RegistryFile[]
-  registryDependencies?: string[]
-  [key: string]: unknown
-}
-
-const folders: Record<string, string> = {
-  "registry:ui": "components/ui",
-  "registry:component": "components",
-  "registry:block": "components",
-  "registry:example": "components",
-  "registry:hook": "hooks",
-  "registry:lib": "lib",
-}
-
-const registryBase = `${siteConfig.url}/r/`
-
-/** URL of the v0 variant of a registry item, e.g. /r/v0/hero-01.json. */
+/** URL of the v0 entry of an item, e.g. /r/v0/hero-01.json. */
 export function v0RegistryUrl(name: string) {
-  return `${registryBase}v0/${name}.json`
+  return `${base}/${name}.json`
 }
 
-function toV0Dependency(dependency: string) {
-  return dependency.startsWith(registryBase)
-    ? `${registryBase}v0/${dependency.slice(registryBase.length)}`
-    : dependency
-}
-
-/** Rewrites repository imports to where the targets put the files. */
-function toV0Imports(content: string) {
-  return content
-    .replace(/@\/registry\/balick\/ui\//g, "@/components/ui/")
-    .replace(/@\/registry\/balick\/(?:blocks|examples)\/(?:[\w-]+\/)?([\w-]+)/g, "@/components/$1")
-}
-
-/**
- * The same item, ready for v0: a target for every file, imports that match
- * those targets, and v0 variants as dependencies.
- */
-export function toV0Item<T extends RegistryItem>(item: T): T {
-  return {
-    ...item,
-    registryDependencies: item.registryDependencies?.map(toV0Dependency),
-    files: item.files?.map((file) => {
-      const folder = folders[file.type]
-      const content = file.content && toV0Imports(file.content)
-      if (file.target || !folder) return { ...file, content }
-      return { ...file, content, target: `${folder}/${file.path.split("/").pop()}` }
-    }),
-  }
+/** URL of the v0 dependency of an item, e.g. /r/v0/deps/section.json. */
+export function v0DepUrl(name: string) {
+  return `${base}/deps/${name}.json`
 }
