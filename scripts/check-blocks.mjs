@@ -1,6 +1,7 @@
 // Checks the registry items before they are built:
 // - every block exports a component named after its file ("pricing-01"
 //   exports Pricing01): the composer generates imports from that convention;
+// - every demo has a default export: it is the module Open in v0 imports;
 // - every npm package an item imports is listed in its `dependencies`, so the
 //   CLI installs it (React and Next.js are provided by the project).
 import { readFileSync } from "node:fs"
@@ -22,6 +23,11 @@ const errors = registry.items.flatMap((item) => {
     if (!new RegExp(`export function ${expected}\\b`).test(source)) {
       itemErrors.push(`${path} must export function ${expected}`)
     }
+  }
+
+  if (item.type === "registry:example") {
+    const [path, source] = sources[0]
+    if (!/^export default /m.test(source)) itemErrors.push(`${path} must have a default export`)
   }
 
   const declared = new Set(item.dependencies ?? [])
