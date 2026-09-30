@@ -6,6 +6,7 @@ import { ChevronRight } from "lucide-react"
 import { fillerClasses, type GridBreakpoint } from "@/components/category-grid"
 import { ComponentCategoryTabs } from "@/components/component-category-tabs"
 import { CopyButton } from "@/components/copy-button"
+import { ReplayPreview } from "@/components/replay-preview"
 import { Row, Spacer } from "@/components/sheet"
 import { installTarget } from "@/config/site"
 import {
@@ -97,9 +98,12 @@ export default async function ComponentCategoryPage({ params }: Props) {
                 const command = `npx shadcn@latest add ${installTarget(doc.slug)}`
                 return (
                   <li key={doc.slug} id={doc.slug} className="flex flex-col border-r border-b border-rule">
-                    <div className="relative flex min-h-64 flex-1 items-center justify-center overflow-hidden bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px] px-6 py-12">
+                    <ReplayPreview
+                      label={doc.title}
+                      className="flex min-h-64 flex-1 items-center justify-center overflow-hidden bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px] px-6 py-12"
+                    >
                       {Example && <Example />}
-                    </div>
+                    </ReplayPreview>
                     <div className="border-t border-rule p-4 md:px-6">
                       <div className="flex items-center justify-between gap-3">
                         <h2 className="min-w-0 truncate font-medium">
