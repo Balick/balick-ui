@@ -22,3 +22,8 @@ export function v0RegistryUrl(name: string) {
 export function v0DepUrl(name: string) {
   return `${base}/deps/${name}.json`
 }
+
+/** URL of the v0 variant of a shadcn/ui primitive our items depend on, e.g. /r/v0/shadcn/input.json. */
+export function v0ShadcnUrl(name: string) {
+  return `${base}/shadcn/${name}.json`
+}

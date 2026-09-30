@@ -1,7 +1,7 @@
 import registry from "@/registry.json"
 import { styleElement } from "@/lib/compose"
 import type { BuiltItem } from "@/lib/registry"
-import { v0DepUrl } from "@/lib/v0"
+import { v0DepUrl, v0ShadcnUrl } from "@/lib/v0"
 
 /*
  * What v0 does with an item, as far as we have seen (scripts/verify-registry.mjs
@@ -16,6 +16,12 @@ import { v0DepUrl } from "@/lib/v0"
  * - when an item has no page, it generates one that runs
  *   `import Component from '<first file>'`: an item with named exports only
  *   fails there with "Export default doesn't exist in target module".
+ *
+ * - it does not resolve a bare name in `registryDependencies` ("input"): the
+ *   file is missing and the preview fails with "Can't resolve
+ *   '@/components/ui/input'". So the variants only list URLs, and the shadcn/ui
+ *   primitives we use are served by /r/v0/shadcn/<name>.json, with the target
+ *   that shadcn's own files lack.
  *
  * So a block or a demo, when opened, gets: a page of its own (registry:page at
  * app/page.tsx, the way Vercel's registry starter ships its blocks), a default
@@ -80,7 +86,8 @@ export function toV0Dependency(item: BuiltItem): BuiltItem {
     type: itemTypes[item.type] ?? item.type,
     registryDependencies: item.registryDependencies?.map((dependency) => {
       const name = itemName(dependency)
-      return name ? v0DepUrl(name) : dependency
+      if (name) return v0DepUrl(name)
+      return /^https?:\/\//.test(dependency) ? dependency : v0ShadcnUrl(dependency)
     }),
     files: item.files?.map(toV0File),
   }
@@ -88,6 +95,44 @@ export function toV0Dependency(item: BuiltItem): BuiltItem {
   delete variant.cssVars
   delete variant.envVars
   return variant
+}
+
+/** The shadcn/ui primitives our items list by bare name, e.g. "button". */
+export function shadcnPrimitives() {
+  const names = new Set<string>()
+  for (const item of registry.items) {
+    for (const dependency of (item as { registryDependencies?: string[] }).registryDependencies ?? []) {
+      if (!/^https?:\/\//.test(dependency)) names.add(dependency)
+    }
+  }
+  return [...names].sort()
+}
+
+const shadcnStyleUrl = "https://ui.shadcn.com/r/styles/new-york-v4"
+
+/**
+ * A shadcn/ui primitive for v0: shadcn's item, written at components/ui with
+ * imports that match, and its own primitives as v0 URLs.
+ */
+export async function toV0Shadcn(name: string): Promise<BuiltItem> {
+  const response = await fetch(`${shadcnStyleUrl}/${name}.json`)
+  if (!response.ok) throw new Error(`shadcn/ui has no "${name}" (${response.status})`)
+  const item = (await response.json()) as BuiltItem
+  return {
+    ...item,
+    type: "registry:ui",
+    registryDependencies: item.registryDependencies?.map((dependency) =>
+      /^https?:\/\//.test(dependency) ? dependency : v0ShadcnUrl(dependency)
+    ),
+    files: item.files?.map((file) => ({
+      ...file,
+      type: "registry:ui",
+      target: `components/ui/${file.path.split("/").pop()}`,
+      content: file.content
+        ?.replace(/@\/registry\/[\w-]+\/ui\//g, "@/components/ui/")
+        .replace(/from "cn"/g, 'from "@/lib/utils"'),
+    })),
+  }
 }
 
 // ----------------------------------------------------------------------- CSS
