@@ -36,6 +36,12 @@ export const componentCategories: {
   { slug: "layout", title: "Layout", description: "The primitives every block is built on.", featured: "section" },
 ]
 
+/**
+ * Longest description of a component, in characters: past it, the text of a
+ * card in the gallery runs onto a third line and the cards stop lining up.
+ */
+export const maxDescriptionLength = 80
+
 export interface ComponentDoc {
   slug: string
   title: string
@@ -59,7 +65,7 @@ export const componentDocs: ComponentDoc[] = [
     category: "text",
     title: "Animated Number",
     description:
-      "A number that rolls up or down to its new value when it changes, such as a price or a total.",
+      "A number that rolls up or down to its new value, such as a price or a total.",
     example: "animated-number-demo",
     usage: `import { AnimatedNumber } from "@/components/ui/animated-number"
 
@@ -173,7 +179,7 @@ export function Logos() {
     category: "text",
     title: "Number Ticker",
     description:
-      "Counts up to a number once, when it scrolls into view. The final value is rendered on the server.",
+      "Counts up to a number once, when it scrolls into view.",
     example: "number-ticker-demo",
     usage: `import { NumberTicker } from "@/components/ui/number-ticker"
 
@@ -244,7 +250,7 @@ export function Faq() {
     category: "buttons",
     title: "Segmented Control",
     description:
-      "A single choice between a few options, with a pill that slides to the selected one.",
+      "A single choice between a few options, with a pill that slides to the pick.",
     example: "segmented-control-demo",
     usage: `"use client"
 
@@ -303,7 +309,7 @@ export function Cta() {
     category: "icons",
     title: "Social Icons",
     description:
-      "Brand icons for social links: GitHub, LinkedIn, X and YouTube. lucide-react no longer ships them.",
+      "Brand icons lucide-react no longer ships: GitHub, LinkedIn, X and YouTube.",
     example: "social-icons-demo",
     usage: `import { GitHubIcon } from "@/components/ui/social-icons"
 
@@ -436,7 +442,7 @@ export function DeleteProject() {
     slug: "magnetic-button",
     category: "buttons",
     title: "Magnetic Button",
-    description: "A button that leans a few pixels towards the pointer and settles back when it leaves.",
+    description: "A button that leans toward the pointer and settles back when it leaves.",
     example: "magnetic-button-demo",
     usage: `import { MagneticButton } from "@/components/ui/magnetic-button"
 
@@ -552,7 +558,7 @@ export function Header() {
     slug: "word-rotate",
     category: "text",
     title: "Word Rotate",
-    description: "Cycles through words in place, each one sliding up into view. Stops on the first word under reduced motion.",
+    description: "Cycles through words in place, each one sliding up into view.",
     example: "word-rotate-demo",
     usage: `import { WordRotate } from "@/components/ui/word-rotate"
 
@@ -572,7 +578,7 @@ export function Headline() {
     slug: "text-reveal",
     category: "text",
     title: "Text Reveal",
-    description: "Reveals a line word by word, each part fading in from a light blur. The full text stays readable by screen readers.",
+    description: "Reveals a line word by word, each part fading in from a light blur.",
     example: "text-reveal-demo",
     usage: `import { TextReveal } from "@/components/ui/text-reveal"
 
@@ -592,7 +598,7 @@ export function Hero() {
     slug: "typewriter",
     category: "text",
     title: "Typewriter",
-    description: "Types phrases character by character, erases them and types the next, with a blinking caret.",
+    description: "Types phrases character by character, erases them and types the next.",
     example: "typewriter-demo",
     usage: `import { Typewriter } from "@/components/ui/typewriter"
 
@@ -612,7 +618,7 @@ export function Prompt() {
     slug: "scramble-text",
     category: "text",
     title: "Scramble Text",
-    description: "Letters start scrambled and settle from left to right. The final text keeps its width, so nothing around it moves.",
+    description: "Letters start scrambled and settle from left to right, without reflow.",
     example: "scramble-text-demo",
     usage: `import { ScrambleText } from "@/components/ui/scramble-text"
 
@@ -631,7 +637,7 @@ export function Status() {
     slug: "shimmer-text",
     category: "text",
     title: "Shimmer Text",
-    description: "A light sweeps across the text, for work in progress such as “Generating…”. Stops under reduced motion.",
+    description: "A light sweeps across the text, for work in progress such as “Generating…”.",
     example: "shimmer-text-demo",
     usage: `import { ShimmerText } from "@/components/ui/shimmer-text"
 
@@ -646,7 +652,7 @@ export function Pending() {
     slug: "highlight-text",
     category: "text",
     title: "Highlight Text",
-    description: "A marker stroke draws behind the words once they scroll into view, and follows them across line breaks.",
+    description: "A marker stroke draws behind words as they scroll into view.",
     example: "highlight-text-demo",
     usage: `import { HighlightText } from "@/components/ui/highlight-text"
 
@@ -668,7 +674,7 @@ export function Pitch() {
     slug: "underline-link",
     category: "text",
     title: "Underline Link",
-    description: "A link whose underline draws in from the left on hover and focus, and leaves to the right.",
+    description: "A link whose underline draws in on hover and focus, and leaves to the right.",
     example: "underline-link-demo",
     usage: `import Link from "next/link"
 
@@ -701,7 +707,7 @@ export function Links() {
     slug: "expandable-text",
     category: "text",
     title: "Expandable Text",
-    description: "Long text clamped to a few lines, with a button that unfolds the rest. The button only shows when the text overflows.",
+    description: "Long text clamped to a few lines, with a button that unfolds the rest.",
     example: "expandable-text-demo",
     usage: `import { ExpandableText } from "@/components/ui/expandable-text"
 
@@ -718,7 +724,7 @@ export function Review({ text }: { text: string }) {
     slug: "countdown",
     category: "text",
     title: "Countdown",
-    description: "Days, hours, minutes and seconds left until a date, each rolling to its new value.",
+    description: "Days, hours, minutes and seconds left until a date, each rolling to its value.",
     example: "countdown-demo",
     usage: `import { Countdown } from "@/components/ui/countdown"
 
@@ -736,7 +742,7 @@ export function Launch() {
     slug: "relative-time",
     category: "text",
     title: "Relative Time",
-    description: "“5 minutes ago”, “in 3 days”: a date described relative to now, kept up to date while the page is open.",
+    description: "“5 minutes ago”, “in 3 days”: a date relative to now, kept up to date.",
     example: "relative-time-demo",
     usage: `import { RelativeTime } from "@/components/ui/relative-time"
 
