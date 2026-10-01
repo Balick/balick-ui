@@ -752,7 +752,7 @@ export function Published({ date }: { date: string }) {
     slug: "stagger",
     category: "motion",
     title: "Stagger",
-    description: "Brings the children of a list or a grid in one after the other, on mount or when scrolled into view.",
+    description: "Brings the children of a list or a grid in one after the other.",
     example: "stagger-demo",
     usage: `import { Stagger } from "@/components/ui/stagger"
 
@@ -782,7 +782,7 @@ export function Team({ people }: { people: string[] }) {
     slug: "mask-reveal",
     category: "motion",
     title: "Mask Reveal",
-    description: "Uncovers an image or a card with a mask that slides across it, from any side. Not drawn under reduced motion.",
+    description: "Uncovers an image or a card with a mask that slides across it.",
     example: "mask-reveal-demo",
     usage: `import { MaskReveal } from "@/components/ui/mask-reveal"
 
@@ -806,7 +806,7 @@ export function Cover() {
     slug: "crossfade",
     category: "motion",
     title: "Crossfade",
-    description: "Swaps its content when a value changes: the old content fades out as the new one fades in.",
+    description: "Swaps its content when a value changes, with a fade and a light blur.",
     example: "crossfade-demo",
     usage: `import { Crossfade } from "@/components/ui/crossfade"
 
@@ -828,7 +828,7 @@ export function Price({ yearly }: { yearly: boolean }) {
     slug: "collapse",
     category: "motion",
     title: "Collapse",
-    description: "Opens and closes any content with a height animation, whatever its height. Closed content is hidden from the keyboard.",
+    description: "Opens and closes any content with a height animation, whatever its height.",
     example: "collapse-demo",
     usage: `"use client"
 
@@ -858,7 +858,7 @@ export function Details() {
     slug: "float",
     category: "motion",
     title: "Float",
-    description: "A slow, endless bobbing for a badge, an illustration or a card. It stops under reduced motion.",
+    description: "A slow, endless bobbing for a badge, an illustration or a card.",
     example: "float-demo",
     usage: `import { Float } from "@/components/ui/float"
 
@@ -887,7 +887,7 @@ export function Badge() {
     slug: "orbit",
     category: "motion",
     title: "Orbit",
-    description: "Items that circle around a center while staying upright, to show what connects to a product. Nest one in the center for a second ring.",
+    description: "Items that circle a center while staying upright. Nest one for a second ring.",
     example: "orbit-demo",
     usage: `import { Orbit } from "@/components/ui/orbit"
 
@@ -919,7 +919,7 @@ export function Integrations() {
     slug: "tilt-card",
     category: "motion",
     title: "Tilt Card",
-    description: "A card that leans toward the pointer in 3D, with a soft glare. Mouse only: touch, pen and reduced motion leave it flat.",
+    description: "A card that leans toward the mouse in 3D, with a soft glare.",
     example: "tilt-card-demo",
     usage: `import { TiltCard } from "@/components/ui/tilt-card"
 
@@ -940,7 +940,7 @@ export function Membership() {
     slug: "parallax",
     category: "motion",
     title: "Parallax",
-    description: "A layer that moves at its own pace while the page scrolls, to suggest depth. It stays still under reduced motion.",
+    description: "A layer that moves at its own pace while the page scrolls, to suggest depth.",
     example: "parallax-demo",
     usage: `import { Parallax } from "@/components/ui/parallax"
 
@@ -961,7 +961,7 @@ export function Hero() {
     slug: "scroll-progress",
     category: "motion",
     title: "Scroll Progress",
-    description: "A bar that fills as you scroll the page or a panel. Fixed to the top of the screen by default.",
+    description: "A bar that fills as you scroll the page or a panel.",
     example: "scroll-progress-demo",
     usage: `import { ScrollProgress } from "@/components/ui/scroll-progress"
 
@@ -982,7 +982,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     slug: "velocity-marquee",
     category: "motion",
     title: "Velocity Marquee",
-    description: "A marquee that moves at its own pace and speeds up as you scroll, then eases back. It stands still under reduced motion.",
+    description: "A marquee that drifts on its own and speeds up as you scroll.",
     example: "velocity-marquee-demo",
     usage: `import { VelocityMarquee } from "@/components/ui/velocity-marquee"
 
