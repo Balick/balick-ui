@@ -854,6 +854,88 @@ export function Details() {
       { name: "open", type: "boolean", description: "Whether the content is shown. Required." },
     ],
   },
+  {
+    slug: "float",
+    category: "motion",
+    title: "Float",
+    description: "A slow, endless bobbing for a badge, an illustration or a card. It stops under reduced motion.",
+    example: "float-demo",
+    usage: `import { Float } from "@/components/ui/float"
+
+export function Badge() {
+  return (
+    <Float distance="8px" duration="5s">
+      <span className="rounded-full border px-3 py-1">New</span>
+    </Float>
+  )
+}`,
+    css: `@theme inline {
+  --animate-float: float var(--float-duration) ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 calc(var(--float-distance) * -1); }
+}`,
+    props: [
+      { name: "distance", type: "string", default: "\"10px\"", description: "How far it travels up and back, as a CSS length." },
+      { name: "duration", type: "string", default: "\"6s\"", description: "Duration of one cycle, as a CSS time." },
+      { name: "delay", type: "string", default: "\"0s\"", description: "Delay before it starts, as a CSS time. A negative value starts mid-cycle." },
+    ],
+  },
+  {
+    slug: "orbit",
+    category: "motion",
+    title: "Orbit",
+    description: "Items that circle around a center while staying upright, to show what connects to a product. Nest one in the center for a second ring.",
+    example: "orbit-demo",
+    usage: `import { Orbit } from "@/components/ui/orbit"
+
+export function Integrations() {
+  return (
+    <Orbit size="14rem" center={<Logo />}>
+      <Chip>Mail</Chip>
+      <Chip>Calendar</Chip>
+      <Chip>Drive</Chip>
+    </Orbit>
+  )
+}`,
+    css: `@theme inline {
+  --animate-orbit-spin: orbit-spin var(--orbit-duration) linear infinite;
+}
+
+@keyframes orbit-spin {
+  to { rotate: 360deg; }
+}`,
+    props: [
+      { name: "center", type: "React.ReactNode", description: "What sits in the middle. It can be another Orbit." },
+      { name: "size", type: "string", default: "\"16rem\"", description: "Diameter of the ring, as a CSS length." },
+      { name: "duration", type: "string", default: "\"30s\"", description: "Duration of one turn, as a CSS time." },
+      { name: "reverse", type: "boolean", default: "false", description: "Turn counter-clockwise." },
+      { name: "ring", type: "boolean", default: "true", description: "Draw the ring." },
+    ],
+  },
+  {
+    slug: "tilt-card",
+    category: "motion",
+    title: "Tilt Card",
+    description: "A card that leans toward the pointer in 3D, with a soft glare. Mouse only: touch, pen and reduced motion leave it flat.",
+    example: "tilt-card-demo",
+    usage: `import { TiltCard } from "@/components/ui/tilt-card"
+
+export function Membership() {
+  return (
+    <TiltCard className="w-64 rounded-2xl border bg-card p-5">
+      <p className="font-medium">Membership</p>
+    </TiltCard>
+  )
+}`,
+    props: [
+      { name: "maxTilt", type: "number", default: "10", description: "Largest angle the card leans, in degrees." },
+      { name: "glare", type: "boolean", default: "true", description: "Light a soft spot under the pointer." },
+      { name: "scale", type: "number", default: "1.02", description: "Scale of the card while the pointer is over it." },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

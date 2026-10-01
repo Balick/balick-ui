@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "float-demo",
+  "title": "Float Demo",
+  "description": "Example usage of Float.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.balick.me/r/float.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/float-demo.tsx",
+      "content": "import { Heart, Sparkles, Zap } from \"lucide-react\"\n\nimport { Float } from \"@/registry/balick/ui/float\"\n\nconst chips = [\n  { icon: Sparkles, label: \"Polished\", className: \"left-0 top-2\", delay: \"0s\", duration: \"5s\" },\n  { icon: Zap, label: \"Fast\", className: \"right-0 top-16\", delay: \"-2s\", duration: \"6.5s\" },\n  { icon: Heart, label: \"Loved\", className: \"left-10 bottom-0\", delay: \"-4s\", duration: \"5.5s\" },\n]\n\nexport default function FloatDemo() {\n  return (\n    <div className=\"relative h-44 w-64\">\n      {chips.map(({ icon: Icon, label, className, delay, duration }) => (\n        <Float key={label} delay={delay} duration={duration} className={`absolute ${className}`}>\n          <div className=\"flex items-center gap-2 rounded-full border bg-card px-3.5 py-2 text-sm font-medium shadow-xs\">\n            <Icon className=\"size-4 text-muted-foreground\" />\n            {label}\n          </div>\n        </Float>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

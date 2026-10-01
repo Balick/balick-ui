@@ -1702,6 +1702,123 @@
       "dependencies": [
         "lucide-react"
       ]
+    },
+    {
+      "name": "float",
+      "type": "registry:ui",
+      "title": "Float",
+      "description": "A slow, endless bobbing for a badge, an illustration or a card.",
+      "cssVars": {
+        "theme": {
+          "animate-float": "float var(--float-duration) ease-in-out infinite"
+        }
+      },
+      "css": {
+        "@keyframes float": {
+          "0%, 100%": {
+            "translate": "0 0"
+          },
+          "50%": {
+            "translate": "0 calc(var(--float-distance) * -1)"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/float.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "float-demo",
+      "type": "registry:example",
+      "title": "Float Demo",
+      "description": "Example usage of Float.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/float.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/float-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "orbit",
+      "type": "registry:ui",
+      "title": "Orbit",
+      "description": "Items that circle around a center while staying upright.",
+      "cssVars": {
+        "theme": {
+          "animate-orbit-spin": "orbit-spin var(--orbit-duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes orbit-spin": {
+          "to": {
+            "rotate": "360deg"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/orbit.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "orbit-demo",
+      "type": "registry:example",
+      "title": "Orbit Demo",
+      "description": "Example usage of Orbit.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/orbit.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/orbit-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:ui",
+      "title": "Tilt Card",
+      "description": "A card that leans toward the pointer in 3D, with a soft glare.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/tilt-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tilt-card-demo",
+      "type": "registry:example",
+      "title": "Tilt Card Demo",
+      "description": "Example usage of Tilt Card.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/tilt-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/tilt-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
     }
   ]
 }
