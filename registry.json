@@ -1581,6 +1581,127 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "stagger",
+      "type": "registry:ui",
+      "title": "Stagger",
+      "description": "Brings a list or a grid in one item after the other, on mount or when scrolled into view.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/stagger.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stagger-demo",
+      "type": "registry:example",
+      "title": "Stagger Demo",
+      "description": "Example usage of Stagger.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/stagger.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/stagger-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "mask-reveal",
+      "type": "registry:ui",
+      "title": "Mask Reveal",
+      "description": "Uncovers an image or a card with a mask that slides across it.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/mask-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mask-reveal-demo",
+      "type": "registry:example",
+      "title": "Mask Reveal Demo",
+      "description": "Example usage of Mask Reveal.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/mask-reveal.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/mask-reveal-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "crossfade",
+      "type": "registry:ui",
+      "title": "Crossfade",
+      "description": "Swaps its content when a value changes, with a fade and a light blur.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/crossfade.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "crossfade-demo",
+      "type": "registry:example",
+      "title": "Crossfade Demo",
+      "description": "Example usage of Crossfade.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/crossfade.json",
+        "https://ui.balick.me/r/segmented-control.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/crossfade-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "collapse",
+      "type": "registry:ui",
+      "title": "Collapse",
+      "description": "Opens and closes any content with a height animation.",
+      "files": [
+        {
+          "path": "registry/balick/ui/collapse.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapse-demo",
+      "type": "registry:example",
+      "title": "Collapse Demo",
+      "description": "Example usage of Collapse.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/collapse.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/collapse-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
     }
   ]
 }

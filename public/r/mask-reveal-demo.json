@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mask-reveal-demo",
+  "title": "Mask Reveal Demo",
+  "description": "Example usage of Mask Reveal.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/mask-reveal.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/mask-reveal-demo.tsx",
+      "content": "import { MaskReveal } from \"@/registry/balick/ui/mask-reveal\"\n\nexport default function MaskRevealDemo() {\n  return (\n    <MaskReveal direction=\"left\" zoom className=\"rounded-xl\">\n      <div className=\"flex h-44 w-72 flex-col justify-end bg-[linear-gradient(135deg,var(--foreground),color-mix(in_oklab,var(--foreground)_55%,var(--background)))] p-5 text-background\">\n        <p className=\"font-mono text-[10px] tracking-wider uppercase opacity-70\">Plate 01</p>\n        <p className=\"text-2xl font-semibold tracking-tight\">Uncovered, not faded.</p>\n      </div>\n    </MaskReveal>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

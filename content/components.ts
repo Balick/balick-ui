@@ -748,6 +748,112 @@ export function Published({ date }: { date: string }) {
       { name: "locale", type: "string", default: '"en"', description: 'Language of the text, as a BCP 47 tag such as "fr".' },
     ],
   },
+  {
+    slug: "stagger",
+    category: "motion",
+    title: "Stagger",
+    description: "Brings the children of a list or a grid in one after the other, on mount or when scrolled into view.",
+    example: "stagger-demo",
+    usage: `import { Stagger } from "@/components/ui/stagger"
+
+export function Team({ people }: { people: string[] }) {
+  return (
+    <Stagger className="grid gap-3 sm:grid-cols-2" interval={0.1} inView>
+      {people.map((person) => (
+        <div key={person} className="rounded-lg border p-4">
+          {person}
+        </div>
+      ))}
+    </Stagger>
+  )
+}`,
+    props: [
+      { name: "interval", type: "number", default: "0.08", description: "Delay between two children, in seconds." },
+      { name: "delay", type: "number", default: "0", description: "Delay before the first child, in seconds." },
+      { name: "duration", type: "number", default: "0.45", description: "Duration of each child's entrance, in seconds." },
+      { name: "offset", type: "number", default: "12", description: "Distance travelled by each child, in pixels." },
+      { name: "direction", type: "\"up\" | \"down\" | \"left\" | \"right\"", default: "\"up\"", description: "Direction the children come from." },
+      { name: "inView", type: "boolean", default: "false", description: "Wait until the group scrolls into view before animating." },
+      { name: "inViewMargin", type: "string", default: "\"-50px\"", description: "Margin applied to the viewport when inView is set." },
+      { name: "itemClassName", type: "string", description: "Class name of the wrapper around each child. Every direct child is wrapped in a div." },
+    ],
+  },
+  {
+    slug: "mask-reveal",
+    category: "motion",
+    title: "Mask Reveal",
+    description: "Uncovers an image or a card with a mask that slides across it, from any side. Not drawn under reduced motion.",
+    example: "mask-reveal-demo",
+    usage: `import { MaskReveal } from "@/components/ui/mask-reveal"
+
+export function Cover() {
+  return (
+    <MaskReveal direction="left" zoom inView className="rounded-xl">
+      <img src="/cover.jpg" alt="" className="aspect-video w-full object-cover" />
+    </MaskReveal>
+  )
+}`,
+    props: [
+      { name: "direction", type: "\"left\" | \"right\" | \"up\" | \"down\"", default: "\"left\"", description: "Side the reveal starts from." },
+      { name: "duration", type: "number", default: "0.9", description: "Duration of the reveal, in seconds." },
+      { name: "delay", type: "number", default: "0", description: "Delay before the reveal, in seconds." },
+      { name: "zoom", type: "boolean", default: "false", description: "Let the content settle from a slight zoom while it is revealed." },
+      { name: "inView", type: "boolean", default: "false", description: "Wait until the element scrolls into view before revealing." },
+      { name: "inViewMargin", type: "string", default: "\"-50px\"", description: "Margin applied to the viewport when inView is set." },
+    ],
+  },
+  {
+    slug: "crossfade",
+    category: "motion",
+    title: "Crossfade",
+    description: "Swaps its content when a value changes: the old content fades out as the new one fades in.",
+    example: "crossfade-demo",
+    usage: `import { Crossfade } from "@/components/ui/crossfade"
+
+export function Price({ yearly }: { yearly: boolean }) {
+  return (
+    <Crossfade value={yearly ? "yearly" : "monthly"} className="h-12">
+      <p className="text-4xl font-semibold">{yearly ? "$9" : "$12"}</p>
+    </Crossfade>
+  )
+}`,
+    props: [
+      { name: "value", type: "React.Key", description: "Identifies what is shown. When it changes, the content is swapped. Required." },
+      { name: "offset", type: "number", default: "8", description: "Distance the content slides while it fades, in pixels." },
+      { name: "duration", type: "number", default: "0.3", description: "Duration of the swap, in seconds." },
+      { name: "blur", type: "string", default: "\"4px\"", description: "Blur at the ends of the fade, as a CSS length." },
+    ],
+  },
+  {
+    slug: "collapse",
+    category: "motion",
+    title: "Collapse",
+    description: "Opens and closes any content with a height animation, whatever its height. Closed content is hidden from the keyboard.",
+    example: "collapse-demo",
+    usage: `"use client"
+
+import * as React from "react"
+
+import { Collapse } from "@/components/ui/collapse"
+
+export function Details() {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <div>
+      <button type="button" aria-expanded={open} aria-controls="details" onClick={() => setOpen(!open)}>
+        Details
+      </button>
+      <Collapse id="details" open={open}>
+        <p>Anything, of any height.</p>
+      </Collapse>
+    </div>
+  )
+}`,
+    props: [
+      { name: "open", type: "boolean", description: "Whether the content is shown. Required." },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

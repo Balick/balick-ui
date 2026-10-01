@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stagger-demo",
+  "title": "Stagger Demo",
+  "description": "Example usage of Stagger.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/stagger.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/stagger-demo.tsx",
+      "content": "import { Stagger } from \"@/registry/balick/ui/stagger\"\n\nconst people = [\n  { name: \"Lina Moreau\", role: \"Design\" },\n  { name: \"Marc Dubois\", role: \"Engineering\" },\n  { name: \"Sofia Rossi\", role: \"Product\" },\n  { name: \"Noah Weber\", role: \"Support\" },\n]\n\nexport default function StaggerDemo() {\n  return (\n    <Stagger className=\"flex w-full max-w-xs flex-col gap-2\" interval={0.1}>\n      {people.map((person) => (\n        <div key={person.name} className=\"flex items-center gap-3 rounded-lg border bg-card p-3\">\n          <div className=\"flex size-8 items-center justify-center rounded-full bg-foreground text-xs font-medium text-background\">\n            {person.name[0]}\n          </div>\n          <div className=\"flex flex-col\">\n            <span className=\"text-sm font-medium\">{person.name}</span>\n            <span className=\"text-xs text-muted-foreground\">{person.role}</span>\n          </div>\n        </div>\n      ))}\n    </Stagger>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

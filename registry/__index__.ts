@@ -30,8 +30,10 @@ import { Timeline01 } from "@/registry/balick/blocks/timeline-01/timeline-01"
 import AnimatedNumberDemo from "@/registry/balick/examples/animated-number-demo"
 import ArrowButtonDemo from "@/registry/balick/examples/arrow-button-demo"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
+import CollapseDemo from "@/registry/balick/examples/collapse-demo"
 import CopyButtonDemo from "@/registry/balick/examples/copy-button-demo"
 import CountdownDemo from "@/registry/balick/examples/countdown-demo"
+import CrossfadeDemo from "@/registry/balick/examples/crossfade-demo"
 import ExpandButtonDemo from "@/registry/balick/examples/expand-button-demo"
 import ExpandableTextDemo from "@/registry/balick/examples/expandable-text-demo"
 import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
@@ -39,6 +41,7 @@ import HighlightTextDemo from "@/registry/balick/examples/highlight-text-demo"
 import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
 import MagneticButtonDemo from "@/registry/balick/examples/magnetic-button-demo"
 import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
+import MaskRevealDemo from "@/registry/balick/examples/mask-reveal-demo"
 import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
 import RelativeTimeDemo from "@/registry/balick/examples/relative-time-demo"
 import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
@@ -49,6 +52,7 @@ import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
 import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
 import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
 import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
+import StaggerDemo from "@/registry/balick/examples/stagger-demo"
 import StatusButtonDemo from "@/registry/balick/examples/status-button-demo"
 import StatusDotDemo from "@/registry/balick/examples/status-dot-demo"
 import TextRevealDemo from "@/registry/balick/examples/text-reveal-demo"
@@ -63,8 +67,10 @@ export const examples: Record<string, React.ComponentType> = {
   "animated-number-demo": AnimatedNumberDemo,
   "arrow-button-demo": ArrowButtonDemo,
   "blur-fade-demo": BlurFadeDemo,
+  "collapse-demo": CollapseDemo,
   "copy-button-demo": CopyButtonDemo,
   "countdown-demo": CountdownDemo,
+  "crossfade-demo": CrossfadeDemo,
   "expand-button-demo": ExpandButtonDemo,
   "expandable-text-demo": ExpandableTextDemo,
   "grid-pattern-demo": GridPatternDemo,
@@ -72,6 +78,7 @@ export const examples: Record<string, React.ComponentType> = {
   "hold-button-demo": HoldButtonDemo,
   "magnetic-button-demo": MagneticButtonDemo,
   "marquee-demo": MarqueeDemo,
+  "mask-reveal-demo": MaskRevealDemo,
   "number-ticker-demo": NumberTickerDemo,
   "relative-time-demo": RelativeTimeDemo,
   "ripple-button-demo": RippleButtonDemo,
@@ -82,6 +89,7 @@ export const examples: Record<string, React.ComponentType> = {
   "shimmer-text-demo": ShimmerTextDemo,
   "social-icons-demo": SocialIconsDemo,
   "spotlight-button-demo": SpotlightButtonDemo,
+  "stagger-demo": StaggerDemo,
   "status-button-demo": StatusButtonDemo,
   "status-dot-demo": StatusDotDemo,
   "text-reveal-demo": TextRevealDemo,

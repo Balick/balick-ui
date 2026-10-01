@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapse",
+  "title": "Collapse",
+  "description": "Opens and closes any content with a height animation.",
+  "files": [
+    {
+      "path": "registry/balick/ui/collapse.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface CollapseProps extends React.ComponentProps<\"div\"> {\n  /** Whether the content is shown. */\n  open: boolean\n}\n\n/**\n * Opens and closes its content with a height animation, whatever the height\n * of the content. Closed content is hidden from the keyboard and from\n * assistive technology. Pair it with a button that sets `aria-expanded` and\n * `aria-controls`.\n */\nexport function Collapse({ open, className, children, ...props }: CollapseProps) {\n  return (\n    <div\n      data-slot=\"collapse\"\n      data-state={open ? \"open\" : \"closed\"}\n      inert={!open}\n      className={cn(\n        \"grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none\",\n        open ? \"grid-rows-[1fr] opacity-100\" : \"grid-rows-[0fr] opacity-0\",\n        className\n      )}\n      {...props}\n    >\n      <div className=\"min-h-0 overflow-hidden\">{children}</div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

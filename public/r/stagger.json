@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stagger",
+  "title": "Stagger",
+  "description": "Brings a list or a grid in one item after the other, on mount or when scrolled into view.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/stagger.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion, type Variants } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype Direction = \"up\" | \"down\" | \"left\" | \"right\"\n\nexport interface StaggerProps\n  extends Omit<React.ComponentProps<typeof motion.div>, \"children\"> {\n  children?: React.ReactNode\n  /** Delay between two children, in seconds. */\n  interval?: number\n  /** Delay before the first child, in seconds. */\n  delay?: number\n  /** Duration of each child's entrance, in seconds. */\n  duration?: number\n  /** Distance travelled by each child, in pixels. */\n  offset?: number\n  /** Direction the children come from. */\n  direction?: Direction\n  /** Wait until the group scrolls into view before animating. */\n  inView?: boolean\n  /** Margin applied to the viewport when `inView` is set. */\n  inViewMargin?: string\n  /** Class name of the wrapper around each child. */\n  itemClassName?: string\n}\n\nconst axis: Record<Direction, [\"x\" | \"y\", 1 | -1]> = {\n  up: [\"y\", 1],\n  down: [\"y\", -1],\n  left: [\"x\", 1],\n  right: [\"x\", -1],\n}\n\n/**\n * Brings the children in one after the other, each fading up from a light\n * blur. Every direct child is wrapped in a div; style the group (flex, grid,\n * gap) through `className`. Under reduced motion only the fade stays.\n */\nexport function Stagger({\n  children,\n  className,\n  itemClassName,\n  interval = 0.08,\n  delay = 0,\n  duration = 0.45,\n  offset = 12,\n  direction = \"up\",\n  inView = false,\n  inViewMargin = \"-50px\",\n  ...props\n}: StaggerProps) {\n  const reduceMotion = useReducedMotion()\n  const [key, sign] = axis[direction]\n\n  const group: Variants = {\n    hidden: {},\n    visible: { transition: { staggerChildren: interval, delayChildren: delay } },\n  }\n  const item: Variants = {\n    hidden: { opacity: 0, filter: \"blur(4px)\", [key]: reduceMotion ? 0 : offset * sign },\n    visible: { opacity: 1, filter: \"blur(0px)\", [key]: 0 },\n  }\n\n  return (\n    <motion.div\n      data-slot=\"stagger\"\n      initial=\"hidden\"\n      {...(inView\n        ? { whileInView: \"visible\", viewport: { once: true, margin: inViewMargin } }\n        : { animate: \"visible\" })}\n      variants={group}\n      className={className}\n      {...props}\n    >\n      {React.Children.toArray(children).map((child, index) => (\n        <motion.div\n          key={index}\n          variants={item}\n          transition={{ duration, ease: \"easeOut\" }}\n          className={cn(itemClassName)}\n        >\n          {child}\n        </motion.div>\n      ))}\n    </motion.div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

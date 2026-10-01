@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "crossfade-demo",
+  "title": "Crossfade Demo",
+  "description": "Example usage of Crossfade.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/crossfade.json",
+    "https://ui.balick.me/r/segmented-control.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/crossfade-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Crossfade } from \"@/registry/balick/ui/crossfade\"\nimport { SegmentedControl } from \"@/registry/balick/ui/segmented-control\"\n\nconst plans = {\n  monthly: { price: \"$12\", note: \"Billed every month\" },\n  yearly: { price: \"$9\", note: \"Billed once a year, 25% off\" },\n  lifetime: { price: \"$199\", note: \"Pay once, keep it forever\" },\n}\n\ntype Plan = keyof typeof plans\n\nconst options = [\n  { value: \"monthly\" as const, label: \"Monthly\" },\n  { value: \"yearly\" as const, label: \"Yearly\" },\n  { value: \"lifetime\" as const, label: \"Lifetime\" },\n]\n\nexport default function CrossfadeDemo() {\n  const [plan, setPlan] = React.useState<Plan>(\"yearly\")\n\n  return (\n    <div className=\"flex flex-col items-center gap-5\">\n      <SegmentedControl aria-label=\"Plan\" value={plan} onValueChange={setPlan} options={options} />\n      <Crossfade value={plan} className=\"h-20 w-56 text-center\">\n        <p className=\"text-4xl font-semibold tracking-tighter\">{plans[plan].price}</p>\n        <p className=\"mt-1 text-sm text-muted-foreground\">{plans[plan].note}</p>\n      </Crossfade>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

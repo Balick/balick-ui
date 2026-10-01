@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapse-demo",
+  "title": "Collapse Demo",
+  "description": "Example usage of Collapse.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.balick.me/r/collapse.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/collapse-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ChevronDown } from \"lucide-react\"\n\nimport { Collapse } from \"@/registry/balick/ui/collapse\"\n\nexport default function CollapseDemo() {\n  const [open, setOpen] = React.useState(false)\n  const id = React.useId()\n\n  return (\n    <div className=\"w-full max-w-xs rounded-lg border bg-card\">\n      <button\n        type=\"button\"\n        aria-expanded={open}\n        aria-controls={id}\n        onClick={() => setOpen((value) => !value)}\n        className=\"flex w-full cursor-pointer items-center justify-between p-4 text-left text-sm font-medium\"\n      >\n        What is included?\n        <ChevronDown className={`size-4 text-muted-foreground transition-transform duration-300 ${open ? \"rotate-180\" : \"\"}`} />\n      </button>\n      <Collapse id={id} open={open}>\n        <p className=\"px-4 pb-4 text-sm leading-6 text-muted-foreground\">\n          Every block and component, the source code for each, and updates through the CLI. The\n          panel grows to fit its content, whatever its height.\n        </p>\n      </Collapse>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
