@@ -732,22 +732,6 @@ export function Launch() {
       { name: "className", type: "string", description: "Size the numbers with a text size on the root (text-4xl by default)." },
     ],
   },
-  {
-    slug: "relative-time",
-    category: "text",
-    title: "Relative Time",
-    description: "“5 minutes ago”, “in 3 days”: a date described relative to now, kept up to date while the page is open.",
-    example: "relative-time-demo",
-    usage: `import { RelativeTime } from "@/components/ui/relative-time"
-
-export function Published({ date }: { date: string }) {
-  return <RelativeTime date={date} />
-}`,
-    props: [
-      { name: "date", type: "Date | string | number", description: "The moment to describe. Required." },
-      { name: "locale", type: "string", default: '"en"', description: 'Language of the text, as a BCP 47 tag such as "fr".' },
-    ],
-  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

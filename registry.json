@@ -520,18 +520,6 @@
       ]
     },
     {
-      "name": "relative-time",
-      "type": "registry:ui",
-      "title": "Relative Time",
-      "description": "A date described relative to now, kept up to date.",
-      "files": [
-        {
-          "path": "registry/balick/ui/relative-time.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "marquee-demo",
       "type": "registry:example",
       "title": "Marquee Demo",
@@ -972,21 +960,6 @@
       "files": [
         {
           "path": "registry/balick/examples/countdown-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "relative-time-demo",
-      "type": "registry:example",
-      "title": "Relative Time Demo",
-      "description": "Example usage of Relative Time.",
-      "registryDependencies": [
-        "https://ui.balick.me/r/relative-time.json"
-      ],
-      "files": [
-        {
-          "path": "registry/balick/examples/relative-time-demo.tsx",
           "type": "registry:example"
         }
       ]

@@ -40,7 +40,6 @@ import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
 import MagneticButtonDemo from "@/registry/balick/examples/magnetic-button-demo"
 import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
 import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
-import RelativeTimeDemo from "@/registry/balick/examples/relative-time-demo"
 import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
 import ScrambleTextDemo from "@/registry/balick/examples/scramble-text-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
@@ -73,7 +72,6 @@ export const examples: Record<string, React.ComponentType> = {
   "magnetic-button-demo": MagneticButtonDemo,
   "marquee-demo": MarqueeDemo,
   "number-ticker-demo": NumberTickerDemo,
-  "relative-time-demo": RelativeTimeDemo,
   "ripple-button-demo": RippleButtonDemo,
   "scramble-text-demo": ScrambleTextDemo,
   "section-demo": SectionDemo,
