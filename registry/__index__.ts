@@ -30,13 +30,10 @@ import { Timeline01 } from "@/registry/balick/blocks/timeline-01/timeline-01"
 import AnimatedNumberDemo from "@/registry/balick/examples/animated-number-demo"
 import ArrowButtonDemo from "@/registry/balick/examples/arrow-button-demo"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
-import CollapseDemo from "@/registry/balick/examples/collapse-demo"
 import CopyButtonDemo from "@/registry/balick/examples/copy-button-demo"
 import CountdownDemo from "@/registry/balick/examples/countdown-demo"
-import CrossfadeDemo from "@/registry/balick/examples/crossfade-demo"
 import ExpandButtonDemo from "@/registry/balick/examples/expand-button-demo"
 import ExpandableTextDemo from "@/registry/balick/examples/expandable-text-demo"
-import FloatDemo from "@/registry/balick/examples/float-demo"
 import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
 import HighlightTextDemo from "@/registry/balick/examples/highlight-text-demo"
 import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
@@ -65,7 +62,6 @@ import ThemeToggleButtonDemo from "@/registry/balick/examples/theme-toggle-butto
 import TiltCardDemo from "@/registry/balick/examples/tilt-card-demo"
 import TypewriterDemo from "@/registry/balick/examples/typewriter-demo"
 import UnderlineLinkDemo from "@/registry/balick/examples/underline-link-demo"
-import VelocityMarqueeDemo from "@/registry/balick/examples/velocity-marquee-demo"
 import WordRotateDemo from "@/registry/balick/examples/word-rotate-demo"
 
 /** Demo components rendered by <ComponentPreview />, keyed by registry item name. */
@@ -73,13 +69,10 @@ export const examples: Record<string, React.ComponentType> = {
   "animated-number-demo": AnimatedNumberDemo,
   "arrow-button-demo": ArrowButtonDemo,
   "blur-fade-demo": BlurFadeDemo,
-  "collapse-demo": CollapseDemo,
   "copy-button-demo": CopyButtonDemo,
   "countdown-demo": CountdownDemo,
-  "crossfade-demo": CrossfadeDemo,
   "expand-button-demo": ExpandButtonDemo,
   "expandable-text-demo": ExpandableTextDemo,
-  "float-demo": FloatDemo,
   "grid-pattern-demo": GridPatternDemo,
   "highlight-text-demo": HighlightTextDemo,
   "hold-button-demo": HoldButtonDemo,
@@ -108,7 +101,6 @@ export const examples: Record<string, React.ComponentType> = {
   "tilt-card-demo": TiltCardDemo,
   "typewriter-demo": TypewriterDemo,
   "underline-link-demo": UnderlineLinkDemo,
-  "velocity-marquee-demo": VelocityMarqueeDemo,
   "word-rotate-demo": WordRotateDemo,
 }
 

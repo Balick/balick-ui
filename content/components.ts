@@ -803,87 +803,6 @@ export function Cover() {
     ],
   },
   {
-    slug: "crossfade",
-    category: "motion",
-    title: "Crossfade",
-    description: "Swaps its content when a value changes, with a fade and a light blur.",
-    example: "crossfade-demo",
-    usage: `import { Crossfade } from "@/components/ui/crossfade"
-
-export function Price({ yearly }: { yearly: boolean }) {
-  return (
-    <Crossfade value={yearly ? "yearly" : "monthly"} className="h-12">
-      <p className="text-4xl font-semibold">{yearly ? "$9" : "$12"}</p>
-    </Crossfade>
-  )
-}`,
-    props: [
-      { name: "value", type: "React.Key", description: "Identifies what is shown. When it changes, the content is swapped. Required." },
-      { name: "offset", type: "number", default: "8", description: "Distance the content slides while it fades, in pixels." },
-      { name: "duration", type: "number", default: "0.3", description: "Duration of the swap, in seconds." },
-      { name: "blur", type: "string", default: "\"4px\"", description: "Blur at the ends of the fade, as a CSS length." },
-    ],
-  },
-  {
-    slug: "collapse",
-    category: "motion",
-    title: "Collapse",
-    description: "Opens and closes any content with a height animation, whatever its height.",
-    example: "collapse-demo",
-    usage: `"use client"
-
-import * as React from "react"
-
-import { Collapse } from "@/components/ui/collapse"
-
-export function Details() {
-  const [open, setOpen] = React.useState(false)
-
-  return (
-    <div>
-      <button type="button" aria-expanded={open} aria-controls="details" onClick={() => setOpen(!open)}>
-        Details
-      </button>
-      <Collapse id="details" open={open}>
-        <p>Anything, of any height.</p>
-      </Collapse>
-    </div>
-  )
-}`,
-    props: [
-      { name: "open", type: "boolean", description: "Whether the content is shown. Required." },
-    ],
-  },
-  {
-    slug: "float",
-    category: "motion",
-    title: "Float",
-    description: "A slow, endless bobbing for a badge, an illustration or a card.",
-    example: "float-demo",
-    usage: `import { Float } from "@/components/ui/float"
-
-export function Badge() {
-  return (
-    <Float distance="8px" duration="5s">
-      <span className="rounded-full border px-3 py-1">New</span>
-    </Float>
-  )
-}`,
-    css: `@theme inline {
-  --animate-float: float var(--float-duration) ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 calc(var(--float-distance) * -1); }
-}`,
-    props: [
-      { name: "distance", type: "string", default: "\"10px\"", description: "How far it travels up and back, as a CSS length." },
-      { name: "duration", type: "string", default: "\"6s\"", description: "Duration of one cycle, as a CSS time." },
-      { name: "delay", type: "string", default: "\"0s\"", description: "Delay before it starts, as a CSS time. A negative value starts mid-cycle." },
-    ],
-  },
-  {
     slug: "orbit",
     category: "motion",
     title: "Orbit",
@@ -976,32 +895,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     props: [
       { name: "scrollRef", type: "React.RefObject<HTMLElement | null>", description: "The element that scrolls. It is the page by default." },
       { name: "className", type: "string", description: "Replaces the default placement and color (fixed to the top, 2px high, foreground color)." },
-    ],
-  },
-  {
-    slug: "velocity-marquee",
-    category: "motion",
-    title: "Velocity Marquee",
-    description: "A marquee that drifts on its own and speeds up as you scroll.",
-    example: "velocity-marquee-demo",
-    usage: `import { VelocityMarquee } from "@/components/ui/velocity-marquee"
-
-export function Words() {
-  return (
-    <VelocityMarquee duration={16}>
-      <span className="text-4xl font-semibold">Compose</span>
-      <span className="text-4xl font-semibold">Install</span>
-      <span className="text-4xl font-semibold">Ship</span>
-    </VelocityMarquee>
-  )
-}`,
-    props: [
-      { name: "duration", type: "number", default: "20", description: "Seconds the content takes to pass once, at rest." },
-      { name: "velocityFactor", type: "number", default: "1", description: "How much scrolling speeds the marquee up. 0 turns it off." },
-      { name: "reverse", type: "boolean", default: "false", description: "Move to the right instead of the left." },
-      { name: "repeat", type: "number", default: "4", description: "Copies of the content in the track. Raise it when the content is short." },
-      { name: "gap", type: "string", default: "\"2rem\"", description: "Space between items, as a CSS length." },
-      { name: "scrollRef", type: "React.RefObject<HTMLElement | null>", description: "The element that scrolls. It is the page by default." },
     ],
   },
 ]
