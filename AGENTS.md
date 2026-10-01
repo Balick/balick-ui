@@ -46,8 +46,9 @@ The full branch and commit rules are in `CONTRIBUTING.md`. In short:
   `type/short-topic` in kebab-case (`feat`, `fix`, `docs`, `refactor`,
   `chore`), for example `feat/testimonials-02`.
 - One branch per change; never reuse a branch whose pull request was merged.
-- Commit messages: an imperative summary line, a blank line, then what
-  changed and why.
+- Commit messages: a summary line that starts with the type, like the
+  branch (`feat: add the testimonials-02 block`), then a blank line, then
+  what changed and why, wrapped at 72 characters.
 - No AI attribution anywhere: no `Co-authored-by` trailers for an agent, no
   "generated with" lines, no tool or model names in commits, pull requests,
   code or comments.
