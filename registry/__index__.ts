@@ -45,9 +45,11 @@ import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
 import MaskRevealDemo from "@/registry/balick/examples/mask-reveal-demo"
 import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
 import OrbitDemo from "@/registry/balick/examples/orbit-demo"
+import ParallaxDemo from "@/registry/balick/examples/parallax-demo"
 import RelativeTimeDemo from "@/registry/balick/examples/relative-time-demo"
 import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
 import ScrambleTextDemo from "@/registry/balick/examples/scramble-text-demo"
+import ScrollProgressDemo from "@/registry/balick/examples/scroll-progress-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
 import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
@@ -63,6 +65,7 @@ import ThemeToggleButtonDemo from "@/registry/balick/examples/theme-toggle-butto
 import TiltCardDemo from "@/registry/balick/examples/tilt-card-demo"
 import TypewriterDemo from "@/registry/balick/examples/typewriter-demo"
 import UnderlineLinkDemo from "@/registry/balick/examples/underline-link-demo"
+import VelocityMarqueeDemo from "@/registry/balick/examples/velocity-marquee-demo"
 import WordRotateDemo from "@/registry/balick/examples/word-rotate-demo"
 
 /** Demo components rendered by <ComponentPreview />, keyed by registry item name. */
@@ -85,9 +88,11 @@ export const examples: Record<string, React.ComponentType> = {
   "mask-reveal-demo": MaskRevealDemo,
   "number-ticker-demo": NumberTickerDemo,
   "orbit-demo": OrbitDemo,
+  "parallax-demo": ParallaxDemo,
   "relative-time-demo": RelativeTimeDemo,
   "ripple-button-demo": RippleButtonDemo,
   "scramble-text-demo": ScrambleTextDemo,
+  "scroll-progress-demo": ScrollProgressDemo,
   "section-demo": SectionDemo,
   "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
@@ -103,6 +108,7 @@ export const examples: Record<string, React.ComponentType> = {
   "tilt-card-demo": TiltCardDemo,
   "typewriter-demo": TypewriterDemo,
   "underline-link-demo": UnderlineLinkDemo,
+  "velocity-marquee-demo": VelocityMarqueeDemo,
   "word-rotate-demo": WordRotateDemo,
 }
 

@@ -1819,6 +1819,96 @@
           "type": "registry:example"
         }
       ]
+    },
+    {
+      "name": "parallax",
+      "type": "registry:ui",
+      "title": "Parallax",
+      "description": "A layer that moves at its own pace while the page scrolls.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/parallax.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "parallax-demo",
+      "type": "registry:example",
+      "title": "Parallax Demo",
+      "description": "Example usage of Parallax.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/parallax.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/parallax-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "Scroll Progress",
+      "description": "A bar that fills as you scroll the page or a panel.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/scroll-progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress-demo",
+      "type": "registry:example",
+      "title": "Scroll Progress Demo",
+      "description": "Example usage of Scroll Progress.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/scroll-progress.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/scroll-progress-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "velocity-marquee",
+      "type": "registry:ui",
+      "title": "Velocity Marquee",
+      "description": "A marquee that speeds up with the scroll.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/velocity-marquee.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "velocity-marquee-demo",
+      "type": "registry:example",
+      "title": "Velocity Marquee Demo",
+      "description": "Example usage of Velocity Marquee.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/velocity-marquee.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/velocity-marquee-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
     }
   ]
 }

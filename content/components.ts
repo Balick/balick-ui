@@ -936,6 +936,74 @@ export function Membership() {
       { name: "scale", type: "number", default: "1.02", description: "Scale of the card while the pointer is over it." },
     ],
   },
+  {
+    slug: "parallax",
+    category: "motion",
+    title: "Parallax",
+    description: "A layer that moves at its own pace while the page scrolls, to suggest depth. It stays still under reduced motion.",
+    example: "parallax-demo",
+    usage: `import { Parallax } from "@/components/ui/parallax"
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <Parallax distance={80} className="absolute -top-10 right-10 size-40 rounded-full bg-muted" />
+      <h1 className="relative">Depth</h1>
+    </section>
+  )
+}`,
+    props: [
+      { name: "distance", type: "number", default: "60", description: "How far the layer drifts, in pixels, while it crosses the screen. A negative value reverses it." },
+      { name: "scrollRef", type: "React.RefObject<HTMLElement | null>", description: "The element that scrolls, which must be positioned (relative). It is the page by default." },
+    ],
+  },
+  {
+    slug: "scroll-progress",
+    category: "motion",
+    title: "Scroll Progress",
+    description: "A bar that fills as you scroll the page or a panel. Fixed to the top of the screen by default.",
+    example: "scroll-progress-demo",
+    usage: `import { ScrollProgress } from "@/components/ui/scroll-progress"
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <ScrollProgress />
+      {children}
+    </>
+  )
+}`,
+    props: [
+      { name: "scrollRef", type: "React.RefObject<HTMLElement | null>", description: "The element that scrolls. It is the page by default." },
+      { name: "className", type: "string", description: "Replaces the default placement and color (fixed to the top, 2px high, foreground color)." },
+    ],
+  },
+  {
+    slug: "velocity-marquee",
+    category: "motion",
+    title: "Velocity Marquee",
+    description: "A marquee that moves at its own pace and speeds up as you scroll, then eases back. It stands still under reduced motion.",
+    example: "velocity-marquee-demo",
+    usage: `import { VelocityMarquee } from "@/components/ui/velocity-marquee"
+
+export function Words() {
+  return (
+    <VelocityMarquee duration={16}>
+      <span className="text-4xl font-semibold">Compose</span>
+      <span className="text-4xl font-semibold">Install</span>
+      <span className="text-4xl font-semibold">Ship</span>
+    </VelocityMarquee>
+  )
+}`,
+    props: [
+      { name: "duration", type: "number", default: "20", description: "Seconds the content takes to pass once, at rest." },
+      { name: "velocityFactor", type: "number", default: "1", description: "How much scrolling speeds the marquee up. 0 turns it off." },
+      { name: "reverse", type: "boolean", default: "false", description: "Move to the right instead of the left." },
+      { name: "repeat", type: "number", default: "4", description: "Copies of the content in the track. Raise it when the content is short." },
+      { name: "gap", type: "string", default: "\"2rem\"", description: "Space between items, as a CSS length." },
+      { name: "scrollRef", type: "React.RefObject<HTMLElement | null>", description: "The element that scrolls. It is the page by default." },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

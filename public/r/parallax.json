@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "parallax",
+  "title": "Parallax",
+  "description": "A layer that moves at its own pace while the page scrolls.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/parallax.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion, useScroll, useTransform } from \"motion/react\"\n\nexport interface ParallaxProps extends React.ComponentProps<typeof motion.div> {\n  /**\n   * How far the layer drifts, in pixels, while it crosses the screen: it\n   * starts this far down and ends this far up. A negative value reverses it.\n   */\n  distance?: number\n  /** The element that scrolls, which must be positioned (`relative`). It is the page by default. */\n  scrollRef?: React.RefObject<HTMLElement | null>\n}\n\n/**\n * A layer that moves at its own pace while the page scrolls, so that it seems\n * to sit nearer or farther than the rest. Give layers different distances to\n * build depth. It stays still under reduced motion.\n */\nexport function Parallax({ distance = 60, scrollRef, style, ...props }: ParallaxProps) {\n  const reduceMotion = useReducedMotion()\n  const ref = React.useRef<HTMLDivElement>(null)\n  const { scrollYProgress } = useScroll({\n    target: ref,\n    container: scrollRef,\n    offset: [\"start end\", \"end start\"],\n  })\n  const y = useTransform(scrollYProgress, [0, 1], [distance, -distance])\n\n  return (\n    <motion.div\n      ref={ref}\n      data-slot=\"parallax\"\n      style={{ y: reduceMotion ? 0 : y, ...style }}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
