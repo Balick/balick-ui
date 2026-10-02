@@ -43,7 +43,6 @@ import MaskRevealDemo from "@/registry/balick/examples/mask-reveal-demo"
 import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
 import OrbitDemo from "@/registry/balick/examples/orbit-demo"
 import ParallaxDemo from "@/registry/balick/examples/parallax-demo"
-import RelativeTimeDemo from "@/registry/balick/examples/relative-time-demo"
 import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
 import ScrambleTextDemo from "@/registry/balick/examples/scramble-text-demo"
 import ScrollProgressDemo from "@/registry/balick/examples/scroll-progress-demo"
@@ -82,7 +81,6 @@ export const examples: Record<string, React.ComponentType> = {
   "number-ticker-demo": NumberTickerDemo,
   "orbit-demo": OrbitDemo,
   "parallax-demo": ParallaxDemo,
-  "relative-time-demo": RelativeTimeDemo,
   "ripple-button-demo": RippleButtonDemo,
   "scramble-text-demo": ScrambleTextDemo,
   "scroll-progress-demo": ScrollProgressDemo,

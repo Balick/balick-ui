@@ -739,22 +739,6 @@ export function Launch() {
     ],
   },
   {
-    slug: "relative-time",
-    category: "text",
-    title: "Relative Time",
-    description: "“5 minutes ago”, “in 3 days”: a date relative to now, kept up to date.",
-    example: "relative-time-demo",
-    usage: `import { RelativeTime } from "@/components/ui/relative-time"
-
-export function Published({ date }: { date: string }) {
-  return <RelativeTime date={date} />
-}`,
-    props: [
-      { name: "date", type: "Date | string | number", description: "The moment to describe. Required." },
-      { name: "locale", type: "string", default: '"en"', description: 'Language of the text, as a BCP 47 tag such as "fr".' },
-    ],
-  },
-  {
     slug: "stagger",
     category: "motion",
     title: "Stagger",
