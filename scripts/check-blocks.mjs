@@ -3,10 +3,14 @@
 //   exports Pricing01): the composer generates imports from that convention;
 // - every demo has a default export: it is the module Open in v0 imports;
 // - every npm package an item imports is listed in its `dependencies`, so the
-//   CLI installs it (React and Next.js are provided by the project).
+//   CLI installs it (React and Next.js are provided by the project);
+// - every demo is registered in registry/__index__.ts: the galleries look it up
+//   there, and an unregistered demo leaves an empty preview without an error.
 import { readFileSync } from "node:fs"
 
 const registry = JSON.parse(readFileSync("registry.json", "utf8"))
+const indexSource = readFileSync("registry/__index__.ts", "utf8")
+const registeredDemos = new Set([...indexSource.matchAll(/^ {2}"([\w-]+-demo)": /gm)].map((m) => m[1]))
 const pascal = (name) =>
   name.split("-").map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join("")
 const provided = new Set(["react", "react-dom", "next"])
@@ -28,6 +32,7 @@ const errors = registry.items.flatMap((item) => {
   if (item.type === "registry:example") {
     const [path, source] = sources[0]
     if (!/^export default /m.test(source)) itemErrors.push(`${path} must have a default export`)
+    if (!registeredDemos.has(item.name)) itemErrors.push(`${item.name} is not registered in registry/__index__.ts`)
   }
 
   const declared = new Set(item.dependencies ?? [])

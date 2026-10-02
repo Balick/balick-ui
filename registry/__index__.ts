@@ -39,21 +39,27 @@ import HighlightTextDemo from "@/registry/balick/examples/highlight-text-demo"
 import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
 import MagneticButtonDemo from "@/registry/balick/examples/magnetic-button-demo"
 import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
+import MaskRevealDemo from "@/registry/balick/examples/mask-reveal-demo"
 import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
+import OrbitDemo from "@/registry/balick/examples/orbit-demo"
+import ParallaxDemo from "@/registry/balick/examples/parallax-demo"
 import RelativeTimeDemo from "@/registry/balick/examples/relative-time-demo"
 import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
 import ScrambleTextDemo from "@/registry/balick/examples/scramble-text-demo"
+import ScrollProgressDemo from "@/registry/balick/examples/scroll-progress-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
 import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
 import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
 import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
 import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
+import StaggerDemo from "@/registry/balick/examples/stagger-demo"
 import StatusButtonDemo from "@/registry/balick/examples/status-button-demo"
 import StatusDotDemo from "@/registry/balick/examples/status-dot-demo"
 import TextRevealDemo from "@/registry/balick/examples/text-reveal-demo"
 import TextRollButtonDemo from "@/registry/balick/examples/text-roll-button-demo"
 import ThemeToggleButtonDemo from "@/registry/balick/examples/theme-toggle-button-demo"
+import TiltCardDemo from "@/registry/balick/examples/tilt-card-demo"
 import TypewriterDemo from "@/registry/balick/examples/typewriter-demo"
 import UnderlineLinkDemo from "@/registry/balick/examples/underline-link-demo"
 import WordRotateDemo from "@/registry/balick/examples/word-rotate-demo"
@@ -72,21 +78,27 @@ export const examples: Record<string, React.ComponentType> = {
   "hold-button-demo": HoldButtonDemo,
   "magnetic-button-demo": MagneticButtonDemo,
   "marquee-demo": MarqueeDemo,
+  "mask-reveal-demo": MaskRevealDemo,
   "number-ticker-demo": NumberTickerDemo,
+  "orbit-demo": OrbitDemo,
+  "parallax-demo": ParallaxDemo,
   "relative-time-demo": RelativeTimeDemo,
   "ripple-button-demo": RippleButtonDemo,
   "scramble-text-demo": ScrambleTextDemo,
+  "scroll-progress-demo": ScrollProgressDemo,
   "section-demo": SectionDemo,
   "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
   "shimmer-text-demo": ShimmerTextDemo,
   "social-icons-demo": SocialIconsDemo,
   "spotlight-button-demo": SpotlightButtonDemo,
+  "stagger-demo": StaggerDemo,
   "status-button-demo": StatusButtonDemo,
   "status-dot-demo": StatusDotDemo,
   "text-reveal-demo": TextRevealDemo,
   "text-roll-button-demo": TextRollButtonDemo,
   "theme-toggle-button-demo": ThemeToggleButtonDemo,
+  "tilt-card-demo": TiltCardDemo,
   "typewriter-demo": TypewriterDemo,
   "underline-link-demo": UnderlineLinkDemo,
   "word-rotate-demo": WordRotateDemo,

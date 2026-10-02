@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "orbit",
+  "title": "Orbit",
+  "description": "Items that circle around a center while staying upright.",
+  "files": [
+    {
+      "path": "registry/balick/ui/orbit.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface OrbitProps extends Omit<React.ComponentProps<\"div\">, \"children\"> {\n  /** The items that circle around the center, spread evenly on the ring. */\n  children?: React.ReactNode\n  /** What sits in the middle. It can be another Orbit. */\n  center?: React.ReactNode\n  /** Diameter of the ring, as a CSS length. */\n  size?: string\n  /** Duration of one turn, as a CSS time. */\n  duration?: string\n  /** Turn counter-clockwise. */\n  reverse?: boolean\n  /** Draw the ring. */\n  ring?: boolean\n}\n\n/**\n * Items that circle around a center while staying upright, to show what\n * connects to a product. Nest an Orbit in `center` for a second ring. The\n * items stand still on their ring under reduced motion.\n */\nexport function Orbit({\n  children,\n  center,\n  className,\n  size = \"16rem\",\n  duration = \"30s\",\n  reverse = false,\n  ring = true,\n  style,\n  ...props\n}: OrbitProps) {\n  const items = React.Children.toArray(children)\n\n  return (\n    <div\n      data-slot=\"orbit\"\n      style={{ \"--orbit-size\": size, \"--orbit-duration\": duration, ...style } as React.CSSProperties}\n      className={cn(\"relative grid size-(--orbit-size) shrink-0 place-items-center\", className)}\n      {...props}\n    >\n      {ring && <div aria-hidden className=\"absolute inset-0 rounded-full border border-dashed\" />}\n      {center && <div className=\"relative\">{center}</div>}\n      <div\n        className={cn(\n          \"absolute inset-0 animate-orbit-spin motion-reduce:animate-none\",\n          reverse && \"[animation-direction:reverse]\"\n        )}\n      >\n        {items.map((item, index) => {\n          // Start at the top, then go round clockwise.\n          const angle = (2 * Math.PI * index) / items.length - Math.PI / 2\n          return (\n            <div\n              key={index}\n              className=\"absolute -translate-x-1/2 -translate-y-1/2\"\n              style={{\n                left: `calc(50% + var(--orbit-size) / 2 * ${Math.cos(angle).toFixed(4)})`,\n                top: `calc(50% + var(--orbit-size) / 2 * ${Math.sin(angle).toFixed(4)})`,\n              }}\n            >\n              {/* Turns the other way at the same speed, so the item stays upright. */}\n              <div\n                className={cn(\n                  \"animate-orbit-spin motion-reduce:animate-none\",\n                  reverse ? \"[animation-direction:normal]\" : \"[animation-direction:reverse]\"\n                )}\n              >\n                {item}\n              </div>\n            </div>\n          )\n        })}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-orbit-spin": "orbit-spin var(--orbit-duration) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes orbit-spin": {
+      "to": {
+        "rotate": "360deg"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

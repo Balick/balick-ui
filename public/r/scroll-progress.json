@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "title": "Scroll Progress",
+  "description": "A bar that fills as you scroll the page or a panel.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/scroll-progress.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion, useScroll, useSpring } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollProgressProps extends React.ComponentProps<typeof motion.div> {\n  /** The element that scrolls. It is the page by default. */\n  scrollRef?: React.RefObject<HTMLElement | null>\n}\n\n/**\n * A bar that fills as you scroll: fixed to the top of the screen by default.\n * Pass a `className` to place or color it differently. It follows the scroll\n * exactly, without smoothing, under reduced motion.\n */\nexport function ScrollProgress({ className, scrollRef, style, ...props }: ScrollProgressProps) {\n  const reduceMotion = useReducedMotion()\n  const { scrollYProgress } = useScroll({ container: scrollRef })\n  const smooth = useSpring(scrollYProgress, { stiffness: 220, damping: 30, restDelta: 0.001 })\n\n  return (\n    <motion.div\n      aria-hidden\n      data-slot=\"scroll-progress\"\n      style={{ scaleX: reduceMotion ? scrollYProgress : smooth, ...style }}\n      className={cn(\"fixed inset-x-0 top-0 z-50 h-0.5 origin-left bg-foreground\", className)}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

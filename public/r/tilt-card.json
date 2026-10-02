@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilt-card",
+  "title": "Tilt Card",
+  "description": "A card that leans toward the pointer in 3D, with a soft glare.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/tilt-card.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  motion,\n  useMotionTemplate,\n  useMotionValue,\n  useReducedMotion,\n  useSpring,\n  useTransform,\n} from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface TiltCardProps extends Omit<React.ComponentProps<typeof motion.div>, \"children\"> {\n  children?: React.ReactNode\n  /** Largest angle the card leans, in degrees. */\n  maxTilt?: number\n  /** Light a soft spot under the pointer. */\n  glare?: boolean\n  /** Scale of the card while the pointer is over it. */\n  scale?: number\n}\n\nconst spring = { stiffness: 220, damping: 22, mass: 0.6 }\n\n/**\n * A card that leans toward the pointer in 3D, with a soft glare. It reacts to\n * a mouse only: touch and pen leave it flat, and so does reduced motion.\n */\nexport function TiltCard({\n  children,\n  className,\n  maxTilt = 10,\n  glare = true,\n  scale = 1.02,\n  style,\n  onPointerMove,\n  onPointerLeave,\n  ...props\n}: TiltCardProps) {\n  const reduceMotion = useReducedMotion()\n  // Where the pointer is on the card, from 0 to 1 on each axis.\n  const x = useMotionValue(0.5)\n  const y = useMotionValue(0.5)\n  const rotateY = useSpring(useTransform(x, [0, 1], [-maxTilt, maxTilt]), spring)\n  const rotateX = useSpring(useTransform(y, [0, 1], [maxTilt, -maxTilt]), spring)\n  const scaleValue = useSpring(1, spring)\n  const glareX = useTransform(x, (value) => value * 100)\n  const glareY = useTransform(y, (value) => value * 100)\n  const glareImage = useMotionTemplate`radial-gradient(16rem circle at ${glareX}% ${glareY}%, color-mix(in oklab, var(--foreground) 9%, transparent), transparent 70%)`\n\n  function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {\n    onPointerMove?.(event)\n    if (reduceMotion || event.pointerType !== \"mouse\") return\n    const rect = event.currentTarget.getBoundingClientRect()\n    x.set((event.clientX - rect.left) / rect.width)\n    y.set((event.clientY - rect.top) / rect.height)\n    scaleValue.set(scale)\n  }\n\n  function handlePointerLeave(event: React.PointerEvent<HTMLDivElement>) {\n    onPointerLeave?.(event)\n    x.set(0.5)\n    y.set(0.5)\n    scaleValue.set(1)\n  }\n\n  return (\n    <motion.div\n      data-slot=\"tilt-card\"\n      style={{ rotateX, rotateY, scale: scaleValue, transformPerspective: 900, ...style }}\n      onPointerMove={handlePointerMove}\n      onPointerLeave={handlePointerLeave}\n      className={cn(\"group relative\", className)}\n      {...props}\n    >\n      {children}\n      {glare && (\n        <motion.div\n          aria-hidden\n          style={{ backgroundImage: glareImage }}\n          className=\"pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:hidden\"\n        />\n      )}\n    </motion.div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

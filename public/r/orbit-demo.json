@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "orbit-demo",
+  "title": "Orbit Demo",
+  "description": "Example usage of Orbit.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.balick.me/r/orbit.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/orbit-demo.tsx",
+      "content": "import type * as React from \"react\"\nimport { Cloud, Database, Lock, Mail, Zap } from \"lucide-react\"\n\nimport { Orbit } from \"@/registry/balick/ui/orbit\"\n\nfunction Chip({ children }: { children: React.ReactNode }) {\n  return (\n    <div className=\"flex size-9 items-center justify-center rounded-full border bg-card text-muted-foreground shadow-xs [&_svg]:size-4\">\n      {children}\n    </div>\n  )\n}\n\nexport default function OrbitDemo() {\n  return (\n    <Orbit\n      size=\"13rem\"\n      duration=\"40s\"\n      center={\n        <Orbit size=\"6.5rem\" duration=\"24s\" reverse center={<Zap className=\"size-5\" />}>\n          <Chip><Lock /></Chip>\n          <Chip><Mail /></Chip>\n          <Chip><Cloud /></Chip>\n        </Orbit>\n      }\n    >\n      <Chip><Database /></Chip>\n      <Chip><Cloud /></Chip>\n      <Chip><Mail /></Chip>\n      <Chip><Lock /></Chip>\n      <Chip><Zap /></Chip>\n    </Orbit>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
