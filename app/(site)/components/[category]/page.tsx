@@ -16,6 +16,7 @@ import {
   componentHref,
   componentsByCategory,
   getComponentCategory,
+  maxDescriptionLength,
 } from "@/content/components"
 import { cn } from "@/lib/utils"
 import { examples } from "@/registry/__index__"
@@ -35,6 +36,12 @@ export function generateStaticParams() {
   // A category and a component must never share a slug: both sit under /components.
   const clash = componentDocs.find((doc) => componentCategories.some((c) => c.slug === doc.slug))
   if (clash) throw new Error(`Component "${clash.slug}" has the same slug as a category`)
+  const long = componentDocs.find((doc) => doc.description.length > maxDescriptionLength)
+  if (long) {
+    throw new Error(
+      `The description of "${long.slug}" has ${long.description.length} characters: keep it to ${maxDescriptionLength} so its card stays on two lines`
+    )
+  }
   return componentsByCategory().map((category) => ({ category: category.slug }))
 }
 
@@ -118,7 +125,7 @@ export default async function ComponentCategoryPage({ params }: Props) {
                           className="-my-1 shrink-0"
                         />
                       </div>
-                      <p className="mt-1 text-sm leading-6 text-muted-foreground">{doc.description}</p>
+                      <p className="mt-1 text-sm leading-6 text-muted-foreground sm:min-h-12">{doc.description}</p>
                     </div>
                   </li>
                 )
