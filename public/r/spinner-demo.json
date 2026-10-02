@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-demo",
+  "title": "Spinner Demo",
+  "description": "Example usage of Spinner.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/spinner.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/spinner-demo.tsx",
+      "content": "import { Spinner } from \"@/registry/balick/ui/spinner\"\n\nexport default function SpinnerDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <div className=\"flex items-center gap-5 text-foreground\">\n        <Spinner className=\"size-4\" />\n        <Spinner className=\"size-6\" />\n        <Spinner className=\"size-8\" />\n        <Spinner className=\"size-6 text-muted-foreground\" />\n      </div>\n      <div className=\"inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm shadow-xs\">\n        <Spinner className=\"size-4\" label=\"Building\" />\n        Building your project\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

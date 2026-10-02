@@ -1126,6 +1126,83 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       { name: "className", type: "string", description: "Replaces the default placement and color (fixed to the top, 2px high, foreground color)." },
     ],
   },
+  {
+    slug: "gauge",
+    category: "indicators",
+    title: "Gauge",
+    description: "A three-quarter ring for a percentage that fills in and warns past a threshold.",
+    example: "gauge-demo",
+    usage: `import { Gauge } from "@/components/ui/gauge"
+
+export function Usage() {
+  return <Gauge value={76} aria-label="Bandwidth used" className="size-20" />
+}`,
+    css: `@theme inline {
+  --animate-gauge-fill: gauge-fill 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes gauge-fill {
+  from { stroke-dashoffset: var(--gauge-arc); }
+}`,
+    props: [
+      { name: "value", type: "number", description: "The value, from 0 to 100. Required." },
+      { name: "showValue", type: "boolean", default: "true", description: "Show the value in the middle." },
+      { name: "thresholds", type: "[number, number] | false", default: "[70, 90]", description: "Values from which the arc turns amber, then red. false keeps the foreground color." },
+      { name: "indeterminate", type: "boolean", default: "false", description: "Turn a short arc while the value is not known yet." },
+    ],
+  },
+  {
+    slug: "segment-meter",
+    category: "indicators",
+    title: "Segment Meter",
+    description: "A level in a few segments, such as the strength of a password.",
+    example: "segment-meter-demo",
+    usage: `import { SegmentMeter } from "@/components/ui/segment-meter"
+
+export function Strength({ score }: { score: number }) {
+  return (
+    <SegmentMeter
+      value={score}
+      labels={["Weak", "Fair", "Good", "Strong"]}
+      aria-label="Password strength"
+    />
+  )
+}`,
+    props: [
+      { name: "value", type: "number", description: "How many segments are filled, from 0 to segments. Required." },
+      { name: "segments", type: "number", default: "4", description: "Number of segments." },
+      { name: "labels", type: "string[]", description: "A word for each level, from the first filled segment to the last." },
+      { name: "tone", type: "\"level\" | \"neutral\"", default: "\"level\"", description: "Color the segments by level (red, amber, then green), or in the foreground color." },
+    ],
+  },
+  {
+    slug: "spinner",
+    category: "indicators",
+    title: "Spinner",
+    description: "Twelve bars that fade in turn, for waits the size of an icon.",
+    example: "spinner-demo",
+    usage: `import { Spinner } from "@/components/ui/spinner"
+
+export function Building() {
+  return (
+    <p className="flex items-center gap-2">
+      <Spinner label="Building" />
+      Building your project
+    </p>
+  )
+}`,
+    css: `@theme inline {
+  --animate-spinner-fade: spinner-fade 1.2s linear infinite;
+}
+
+@keyframes spinner-fade {
+  from { opacity: 1; }
+  to { opacity: 0.15; }
+}`,
+    props: [
+      { name: "label", type: "string", default: "\"Loading\"", description: "What is loading, read by screen readers." },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

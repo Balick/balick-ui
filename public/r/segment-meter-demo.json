@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segment-meter-demo",
+  "title": "Segment Meter Demo",
+  "description": "Example usage of Segment Meter.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/segment-meter.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/segment-meter-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { SegmentMeter } from \"@/registry/balick/ui/segment-meter\"\n\nconst labels = [\"Weak\", \"Fair\", \"Good\", \"Strong\"]\n\nfunction strength(password: string) {\n  return [\n    password.length >= 8,\n    /[A-Z]/.test(password) && /[a-z]/.test(password),\n    /\\d/.test(password),\n    /[^A-Za-z0-9]/.test(password),\n  ].filter(Boolean).length\n}\n\nexport default function SegmentMeterDemo() {\n  const [password, setPassword] = React.useState(\"Balick2026\")\n  const id = React.useId()\n\n  return (\n    <div className=\"flex w-full max-w-64 flex-col gap-3\">\n      <label htmlFor={id} className=\"text-sm font-medium\">\n        Password\n      </label>\n      <input\n        id={id}\n        type=\"text\"\n        value={password}\n        onChange={(event) => setPassword(event.target.value)}\n        autoComplete=\"off\"\n        spellCheck={false}\n        className=\"h-9 rounded-md border bg-background px-3 font-mono text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/50\"\n      />\n      <SegmentMeter value={strength(password)} labels={labels} aria-label=\"Password strength\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

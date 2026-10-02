@@ -2068,6 +2068,114 @@
           "type": "registry:example"
         }
       ]
+    },
+    {
+      "name": "gauge",
+      "type": "registry:ui",
+      "title": "Gauge",
+      "description": "A three-quarter ring for a percentage, colored past its thresholds.",
+      "cssVars": {
+        "theme": {
+          "animate-gauge-fill": "gauge-fill 1.1s cubic-bezier(0.22, 1, 0.36, 1) both"
+        }
+      },
+      "css": {
+        "@keyframes gauge-fill": {
+          "from": {
+            "stroke-dashoffset": "var(--gauge-arc)"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/gauge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gauge-demo",
+      "type": "registry:example",
+      "title": "Gauge Demo",
+      "description": "Example usage of Gauge.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/gauge.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/gauge-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "segment-meter",
+      "type": "registry:ui",
+      "title": "Segment Meter",
+      "description": "A level in a few segments, such as the strength of a password.",
+      "files": [
+        {
+          "path": "registry/balick/ui/segment-meter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "segment-meter-demo",
+      "type": "registry:example",
+      "title": "Segment Meter Demo",
+      "description": "Example usage of Segment Meter.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/segment-meter.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/segment-meter-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Twelve bars that fade in turn, for waits the size of an icon.",
+      "cssVars": {
+        "theme": {
+          "animate-spinner-fade": "spinner-fade 1.2s linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes spinner-fade": {
+          "from": {
+            "opacity": "1"
+          },
+          "to": {
+            "opacity": "0.15"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner-demo",
+      "type": "registry:example",
+      "title": "Spinner Demo",
+      "description": "Example usage of Spinner.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/spinner-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
     }
   ]
 }
