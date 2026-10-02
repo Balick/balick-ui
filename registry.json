@@ -1554,6 +1554,198 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "stagger",
+      "type": "registry:ui",
+      "title": "Stagger",
+      "description": "Brings a list or a grid in one item after the other, on mount or when scrolled into view.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/stagger.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stagger-demo",
+      "type": "registry:example",
+      "title": "Stagger Demo",
+      "description": "Example usage of Stagger.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/stagger.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/stagger-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "mask-reveal",
+      "type": "registry:ui",
+      "title": "Mask Reveal",
+      "description": "Uncovers an image or a card with a mask that slides across it.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/mask-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mask-reveal-demo",
+      "type": "registry:example",
+      "title": "Mask Reveal Demo",
+      "description": "Example usage of Mask Reveal.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/mask-reveal.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/mask-reveal-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "orbit",
+      "type": "registry:ui",
+      "title": "Orbit",
+      "description": "Items that circle around a center while staying upright.",
+      "cssVars": {
+        "theme": {
+          "animate-orbit-spin": "orbit-spin var(--orbit-duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes orbit-spin": {
+          "to": {
+            "rotate": "360deg"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/orbit.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "orbit-demo",
+      "type": "registry:example",
+      "title": "Orbit Demo",
+      "description": "Example usage of Orbit.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/orbit.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/orbit-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:ui",
+      "title": "Tilt Card",
+      "description": "A card that leans toward the pointer in 3D, with a soft glare.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/tilt-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tilt-card-demo",
+      "type": "registry:example",
+      "title": "Tilt Card Demo",
+      "description": "Example usage of Tilt Card.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/tilt-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/tilt-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "parallax",
+      "type": "registry:ui",
+      "title": "Parallax",
+      "description": "A layer that moves at its own pace while the page scrolls.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/parallax.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "parallax-demo",
+      "type": "registry:example",
+      "title": "Parallax Demo",
+      "description": "Example usage of Parallax.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/parallax.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/parallax-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "Scroll Progress",
+      "description": "A bar that fills as you scroll the page or a panel.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/scroll-progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress-demo",
+      "type": "registry:example",
+      "title": "Scroll Progress Demo",
+      "description": "Example usage of Scroll Progress.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/scroll-progress.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/scroll-progress-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
     }
   ]
 }

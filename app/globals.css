@@ -36,6 +36,7 @@
   --animate-marquee: marquee var(--duration) linear infinite;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   --animate-shimmer-spin: shimmer-spin var(--shimmer-duration) linear infinite;
+  --animate-orbit-spin: orbit-spin var(--orbit-duration) linear infinite;
 }
 
 /*
@@ -142,6 +143,10 @@
 }
 
 @keyframes shimmer-spin {
+  to { rotate: 360deg; }
+}
+
+@keyframes orbit-spin {
   to { rotate: 360deg; }
 }
 

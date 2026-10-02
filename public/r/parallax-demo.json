@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "parallax-demo",
+  "title": "Parallax Demo",
+  "description": "Example usage of Parallax.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/parallax.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/parallax-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Parallax } from \"@/registry/balick/ui/parallax\"\n\nexport default function ParallaxDemo() {\n  const scroller = React.useRef<HTMLDivElement>(null)\n\n  return (\n    <div className=\"w-full max-w-xs\">\n      <div ref={scroller} className=\"relative h-56 overflow-y-auto rounded-xl border bg-card\">\n        <div className=\"flex h-24 items-end p-4 text-xs text-muted-foreground\">Scroll down</div>\n        <div className=\"relative flex h-64 items-center justify-center overflow-hidden\">\n          <Parallax scrollRef={scroller} distance={80} className=\"absolute -left-4 top-6 size-28 rounded-full bg-muted\" />\n          <Parallax scrollRef={scroller} distance={30} className=\"absolute right-4 bottom-8 size-20 rounded-2xl border bg-muted/60\" />\n          <Parallax scrollRef={scroller} distance={-20} className=\"relative text-3xl font-semibold tracking-tighter\">\n            Depth\n          </Parallax>\n        </div>\n        <div className=\"h-24\" />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

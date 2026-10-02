@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mask-reveal",
+  "title": "Mask Reveal",
+  "description": "Uncovers an image or a card with a mask that slides across it.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/mask-reveal.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype Direction = \"left\" | \"right\" | \"up\" | \"down\"\n\nexport interface MaskRevealProps\n  extends Omit<React.ComponentProps<typeof motion.div>, \"children\"> {\n  children?: React.ReactNode\n  /** Side the reveal starts from. */\n  direction?: Direction\n  /** Duration of the reveal, in seconds. */\n  duration?: number\n  /** Delay before the reveal, in seconds. */\n  delay?: number\n  /** Let the content settle from a slight zoom while it is revealed. */\n  zoom?: boolean\n  /** Wait until the element scrolls into view before revealing. */\n  inView?: boolean\n  /** Margin applied to the viewport when `inView` is set. */\n  inViewMargin?: string\n}\n\n/** What is still hidden at the start, as a clip-path inset. */\nconst hidden: Record<Direction, string> = {\n  left: \"inset(0% 100% 0% 0%)\",\n  right: \"inset(0% 0% 0% 100%)\",\n  up: \"inset(0% 0% 100% 0%)\",\n  down: \"inset(100% 0% 0% 0%)\",\n}\n\n/**\n * Uncovers its content with a mask that slides across it, which suits\n * images and cards. Under reduced motion the mask is never drawn: the\n * content is there from the start.\n */\nexport function MaskReveal({\n  children,\n  className,\n  direction = \"left\",\n  duration = 0.9,\n  delay = 0,\n  zoom = false,\n  inView = false,\n  inViewMargin = \"-50px\",\n  ...props\n}: MaskRevealProps) {\n  const ease = [0.76, 0, 0.24, 1] as const\n\n  return (\n    <motion.div\n      data-slot=\"mask-reveal\"\n      initial={{ clipPath: hidden[direction] }}\n      {...(inView\n        ? { whileInView: { clipPath: \"inset(0% 0% 0% 0%)\" }, viewport: { once: true, margin: inViewMargin } }\n        : { animate: { clipPath: \"inset(0% 0% 0% 0%)\" } })}\n      transition={{ duration, delay, ease }}\n      // The mask is inline style, so reduced motion switches it off with\n      // !important: this holds before hydration too.\n      className={cn(\"overflow-hidden motion-reduce:[clip-path:none]!\", className)}\n      {...props}\n    >\n      <motion.div\n        initial={{ scale: zoom ? 1.15 : 1 }}\n        {...(inView\n          ? { whileInView: { scale: 1 }, viewport: { once: true, margin: inViewMargin } }\n          : { animate: { scale: 1 } })}\n        transition={{ duration: duration * 1.2, delay, ease }}\n        className=\"size-full motion-reduce:[transform:none]!\"\n      >\n        {children}\n      </motion.div>\n    </motion.div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

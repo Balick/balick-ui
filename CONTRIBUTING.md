@@ -45,10 +45,12 @@ pnpm dev   # http://localhost:3000
 
 ## Commits
 
-- Write the summary line in the imperative, as if completing "This commit
-  will…": `Add the testimonials-02 block`, not `Added` or `Adds`. Keep it
-  under about 72 characters, with no trailing period.
-- Leave a blank line, then explain what changed and why, wrapped at about 72
+- Start the summary line with the type of the change, the same as for
+  branches (`feat`, `fix`, `docs`, `refactor`, `chore`), then a colon and
+  a verb in the imperative and in lowercase, as if completing "This commit
+  will…": `feat: add the testimonials-02 block`, not `added` or `adds`. Keep
+  the whole line under 72 characters, with no trailing period.
+- Leave a blank line, then explain what changed and why, wrapped at 72
   characters. Lists are fine for several changes.
 - One logical change per commit. If `registry.json` or `registry/balick/**`
   changed, commit the regenerated `public/r` files in the same commit.
@@ -56,7 +58,7 @@ pnpm dev   # http://localhost:3000
   with" line, no tool or model name in commits or pull requests.
 
 ```text
-Add the testimonials-02 block
+feat: add the testimonials-02 block
 
 A masonry wall of quotes for pages that need more social proof than
 testimonials-01 shows. It reuses Section and SectionHeader, and its
