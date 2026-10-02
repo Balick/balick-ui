@@ -141,6 +141,193 @@
       ]
     },
     {
+      "name": "dot-pattern",
+      "type": "registry:ui",
+      "title": "Dot Pattern",
+      "description": "A grid of dots, with a few that glow in turn.",
+      "cssVars": {
+        "theme": {
+          "animate-dot-glow": "dot-glow var(--dot-duration) ease-in-out infinite"
+        }
+      },
+      "css": {
+        "@keyframes dot-glow": {
+          "0%, 100%": {
+            "opacity": "0",
+            "scale": "0.6"
+          },
+          "50%": {
+            "opacity": "1",
+            "scale": "1"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/dot-pattern.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "flickering-grid",
+      "type": "registry:ui",
+      "title": "Flickering Grid",
+      "description": "A field of small squares that flicker at random, drawn on a canvas.",
+      "files": [
+        {
+          "path": "registry/balick/ui/flickering-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "retro-grid",
+      "type": "registry:ui",
+      "title": "Retro Grid",
+      "description": "A grid floor in perspective that slides toward the horizon.",
+      "cssVars": {
+        "theme": {
+          "animate-retro-grid": "retro-grid var(--retro-duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes retro-grid": {
+          "from": {
+            "translate": "0 0"
+          },
+          "to": {
+            "translate": "0 var(--retro-cell)"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/retro-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "ripple",
+      "type": "registry:ui",
+      "title": "Ripple",
+      "description": "Concentric rings that breathe from the center, behind a logo or a button.",
+      "cssVars": {
+        "theme": {
+          "animate-ripple": "ripple var(--ripple-duration) ease infinite"
+        }
+      },
+      "css": {
+        "@keyframes ripple": {
+          "0%, 100%": {
+            "scale": "1"
+          },
+          "50%": {
+            "scale": "0.9"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/ripple.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "light-rays",
+      "type": "registry:ui",
+      "title": "Light Rays",
+      "description": "Soft rays of light that fan down from the top and sway slowly.",
+      "cssVars": {
+        "theme": {
+          "animate-light-ray": "light-ray var(--rays-duration) ease-in-out infinite"
+        }
+      },
+      "css": {
+        "@keyframes light-ray": {
+          "0%, 100%": {
+            "rotate": "calc(var(--ray-angle) - var(--ray-sway))",
+            "opacity": "var(--ray-opacity)"
+          },
+          "50%": {
+            "rotate": "calc(var(--ray-angle) + var(--ray-sway))",
+            "opacity": "calc(var(--ray-opacity) * 0.5)"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/light-rays.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aurora",
+      "type": "registry:ui",
+      "title": "Aurora",
+      "description": "Veils of light that drift slowly across the top of a section.",
+      "cssVars": {
+        "theme": {
+          "animate-aurora": "aurora var(--aurora-duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes aurora": {
+          "from": {
+            "background-position": "50% 50%"
+          },
+          "to": {
+            "background-position": "350% 50%"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/aurora.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "grain",
+      "type": "registry:ui",
+      "title": "Grain",
+      "description": "A paper grain that gives flat surfaces some texture.",
+      "files": [
+        {
+          "path": "registry/balick/ui/grain.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "interactive-grid",
+      "type": "registry:ui",
+      "title": "Interactive Grid",
+      "description": "A grid whose cells light up under the pointer and fade out behind it.",
+      "files": [
+        {
+          "path": "registry/balick/ui/interactive-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wave-lines",
+      "type": "registry:ui",
+      "title": "Wave Lines",
+      "description": "Thin lines that ripple like silk and part around the pointer.",
+      "files": [
+        {
+          "path": "registry/balick/ui/wave-lines.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "section",
       "type": "registry:ui",
       "title": "Section",
@@ -654,6 +841,141 @@
       "files": [
         {
           "path": "registry/balick/examples/grid-pattern-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dot-pattern-demo",
+      "type": "registry:example",
+      "title": "Dot Pattern Demo",
+      "description": "Example usage of Dot Pattern.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/dot-pattern.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/dot-pattern-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "flickering-grid-demo",
+      "type": "registry:example",
+      "title": "Flickering Grid Demo",
+      "description": "Example usage of Flickering Grid.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/flickering-grid.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/flickering-grid-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "retro-grid-demo",
+      "type": "registry:example",
+      "title": "Retro Grid Demo",
+      "description": "Example usage of Retro Grid.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/retro-grid.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/retro-grid-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ripple-demo",
+      "type": "registry:example",
+      "title": "Ripple Demo",
+      "description": "Example usage of Ripple.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/ripple.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/ripple-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "light-rays-demo",
+      "type": "registry:example",
+      "title": "Light Rays Demo",
+      "description": "Example usage of Light Rays.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/light-rays.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/light-rays-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "aurora-demo",
+      "type": "registry:example",
+      "title": "Aurora Demo",
+      "description": "Example usage of Aurora.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/aurora.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/aurora-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "grain-demo",
+      "type": "registry:example",
+      "title": "Grain Demo",
+      "description": "Example usage of Grain.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/grain.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/grain-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "interactive-grid-demo",
+      "type": "registry:example",
+      "title": "Interactive Grid Demo",
+      "description": "Example usage of Interactive Grid.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/interactive-grid.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/interactive-grid-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "wave-lines-demo",
+      "type": "registry:example",
+      "title": "Wave Lines Demo",
+      "description": "Example usage of Wave Lines.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/wave-lines.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/wave-lines-demo.tsx",
           "type": "registry:example"
         }
       ]

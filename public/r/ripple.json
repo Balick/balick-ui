@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple",
+  "title": "Ripple",
+  "description": "Concentric rings that breathe from the center, behind a logo or a button.",
+  "files": [
+    {
+      "path": "registry/balick/ui/ripple.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface RippleProps extends React.ComponentProps<\"div\"> {\n  /** Number of rings. */\n  rings?: number\n  /** Diameter of the smallest ring, in pixels. */\n  size?: number\n  /** Space added to the diameter from one ring to the next, in pixels. */\n  step?: number\n  /** Duration of one breath, as a CSS time. */\n  duration?: string\n}\n\n/**\n * Concentric rings that breathe from the center of their positioned parent,\n * behind a logo or a call to action. The rings take the text color and stand\n * still under reduced motion.\n */\nexport function Ripple({\n  rings = 8,\n  size = 180,\n  step = 72,\n  duration = \"3.4s\",\n  className,\n  style,\n  ...props\n}: RippleProps) {\n  return (\n    <div\n      data-slot=\"ripple\"\n      aria-hidden\n      style={{ \"--ripple-duration\": duration, ...style } as React.CSSProperties}\n      className={cn(\n        \"pointer-events-none absolute inset-0 overflow-hidden text-foreground select-none [mask-image:radial-gradient(closest-side,white_35%,transparent)]\",\n        className\n      )}\n      {...props}\n    >\n      {Array.from({ length: rings }, (_, index) => {\n        const diameter = size + index * step\n        return (\n          <div\n            key={index}\n            className=\"absolute top-1/2 left-1/2 -translate-1/2 animate-ripple rounded-full border border-current/30 bg-current/[0.04] shadow-xl motion-reduce:animate-none\"\n            style={{\n              width: diameter,\n              height: diameter,\n              opacity: 1 - index / rings,\n              animationDelay: `${index * 0.06}s`,\n              borderStyle: index === rings - 1 ? \"dashed\" : \"solid\",\n            }}\n          />\n        )\n      })}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-ripple": "ripple var(--ripple-duration) ease infinite"
+    }
+  },
+  "css": {
+    "@keyframes ripple": {
+      "0%, 100%": {
+        "scale": "1"
+      },
+      "50%": {
+        "scale": "0.9"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

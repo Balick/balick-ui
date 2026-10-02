@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-pattern",
+  "title": "Dot Pattern",
+  "description": "A grid of dots, with a few that glow in turn.",
+  "files": [
+    {
+      "path": "registry/balick/ui/dot-pattern.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface DotPatternProps extends React.ComponentProps<\"svg\"> {\n  /** Horizontal space between two dots, in pixels. */\n  width?: number\n  /** Vertical space between two dots, in pixels. */\n  height?: number\n  /** Radius of a dot, in pixels. */\n  radius?: number\n  /** Dots that glow in turn, as [column, row] pairs. */\n  glow?: Array<[number, number]>\n  /** Duration of one glow, as a CSS time. */\n  duration?: string\n}\n\n/**\n * A grid of dots that fills its positioned parent. The dots take the text\n * color, so a `text-*` class tints them. The glowing dots stand still under\n * reduced motion.\n */\nexport function DotPattern({\n  width = 16,\n  height = 16,\n  radius = 1,\n  glow,\n  duration = \"3s\",\n  className,\n  style,\n  ...props\n}: DotPatternProps) {\n  const id = React.useId()\n\n  return (\n    <svg\n      data-slot=\"dot-pattern\"\n      aria-hidden\n      style={{ \"--dot-duration\": duration, ...style } as React.CSSProperties}\n      className={cn(\n        \"pointer-events-none absolute inset-0 h-full w-full text-foreground\",\n        className\n      )}\n      {...props}\n    >\n      <defs>\n        <pattern id={id} width={width} height={height} patternUnits=\"userSpaceOnUse\">\n          <circle cx={width / 2} cy={height / 2} r={radius} fill=\"currentColor\" fillOpacity={0.25} />\n        </pattern>\n      </defs>\n      <rect width=\"100%\" height=\"100%\" fill={`url(#${id})`} />\n      {glow?.map(([col, row], index) => (\n        <g\n          key={`${col}-${row}`}\n          className=\"origin-center animate-dot-glow opacity-0 [transform-box:fill-box] motion-reduce:animate-none motion-reduce:opacity-60\"\n          // Spread the glows over one cycle, in a stable order.\n          style={{ animationDelay: `calc(var(--dot-duration) * ${((index * 0.618) % 1).toFixed(3)} * -1)` }}\n        >\n          <circle\n            cx={col * width + width / 2}\n            cy={row * height + height / 2}\n            r={radius * 6}\n            fill=\"currentColor\"\n            fillOpacity={0.18}\n          />\n          <circle cx={col * width + width / 2} cy={row * height + height / 2} r={radius * 1.75} fill=\"currentColor\" />\n        </g>\n      ))}\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-dot-glow": "dot-glow var(--dot-duration) ease-in-out infinite"
+    }
+  },
+  "css": {
+    "@keyframes dot-glow": {
+      "0%, 100%": {
+        "opacity": "0",
+        "scale": "0.6"
+      },
+      "50%": {
+        "opacity": "1",
+        "scale": "1"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

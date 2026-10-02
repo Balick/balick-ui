@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "light-rays",
+  "title": "Light Rays",
+  "description": "Soft rays of light that fan down from the top and sway slowly.",
+  "files": [
+    {
+      "path": "registry/balick/ui/light-rays.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface LightRaysProps extends React.ComponentProps<\"div\"> {\n  /** Number of rays. */\n  rays?: number\n  /** Widest angle between the outermost rays, in degrees. */\n  spread?: number\n  /** Duration of one sway, as a CSS time. */\n  duration?: string\n}\n\n/** Width, opacity and timing of each ray, varied but the same on every render. */\nfunction ray(index: number) {\n  const seed = (n: number) => (Math.sin(index * 12.9898 + n * 78.233) * 43758.5453) % 1\n  const random = (n: number) => Math.abs(seed(n))\n  return {\n    width: 2 + random(1) * 6,\n    opacity: 0.15 + random(2) * 0.3,\n    delay: random(3),\n    sway: 2 + random(4) * 4,\n  }\n}\n\n/**\n * Soft rays of light that fan down from the top of their positioned parent\n * and sway slowly, like a spotlight on a stage. The rays take the text color\n * and stand still under reduced motion.\n */\nexport function LightRays({\n  rays = 9,\n  spread = 80,\n  duration = \"14s\",\n  className,\n  style,\n  ...props\n}: LightRaysProps) {\n  return (\n    <div\n      data-slot=\"light-rays\"\n      aria-hidden\n      style={{ \"--rays-duration\": duration, ...style } as React.CSSProperties}\n      className={cn(\"pointer-events-none absolute inset-0 overflow-hidden text-foreground/40 [mask-image:linear-gradient(to_bottom,black_30%,transparent)] dark:text-foreground\", className)}\n      {...props}\n    >\n      {/* The source of the light. */}\n      <div className=\"absolute -top-1/4 left-1/2 h-1/3 w-1/2 -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,currentColor,transparent)] opacity-25 blur-2xl\" />\n      {Array.from({ length: rays }, (_, index) => {\n        const { width, opacity, delay, sway } = ray(index)\n        const angle = rays > 1 ? -spread / 2 + (spread * index) / (rays - 1) : 0\n        return (\n          <div\n            key={index}\n            className=\"absolute -top-[10%] left-1/2 h-[140%] origin-top -translate-x-1/2 animate-light-ray bg-[linear-gradient(to_bottom,currentColor,transparent_80%)] blur-[6px] motion-reduce:animate-none\"\n            style={\n              {\n                width: `${width}%`,\n                opacity,\n                rotate: `${angle}deg`,\n                \"--ray-angle\": `${angle}deg`,\n                \"--ray-sway\": `${sway}deg`,\n                \"--ray-opacity\": opacity,\n                animationDelay: `calc(var(--rays-duration) * ${delay.toFixed(3)} * -1)`,\n              } as React.CSSProperties\n            }\n          />\n        )\n      })}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-light-ray": "light-ray var(--rays-duration) ease-in-out infinite"
+    }
+  },
+  "css": {
+    "@keyframes light-ray": {
+      "0%, 100%": {
+        "rotate": "calc(var(--ray-angle) - var(--ray-sway))",
+        "opacity": "var(--ray-opacity)"
+      },
+      "50%": {
+        "rotate": "calc(var(--ray-angle) + var(--ray-sway))",
+        "opacity": "calc(var(--ray-opacity) * 0.5)"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

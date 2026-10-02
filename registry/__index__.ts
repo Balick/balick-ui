@@ -35,6 +35,15 @@ import CountdownDemo from "@/registry/balick/examples/countdown-demo"
 import ExpandButtonDemo from "@/registry/balick/examples/expand-button-demo"
 import ExpandableTextDemo from "@/registry/balick/examples/expandable-text-demo"
 import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
+import DotPatternDemo from "@/registry/balick/examples/dot-pattern-demo"
+import FlickeringGridDemo from "@/registry/balick/examples/flickering-grid-demo"
+import RetroGridDemo from "@/registry/balick/examples/retro-grid-demo"
+import RippleDemo from "@/registry/balick/examples/ripple-demo"
+import LightRaysDemo from "@/registry/balick/examples/light-rays-demo"
+import AuroraDemo from "@/registry/balick/examples/aurora-demo"
+import GrainDemo from "@/registry/balick/examples/grain-demo"
+import InteractiveGridDemo from "@/registry/balick/examples/interactive-grid-demo"
+import WaveLinesDemo from "@/registry/balick/examples/wave-lines-demo"
 import HighlightTextDemo from "@/registry/balick/examples/highlight-text-demo"
 import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
 import MagneticButtonDemo from "@/registry/balick/examples/magnetic-button-demo"
@@ -73,6 +82,15 @@ export const examples: Record<string, React.ComponentType> = {
   "expand-button-demo": ExpandButtonDemo,
   "expandable-text-demo": ExpandableTextDemo,
   "grid-pattern-demo": GridPatternDemo,
+  "dot-pattern-demo": DotPatternDemo,
+  "flickering-grid-demo": FlickeringGridDemo,
+  "retro-grid-demo": RetroGridDemo,
+  "ripple-demo": RippleDemo,
+  "light-rays-demo": LightRaysDemo,
+  "aurora-demo": AuroraDemo,
+  "grain-demo": GrainDemo,
+  "interactive-grid-demo": InteractiveGridDemo,
+  "wave-lines-demo": WaveLinesDemo,
   "highlight-text-demo": HighlightTextDemo,
   "hold-button-demo": HoldButtonDemo,
   "magnetic-button-demo": MagneticButtonDemo,
