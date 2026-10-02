@@ -37,6 +37,11 @@
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   --animate-shimmer-spin: shimmer-spin var(--shimmer-duration) linear infinite;
   --animate-orbit-spin: orbit-spin var(--orbit-duration) linear infinite;
+  --animate-dot-glow: dot-glow var(--dot-duration) ease-in-out infinite;
+  --animate-ripple: ripple var(--ripple-duration) ease infinite;
+  --animate-retro-grid: retro-grid var(--retro-duration) linear infinite;
+  --animate-light-ray: light-ray var(--rays-duration) ease-in-out infinite;
+  --animate-aurora: aurora var(--aurora-duration) linear infinite;
 }
 
 /*
@@ -148,6 +153,31 @@
 
 @keyframes orbit-spin {
   to { rotate: 360deg; }
+}
+
+@keyframes dot-glow {
+  0%, 100% { opacity: 0; scale: 0.6; }
+  50% { opacity: 1; scale: 1; }
+}
+
+@keyframes ripple {
+  0%, 100% { scale: 1; }
+  50% { scale: 0.9; }
+}
+
+@keyframes retro-grid {
+  from { translate: 0 0; }
+  to { translate: 0 var(--retro-cell); }
+}
+
+@keyframes light-ray {
+  0%, 100% { rotate: calc(var(--ray-angle) - var(--ray-sway)); opacity: var(--ray-opacity); }
+  50% { rotate: calc(var(--ray-angle) + var(--ray-sway)); opacity: calc(var(--ray-opacity) * 0.5); }
+}
+
+@keyframes aurora {
+  from { background-position: 50% 50%; }
+  to { background-position: 350% 50%; }
 }
 
 /* The column every site page is laid out in, bounded by the rails. */

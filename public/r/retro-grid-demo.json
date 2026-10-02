@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "retro-grid-demo",
+  "title": "Retro Grid Demo",
+  "description": "Example usage of Retro Grid.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/retro-grid.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/retro-grid-demo.tsx",
+      "content": "import { RetroGrid } from \"@/registry/balick/ui/retro-grid\"\n\nexport default function RetroGridDemo() {\n  return (\n    <div className=\"relative flex size-full min-h-80 items-center justify-center overflow-hidden\">\n      <p className=\"z-10 bg-linear-to-b from-foreground to-foreground/40 bg-clip-text pb-2 text-5xl font-semibold tracking-tighter text-transparent\">\n        Retro Grid\n      </p>\n      <RetroGrid />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

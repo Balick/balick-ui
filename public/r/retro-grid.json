@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "retro-grid",
+  "title": "Retro Grid",
+  "description": "A grid floor in perspective that slides toward the horizon.",
+  "files": [
+    {
+      "path": "registry/balick/ui/retro-grid.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface RetroGridProps extends React.ComponentProps<\"div\"> {\n  /** Tilt of the floor, in degrees. */\n  angle?: number\n  /** Size of a cell, in pixels. */\n  cellSize?: number\n  /** Duration of one cell crossing, as a CSS time. */\n  duration?: string\n}\n\n/**\n * A grid floor in perspective that slides toward the viewer and fades into\n * the horizon. The lines take the text color; the floor stands still under\n * reduced motion.\n */\nexport function RetroGrid({\n  angle = 65,\n  cellSize = 60,\n  duration = \"1.2s\",\n  className,\n  style,\n  ...props\n}: RetroGridProps) {\n  return (\n    <div\n      data-slot=\"retro-grid\"\n      aria-hidden\n      style={\n        {\n          \"--retro-angle\": `${angle}deg`,\n          \"--retro-cell\": `${cellSize}px`,\n          \"--retro-duration\": duration,\n          ...style,\n        } as React.CSSProperties\n      }\n      className={cn(\"pointer-events-none absolute inset-0 overflow-hidden text-foreground/30\", className)}\n      {...props}\n    >\n      {/* The floor fills the lower half and fades into the horizon, at its top edge. */}\n      <div className=\"absolute inset-x-0 top-1/2 bottom-0 [perspective-origin:50%_0%] [perspective:320px] [mask-image:linear-gradient(to_bottom,transparent,black_60%)]\">\n        <div className=\"absolute -inset-x-full bottom-0 h-[600%] origin-bottom overflow-hidden [transform:rotateX(var(--retro-angle))]\">\n          <div className=\"absolute -top-(--retro-cell) right-0 bottom-0 left-0 animate-retro-grid [background-image:linear-gradient(to_right,currentColor_1px,transparent_0),linear-gradient(to_bottom,currentColor_1px,transparent_0)] [background-position:center_bottom] [background-size:var(--retro-cell)_var(--retro-cell)] motion-reduce:animate-none\" />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-retro-grid": "retro-grid var(--retro-duration) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes retro-grid": {
+      "from": {
+        "translate": "0 0"
+      },
+      "to": {
+        "translate": "0 var(--retro-cell)"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

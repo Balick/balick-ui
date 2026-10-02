@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grain",
+  "title": "Grain",
+  "description": "A paper grain that gives flat surfaces some texture.",
+  "files": [
+    {
+      "path": "registry/balick/ui/grain.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface GrainProps extends React.ComponentProps<\"svg\"> {\n  /** Fineness of the grain: higher values give smaller specks. */\n  frequency?: number\n  /** Number of noise layers: more layers give a richer texture. */\n  octaves?: number\n}\n\n/**\n * A paper grain laid over its positioned parent, to give flat surfaces some\n * texture. The specks take the text color; the default `opacity-20` sets\n * how much they show.\n */\nexport function Grain({ frequency = 0.8, octaves = 3, className, ...props }: GrainProps) {\n  const id = React.useId()\n\n  return (\n    <svg\n      data-slot=\"grain\"\n      aria-hidden\n      className={cn(\n        \"pointer-events-none absolute inset-0 h-full w-full text-foreground opacity-20\",\n        className\n      )}\n      {...props}\n    >\n      <filter id={id} x=\"0\" y=\"0\" width=\"100%\" height=\"100%\">\n        <feTurbulence\n          type=\"fractalNoise\"\n          baseFrequency={frequency}\n          numOctaves={octaves}\n          stitchTiles=\"stitch\"\n          result=\"noise\"\n        />\n        <feColorMatrix in=\"noise\" type=\"luminanceToAlpha\" result=\"alpha\" />\n        {/* Raise the contrast, so the grain reads as specks rather than a haze. */}\n        <feComponentTransfer in=\"alpha\" result=\"specks\">\n          <feFuncA type=\"linear\" slope=\"3\" intercept=\"-0.9\" />\n        </feComponentTransfer>\n        <feFlood floodColor=\"currentColor\" result=\"ink\" />\n        <feComposite in=\"ink\" in2=\"specks\" operator=\"in\" />\n      </filter>\n      <rect width=\"100%\" height=\"100%\" filter={`url(#${id})`} />\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

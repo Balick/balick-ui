@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-demo",
+  "title": "Aurora Demo",
+  "description": "Example usage of Aurora.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/aurora.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/aurora-demo.tsx",
+      "content": "import { Aurora } from \"@/registry/balick/ui/aurora\"\n\nexport default function AuroraDemo() {\n  return (\n    <div className=\"relative flex size-full min-h-80 items-center justify-center overflow-hidden\">\n      <p className=\"z-10 text-4xl font-semibold tracking-tighter\">Aurora</p>\n      <Aurora className=\"[mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_20%,transparent)]\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

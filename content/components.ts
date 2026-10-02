@@ -30,7 +30,7 @@ export const componentCategories: {
   { slug: "buttons", title: "Buttons", description: "Buttons and controls with quiet, deliberate feedback.", featured: "shimmer-button" },
   { slug: "text", title: "Text & numbers", description: "Words and figures that change without shouting.", featured: "number-ticker" },
   { slug: "motion", title: "Motion", description: "Reveals and loops that support the content.", featured: "marquee" },
-  { slug: "backgrounds", title: "Backgrounds", description: "Patterns that sit behind a section.", featured: "grid-pattern" },
+  { slug: "backgrounds", title: "Backgrounds", description: "Patterns, light and texture that sit behind a section.", featured: "flickering-grid" },
   { slug: "indicators", title: "Indicators", description: "Small signals of state.", featured: "status-dot" },
   { slug: "icons", title: "Icons", description: "Icons lucide-react does not ship.", featured: "social-icons" },
   { slug: "layout", title: "Layout", description: "The primitives every block is built on.", featured: "section" },
@@ -130,6 +130,245 @@ export function Background() {
       { name: "y", type: "number", default: "-1", description: "Vertical offset of the pattern." },
       { name: "strokeDasharray", type: "string", default: '"0"', description: 'Dash pattern of the lines, e.g. "4 2".' },
       { name: "squares", type: "Array<[number, number]>", description: "Cells to fill, as [column, row] pairs." },
+    ],
+  },
+  {
+    slug: "dot-pattern",
+    category: "backgrounds",
+    title: "Dot Pattern",
+    description: "A grid of dots, with a few that glow in turn.",
+    example: "dot-pattern-demo",
+    usage: `import { DotPattern } from "@/components/ui/dot-pattern"
+
+export function Background() {
+  return (
+    <div className="relative h-96 overflow-hidden">
+      <DotPattern glow={[[4, 3], [9, 6], [14, 2]]} />
+    </div>
+  )
+}`,
+    css: `@theme inline {
+  --animate-dot-glow: dot-glow var(--dot-duration) ease-in-out infinite;
+}
+
+@keyframes dot-glow {
+  0%, 100% { opacity: 0; scale: 0.6; }
+  50% { opacity: 1; scale: 1; }
+}`,
+    props: [
+      { name: "width", type: "number", default: "16", description: "Horizontal space between two dots, in pixels." },
+      { name: "height", type: "number", default: "16", description: "Vertical space between two dots, in pixels." },
+      { name: "radius", type: "number", default: "1", description: "Radius of a dot, in pixels." },
+      { name: "glow", type: "Array<[number, number]>", description: "Dots that glow in turn, as [column, row] pairs." },
+      { name: "duration", type: "string", default: '"3s"', description: "Duration of one glow, as a CSS time." },
+    ],
+  },
+  {
+    slug: "flickering-grid",
+    category: "backgrounds",
+    title: "Flickering Grid",
+    description: "A field of small squares that flicker at random, drawn on a canvas.",
+    example: "flickering-grid-demo",
+    usage: `import { FlickeringGrid } from "@/components/ui/flickering-grid"
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <FlickeringGrid className="[mask-image:linear-gradient(to_bottom,white,transparent)]" />
+      <h1 className="relative">Ship faster</h1>
+    </section>
+  )
+}`,
+    props: [
+      { name: "squareSize", type: "number", default: "4", description: "Side of a square, in pixels." },
+      { name: "gap", type: "number", default: "6", description: "Space between two squares, in pixels." },
+      { name: "flickerChance", type: "number", default: "0.3", description: "Share of the squares that change in one second, from 0 to 1." },
+      { name: "maxOpacity", type: "number", default: "0.3", description: "Opacity of the brightest square, from 0 to 1." },
+    ],
+  },
+  {
+    slug: "retro-grid",
+    category: "backgrounds",
+    title: "Retro Grid",
+    description: "A grid floor in perspective that slides toward the horizon.",
+    example: "retro-grid-demo",
+    usage: `import { RetroGrid } from "@/components/ui/retro-grid"
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <RetroGrid />
+      <h1 className="relative">Back to the future</h1>
+    </section>
+  )
+}`,
+    css: `@theme inline {
+  --animate-retro-grid: retro-grid var(--retro-duration) linear infinite;
+}
+
+@keyframes retro-grid {
+  from { translate: 0 0; }
+  to { translate: 0 var(--retro-cell); }
+}`,
+    props: [
+      { name: "angle", type: "number", default: "65", description: "Tilt of the floor, in degrees." },
+      { name: "cellSize", type: "number", default: "60", description: "Size of a cell, in pixels." },
+      { name: "duration", type: "string", default: '"1.2s"', description: "Time a line takes to move one cell, as a CSS time." },
+    ],
+  },
+  {
+    slug: "ripple",
+    category: "backgrounds",
+    title: "Ripple",
+    description: "Concentric rings that breathe from the center, behind a logo or a button.",
+    example: "ripple-demo",
+    usage: `import { Ripple } from "@/components/ui/ripple"
+
+export function Cta() {
+  return (
+    <section className="relative flex h-96 items-center justify-center overflow-hidden">
+      <Ripple />
+      <a href="#" className="relative">Get started</a>
+    </section>
+  )
+}`,
+    css: `@theme inline {
+  --animate-ripple: ripple var(--ripple-duration) ease infinite;
+}
+
+@keyframes ripple {
+  0%, 100% { scale: 1; }
+  50% { scale: 0.9; }
+}`,
+    props: [
+      { name: "rings", type: "number", default: "8", description: "Number of rings." },
+      { name: "size", type: "number", default: "180", description: "Diameter of the smallest ring, in pixels." },
+      { name: "step", type: "number", default: "72", description: "Space added to the diameter from one ring to the next, in pixels." },
+      { name: "duration", type: "string", default: '"3.4s"', description: "Duration of one breath, as a CSS time." },
+    ],
+  },
+  {
+    slug: "light-rays",
+    category: "backgrounds",
+    title: "Light Rays",
+    description: "Soft rays of light that fan down from the top and sway slowly.",
+    example: "light-rays-demo",
+    usage: `import { LightRays } from "@/components/ui/light-rays"
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <LightRays />
+      <h1 className="relative">Into the light</h1>
+    </section>
+  )
+}`,
+    css: `@theme inline {
+  --animate-light-ray: light-ray var(--rays-duration) ease-in-out infinite;
+}
+
+@keyframes light-ray {
+  0%, 100% { rotate: calc(var(--ray-angle) - var(--ray-sway)); opacity: var(--ray-opacity); }
+  50% { rotate: calc(var(--ray-angle) + var(--ray-sway)); opacity: calc(var(--ray-opacity) * 0.5); }
+}`,
+    props: [
+      { name: "rays", type: "number", default: "9", description: "Number of rays." },
+      { name: "spread", type: "number", default: "80", description: "Angle between the outermost rays, in degrees." },
+      { name: "duration", type: "string", default: '"14s"', description: "Duration of one sway, as a CSS time." },
+    ],
+  },
+  {
+    slug: "aurora",
+    category: "backgrounds",
+    title: "Aurora",
+    description: "Veils of light that drift slowly across the top of a section.",
+    example: "aurora-demo",
+    usage: `import { Aurora } from "@/components/ui/aurora"
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <Aurora className="text-sky-500" />
+      <h1 className="relative">Northern lights</h1>
+    </section>
+  )
+}`,
+    css: `@theme inline {
+  --animate-aurora: aurora var(--aurora-duration) linear infinite;
+}
+
+@keyframes aurora {
+  from { background-position: 50% 50%; }
+  to { background-position: 350% 50%; }
+}`,
+    props: [
+      { name: "duration", type: "string", default: '"60s"', description: "Duration of one drift of the veils, as a CSS time." },
+      { name: "className", type: "string", description: "A text-* class tints the light; opacity-* sets its strength." },
+    ],
+  },
+  {
+    slug: "grain",
+    category: "backgrounds",
+    title: "Grain",
+    description: "A paper grain that gives flat surfaces some texture.",
+    example: "grain-demo",
+    usage: `import { Grain } from "@/components/ui/grain"
+
+export function Card() {
+  return (
+    <div className="relative overflow-hidden rounded-xl bg-card p-6">
+      <Grain />
+      <p className="relative">Paper and ink</p>
+    </div>
+  )
+}`,
+    props: [
+      { name: "frequency", type: "number", default: "0.8", description: "Fineness of the grain: higher values give smaller specks." },
+      { name: "octaves", type: "number", default: "3", description: "Number of noise layers: more layers give a richer texture." },
+      { name: "className", type: "string", description: "A text-* class sets the color of the specks; opacity-* how much they show (20% by default)." },
+    ],
+  },
+  {
+    slug: "interactive-grid",
+    category: "backgrounds",
+    title: "Interactive Grid",
+    description: "A grid whose cells light up under the pointer and fade out behind it.",
+    example: "interactive-grid-demo",
+    usage: `import { InteractiveGrid } from "@/components/ui/interactive-grid"
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <InteractiveGrid />
+      <h1 className="relative">Move your pointer</h1>
+    </section>
+  )
+}`,
+    props: [
+      { name: "cellSize", type: "number", default: "40", description: "Side of a cell, in pixels. The grid follows the pointer over its parent." },
+    ],
+  },
+  {
+    slug: "wave-lines",
+    category: "backgrounds",
+    title: "Wave Lines",
+    description: "Thin lines that ripple like silk and part around the pointer.",
+    example: "wave-lines-demo",
+    usage: `import { WaveLines } from "@/components/ui/wave-lines"
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <WaveLines />
+      <h1 className="relative">Flow</h1>
+    </section>
+  )
+}`,
+    props: [
+      { name: "lines", type: "number", default: "36", description: "Number of lines." },
+      { name: "amplitude", type: "number", default: "28", description: "Height of the waves, in pixels." },
+      { name: "speed", type: "number", default: "1", description: "Speed of the waves: 2 is twice as fast." },
+      { name: "interactive", type: "boolean", default: "true", description: "Let the lines part around the pointer over the parent." },
     ],
   },
   {
