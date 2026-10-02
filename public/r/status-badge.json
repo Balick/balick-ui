@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-badge",
+  "title": "Status Badge",
+  "description": "A pill that names the state of a service, with a live dot.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/status-dot.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/status-badge.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { StatusDot } from \"@/registry/balick/ui/status-dot\"\n\nconst statuses = {\n  operational: {\n    label: \"Operational\",\n    dot: \"success\",\n    pulse: true,\n    className: \"border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400\",\n  },\n  degraded: {\n    label: \"Degraded\",\n    dot: \"warning\",\n    pulse: true,\n    className: \"border-amber-500/25 bg-amber-500/10 text-amber-700 dark:text-amber-400\",\n  },\n  outage: {\n    label: \"Outage\",\n    dot: \"danger\",\n    pulse: true,\n    className: \"border-red-500/25 bg-red-500/10 text-red-700 dark:text-red-400\",\n  },\n  maintenance: {\n    label: \"Maintenance\",\n    dot: \"neutral\",\n    pulse: false,\n    className: \"border-border bg-foreground/5 text-foreground\",\n  },\n} as const\n\nexport interface StatusBadgeProps extends React.ComponentProps<\"span\"> {\n  /** The state of the service. */\n  status: keyof typeof statuses\n}\n\n/**\n * A pill that names the state of a service, with a live dot. The children\n * replace the default label.\n */\nexport function StatusBadge({ status, className, children, ...props }: StatusBadgeProps) {\n  const config = statuses[status]\n\n  return (\n    <span\n      data-slot=\"status-badge\"\n      className={cn(\n        \"inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium whitespace-nowrap\",\n        config.className,\n        className\n      )}\n      {...props}\n    >\n      <StatusDot tone={config.dot} pulse={config.pulse} className=\"size-1.5\" />\n      {children ?? config.label}\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

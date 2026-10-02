@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uptime-bar-demo",
+  "title": "Uptime Bar Demo",
+  "description": "Example usage of Uptime Bar.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/uptime-bar.json",
+    "https://ui.balick.me/r/status-badge.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/uptime-bar-demo.tsx",
+      "content": "import { StatusBadge } from \"@/registry/balick/ui/status-badge\"\nimport { UptimeBar, type UptimeDay } from \"@/registry/balick/ui/uptime-bar\"\n\nconst incidents: Record<number, UptimeDay[\"status\"]> = { 17: \"degraded\", 43: \"down\", 44: \"degraded\", 71: \"degraded\" }\n\nconst days: UptimeDay[] = Array.from({ length: 90 }, (_, index) => {\n  const status = incidents[index] ?? \"up\"\n  const ago = 89 - index\n  const when = ago === 0 ? \"Today\" : ago === 1 ? \"Yesterday\" : `${ago} days ago`\n  const what = { up: \"no downtime\", degraded: \"degraded performance\", down: \"outage\", none: \"no data\" }[status]\n  return { status, label: `${when}: ${what}` }\n})\n\nexport default function UptimeBarDemo() {\n  return (\n    <div className=\"w-full max-w-sm rounded-xl border bg-card p-4 shadow-xs\">\n      <div className=\"mb-4 flex items-center justify-between gap-3\">\n        <div>\n          <p className=\"text-sm font-medium\">API</p>\n          <p className=\"text-xs text-muted-foreground\">api.balick.me</p>\n        </div>\n        <StatusBadge status=\"operational\" />\n      </div>\n      <UptimeBar days={days} uptime=\"99.98%\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

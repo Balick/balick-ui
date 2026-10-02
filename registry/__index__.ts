@@ -44,6 +44,7 @@ import HighlightTextDemo from "@/registry/balick/examples/highlight-text-demo"
 import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
 import InteractiveGridDemo from "@/registry/balick/examples/interactive-grid-demo"
 import LightRaysDemo from "@/registry/balick/examples/light-rays-demo"
+import LoadingDotsDemo from "@/registry/balick/examples/loading-dots-demo"
 import MagneticButtonDemo from "@/registry/balick/examples/magnetic-button-demo"
 import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
 import MaskRevealDemo from "@/registry/balick/examples/mask-reveal-demo"
@@ -64,6 +65,7 @@ import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
 import SpinnerDemo from "@/registry/balick/examples/spinner-demo"
 import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
 import StaggerDemo from "@/registry/balick/examples/stagger-demo"
+import StatusBadgeDemo from "@/registry/balick/examples/status-badge-demo"
 import StatusButtonDemo from "@/registry/balick/examples/status-button-demo"
 import StatusDotDemo from "@/registry/balick/examples/status-dot-demo"
 import TextRevealDemo from "@/registry/balick/examples/text-reveal-demo"
@@ -72,6 +74,7 @@ import ThemeToggleButtonDemo from "@/registry/balick/examples/theme-toggle-butto
 import TiltCardDemo from "@/registry/balick/examples/tilt-card-demo"
 import TypewriterDemo from "@/registry/balick/examples/typewriter-demo"
 import UnderlineLinkDemo from "@/registry/balick/examples/underline-link-demo"
+import UptimeBarDemo from "@/registry/balick/examples/uptime-bar-demo"
 import WaveLinesDemo from "@/registry/balick/examples/wave-lines-demo"
 import WordRotateDemo from "@/registry/balick/examples/word-rotate-demo"
 
@@ -94,6 +97,7 @@ export const examples: Record<string, React.ComponentType> = {
   "hold-button-demo": HoldButtonDemo,
   "interactive-grid-demo": InteractiveGridDemo,
   "light-rays-demo": LightRaysDemo,
+  "loading-dots-demo": LoadingDotsDemo,
   "magnetic-button-demo": MagneticButtonDemo,
   "marquee-demo": MarqueeDemo,
   "mask-reveal-demo": MaskRevealDemo,
@@ -114,6 +118,7 @@ export const examples: Record<string, React.ComponentType> = {
   "spinner-demo": SpinnerDemo,
   "spotlight-button-demo": SpotlightButtonDemo,
   "stagger-demo": StaggerDemo,
+  "status-badge-demo": StatusBadgeDemo,
   "status-button-demo": StatusButtonDemo,
   "status-dot-demo": StatusDotDemo,
   "text-reveal-demo": TextRevealDemo,
@@ -122,6 +127,7 @@ export const examples: Record<string, React.ComponentType> = {
   "tilt-card-demo": TiltCardDemo,
   "typewriter-demo": TypewriterDemo,
   "underline-link-demo": UnderlineLinkDemo,
+  "uptime-bar-demo": UptimeBarDemo,
   "wave-lines-demo": WaveLinesDemo,
   "word-rotate-demo": WordRotateDemo,
 }

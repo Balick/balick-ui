@@ -1203,6 +1203,75 @@ export function Building() {
       { name: "label", type: "string", default: "\"Loading\"", description: "What is loading, read by screen readers." },
     ],
   },
+  {
+    slug: "uptime-bar",
+    category: "indicators",
+    title: "Uptime Bar",
+    description: "The history of a service, one thin bar per day, colored by how the day went.",
+    example: "uptime-bar-demo",
+    usage: `import { UptimeBar } from "@/components/ui/uptime-bar"
+
+export function History({ days }: { days: { status: "up" | "degraded" | "down" | "none" }[] }) {
+  return <UptimeBar days={days} uptime="99.98%" />
+}`,
+    css: `@theme inline {
+  --animate-uptime-rise: uptime-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes uptime-rise {
+  from { scale: 1 0; }
+}`,
+    props: [
+      { name: "days", type: "{ status: \"up\" | \"degraded\" | \"down\" | \"none\"; label?: string }[]", description: "One entry per day, oldest first. The label shows when the pointer rests on the bar. Required." },
+      { name: "uptime", type: "string", description: "The uptime to show in the legend, such as \"99.98%\"." },
+      { name: "startLabel", type: "string", default: "\"90 days ago\"", description: "Label of the oldest day, under the first bar. Defaults to the number of days." },
+      { name: "endLabel", type: "string", default: "\"Today\"", description: "Label of the newest day, under the last bar." },
+    ],
+  },
+  {
+    slug: "status-badge",
+    category: "indicators",
+    title: "Status Badge",
+    description: "A pill that names the state of a service, with a live dot.",
+    example: "status-badge-demo",
+    usage: `import { StatusBadge } from "@/components/ui/status-badge"
+
+export function ApiStatus() {
+  return <StatusBadge status="operational" />
+}`,
+    props: [
+      { name: "status", type: "\"operational\" | \"degraded\" | \"outage\" | \"maintenance\"", description: "The state of the service. Required." },
+      { name: "children", type: "React.ReactNode", description: "Replaces the default label." },
+    ],
+  },
+  {
+    slug: "loading-dots",
+    category: "indicators",
+    title: "Loading Dots",
+    description: "Three dots that pulse in turn after a word, sized like the text around them.",
+    example: "loading-dots-demo",
+    usage: `import { LoadingDots } from "@/components/ui/loading-dots"
+
+export function Deploying() {
+  return (
+    <p>
+      Deploying
+      <LoadingDots />
+    </p>
+  )
+}`,
+    css: `@theme inline {
+  --animate-loading-dot: loading-dot 1.2s ease-in-out infinite;
+}
+
+@keyframes loading-dot {
+  0%, 80%, 100% { opacity: 0.25; translate: 0 0; }
+  40% { opacity: 1; translate: 0 -0.15em; }
+}`,
+    props: [
+      { name: "className", type: "string", description: "The dots take the size and color of the text; set them here or on the parent." },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */
