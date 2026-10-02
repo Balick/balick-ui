@@ -1272,6 +1272,79 @@ export function Deploying() {
       { name: "className", type: "string", description: "The dots take the size and color of the text; set them here or on the parent." },
     ],
   },
+  {
+    slug: "trend-badge",
+    category: "indicators",
+    title: "Trend Badge",
+    description: "How much a figure moved: an arrow and a percentage, green or red.",
+    example: "trend-badge-demo",
+    usage: `import { TrendBadge } from "@/components/ui/trend-badge"
+
+export function Latency() {
+  return <TrendBadge value={6.2} inverse />
+}`,
+    props: [
+      { name: "value", type: "number", description: "The change in percent, such as 12.4 or -3. Required." },
+      { name: "inverse", type: "boolean", default: "false", description: "Treat a drop as good news, for costs, latency or churn." },
+      { name: "precision", type: "number", default: "1", description: "Digits after the decimal point." },
+    ],
+  },
+  {
+    slug: "sparkline",
+    category: "indicators",
+    title: "Sparkline",
+    description: "A small trend line that draws itself, with a soft area under it.",
+    example: "sparkline-demo",
+    usage: `import { Sparkline } from "@/components/ui/sparkline"
+
+export function Revenue({ weeks }: { weeks: number[] }) {
+  return <Sparkline data={weeks} aria-label="Revenue, last 14 weeks" className="h-10 w-32" />
+}`,
+    css: `@theme inline {
+  --animate-sparkline-draw: sparkline-draw 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-sparkline-fade: sparkline-fade 0.6s ease-out both;
+}
+
+@keyframes sparkline-draw {
+  from { clip-path: inset(0 100% 0 0); }
+}
+
+@keyframes sparkline-fade {
+  from { opacity: 0; }
+}`,
+    props: [
+      { name: "data", type: "number[]", description: "The values, oldest first. Two at least. Required." },
+      { name: "tone", type: "\"trend\" | \"neutral\"", default: "\"trend\"", description: "Green when the last value is above the first and red when below, or the foreground color." },
+      { name: "area", type: "boolean", default: "true", description: "Fill the area under the line with a soft gradient." },
+      { name: "dot", type: "boolean", default: "true", description: "Mark the last value with a dot." },
+    ],
+  },
+  {
+    slug: "count-badge",
+    category: "indicators",
+    title: "Count Badge",
+    description: "A count pinned to an icon or an avatar, which pops when it changes.",
+    example: "count-badge-demo",
+    usage: `import { Bell } from "lucide-react"
+
+import { CountBadge } from "@/components/ui/count-badge"
+
+export function Notifications({ unread }: { unread: number }) {
+  return (
+    <CountBadge count={unread} label="unread notifications">
+      <Bell className="size-5" />
+    </CountBadge>
+  )
+}`,
+    props: [
+      { name: "count", type: "number", description: "The number to show. Nothing shows at 0, unless showZero is set. Required." },
+      { name: "max", type: "number", default: "99", description: "Past it, the badge reads \"99+\"." },
+      { name: "dot", type: "boolean", default: "false", description: "Show a plain dot instead of the number." },
+      { name: "showZero", type: "boolean", default: "false", description: "Show the badge when the count is 0." },
+      { name: "tone", type: "\"danger\" | \"success\" | \"neutral\"", default: "\"danger\"", description: "Red for alerts, green for presence, or the foreground color." },
+      { name: "label", type: "string", description: "What is counted, read after the number by screen readers." },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

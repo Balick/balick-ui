@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "count-badge",
+  "title": "Count Badge",
+  "description": "A count pinned to an icon or an avatar, which pops when it changes.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/count-badge.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, MotionConfig } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface CountBadgeProps extends React.ComponentProps<\"span\"> {\n  /** The number to show. Nothing shows at 0, unless `showZero` is set. */\n  count: number\n  /** Past it, the badge reads \"99+\". */\n  max?: number\n  /** Show a plain dot instead of the number. */\n  dot?: boolean\n  /** Show the badge when the count is 0. */\n  showZero?: boolean\n  /** Red for alerts, green for presence, or the foreground color. */\n  tone?: keyof typeof tones\n  /** What is counted, read after the number by screen readers. */\n  label?: string\n}\n\nconst tones = {\n  danger: \"bg-red-500 text-white\",\n  success: \"bg-emerald-500 text-white\",\n  neutral: \"bg-foreground text-background\",\n}\n\n/**\n * A count pinned to the corner of an icon or an avatar, for unread messages\n * or alerts. It pops when the number changes; reduced motion turns the pop\n * off.\n */\nexport function CountBadge({\n  count,\n  max = 99,\n  dot = false,\n  showZero = false,\n  tone = \"danger\",\n  label,\n  className,\n  children,\n  ...props\n}: CountBadgeProps) {\n  const visible = count > 0 || showZero\n  const text = count > max ? `${max}+` : String(count)\n\n  return (\n    <span data-slot=\"count-badge\" className={cn(\"relative inline-flex\", className)} {...props}>\n      {children}\n      {visible && (\n        <MotionConfig reducedMotion=\"user\">\n          <motion.span\n            key={dot ? \"dot\" : text}\n            initial={{ scale: 0.4 }}\n            animate={{ scale: 1 }}\n            transition={{ type: \"spring\", stiffness: 520, damping: 16 }}\n            className={cn(\n              \"pointer-events-none absolute flex items-center justify-center rounded-full font-semibold tabular-nums ring-2 ring-background\",\n              dot ? \"top-0 right-0 size-2.5\" : \"-top-1.5 -right-1.5 h-[1.125rem] min-w-[1.125rem] px-1 text-[10px] leading-none\",\n              tones[tone]\n            )}\n          >\n            {!dot && <span aria-hidden>{text}</span>}\n            {label && <span className=\"sr-only\">{dot ? label : `${count} ${label}`}</span>}\n          </motion.span>\n        </MotionConfig>\n      )}\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

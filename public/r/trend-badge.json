@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "trend-badge",
+  "title": "Trend Badge",
+  "description": "How much a figure moved: an arrow and a percentage, green or red.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/ui/trend-badge.tsx",
+      "content": "import * as React from \"react\"\nimport { ArrowDownRight, ArrowUpRight, Minus } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface TrendBadgeProps extends Omit<React.ComponentProps<\"span\">, \"children\"> {\n  /** The change in percent, such as 12.4 or -3. */\n  value: number\n  /** Treat a drop as good news, for costs, latency or churn. */\n  inverse?: boolean\n  /** Digits after the decimal point. */\n  precision?: number\n}\n\n/**\n * How much a figure moved: an arrow and a percentage, green when the change\n * is good and red when it is bad. Screen readers hear \"up\" or \"down\".\n */\nexport function TrendBadge({ value, inverse = false, precision = 1, className, ...props }: TrendBadgeProps) {\n  const direction = value > 0 ? \"up\" : value < 0 ? \"down\" : \"flat\"\n  const good = direction === \"flat\" ? undefined : (direction === \"up\") !== inverse\n  const Icon = direction === \"up\" ? ArrowUpRight : direction === \"down\" ? ArrowDownRight : Minus\n  const text = new Intl.NumberFormat(\"en\", {\n    signDisplay: \"exceptZero\",\n    minimumFractionDigits: precision,\n    maximumFractionDigits: precision,\n  }).format(value)\n\n  return (\n    <span\n      data-slot=\"trend-badge\"\n      className={cn(\n        \"inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-xs font-medium tabular-nums\",\n        good === undefined && \"border-border bg-foreground/5 text-muted-foreground\",\n        good === true && \"border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400\",\n        good === false && \"border-red-500/25 bg-red-500/10 text-red-700 dark:text-red-400\",\n        className\n      )}\n      {...props}\n    >\n      <Icon aria-hidden className=\"size-3.5\" />\n      <span className=\"sr-only\">{direction === \"flat\" ? \"unchanged\" : direction} </span>\n      {text}%\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

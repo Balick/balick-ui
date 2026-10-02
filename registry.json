@@ -2290,6 +2290,115 @@
           "type": "registry:example"
         }
       ]
+    },
+    {
+      "name": "trend-badge",
+      "type": "registry:ui",
+      "title": "Trend Badge",
+      "description": "How much a figure moved: an arrow and a percentage, green or red.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/trend-badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "trend-badge-demo",
+      "type": "registry:example",
+      "title": "Trend Badge Demo",
+      "description": "Example usage of Trend Badge.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/trend-badge.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/trend-badge-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "sparkline",
+      "type": "registry:ui",
+      "title": "Sparkline",
+      "description": "A small trend line that draws itself, with a soft area and a dot.",
+      "cssVars": {
+        "theme": {
+          "animate-sparkline-draw": "sparkline-draw 1s cubic-bezier(0.22, 1, 0.36, 1) both",
+          "animate-sparkline-fade": "sparkline-fade 0.6s ease-out both"
+        }
+      },
+      "css": {
+        "@keyframes sparkline-draw": {
+          "from": {
+            "clip-path": "inset(0 100% 0 0)"
+          }
+        },
+        "@keyframes sparkline-fade": {
+          "from": {
+            "opacity": "0"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/sparkline.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sparkline-demo",
+      "type": "registry:example",
+      "title": "Sparkline Demo",
+      "description": "Example usage of Sparkline.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/sparkline.json",
+        "https://ui.balick.me/r/trend-badge.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/sparkline-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "count-badge",
+      "type": "registry:ui",
+      "title": "Count Badge",
+      "description": "A count pinned to an icon or an avatar, which pops when it changes.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/count-badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "count-badge-demo",
+      "type": "registry:example",
+      "title": "Count Badge Demo",
+      "description": "Example usage of Count Badge.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/count-badge.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/count-badge-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
     }
   ]
 }
