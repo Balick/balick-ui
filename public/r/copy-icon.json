@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-icon",
+  "title": "Copy Icon",
+  "description": "Two sheets that give way to a check, drawn stroke by stroke, once copied.",
+  "files": [
+    {
+      "path": "registry/balick/ui/copy-icon.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface CopyIconProps extends React.ComponentProps<\"svg\"> {\n  /** Show a check, drawn stroke by stroke, instead of the two sheets. */\n  copied?: boolean\n}\n\n/**\n * Two sheets that give way to a check once something is copied. The change\n * is immediate under reduced motion.\n */\nexport function CopyIcon({ copied = false, className, ...props }: CopyIconProps) {\n  return (\n    <svg\n      data-slot=\"copy-icon\"\n      data-state={copied ? \"copied\" : \"idle\"}\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={24}\n      height={24}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      aria-hidden\n      className={cn(\"shrink-0\", className)}\n      {...props}\n    >\n      <g className={cn(\"origin-center [transform-box:fill-box] transition-[opacity,translate,rotate,scale] duration-300 ease-out motion-reduce:transition-none\", copied && \"scale-75 opacity-0\")}>\n        <rect x=\"8\" y=\"8\" width=\"13\" height=\"13\" rx=\"2\" />\n        <path d=\"M4 16V5a2 2 0 0 1 2-2h11\" />\n      </g>\n      <path\n        d=\"M4.5 12.5 9.5 17.5 19.5 6.5\"\n        pathLength={1}\n        strokeDasharray={1}\n        className={cn(\n          \"transition-[stroke-dashoffset] duration-300 ease-out motion-reduce:transition-none\",\n          copied ? \"delay-100 [stroke-dashoffset:0]\" : \"[stroke-dashoffset:1]\"\n        )}\n      />\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

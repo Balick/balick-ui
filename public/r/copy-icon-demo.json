@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-icon-demo",
+  "title": "Copy Icon Demo",
+  "description": "Example usage of Copy Icon.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/copy-icon.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/copy-icon-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { CopyIcon } from \"@/registry/balick/ui/copy-icon\"\n\nexport default function CopyIconDemo() {\n  const [copied, setCopied] = React.useState(false)\n\n  React.useEffect(() => {\n    if (!copied) return\n    const timeout = setTimeout(() => setCopied(false), 1500)\n    return () => clearTimeout(timeout)\n  }, [copied])\n\n  return (\n    <div className=\"flex h-10 items-center gap-3 rounded-md border bg-background pr-1 pl-4 font-mono text-sm\">\n      <span className=\"whitespace-nowrap text-muted-foreground\">pnpm add @acme/ui</span>\n      <button\n        type=\"button\"\n        aria-label={copied ? \"Copied\" : \"Copy command\"}\n        onClick={() => setCopied(true)}\n        className=\"inline-flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground\"\n      >\n        <CopyIcon copied={copied} className=\"size-4\" />\n      </button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

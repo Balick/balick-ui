@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "settings-icon",
+  "title": "Settings Icon",
+  "description": "A gear that turns a quarter turn when it, or its button, is hovered.",
+  "files": [
+    {
+      "path": "registry/balick/ui/settings-icon.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Eight teeth around the hub, between radii 7 and 9.5.\nconst gear = (() => {\n  const points: string[] = []\n  for (let tooth = 0; tooth < 8; tooth++) {\n    const angle = (tooth * Math.PI) / 4\n    for (const [offset, radius] of [[-0.3, 7], [-0.17, 9.5], [0.17, 9.5], [0.3, 7]] as const) {\n      const x = 12 + radius * Math.cos(angle + offset)\n      const y = 12 + radius * Math.sin(angle + offset)\n      points.push(`${x.toFixed(2)} ${y.toFixed(2)}`)\n    }\n  }\n  return `M${points.join(\"L\")}Z`\n})()\n\n/**\n * A gear that turns a quarter turn and settles. It plays when the icon is\n * hovered, or when the link or button around it is hovered or focused with\n * the keyboard; mark any other parent with `data-icon-trigger`. It stands\n * still under reduced motion.\n */\nexport function SettingsIcon({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <svg\n      data-slot=\"settings-icon\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={24}\n      height={24}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      aria-hidden\n      className={cn(\"shrink-0\", className)}\n      {...props}\n    >\n      <g className=\"origin-[12px_12px] [transform-box:view-box] [:is(a,button,svg,[data-icon-trigger]):is(:hover,:focus-visible)_&]:animate-settings-turn motion-reduce:animate-none\">\n        <path d={gear} />\n        <circle cx=\"12\" cy=\"12\" r=\"3\" />\n      </g>\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-settings-turn": "settings-turn 0.6s cubic-bezier(0.3, 1.4, 0.5, 1)"
+    }
+  },
+  "css": {
+    "@keyframes settings-turn": {
+      "from": {
+        "rotate": "0deg"
+      },
+      "to": {
+        "rotate": "90deg"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

@@ -32,7 +32,7 @@ export const componentCategories: {
   { slug: "motion", title: "Motion", description: "Reveals and loops that support the content.", featured: "marquee" },
   { slug: "backgrounds", title: "Backgrounds", description: "Patterns, light and texture that sit behind a section.", featured: "flickering-grid" },
   { slug: "indicators", title: "Indicators", description: "Small signals of state.", featured: "status-dot" },
-  { slug: "icons", title: "Icons", description: "Icons lucide-react does not ship.", featured: "social-icons" },
+  { slug: "icons", title: "Icons", description: "Brand icons, and icons that come alive on hover.", featured: "bell-icon" },
   { slug: "layout", title: "Layout", description: "The primitives every block is built on.", featured: "section" },
 ]
 
@@ -566,6 +566,275 @@ export function GitHubLink() {
           { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
         ],
       },
+    ],
+  },
+  {
+    slug: "bell-icon",
+    category: "icons",
+    title: "Bell Icon",
+    description: "A bell that rings when it, or its button, is hovered.",
+    example: "bell-icon-demo",
+    usage: `import { BellIcon } from "@/components/ui/bell-icon"
+
+export function NotificationsButton() {
+  return (
+    <button type="button">
+      <BellIcon className="size-4" />
+      Notifications
+    </button>
+  )
+}`,
+    css: `@theme inline {
+  --animate-bell-ring: bell-ring 0.8s ease-in-out;
+  --animate-bell-clapper: bell-clapper 0.8s ease-in-out 0.06s;
+}
+
+@keyframes bell-ring {
+  0%, 100% { rotate: 0deg; }
+  15% { rotate: 14deg; }
+  30% { rotate: -12deg; }
+  45% { rotate: 8deg; }
+  60% { rotate: -5deg; }
+  75% { rotate: 2deg; }
+}
+
+@keyframes bell-clapper {
+  0%, 100% { translate: 0 0; }
+  20% { translate: -1.5px 0; }
+  40% { translate: 1.5px 0; }
+  60% { translate: -1px 0; }
+  80% { translate: 0.5px 0; }
+}`,
+    props: [
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+      { name: "data-icon-trigger", type: "attribute", description: "Put it on any parent that should play the animation on hover, besides links and buttons." },
+    ],
+  },
+  {
+    slug: "heart-icon",
+    category: "icons",
+    title: "Heart Icon",
+    description: "A heart that beats twice when it, or its button, is hovered.",
+    example: "heart-icon-demo",
+    usage: `import { HeartIcon } from "@/components/ui/heart-icon"
+
+export function LikeButton() {
+  return (
+    <button type="button">
+      <HeartIcon className="size-4" />
+      Like
+    </button>
+  )
+}`,
+    css: `@theme inline {
+  --animate-heart-beat: heart-beat 0.7s ease-in-out;
+}
+
+@keyframes heart-beat {
+  0%, 100% { scale: 1; }
+  20% { scale: 1.2; }
+  40% { scale: 0.95; }
+  60% { scale: 1.12; }
+  80% { scale: 0.98; }
+}`,
+    props: [
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+      { name: "data-icon-trigger", type: "attribute", description: "Put it on any parent that should play the animation on hover, besides links and buttons." },
+    ],
+  },
+  {
+    slug: "settings-icon",
+    category: "icons",
+    title: "Settings Icon",
+    description: "A gear that turns a quarter turn when it, or its button, is hovered.",
+    example: "settings-icon-demo",
+    usage: `import { SettingsIcon } from "@/components/ui/settings-icon"
+
+export function SettingsButton() {
+  return (
+    <button type="button">
+      <SettingsIcon className="size-4" />
+      Settings
+    </button>
+  )
+}`,
+    css: `@theme inline {
+  --animate-settings-turn: settings-turn 0.6s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+@keyframes settings-turn {
+  from { rotate: 0deg; }
+  to { rotate: 90deg; }
+}`,
+    props: [
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+      { name: "data-icon-trigger", type: "attribute", description: "Put it on any parent that should play the animation on hover, besides links and buttons." },
+    ],
+  },
+  {
+    slug: "send-icon",
+    category: "icons",
+    title: "Send Icon",
+    description: "A paper plane that flies off and comes back in on hover.",
+    example: "send-icon-demo",
+    usage: `import { SendIcon } from "@/components/ui/send-icon"
+
+export function SendButton() {
+  return (
+    <button type="button">
+      <SendIcon className="size-4" />
+      Send
+    </button>
+  )
+}`,
+    css: `@theme inline {
+  --animate-send-fly: send-fly 0.7s ease-in-out;
+}
+
+@keyframes send-fly {
+  0%, 100% { translate: 0 0; opacity: 1; }
+  45% { translate: 12px -12px; opacity: 0; }
+  46% { translate: -12px 12px; opacity: 0; }
+}`,
+    props: [
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+      { name: "data-icon-trigger", type: "attribute", description: "Put it on any parent that should play the animation on hover, besides links and buttons." },
+    ],
+  },
+  {
+    slug: "download-icon",
+    category: "icons",
+    title: "Download Icon",
+    description: "An arrow that drops into its tray on hover.",
+    example: "download-icon-demo",
+    usage: `import { DownloadIcon } from "@/components/ui/download-icon"
+
+export function DownloadButton() {
+  return (
+    <button type="button">
+      <DownloadIcon className="size-4" />
+      Download
+    </button>
+  )
+}`,
+    css: `@theme inline {
+  --animate-download-arrow: download-arrow 0.6s ease-out;
+  --animate-download-tray: download-tray 0.6s ease-out;
+}
+
+@keyframes download-arrow {
+  0%, 100% { translate: 0 0; }
+  35% { translate: 0 3px; }
+  60% { translate: 0 -1px; }
+}
+
+@keyframes download-tray {
+  0%, 25%, 100% { translate: 0 0; }
+  45% { translate: 0 1.5px; }
+}`,
+    props: [
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+      { name: "data-icon-trigger", type: "attribute", description: "Put it on any parent that should play the animation on hover, besides links and buttons." },
+    ],
+  },
+  {
+    slug: "search-icon",
+    category: "icons",
+    title: "Search Icon",
+    description: "A magnifier that traces a small circle on hover, as if scanning.",
+    example: "search-icon-demo",
+    usage: `import { SearchIcon } from "@/components/ui/search-icon"
+
+export function SearchButton() {
+  return (
+    <button type="button">
+      <SearchIcon className="size-4" />
+      Search
+    </button>
+  )
+}`,
+    css: `@theme inline {
+  --animate-search-scan: search-scan 0.8s ease-in-out;
+}
+
+@keyframes search-scan {
+  0%, 100% { translate: 0 0; }
+  25% { translate: -2px -1px; }
+  50% { translate: 0 -2px; }
+  75% { translate: 2px -1px; }
+}`,
+    props: [
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+      { name: "data-icon-trigger", type: "attribute", description: "Put it on any parent that should play the animation on hover, besides links and buttons." },
+    ],
+  },
+  {
+    slug: "sparkles-icon",
+    category: "icons",
+    title: "Sparkles Icon",
+    description: "Sparkles that twinkle in turn on hover.",
+    example: "sparkles-icon-demo",
+    usage: `import { SparklesIcon } from "@/components/ui/sparkles-icon"
+
+export function GenerateButton() {
+  return (
+    <button type="button">
+      <SparklesIcon className="size-4" />
+      Generate
+    </button>
+  )
+}`,
+    css: `@theme inline {
+  --animate-sparkle: sparkle 0.6s ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% { scale: 1; rotate: 0deg; opacity: 1; }
+  40% { scale: 0.55; rotate: 20deg; opacity: 0.5; }
+}`,
+    props: [
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+      { name: "data-icon-trigger", type: "attribute", description: "Put it on any parent that should play the animation on hover, besides links and buttons." },
+    ],
+  },
+  {
+    slug: "menu-icon",
+    category: "icons",
+    title: "Menu Icon",
+    description: "Three bars that fold into a cross when the menu opens.",
+    example: "menu-icon-demo",
+    usage: `import { MenuIcon } from "@/components/ui/menu-icon"
+
+export function MenuButton({ open, onToggle }: { open: boolean; onToggle: () => void }) {
+  return (
+    <button type="button" aria-label="Menu" aria-expanded={open} onClick={onToggle}>
+      <MenuIcon open={open} className="size-5" />
+    </button>
+  )
+}`,
+    props: [
+      { name: "open", type: "boolean", default: "false", description: "Show the cross that closes the menu instead of the three bars." },
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
+    ],
+  },
+  {
+    slug: "copy-icon",
+    category: "icons",
+    title: "Copy Icon",
+    description: "Two sheets that give way to a check, drawn stroke by stroke, once copied.",
+    example: "copy-icon-demo",
+    usage: `import { CopyIcon } from "@/components/ui/copy-icon"
+
+export function CopyButton({ copied, onCopy }: { copied: boolean; onCopy: () => void }) {
+  return (
+    <button type="button" aria-label={copied ? "Copied" : "Copy"} onClick={onCopy}>
+      <CopyIcon copied={copied} className="size-4" />
+    </button>
+  )
+}`,
+    props: [
+      { name: "copied", type: "boolean", default: "false", description: "Show a check, drawn stroke by stroke, instead of the two sheets." },
+      { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
     ],
   },
   {

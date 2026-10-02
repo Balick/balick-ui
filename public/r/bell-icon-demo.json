@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bell-icon-demo",
+  "title": "Bell Icon Demo",
+  "description": "Example usage of Bell Icon.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/bell-icon.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/bell-icon-demo.tsx",
+      "content": "import { BellIcon } from \"@/registry/balick/ui/bell-icon\"\n\nexport default function BellIconDemo() {\n  return (\n    <div className=\"flex items-center gap-3\">\n      <button\n        type=\"button\"\n        aria-label=\"Notifications\"\n        className=\"inline-flex size-10 items-center justify-center rounded-md border bg-background text-muted-foreground transition-colors hover:bg-muted hover:text-foreground\"\n      >\n        <BellIcon className=\"size-5\" />\n      </button>\n      <button\n        type=\"button\"\n        className=\"inline-flex h-10 items-center gap-2 rounded-md bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-90\"\n      >\n        <BellIcon className=\"size-4\" />\n        Notifications\n      </button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

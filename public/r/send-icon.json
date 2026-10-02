@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "send-icon",
+  "title": "Send Icon",
+  "description": "A paper plane that flies off and comes back in on hover.",
+  "files": [
+    {
+      "path": "registry/balick/ui/send-icon.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * A paper plane that flies off and comes back in from the other side. It\n * plays when the icon is hovered, or when the link or button around it is\n * hovered or focused with the keyboard; mark any other parent with\n * `data-icon-trigger`. It stands still under reduced motion.\n */\nexport function SendIcon({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <svg\n      data-slot=\"send-icon\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={24}\n      height={24}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      aria-hidden\n      className={cn(\"shrink-0\", className)}\n      {...props}\n    >\n      <g className=\"[:is(a,button,svg,[data-icon-trigger]):is(:hover,:focus-visible)_&]:animate-send-fly motion-reduce:animate-none\">\n        <path d=\"M21.5 2.5 14.5 21.5l-4-8-8-4 19-7Z\" />\n        <path d=\"M21.5 2.5 10.5 13.5\" />\n      </g>\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-send-fly": "send-fly 0.7s ease-in-out"
+    }
+  },
+  "css": {
+    "@keyframes send-fly": {
+      "0%, 100%": {
+        "translate": "0 0",
+        "opacity": "1"
+      },
+      "45%": {
+        "translate": "12px -12px",
+        "opacity": "0"
+      },
+      "46%": {
+        "translate": "-12px 12px",
+        "opacity": "0"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

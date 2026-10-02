@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu-icon",
+  "title": "Menu Icon",
+  "description": "Three bars that fold into a cross when the menu opens.",
+  "files": [
+    {
+      "path": "registry/balick/ui/menu-icon.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface MenuIconProps extends React.ComponentProps<\"svg\"> {\n  /** Show the cross that closes the menu instead of the three bars. */\n  open?: boolean\n}\n\n/**\n * Three bars that fold into a cross when the menu opens. The change is\n * immediate under reduced motion.\n */\nexport function MenuIcon({ open = false, className, ...props }: MenuIconProps) {\n  return (\n    <svg\n      data-slot=\"menu-icon\"\n      data-state={open ? \"open\" : \"closed\"}\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={24}\n      height={24}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      aria-hidden\n      className={cn(\"shrink-0\", className)}\n      {...props}\n    >\n      <path\n        d=\"M4 6h16\"\n        className={cn(\"origin-[12px_6px] [transform-box:view-box] transition-[opacity,translate,rotate,scale] duration-300 ease-out motion-reduce:transition-none\", open && \"translate-y-[6px] rotate-45\")}\n      />\n      <path d=\"M4 12h16\" className={cn(\"origin-[12px_12px] [transform-box:view-box] transition-[opacity,translate,rotate,scale] duration-300 ease-out motion-reduce:transition-none\", open && \"scale-x-0 opacity-0\")} />\n      <path\n        d=\"M4 18h16\"\n        className={cn(\"origin-[12px_18px] [transform-box:view-box] transition-[opacity,translate,rotate,scale] duration-300 ease-out motion-reduce:transition-none\", open && \"-translate-y-[6px] -rotate-45\")}\n      />\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

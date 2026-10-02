@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-icon-demo",
+  "title": "Search Icon Demo",
+  "description": "Example usage of Search Icon.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/search-icon.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/search-icon-demo.tsx",
+      "content": "import { SearchIcon } from \"@/registry/balick/ui/search-icon\"\n\nexport default function SearchIconDemo() {\n  return (\n    <div className=\"flex items-center gap-3\">\n      <button\n        type=\"button\"\n        aria-label=\"Search\"\n        className=\"inline-flex size-10 items-center justify-center rounded-md border bg-background text-muted-foreground transition-colors hover:bg-muted hover:text-foreground\"\n      >\n        <SearchIcon className=\"size-5\" />\n      </button>\n      <button\n        type=\"button\"\n        className=\"inline-flex h-10 items-center gap-2 rounded-md bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-90\"\n      >\n        <SearchIcon className=\"size-4\" />\n        Search\n      </button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

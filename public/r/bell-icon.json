@@ -1,0 +1,59 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bell-icon",
+  "title": "Bell Icon",
+  "description": "A bell that rings when it, or its button, is hovered.",
+  "files": [
+    {
+      "path": "registry/balick/ui/bell-icon.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * A bell that rings: it swings from its top and the clapper follows. It\n * plays when the icon is hovered, or when the link or button around it is\n * hovered or focused with the keyboard; mark any other parent with\n * `data-icon-trigger`. It stands still under reduced motion.\n */\nexport function BellIcon({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <svg\n      data-slot=\"bell-icon\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={24}\n      height={24}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      aria-hidden\n      className={cn(\"shrink-0\", className)}\n      {...props}\n    >\n      <g className=\"origin-[12px_3px] [transform-box:view-box] [:is(a,button,svg,[data-icon-trigger]):is(:hover,:focus-visible)_&]:animate-bell-ring motion-reduce:animate-none\">\n        <path d=\"M18 8A6 6 0 0 0 6 8c0 6.5-2.5 8.5-3 9h18c-.5-.5-3-2.5-3-9\" />\n        <path d=\"M10.3 21a1.94 1.94 0 0 0 3.4 0\" className=\"[:is(a,button,svg,[data-icon-trigger]):is(:hover,:focus-visible)_&]:animate-bell-clapper motion-reduce:animate-none\" />\n      </g>\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-bell-ring": "bell-ring 0.8s ease-in-out",
+      "animate-bell-clapper": "bell-clapper 0.8s ease-in-out 0.06s"
+    }
+  },
+  "css": {
+    "@keyframes bell-ring": {
+      "0%, 100%": {
+        "rotate": "0deg"
+      },
+      "15%": {
+        "rotate": "14deg"
+      },
+      "30%": {
+        "rotate": "-12deg"
+      },
+      "45%": {
+        "rotate": "8deg"
+      },
+      "60%": {
+        "rotate": "-5deg"
+      },
+      "75%": {
+        "rotate": "2deg"
+      }
+    },
+    "@keyframes bell-clapper": {
+      "0%, 100%": {
+        "translate": "0 0"
+      },
+      "20%": {
+        "translate": "-1.5px 0"
+      },
+      "40%": {
+        "translate": "1.5px 0"
+      },
+      "60%": {
+        "translate": "-1px 0"
+      },
+      "80%": {
+        "translate": "0.5px 0"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

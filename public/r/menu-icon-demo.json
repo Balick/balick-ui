@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu-icon-demo",
+  "title": "Menu Icon Demo",
+  "description": "Example usage of Menu Icon.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/menu-icon.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/menu-icon-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { MenuIcon } from \"@/registry/balick/ui/menu-icon\"\n\nexport default function MenuIconDemo() {\n  const [open, setOpen] = React.useState(false)\n\n  return (\n    <button\n      type=\"button\"\n      aria-label={open ? \"Close menu\" : \"Open menu\"}\n      aria-expanded={open}\n      onClick={() => setOpen((value) => !value)}\n      className=\"inline-flex size-10 items-center justify-center rounded-md border bg-background transition-colors hover:bg-muted\"\n    >\n      <MenuIcon open={open} className=\"size-5\" />\n    </button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

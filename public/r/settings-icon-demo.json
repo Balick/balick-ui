@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "settings-icon-demo",
+  "title": "Settings Icon Demo",
+  "description": "Example usage of Settings Icon.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/settings-icon.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/settings-icon-demo.tsx",
+      "content": "import { SettingsIcon } from \"@/registry/balick/ui/settings-icon\"\n\nexport default function SettingsIconDemo() {\n  return (\n    <div className=\"flex items-center gap-3\">\n      <button\n        type=\"button\"\n        aria-label=\"Settings\"\n        className=\"inline-flex size-10 items-center justify-center rounded-md border bg-background text-muted-foreground transition-colors hover:bg-muted hover:text-foreground\"\n      >\n        <SettingsIcon className=\"size-5\" />\n      </button>\n      <button\n        type=\"button\"\n        className=\"inline-flex h-10 items-center gap-2 rounded-md bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-90\"\n      >\n        <SettingsIcon className=\"size-4\" />\n        Settings\n      </button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "download-icon",
+  "title": "Download Icon",
+  "description": "An arrow that drops into its tray on hover.",
+  "files": [
+    {
+      "path": "registry/balick/ui/download-icon.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * An arrow that drops into its tray, which dips under it. It plays when the\n * icon is hovered, or when the link or button around it is hovered or\n * focused with the keyboard; mark any other parent with `data-icon-trigger`.\n * It stands still under reduced motion.\n */\nexport function DownloadIcon({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <svg\n      data-slot=\"download-icon\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width={24}\n      height={24}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      aria-hidden\n      className={cn(\"shrink-0\", className)}\n      {...props}\n    >\n      <g className=\"[:is(a,button,svg,[data-icon-trigger]):is(:hover,:focus-visible)_&]:animate-download-arrow motion-reduce:animate-none\">\n        <path d=\"M12 3v12\" />\n        <path d=\"m7 10 5 5 5-5\" />\n      </g>\n      <path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\" className=\"[:is(a,button,svg,[data-icon-trigger]):is(:hover,:focus-visible)_&]:animate-download-tray motion-reduce:animate-none\" />\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-download-arrow": "download-arrow 0.6s ease-out",
+      "animate-download-tray": "download-tray 0.6s ease-out"
+    }
+  },
+  "css": {
+    "@keyframes download-arrow": {
+      "0%, 100%": {
+        "translate": "0 0"
+      },
+      "35%": {
+        "translate": "0 3px"
+      },
+      "60%": {
+        "translate": "0 -1px"
+      }
+    },
+    "@keyframes download-tray": {
+      "0%, 25%, 100%": {
+        "translate": "0 0"
+      },
+      "45%": {
+        "translate": "0 1.5px"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

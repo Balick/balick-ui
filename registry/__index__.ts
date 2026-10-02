@@ -60,6 +60,15 @@ import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-d
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
 import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
 import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
+import BellIconDemo from "@/registry/balick/examples/bell-icon-demo"
+import HeartIconDemo from "@/registry/balick/examples/heart-icon-demo"
+import SettingsIconDemo from "@/registry/balick/examples/settings-icon-demo"
+import SendIconDemo from "@/registry/balick/examples/send-icon-demo"
+import DownloadIconDemo from "@/registry/balick/examples/download-icon-demo"
+import SearchIconDemo from "@/registry/balick/examples/search-icon-demo"
+import SparklesIconDemo from "@/registry/balick/examples/sparkles-icon-demo"
+import MenuIconDemo from "@/registry/balick/examples/menu-icon-demo"
+import CopyIconDemo from "@/registry/balick/examples/copy-icon-demo"
 import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
 import StaggerDemo from "@/registry/balick/examples/stagger-demo"
 import StatusButtonDemo from "@/registry/balick/examples/status-button-demo"
@@ -107,6 +116,15 @@ export const examples: Record<string, React.ComponentType> = {
   "shimmer-button-demo": ShimmerButtonDemo,
   "shimmer-text-demo": ShimmerTextDemo,
   "social-icons-demo": SocialIconsDemo,
+  "bell-icon-demo": BellIconDemo,
+  "heart-icon-demo": HeartIconDemo,
+  "settings-icon-demo": SettingsIconDemo,
+  "send-icon-demo": SendIconDemo,
+  "download-icon-demo": DownloadIconDemo,
+  "search-icon-demo": SearchIconDemo,
+  "sparkles-icon-demo": SparklesIconDemo,
+  "menu-icon-demo": MenuIconDemo,
+  "copy-icon-demo": CopyIconDemo,
   "spotlight-button-demo": SpotlightButtonDemo,
   "stagger-demo": StaggerDemo,
   "status-button-demo": StatusButtonDemo,

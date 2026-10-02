@@ -352,6 +352,286 @@
       ]
     },
     {
+      "name": "bell-icon",
+      "type": "registry:ui",
+      "title": "Bell Icon",
+      "description": "A bell that rings when it, or its button, is hovered.",
+      "cssVars": {
+        "theme": {
+          "animate-bell-ring": "bell-ring 0.8s ease-in-out",
+          "animate-bell-clapper": "bell-clapper 0.8s ease-in-out 0.06s"
+        }
+      },
+      "css": {
+        "@keyframes bell-ring": {
+          "0%, 100%": {
+            "rotate": "0deg"
+          },
+          "15%": {
+            "rotate": "14deg"
+          },
+          "30%": {
+            "rotate": "-12deg"
+          },
+          "45%": {
+            "rotate": "8deg"
+          },
+          "60%": {
+            "rotate": "-5deg"
+          },
+          "75%": {
+            "rotate": "2deg"
+          }
+        },
+        "@keyframes bell-clapper": {
+          "0%, 100%": {
+            "translate": "0 0"
+          },
+          "20%": {
+            "translate": "-1.5px 0"
+          },
+          "40%": {
+            "translate": "1.5px 0"
+          },
+          "60%": {
+            "translate": "-1px 0"
+          },
+          "80%": {
+            "translate": "0.5px 0"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/bell-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "heart-icon",
+      "type": "registry:ui",
+      "title": "Heart Icon",
+      "description": "A heart that beats twice when it, or its button, is hovered.",
+      "cssVars": {
+        "theme": {
+          "animate-heart-beat": "heart-beat 0.7s ease-in-out"
+        }
+      },
+      "css": {
+        "@keyframes heart-beat": {
+          "0%, 100%": {
+            "scale": "1"
+          },
+          "20%": {
+            "scale": "1.2"
+          },
+          "40%": {
+            "scale": "0.95"
+          },
+          "60%": {
+            "scale": "1.12"
+          },
+          "80%": {
+            "scale": "0.98"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/heart-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "settings-icon",
+      "type": "registry:ui",
+      "title": "Settings Icon",
+      "description": "A gear that turns a quarter turn when it, or its button, is hovered.",
+      "cssVars": {
+        "theme": {
+          "animate-settings-turn": "settings-turn 0.6s cubic-bezier(0.3, 1.4, 0.5, 1)"
+        }
+      },
+      "css": {
+        "@keyframes settings-turn": {
+          "from": {
+            "rotate": "0deg"
+          },
+          "to": {
+            "rotate": "90deg"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/settings-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "send-icon",
+      "type": "registry:ui",
+      "title": "Send Icon",
+      "description": "A paper plane that flies off and comes back in on hover.",
+      "cssVars": {
+        "theme": {
+          "animate-send-fly": "send-fly 0.7s ease-in-out"
+        }
+      },
+      "css": {
+        "@keyframes send-fly": {
+          "0%, 100%": {
+            "translate": "0 0",
+            "opacity": "1"
+          },
+          "45%": {
+            "translate": "12px -12px",
+            "opacity": "0"
+          },
+          "46%": {
+            "translate": "-12px 12px",
+            "opacity": "0"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/send-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "download-icon",
+      "type": "registry:ui",
+      "title": "Download Icon",
+      "description": "An arrow that drops into its tray on hover.",
+      "cssVars": {
+        "theme": {
+          "animate-download-arrow": "download-arrow 0.6s ease-out",
+          "animate-download-tray": "download-tray 0.6s ease-out"
+        }
+      },
+      "css": {
+        "@keyframes download-arrow": {
+          "0%, 100%": {
+            "translate": "0 0"
+          },
+          "35%": {
+            "translate": "0 3px"
+          },
+          "60%": {
+            "translate": "0 -1px"
+          }
+        },
+        "@keyframes download-tray": {
+          "0%, 25%, 100%": {
+            "translate": "0 0"
+          },
+          "45%": {
+            "translate": "0 1.5px"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/download-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "search-icon",
+      "type": "registry:ui",
+      "title": "Search Icon",
+      "description": "A magnifier that traces a small circle on hover, as if scanning.",
+      "cssVars": {
+        "theme": {
+          "animate-search-scan": "search-scan 0.8s ease-in-out"
+        }
+      },
+      "css": {
+        "@keyframes search-scan": {
+          "0%, 100%": {
+            "translate": "0 0"
+          },
+          "25%": {
+            "translate": "-2px -1px"
+          },
+          "50%": {
+            "translate": "0 -2px"
+          },
+          "75%": {
+            "translate": "2px -1px"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/search-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sparkles-icon",
+      "type": "registry:ui",
+      "title": "Sparkles Icon",
+      "description": "Sparkles that twinkle in turn on hover.",
+      "cssVars": {
+        "theme": {
+          "animate-sparkle": "sparkle 0.6s ease-in-out"
+        }
+      },
+      "css": {
+        "@keyframes sparkle": {
+          "0%, 100%": {
+            "scale": "1",
+            "rotate": "0deg",
+            "opacity": "1"
+          },
+          "40%": {
+            "scale": "0.55",
+            "rotate": "20deg",
+            "opacity": "0.5"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/balick/ui/sparkles-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menu-icon",
+      "type": "registry:ui",
+      "title": "Menu Icon",
+      "description": "Three bars that fold into a cross when the menu opens.",
+      "files": [
+        {
+          "path": "registry/balick/ui/menu-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "copy-icon",
+      "type": "registry:ui",
+      "title": "Copy Icon",
+      "description": "Two sheets that give way to a check, drawn stroke by stroke, once copied.",
+      "files": [
+        {
+          "path": "registry/balick/ui/copy-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "status-dot",
       "type": "registry:ui",
       "title": "Status Dot",
@@ -826,6 +1106,141 @@
       "files": [
         {
           "path": "registry/balick/examples/social-icons-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "bell-icon-demo",
+      "type": "registry:example",
+      "title": "Bell Icon Demo",
+      "description": "Example usage of Bell Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/bell-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/bell-icon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "heart-icon-demo",
+      "type": "registry:example",
+      "title": "Heart Icon Demo",
+      "description": "Example usage of Heart Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/heart-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/heart-icon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "settings-icon-demo",
+      "type": "registry:example",
+      "title": "Settings Icon Demo",
+      "description": "Example usage of Settings Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/settings-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/settings-icon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "send-icon-demo",
+      "type": "registry:example",
+      "title": "Send Icon Demo",
+      "description": "Example usage of Send Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/send-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/send-icon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "download-icon-demo",
+      "type": "registry:example",
+      "title": "Download Icon Demo",
+      "description": "Example usage of Download Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/download-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/download-icon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "search-icon-demo",
+      "type": "registry:example",
+      "title": "Search Icon Demo",
+      "description": "Example usage of Search Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/search-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/search-icon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "sparkles-icon-demo",
+      "type": "registry:example",
+      "title": "Sparkles Icon Demo",
+      "description": "Example usage of Sparkles Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/sparkles-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/sparkles-icon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "menu-icon-demo",
+      "type": "registry:example",
+      "title": "Menu Icon Demo",
+      "description": "Example usage of Menu Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/menu-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/menu-icon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "copy-icon-demo",
+      "type": "registry:example",
+      "title": "Copy Icon Demo",
+      "description": "Example usage of Copy Icon.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/copy-icon.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/copy-icon-demo.tsx",
           "type": "registry:example"
         }
       ]
