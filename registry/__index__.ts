@@ -59,7 +59,6 @@ import SectionDemo from "@/registry/balick/examples/section-demo"
 import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
 import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
-import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
 import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
 import StaggerDemo from "@/registry/balick/examples/stagger-demo"
 import StatusButtonDemo from "@/registry/balick/examples/status-button-demo"
@@ -106,7 +105,6 @@ export const examples: Record<string, React.ComponentType> = {
   "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
   "shimmer-text-demo": ShimmerTextDemo,
-  "social-icons-demo": SocialIconsDemo,
   "spotlight-button-demo": SpotlightButtonDemo,
   "stagger-demo": StaggerDemo,
   "status-button-demo": StatusButtonDemo,
