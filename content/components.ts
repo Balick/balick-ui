@@ -16,7 +16,6 @@ export type ComponentCategory =
   | "motion"
   | "backgrounds"
   | "indicators"
-  | "icons"
   | "layout"
 
 /** Categories in display order, used by the sidebar, the category tabs and the overview. */
@@ -32,7 +31,6 @@ export const componentCategories: {
   { slug: "motion", title: "Motion", description: "Reveals and loops that support the content.", featured: "marquee" },
   { slug: "backgrounds", title: "Backgrounds", description: "Patterns, light and texture that sit behind a section.", featured: "flickering-grid" },
   { slug: "indicators", title: "Indicators", description: "Small signals of state.", featured: "status-dot" },
-  { slug: "icons", title: "Icons", description: "Icons lucide-react does not ship.", featured: "social-icons" },
   { slug: "layout", title: "Layout", description: "The primitives every block is built on.", featured: "section" },
 ]
 
@@ -541,31 +539,6 @@ export function Cta() {
       { name: "shimmerColor", type: "string", default: '"#ffffff"', description: "Color of the light travelling around the border." },
       { name: "shimmerDuration", type: "string", default: '"3s"', description: "Duration of one full turn, as a CSS time." },
       { name: "background", type: "string", default: '"#0a0a0a"', description: "Background of the button." },
-    ],
-  },
-  {
-    slug: "social-icons",
-    category: "icons",
-    title: "Social Icons",
-    description:
-      "Brand icons lucide-react no longer ships: GitHub, LinkedIn, X and YouTube.",
-    example: "social-icons-demo",
-    usage: `import { GitHubIcon } from "@/components/ui/social-icons"
-
-export function GitHubLink() {
-  return (
-    <a href="https://github.com" aria-label="GitHub">
-      <GitHubIcon className="size-4" />
-    </a>
-  )
-}`,
-    propGroups: [
-      {
-        title: "GitHubIcon, LinkedInIcon, XIcon, YouTubeIcon",
-        props: [
-          { name: "...props", type: 'ComponentProps<"svg">', description: "Any SVG attribute. Size with className, colour follows currentColor." },
-        ],
-      },
     ],
   },
   {

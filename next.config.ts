@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         destination: componentHref(doc.slug),
         permanent: true,
       })),
+      // The Icons category was removed; social-icons stays in the registry for the blocks.
+      { source: "/docs/components/social-icons", destination: "/components", permanent: true },
+      { source: "/components/icons", destination: "/components", permanent: true },
+      { source: "/components/icons/:path*", destination: "/components", permanent: true },
       { source: "/docs/components/:path*", destination: "/components/:path*", permanent: true },
     ];
   },
