@@ -63,7 +63,6 @@ import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-d
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
 import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
 import SocialIconsDemo from "@/registry/balick/examples/social-icons-demo"
-import SparklineDemo from "@/registry/balick/examples/sparkline-demo"
 import SpinnerDemo from "@/registry/balick/examples/spinner-demo"
 import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
 import StaggerDemo from "@/registry/balick/examples/stagger-demo"
@@ -74,7 +73,6 @@ import TextRevealDemo from "@/registry/balick/examples/text-reveal-demo"
 import TextRollButtonDemo from "@/registry/balick/examples/text-roll-button-demo"
 import ThemeToggleButtonDemo from "@/registry/balick/examples/theme-toggle-button-demo"
 import TiltCardDemo from "@/registry/balick/examples/tilt-card-demo"
-import TrendBadgeDemo from "@/registry/balick/examples/trend-badge-demo"
 import TypewriterDemo from "@/registry/balick/examples/typewriter-demo"
 import UnderlineLinkDemo from "@/registry/balick/examples/underline-link-demo"
 import UptimeBarDemo from "@/registry/balick/examples/uptime-bar-demo"
@@ -119,7 +117,6 @@ export const examples: Record<string, React.ComponentType> = {
   "shimmer-button-demo": ShimmerButtonDemo,
   "shimmer-text-demo": ShimmerTextDemo,
   "social-icons-demo": SocialIconsDemo,
-  "sparkline-demo": SparklineDemo,
   "spinner-demo": SpinnerDemo,
   "spotlight-button-demo": SpotlightButtonDemo,
   "stagger-demo": StaggerDemo,
@@ -130,7 +127,6 @@ export const examples: Record<string, React.ComponentType> = {
   "text-roll-button-demo": TextRollButtonDemo,
   "theme-toggle-button-demo": ThemeToggleButtonDemo,
   "tilt-card-demo": TiltCardDemo,
-  "trend-badge-demo": TrendBadgeDemo,
   "typewriter-demo": TypewriterDemo,
   "underline-link-demo": UnderlineLinkDemo,
   "uptime-bar-demo": UptimeBarDemo,

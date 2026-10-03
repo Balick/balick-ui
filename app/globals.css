@@ -46,8 +46,6 @@
   --animate-spinner-fade: spinner-fade 1.2s linear infinite;
   --animate-uptime-rise: uptime-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-loading-dot: loading-dot 1.2s ease-in-out infinite;
-  --animate-sparkline-draw: sparkline-draw 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-sparkline-fade: sparkline-fade 0.6s ease-out both;
 }
 
 /*
@@ -202,14 +200,6 @@
 @keyframes loading-dot {
   0%, 80%, 100% { opacity: 0.25; translate: 0 0; }
   40% { opacity: 1; translate: 0 -0.15em; }
-}
-
-@keyframes sparkline-draw {
-  from { clip-path: inset(0 100% 0 0); }
-}
-
-@keyframes sparkline-fade {
-  from { opacity: 0; }
 }
 
 /* The column every site page is laid out in, bounded by the rails. */
