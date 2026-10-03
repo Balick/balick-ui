@@ -867,21 +867,6 @@
       ]
     },
     {
-      "name": "social-icons-demo",
-      "type": "registry:example",
-      "title": "Social Icons Demo",
-      "description": "Example usage of Social Icons.",
-      "registryDependencies": [
-        "https://ui.balick.me/r/social-icons.json"
-      ],
-      "files": [
-        {
-          "path": "registry/balick/examples/social-icons-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
       "name": "grid-pattern-demo",
       "type": "registry:example",
       "title": "Grid Pattern Demo",
