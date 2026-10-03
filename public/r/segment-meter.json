@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segment-meter",
+  "title": "Segment Meter",
+  "description": "A level in a few segments, such as the strength of a password.",
+  "files": [
+    {
+      "path": "registry/balick/ui/segment-meter.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface SegmentMeterProps extends Omit<React.ComponentProps<\"div\">, \"children\"> {\n  /** How many segments are filled, from 0 to `segments`. */\n  value: number\n  /** Number of segments. */\n  segments?: number\n  /** A word for each level, from the first filled segment to the last. */\n  labels?: string[]\n  /** Color the segments by level (red, amber, then green), or in the foreground color. */\n  tone?: \"level\" | \"neutral\"\n}\n\nfunction toneOf(value: number, segments: number, tone: SegmentMeterProps[\"tone\"]) {\n  if (tone === \"neutral\") return \"bg-foreground\"\n  const ratio = value / segments\n  if (ratio <= 0.34) return \"bg-red-500\"\n  if (ratio <= 0.67) return \"bg-amber-500\"\n  return \"bg-emerald-500\"\n}\n\n/**\n * A level in a few segments, such as the strength of a password. Segments\n * fill one after the other when the value grows. Name it with `aria-label`.\n */\nexport function SegmentMeter({\n  value,\n  segments = 4,\n  labels,\n  tone = \"level\",\n  className,\n  ...props\n}: SegmentMeterProps) {\n  const filled = Math.min(segments, Math.max(0, Math.round(value)))\n  const label = filled > 0 ? labels?.[filled - 1] : undefined\n  const color = toneOf(filled, segments, tone)\n\n  return (\n    <div\n      data-slot=\"segment-meter\"\n      role=\"meter\"\n      aria-valuemin={0}\n      aria-valuemax={segments}\n      aria-valuenow={filled}\n      aria-valuetext={label}\n      className={cn(\"flex w-full flex-col gap-2\", className)}\n      {...props}\n    >\n      <div className=\"flex gap-1.5\" aria-hidden>\n        {Array.from({ length: segments }, (_, index) => (\n          <span key={index} className=\"h-1.5 flex-1 overflow-hidden rounded-full bg-foreground/10\">\n            <span\n              style={{ transitionDelay: `${(index < filled ? index : segments - index) * 60}ms` }}\n              className={cn(\n                \"block h-full origin-left rounded-full transition-[scale,background-color] duration-300 ease-out motion-reduce:transition-none\",\n                color,\n                index < filled ? \"scale-x-100\" : \"scale-x-0\"\n              )}\n            />\n          </span>\n        ))}\n      </div>\n      {labels && (\n        <span aria-hidden className=\"text-xs text-muted-foreground\">\n          {label ?? \" \"}\n        </span>\n      )}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

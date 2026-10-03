@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-badge-demo",
+  "title": "Status Badge Demo",
+  "description": "Example usage of Status Badge.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/status-badge.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/status-badge-demo.tsx",
+      "content": "import { StatusBadge } from \"@/registry/balick/ui/status-badge\"\n\nconst services = [\n  { name: \"Website\", status: \"operational\" },\n  { name: \"API\", status: \"degraded\" },\n  { name: \"Webhooks\", status: \"outage\" },\n  { name: \"Dashboard\", status: \"maintenance\" },\n] as const\n\nexport default function StatusBadgeDemo() {\n  return (\n    <ul className=\"w-full max-w-64 divide-y rounded-xl border bg-card shadow-xs\">\n      {services.map((service) => (\n        <li key={service.name} className=\"flex items-center justify-between gap-3 px-4 py-2.5\">\n          <span className=\"text-sm font-medium\">{service.name}</span>\n          <StatusBadge status={service.status} />\n        </li>\n      ))}\n    </ul>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
