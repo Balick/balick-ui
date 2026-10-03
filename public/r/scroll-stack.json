@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-stack",
+  "title": "Scroll Stack",
+  "description": "Cards that pile on top of each other as the page scrolls.",
+  "files": [
+    {
+      "path": "registry/balick/ui/scroll-stack.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollStackProps extends React.ComponentProps<\"div\"> {\n  /** Distance kept between the stack and the top of the screen, as a CSS length. */\n  top?: string\n  /** How much of each card stays visible above the next one, as a CSS length. */\n  offset?: string\n}\n\n/**\n * Cards that pile on top of each other as the page scrolls: each one sticks\n * a little lower than the one before, so their top edges stay in view.\n */\nexport function ScrollStack({\n  top = \"6rem\",\n  offset = \"1.5rem\",\n  className,\n  style,\n  children,\n  ...props\n}: ScrollStackProps) {\n  return (\n    <div\n      data-slot=\"scroll-stack\"\n      style={{ \"--stack-top\": top, \"--stack-offset\": offset, ...style } as React.CSSProperties}\n      className={cn(\"flex flex-col gap-8\", className)}\n      {...props}\n    >\n      {React.Children.toArray(children).map((child, index) => (\n        <div key={index} className=\"sticky\" style={{ top: `calc(var(--stack-top) + ${index} * var(--stack-offset))` }}>\n          {child}\n        </div>\n      ))}\n    </div>\n  )\n}\n\n/** A card for a ScrollStack: opaque, so the cards it covers do not show through. */\nexport function ScrollStackItem({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"scroll-stack-item\"\n      className={cn(\"rounded-2xl border bg-card p-6 shadow-[0_-12px_32px_-24px_rgb(0_0_0/0.25)]\", className)}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

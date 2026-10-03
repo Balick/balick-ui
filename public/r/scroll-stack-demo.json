@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-stack-demo",
+  "title": "Scroll Stack Demo",
+  "description": "Example usage of Scroll Stack.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/scroll-stack.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/scroll-stack-demo.tsx",
+      "content": "import { ScrollStack, ScrollStackItem } from \"@/registry/balick/ui/scroll-stack\"\n\nconst cards = [\n  { title: \"Collect\", text: \"Gather feedback from every channel in one inbox.\" },\n  { title: \"Sort\", text: \"Group it by theme, automatically, as it comes in.\" },\n  { title: \"Decide\", text: \"Weigh each theme by the customers behind it.\" },\n  { title: \"Close the loop\", text: \"Tell people when what they asked for ships.\" },\n]\n\nexport default function ScrollStackDemo() {\n  return (\n    <div className=\"h-80 w-full max-w-md overflow-y-auto rounded-xl border bg-background px-4\">\n      <p className=\"py-6 text-center text-xs text-muted-foreground\">Scroll down</p>\n      <ScrollStack top=\"1rem\" offset=\"2.25rem\">\n        {cards.map(({ title, text }, index) => (\n          <ScrollStackItem key={title} className=\"flex h-40 flex-col justify-between px-5 pt-2.5 pb-5\">\n            <p className=\"font-mono text-xs text-muted-foreground\">\n              0{index + 1} / 0{cards.length}\n            </p>\n            <div>\n              <p className=\"text-lg font-semibold tracking-tight\">{title}</p>\n              <p className=\"mt-1 text-sm leading-6 text-muted-foreground\">{text}</p>\n            </div>\n          </ScrollStackItem>\n        ))}\n      </ScrollStack>\n      <div className=\"h-40\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

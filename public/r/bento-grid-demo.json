@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-grid-demo",
+  "title": "Bento Grid Demo",
+  "description": "Example usage of Bento Grid.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.balick.me/r/bento-grid.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/bento-grid-demo.tsx",
+      "content": "import { BarChart3 } from \"lucide-react\"\n\nimport { BentoCard, BentoGrid } from \"@/registry/balick/ui/bento-grid\"\n\nfunction Bars() {\n  const heights = [40, 64, 48, 80, 56, 92, 72, 100]\n  return (\n    <div className=\"flex h-full items-end gap-2 px-6 pt-6 pb-20\">\n      {heights.map((height, index) => (\n        <div\n          key={index}\n          className=\"flex-1 rounded-t-md bg-muted last:bg-foreground/80\"\n          style={{ height: `${height}%` }}\n        />\n      ))}\n    </div>\n  )\n}\n\nfunction Alerts() {\n  return (\n    <div className=\"flex flex-col gap-2 px-4 pt-4\">\n      {[\"Deploy finished\", \"New sign-up\"].map((text, index) => (\n        <div\n          key={text}\n          className=\"flex items-center gap-2 rounded-lg border bg-background px-3 py-2 text-xs whitespace-nowrap shadow-xs\"\n          style={{ opacity: 1 - index * 0.35, scale: `${1 - index * 0.06}` }}\n        >\n          <span className=\"size-1.5 shrink-0 rounded-full bg-foreground/60\" />\n          {text}\n        </div>\n      ))}\n    </div>\n  )\n}\n\nfunction Apps() {\n  return (\n    <div className=\"grid grid-cols-3 gap-2 p-4\">\n      {Array.from({ length: 6 }, (_, index) => (\n        <div key={index} className=\"aspect-square rounded-lg border bg-muted/60\" />\n      ))}\n    </div>\n  )\n}\n\nexport default function BentoGridDemo() {\n  return (\n    <BentoGrid className=\"w-full max-w-2xl auto-rows-[11rem] @xs/bento:grid-cols-2\">\n      <BentoCard\n        className=\"@xs/bento:col-span-2\"\n        icon={<BarChart3 />}\n        title=\"Analytics\"\n        description=\"Every visit, sign-up and sale, in one view.\"\n        background={<Bars />}\n        href=\"#\"\n      />\n      <BentoCard title=\"Alerts\" description=\"Know it as it happens.\" background={<Alerts />} href=\"#\" />\n      <BentoCard title=\"Integrations\" description=\"Your tools, connected.\" background={<Apps />} href=\"#\" />\n    </BentoGrid>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
