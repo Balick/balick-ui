@@ -56,6 +56,15 @@ import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
 import ScrambleTextDemo from "@/registry/balick/examples/scramble-text-demo"
 import ScrollProgressDemo from "@/registry/balick/examples/scroll-progress-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
+import BentoGridDemo from "@/registry/balick/examples/bento-grid-demo"
+import MasonryDemo from "@/registry/balick/examples/masonry-demo"
+import StickyColumnsDemo from "@/registry/balick/examples/sticky-columns-demo"
+import ScrollStackDemo from "@/registry/balick/examples/scroll-stack-demo"
+import ScrollerDemo from "@/registry/balick/examples/scroller-demo"
+import BrowserFrameDemo from "@/registry/balick/examples/browser-frame-demo"
+import PhoneFrameDemo from "@/registry/balick/examples/phone-frame-demo"
+import ExpandingPanelsDemo from "@/registry/balick/examples/expanding-panels-demo"
+import DividerDemo from "@/registry/balick/examples/divider-demo"
 import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
 import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
@@ -103,6 +112,15 @@ export const examples: Record<string, React.ComponentType> = {
   "scramble-text-demo": ScrambleTextDemo,
   "scroll-progress-demo": ScrollProgressDemo,
   "section-demo": SectionDemo,
+  "bento-grid-demo": BentoGridDemo,
+  "masonry-demo": MasonryDemo,
+  "sticky-columns-demo": StickyColumnsDemo,
+  "scroll-stack-demo": ScrollStackDemo,
+  "scroller-demo": ScrollerDemo,
+  "browser-frame-demo": BrowserFrameDemo,
+  "phone-frame-demo": PhoneFrameDemo,
+  "expanding-panels-demo": ExpandingPanelsDemo,
+  "divider-demo": DividerDemo,
   "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
   "shimmer-text-demo": ShimmerTextDemo,

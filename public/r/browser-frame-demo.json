@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "browser-frame-demo",
+  "title": "Browser Frame Demo",
+  "description": "Example usage of Browser Frame.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/browser-frame.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/browser-frame-demo.tsx",
+      "content": "import { BrowserFrame } from \"@/registry/balick/ui/browser-frame\"\n\nexport default function BrowserFrameDemo() {\n  return (\n    <BrowserFrame url=\"acme.com/dashboard\" className=\"w-full max-w-lg\">\n      <div className=\"grid grid-cols-[6rem_1fr] gap-4 p-4\">\n        <div className=\"flex flex-col gap-2\">\n          <div className=\"h-2.5 w-16 rounded-full bg-foreground/20\" />\n          {[0, 1, 2, 3].map((item) => (\n            <div key={item} className=\"h-2.5 rounded-full bg-muted\" />\n          ))}\n        </div>\n        <div className=\"flex flex-col gap-3\">\n          <div className=\"grid grid-cols-3 gap-2\">\n            {[\"2.4k\", \"318\", \"92%\"].map((value) => (\n              <div key={value} className=\"rounded-lg border bg-background p-2\">\n                <div className=\"h-1.5 w-8 rounded-full bg-muted\" />\n                <p className=\"mt-2 text-sm font-semibold tracking-tight\">{value}</p>\n              </div>\n            ))}\n          </div>\n          <div className=\"flex h-24 items-end gap-1.5 rounded-lg border bg-background p-3\">\n            {[30, 50, 40, 70, 55, 85, 65, 95, 75].map((height, index) => (\n              <div key={index} className=\"flex-1 rounded-sm bg-muted last:bg-foreground/80\" style={{ height: `${height}%` }} />\n            ))}\n          </div>\n        </div>\n      </div>\n    </BrowserFrame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

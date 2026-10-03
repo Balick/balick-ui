@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "phone-frame",
+  "title": "Phone Frame",
+  "description": "A phone around a screen of your app, with bezel and side buttons.",
+  "files": [
+    {
+      "path": "registry/balick/ui/phone-frame.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface PhoneFrameProps extends React.ComponentProps<\"div\"> {\n  /** Width of the phone, as a CSS length. Its height follows. */\n  width?: string\n}\n\n/**\n * A phone around a screen of your app: bezel, side buttons and a pill at the\n * top of the screen. The content fills the screen and scrolls if it is taller.\n */\nexport function PhoneFrame({ width = \"16rem\", className, style, children, ...props }: PhoneFrameProps) {\n  return (\n    <div\n      data-slot=\"phone-frame\"\n      style={{ \"--phone-width\": width, ...style } as React.CSSProperties}\n      className={cn(\n        \"relative aspect-[9/19.5] w-(--phone-width) shrink-0 rounded-[calc(var(--phone-width)*0.17)] border bg-card p-[calc(var(--phone-width)*0.035)] shadow-[0_24px_64px_-24px_rgb(0_0_0/0.25)]\",\n        className\n      )}\n      {...props}\n    >\n      <span aria-hidden className=\"absolute top-[18%] -left-[3px] h-[5%] w-[3px] rounded-l-sm bg-border\" />\n      <span aria-hidden className=\"absolute top-[26%] -left-[3px] h-[9%] w-[3px] rounded-l-sm bg-border\" />\n      <span aria-hidden className=\"absolute top-[24%] -right-[3px] h-[13%] w-[3px] rounded-r-sm bg-border\" />\n      <div className=\"relative size-full overflow-x-hidden overflow-y-auto rounded-[calc(var(--phone-width)*0.135)] border bg-background [scrollbar-width:none]\">\n        <span\n          aria-hidden\n          className=\"absolute top-[calc(var(--phone-width)*0.04)] left-1/2 z-10 h-[calc(var(--phone-width)*0.085)] w-[30%] -translate-x-1/2 rounded-full bg-foreground dark:bg-muted\"\n        />\n        {children}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

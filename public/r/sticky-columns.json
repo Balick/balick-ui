@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sticky-columns",
+  "title": "Sticky Columns",
+  "description": "Two columns: one stays in view while the other scrolls by.",
+  "files": [
+    {
+      "path": "registry/balick/ui/sticky-columns.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface StickyColumnsProps extends React.ComponentProps<\"div\"> {\n  /** The column that stays in view: usually a title, a short text and a call to action. */\n  aside: React.ReactNode\n  /** Side of the sticky column. */\n  side?: \"left\" | \"right\"\n  /** Distance kept between the sticky column and the top of the screen, as a CSS length. */\n  top?: string\n}\n\n/**\n * Two columns where one stays in view while the other scrolls by. They stack,\n * and nothing sticks, when the container is narrow.\n */\nexport function StickyColumns({\n  aside,\n  side = \"left\",\n  top = \"6rem\",\n  className,\n  style,\n  children,\n  ...props\n}: StickyColumnsProps) {\n  return (\n    <div className=\"@container/sticky w-full\">\n      <div\n        data-slot=\"sticky-columns\"\n        style={{ \"--sticky-top\": top, ...style } as React.CSSProperties}\n        className={cn(\n          \"grid grid-cols-1 gap-10 @md/sticky:gap-12\",\n          side === \"left\"\n            ? \"@md/sticky:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]\"\n            : \"@md/sticky:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]\",\n          className\n        )}\n        {...props}\n      >\n        <div\n          className={cn(\n            \"@md/sticky:sticky @md/sticky:top-(--sticky-top) @md/sticky:self-start\",\n            side === \"right\" && \"@md/sticky:order-last\"\n          )}\n        >\n          {aside}\n        </div>\n        <div className=\"min-w-0\">{children}</div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

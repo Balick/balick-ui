@@ -33,7 +33,7 @@ export const componentCategories: {
   { slug: "backgrounds", title: "Backgrounds", description: "Patterns, light and texture that sit behind a section.", featured: "flickering-grid" },
   { slug: "indicators", title: "Indicators", description: "Small signals of state.", featured: "status-dot" },
   { slug: "icons", title: "Icons", description: "Icons lucide-react does not ship.", featured: "social-icons" },
-  { slug: "layout", title: "Layout", description: "The primitives every block is built on.", featured: "section" },
+  { slug: "layout", title: "Layout", description: "Primitives, grids and frames that pages are built on.", featured: "bento-grid" },
 ]
 
 /**
@@ -433,6 +433,251 @@ export function Uptime() {
       { name: "suffix", type: "string", description: 'Text after the number, such as "%" or "M+".' },
       { name: "duration", type: "number", default: "1.2", description: "Duration of the count, in seconds." },
       { name: "delay", type: "number", default: "0", description: "Delay before the count starts once in view, in seconds." },
+    ],
+  },
+  {
+    slug: "bento-grid",
+    category: "layout",
+    title: "Bento Grid",
+    description: "Feature cards of different sizes, with an illustration that eases up on hover.",
+    example: "bento-grid-demo",
+    usage: `import { BarChart3 } from "lucide-react"
+
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
+
+export function Features() {
+  return (
+    <BentoGrid>
+      <BentoCard
+        className="@md/bento:col-span-2"
+        icon={<BarChart3 />}
+        title="Analytics"
+        description="Every visit, sign-up and sale, in one view."
+        background={<Chart />}
+        href="/analytics"
+      />
+      <BentoCard title="Alerts" description="Know the moment something happens." />
+    </BentoGrid>
+  )
+}`,
+    propGroups: [
+      {
+        title: "BentoGrid",
+        props: [
+          { name: "className", type: "string", description: "One column, then two from a 28rem container, three from 48rem. Rows are 16rem high: change them with auto-rows-*." },
+        ],
+      },
+      {
+        title: "BentoCard",
+        props: [
+          { name: "title", type: "ReactNode", description: "Title of the card. Required." },
+          { name: "description", type: "ReactNode", description: "Text under the title." },
+          { name: "icon", type: "ReactNode", description: "Icon shown above the title, in a small tile." },
+          { name: "background", type: "ReactNode", description: "Illustration that fills the card behind the text. It eases up on hover." },
+          { name: "href", type: "string", description: "Where the card leads. A link slides in under the text on hover, and stays visible on touch screens." },
+          { name: "cta", type: "ReactNode", default: '"Learn more"', description: "Text of the link." },
+          { name: "className", type: "string", description: "Make a card span two columns with @md/bento:col-span-2." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "masonry",
+    category: "layout",
+    title: "Masonry",
+    description: "Items of uneven heights in columns, with no holes between them.",
+    example: "masonry-demo",
+    usage: `import { Masonry } from "@/components/ui/masonry"
+
+export function Gallery({ photos }: { photos: { src: string; alt: string }[] }) {
+  return (
+    <Masonry>
+      {photos.map((photo) => (
+        <img key={photo.src} src={photo.src} alt={photo.alt} className="w-full rounded-xl" />
+      ))}
+    </Masonry>
+  )
+}`,
+    props: [
+      { name: "gap", type: "string", default: '"1rem"', description: "Space between items, as a CSS length." },
+      { name: "className", type: "string", description: "One, two, then three columns as the container widens. Set your own with columns-*." },
+    ],
+  },
+  {
+    slug: "sticky-columns",
+    category: "layout",
+    title: "Sticky Columns",
+    description: "Two columns: one stays in view while the other scrolls by.",
+    example: "sticky-columns-demo",
+    usage: `import { StickyColumns } from "@/components/ui/sticky-columns"
+
+export function Workflow() {
+  return (
+    <StickyColumns aside={<h2 className="text-4xl font-semibold tracking-tighter">Plan, build, ship.</h2>}>
+      <Steps />
+    </StickyColumns>
+  )
+}`,
+    props: [
+      { name: "aside", type: "ReactNode", description: "The column that stays in view: usually a title, a short text and a call to action. Required." },
+      { name: "side", type: '"left" | "right"', default: '"left"', description: "Side of the sticky column." },
+      { name: "top", type: "string", default: '"6rem"', description: "Distance kept between the sticky column and the top of the screen. The default clears the navbar." },
+    ],
+  },
+  {
+    slug: "scroll-stack",
+    category: "layout",
+    title: "Scroll Stack",
+    description: "Cards that pile on top of each other as the page scrolls.",
+    example: "scroll-stack-demo",
+    usage: `import { ScrollStack, ScrollStackItem } from "@/components/ui/scroll-stack"
+
+export function Process() {
+  return (
+    <ScrollStack>
+      <ScrollStackItem className="h-80">Collect</ScrollStackItem>
+      <ScrollStackItem className="h-80">Sort</ScrollStackItem>
+      <ScrollStackItem className="h-80">Decide</ScrollStackItem>
+    </ScrollStack>
+  )
+}`,
+    propGroups: [
+      {
+        title: "ScrollStack",
+        props: [
+          { name: "top", type: "string", default: '"6rem"', description: "Distance kept between the stack and the top of the screen. The default clears the navbar." },
+          { name: "offset", type: "string", default: '"1.5rem"', description: "How much of each card stays visible above the next one." },
+        ],
+      },
+      {
+        title: "ScrollStackItem",
+        props: [
+          { name: "...props", type: 'ComponentProps<"div">', description: "An opaque card, so the cards it covers do not show through. Any element works as a child of ScrollStack." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "scroller",
+    category: "layout",
+    title: "Scroller",
+    description: "A row that scrolls sideways, snaps to its items and fades at its edges.",
+    example: "scroller-demo",
+    usage: `import { Scroller } from "@/components/ui/scroller"
+
+export function Posts({ posts }: { posts: { slug: string; title: string }[] }) {
+  return (
+    <Scroller controls aria-label="Latest posts">
+      {posts.map((post) => (
+        <article key={post.slug} className="w-64 rounded-xl border p-4">
+          {post.title}
+        </article>
+      ))}
+    </Scroller>
+  )
+}`,
+    props: [
+      { name: "controls", type: "boolean", default: "false", description: "Show buttons that scroll by one item." },
+      { name: "gap", type: "string", default: '"1rem"', description: "Space between items, as a CSS length." },
+      { name: "aria-label", type: "string", description: "Name of the row. It can be scrolled with the keyboard once focused." },
+    ],
+  },
+  {
+    slug: "browser-frame",
+    category: "layout",
+    title: "Browser Frame",
+    description: "A browser window around a product preview or a screenshot.",
+    example: "browser-frame-demo",
+    usage: `import { BrowserFrame } from "@/components/ui/browser-frame"
+
+export function Preview() {
+  return (
+    <BrowserFrame url="acme.com/dashboard">
+      <img src="/dashboard.png" alt="The Acme dashboard" className="w-full" />
+    </BrowserFrame>
+  )
+}`,
+    props: [
+      { name: "url", type: "string", description: "Address shown in the bar at the top." },
+    ],
+  },
+  {
+    slug: "phone-frame",
+    category: "layout",
+    title: "Phone Frame",
+    description: "A phone around a screen of your app, with bezel and side buttons.",
+    example: "phone-frame-demo",
+    usage: `import { PhoneFrame } from "@/components/ui/phone-frame"
+
+export function App() {
+  return (
+    <PhoneFrame width="18rem">
+      <img src="/app.png" alt="The Acme app" className="size-full object-cover" />
+    </PhoneFrame>
+  )
+}`,
+    props: [
+      { name: "width", type: "string", default: '"16rem"', description: "Width of the phone, as a CSS length. Its height follows." },
+    ],
+  },
+  {
+    slug: "expanding-panels",
+    category: "layout",
+    title: "Expanding Panels",
+    description: "A row of panels where the one under the pointer widens and tells more.",
+    example: "expanding-panels-demo",
+    usage: `import { ExpandingPanel, ExpandingPanels } from "@/components/ui/expanding-panels"
+
+export function Process() {
+  return (
+    <ExpandingPanels>
+      <ExpandingPanel title="Discover" description="Interviews, data and a clear problem." />
+      <ExpandingPanel title="Design" description="Flows and prototypes, tested with people." />
+      <ExpandingPanel title="Launch" description="A staged rollout, watched closely." />
+    </ExpandingPanels>
+  )
+}`,
+    propGroups: [
+      {
+        title: "ExpandingPanels",
+        props: [
+          { name: "defaultIndex", type: "number", default: "0", description: "Index of the panel open at first." },
+          { name: "className", type: "string", description: "The row is 24rem high: change it with h-*. Panels stack when the container is under 28rem." },
+        ],
+      },
+      {
+        title: "ExpandingPanel",
+        props: [
+          { name: "title", type: "ReactNode", description: "Title of the panel. Required. It reads upward while the panel is collapsed." },
+          { name: "description", type: "ReactNode", description: "Text revealed when the panel opens." },
+          { name: "icon", type: "ReactNode", description: "Icon shown next to the title." },
+          { name: "background", type: "ReactNode", description: "Illustration that fills the panel behind the text." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "divider",
+    category: "layout",
+    title: "Divider",
+    description: "A line that separates content, with an optional label or icon.",
+    example: "divider-demo",
+    usage: `import { Divider } from "@/components/ui/divider"
+
+export function SignIn() {
+  return (
+    <form>
+      <GoogleButton />
+      <Divider label="or" className="my-6" />
+      <EmailFields />
+    </form>
+  )
+}`,
+    props: [
+      { name: "label", type: "ReactNode", description: 'Text or icon set in the line, such as "or".' },
+      { name: "align", type: '"start" | "center" | "end"', default: '"center"', description: "Where the label sits along the line." },
+      { name: "variant", type: '"solid" | "dashed" | "fade"', default: '"solid"', description: "Style of the line: plain, dashed, or fading out at its ends." },
+      { name: "orientation", type: '"horizontal" | "vertical"', default: '"horizontal"', description: "A vertical divider takes the height of its row." },
     ],
   },
   {
