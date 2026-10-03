@@ -29,38 +29,43 @@ import { Testimonials01 } from "@/registry/balick/blocks/testimonials-01/testimo
 import { Timeline01 } from "@/registry/balick/blocks/timeline-01/timeline-01"
 import AnimatedNumberDemo from "@/registry/balick/examples/animated-number-demo"
 import ArrowButtonDemo from "@/registry/balick/examples/arrow-button-demo"
+import AuroraDemo from "@/registry/balick/examples/aurora-demo"
 import BlurFadeDemo from "@/registry/balick/examples/blur-fade-demo"
 import CopyButtonDemo from "@/registry/balick/examples/copy-button-demo"
+import CountBadgeDemo from "@/registry/balick/examples/count-badge-demo"
 import CountdownDemo from "@/registry/balick/examples/countdown-demo"
+import DotPatternDemo from "@/registry/balick/examples/dot-pattern-demo"
 import ExpandButtonDemo from "@/registry/balick/examples/expand-button-demo"
 import ExpandableTextDemo from "@/registry/balick/examples/expandable-text-demo"
-import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
-import DotPatternDemo from "@/registry/balick/examples/dot-pattern-demo"
 import FlickeringGridDemo from "@/registry/balick/examples/flickering-grid-demo"
-import RetroGridDemo from "@/registry/balick/examples/retro-grid-demo"
-import RippleDemo from "@/registry/balick/examples/ripple-demo"
-import LightRaysDemo from "@/registry/balick/examples/light-rays-demo"
-import AuroraDemo from "@/registry/balick/examples/aurora-demo"
+import GaugeDemo from "@/registry/balick/examples/gauge-demo"
 import GrainDemo from "@/registry/balick/examples/grain-demo"
-import InteractiveGridDemo from "@/registry/balick/examples/interactive-grid-demo"
-import WaveLinesDemo from "@/registry/balick/examples/wave-lines-demo"
+import GridPatternDemo from "@/registry/balick/examples/grid-pattern-demo"
 import HighlightTextDemo from "@/registry/balick/examples/highlight-text-demo"
 import HoldButtonDemo from "@/registry/balick/examples/hold-button-demo"
+import InteractiveGridDemo from "@/registry/balick/examples/interactive-grid-demo"
+import LightRaysDemo from "@/registry/balick/examples/light-rays-demo"
+import LoadingDotsDemo from "@/registry/balick/examples/loading-dots-demo"
 import MagneticButtonDemo from "@/registry/balick/examples/magnetic-button-demo"
 import MarqueeDemo from "@/registry/balick/examples/marquee-demo"
 import MaskRevealDemo from "@/registry/balick/examples/mask-reveal-demo"
 import NumberTickerDemo from "@/registry/balick/examples/number-ticker-demo"
 import OrbitDemo from "@/registry/balick/examples/orbit-demo"
 import ParallaxDemo from "@/registry/balick/examples/parallax-demo"
+import RetroGridDemo from "@/registry/balick/examples/retro-grid-demo"
 import RippleButtonDemo from "@/registry/balick/examples/ripple-button-demo"
+import RippleDemo from "@/registry/balick/examples/ripple-demo"
 import ScrambleTextDemo from "@/registry/balick/examples/scramble-text-demo"
 import ScrollProgressDemo from "@/registry/balick/examples/scroll-progress-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
+import SegmentMeterDemo from "@/registry/balick/examples/segment-meter-demo"
 import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
 import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
+import SpinnerDemo from "@/registry/balick/examples/spinner-demo"
 import SpotlightButtonDemo from "@/registry/balick/examples/spotlight-button-demo"
 import StaggerDemo from "@/registry/balick/examples/stagger-demo"
+import StatusBadgeDemo from "@/registry/balick/examples/status-badge-demo"
 import StatusButtonDemo from "@/registry/balick/examples/status-button-demo"
 import StatusDotDemo from "@/registry/balick/examples/status-dot-demo"
 import TextRevealDemo from "@/registry/balick/examples/text-reveal-demo"
@@ -69,44 +74,51 @@ import ThemeToggleButtonDemo from "@/registry/balick/examples/theme-toggle-butto
 import TiltCardDemo from "@/registry/balick/examples/tilt-card-demo"
 import TypewriterDemo from "@/registry/balick/examples/typewriter-demo"
 import UnderlineLinkDemo from "@/registry/balick/examples/underline-link-demo"
+import UptimeBarDemo from "@/registry/balick/examples/uptime-bar-demo"
+import WaveLinesDemo from "@/registry/balick/examples/wave-lines-demo"
 import WordRotateDemo from "@/registry/balick/examples/word-rotate-demo"
 
 /** Demo components rendered by <ComponentPreview />, keyed by registry item name. */
 export const examples: Record<string, React.ComponentType> = {
   "animated-number-demo": AnimatedNumberDemo,
   "arrow-button-demo": ArrowButtonDemo,
+  "aurora-demo": AuroraDemo,
   "blur-fade-demo": BlurFadeDemo,
   "copy-button-demo": CopyButtonDemo,
+  "count-badge-demo": CountBadgeDemo,
   "countdown-demo": CountdownDemo,
+  "dot-pattern-demo": DotPatternDemo,
   "expand-button-demo": ExpandButtonDemo,
   "expandable-text-demo": ExpandableTextDemo,
-  "grid-pattern-demo": GridPatternDemo,
-  "dot-pattern-demo": DotPatternDemo,
   "flickering-grid-demo": FlickeringGridDemo,
-  "retro-grid-demo": RetroGridDemo,
-  "ripple-demo": RippleDemo,
-  "light-rays-demo": LightRaysDemo,
-  "aurora-demo": AuroraDemo,
+  "gauge-demo": GaugeDemo,
   "grain-demo": GrainDemo,
-  "interactive-grid-demo": InteractiveGridDemo,
-  "wave-lines-demo": WaveLinesDemo,
+  "grid-pattern-demo": GridPatternDemo,
   "highlight-text-demo": HighlightTextDemo,
   "hold-button-demo": HoldButtonDemo,
+  "interactive-grid-demo": InteractiveGridDemo,
+  "light-rays-demo": LightRaysDemo,
+  "loading-dots-demo": LoadingDotsDemo,
   "magnetic-button-demo": MagneticButtonDemo,
   "marquee-demo": MarqueeDemo,
   "mask-reveal-demo": MaskRevealDemo,
   "number-ticker-demo": NumberTickerDemo,
   "orbit-demo": OrbitDemo,
   "parallax-demo": ParallaxDemo,
+  "retro-grid-demo": RetroGridDemo,
   "ripple-button-demo": RippleButtonDemo,
+  "ripple-demo": RippleDemo,
   "scramble-text-demo": ScrambleTextDemo,
   "scroll-progress-demo": ScrollProgressDemo,
   "section-demo": SectionDemo,
+  "segment-meter-demo": SegmentMeterDemo,
   "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
   "shimmer-text-demo": ShimmerTextDemo,
+  "spinner-demo": SpinnerDemo,
   "spotlight-button-demo": SpotlightButtonDemo,
   "stagger-demo": StaggerDemo,
+  "status-badge-demo": StatusBadgeDemo,
   "status-button-demo": StatusButtonDemo,
   "status-dot-demo": StatusDotDemo,
   "text-reveal-demo": TextRevealDemo,
@@ -115,6 +127,8 @@ export const examples: Record<string, React.ComponentType> = {
   "tilt-card-demo": TiltCardDemo,
   "typewriter-demo": TypewriterDemo,
   "underline-link-demo": UnderlineLinkDemo,
+  "uptime-bar-demo": UptimeBarDemo,
+  "wave-lines-demo": WaveLinesDemo,
   "word-rotate-demo": WordRotateDemo,
 }
 

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uptime-bar",
+  "title": "Uptime Bar",
+  "description": "The history of a service, one bar per day, colored by how the day went.",
+  "files": [
+    {
+      "path": "registry/balick/ui/uptime-bar.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type UptimeStatus = \"up\" | \"degraded\" | \"down\" | \"none\"\n\nexport interface UptimeDay {\n  status: UptimeStatus\n  /** Shown when the pointer rests on the bar, such as \"Sep 3: no downtime\". */\n  label?: string\n}\n\nexport interface UptimeBarProps extends Omit<React.ComponentProps<\"div\">, \"children\"> {\n  /** One entry per day, oldest first. */\n  days: UptimeDay[]\n  /** The uptime to show in the legend, such as \"99.98%\". */\n  uptime?: string\n  /** Label of the oldest day, under the first bar. */\n  startLabel?: string\n  /** Label of the newest day, under the last bar. */\n  endLabel?: string\n}\n\nconst colors: Record<UptimeStatus, string> = {\n  up: \"bg-emerald-500\",\n  degraded: \"bg-amber-500\",\n  down: \"bg-red-500\",\n  none: \"bg-foreground/10\",\n}\n\nconst words: Record<UptimeStatus, string> = {\n  up: \"No downtime\",\n  degraded: \"Degraded performance\",\n  down: \"Outage\",\n  none: \"No data\",\n}\n\n/**\n * The history of a service, one thin bar per day: green when all went well,\n * amber when it was degraded, red for an outage. The bars rise in turn when\n * they appear. Screen readers get a sentence that sums the period up.\n */\nexport function UptimeBar({\n  days,\n  uptime,\n  startLabel = `${days.length} days ago`,\n  endLabel = \"Today\",\n  className,\n  ...props\n}: UptimeBarProps) {\n  const count = (status: UptimeStatus) => days.filter((day) => day.status === status).length\n  const summary = [\n    `${days.length} days`,\n    uptime && `${uptime} uptime`,\n    `${count(\"degraded\")} degraded`,\n    `${count(\"down\")} down`,\n  ]\n    .filter(Boolean)\n    .join(\", \")\n\n  return (\n    <div data-slot=\"uptime-bar\" className={cn(\"flex w-full flex-col gap-2\", className)} {...props}>\n      <div role=\"img\" aria-label={summary} className=\"flex h-8 items-stretch gap-px\">\n        {days.map((day, index) => (\n          <span\n            key={index}\n            title={day.label ?? words[day.status]}\n            style={{ animationDelay: `${index * 6}ms` }}\n            className={cn(\n              \"min-w-0 flex-1 origin-bottom animate-uptime-rise rounded-[2px] transition-opacity hover:opacity-60 motion-reduce:animate-none\",\n              colors[day.status]\n            )}\n          />\n        ))}\n      </div>\n      <div aria-hidden className=\"flex items-center justify-between gap-3 text-xs text-muted-foreground\">\n        <span>{startLabel}</span>\n        {uptime && <span className=\"h-px flex-1 bg-border\" />}\n        {uptime && <span className=\"font-medium text-foreground tabular-nums\">{uptime} uptime</span>}\n        {uptime && <span className=\"h-px flex-1 bg-border\" />}\n        <span>{endLabel}</span>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-uptime-rise": "uptime-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both"
+    }
+  },
+  "css": {
+    "@keyframes uptime-rise": {
+      "from": {
+        "scale": "1 0"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

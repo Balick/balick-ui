@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "count-badge-demo",
+  "title": "Count Badge Demo",
+  "description": "Example usage of Count Badge.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.balick.me/r/count-badge.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/count-badge-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Bell, Mail } from \"lucide-react\"\n\nimport { CountBadge } from \"@/registry/balick/ui/count-badge\"\n\nexport default function CountBadgeDemo() {\n  const [count, setCount] = React.useState(3)\n\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <div className=\"flex items-center gap-6\">\n        <CountBadge count={count} label=\"unread notifications\">\n          <span className=\"flex size-10 items-center justify-center rounded-full border bg-card shadow-xs\">\n            <Bell className=\"size-4\" />\n          </span>\n        </CountBadge>\n        <CountBadge count={128} label=\"unread messages\" tone=\"neutral\">\n          <span className=\"flex size-10 items-center justify-center rounded-full border bg-card shadow-xs\">\n            <Mail className=\"size-4\" />\n          </span>\n        </CountBadge>\n        <CountBadge count={1} dot tone=\"success\" label=\"Lina is online\">\n          <span className=\"flex size-10 items-center justify-center rounded-full bg-foreground text-sm font-medium text-background\">\n            L\n          </span>\n        </CountBadge>\n      </div>\n      <div className=\"flex gap-2\">\n        <button\n          type=\"button\"\n          onClick={() => setCount((value) => value + 1)}\n          className=\"h-8 cursor-pointer rounded-md border bg-card px-3 text-sm shadow-xs transition-colors hover:bg-accent\"\n        >\n          Notify\n        </button>\n        <button\n          type=\"button\"\n          onClick={() => setCount(0)}\n          className=\"h-8 cursor-pointer rounded-md px-3 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground\"\n        >\n          Clear\n        </button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1099,6 +1099,178 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       { name: "className", type: "string", description: "Replaces the default placement and color (fixed to the top, 2px high, foreground color)." },
     ],
   },
+  {
+    slug: "gauge",
+    category: "indicators",
+    title: "Gauge",
+    description: "A three-quarter ring for a percentage that fills in and warns past a threshold.",
+    example: "gauge-demo",
+    usage: `import { Gauge } from "@/components/ui/gauge"
+
+export function Usage() {
+  return <Gauge value={76} aria-label="Bandwidth used" className="size-20" />
+}`,
+    css: `@theme inline {
+  --animate-gauge-fill: gauge-fill 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes gauge-fill {
+  from { stroke-dashoffset: var(--gauge-arc); }
+}`,
+    props: [
+      { name: "value", type: "number", description: "The value, from 0 to 100. Required." },
+      { name: "showValue", type: "boolean", default: "true", description: "Show the value in the middle." },
+      { name: "thresholds", type: "[number, number] | false", default: "[70, 90]", description: "Values from which the arc turns amber, then red. false keeps the foreground color." },
+      { name: "indeterminate", type: "boolean", default: "false", description: "Turn a short arc while the value is not known yet." },
+    ],
+  },
+  {
+    slug: "segment-meter",
+    category: "indicators",
+    title: "Segment Meter",
+    description: "A level in a few segments, such as the strength of a password.",
+    example: "segment-meter-demo",
+    usage: `import { SegmentMeter } from "@/components/ui/segment-meter"
+
+export function Strength({ score }: { score: number }) {
+  return (
+    <SegmentMeter
+      value={score}
+      labels={["Weak", "Fair", "Good", "Strong"]}
+      aria-label="Password strength"
+    />
+  )
+}`,
+    props: [
+      { name: "value", type: "number", description: "How many segments are filled, from 0 to segments. Required." },
+      { name: "segments", type: "number", default: "4", description: "Number of segments." },
+      { name: "labels", type: "string[]", description: "A word for each level, from the first filled segment to the last." },
+      { name: "tone", type: "\"level\" | \"neutral\"", default: "\"level\"", description: "Color the segments by level (red, amber, then green), or in the foreground color." },
+    ],
+  },
+  {
+    slug: "spinner",
+    category: "indicators",
+    title: "Spinner",
+    description: "Twelve bars that fade in turn, for waits the size of an icon.",
+    example: "spinner-demo",
+    usage: `import { Spinner } from "@/components/ui/spinner"
+
+export function Building() {
+  return (
+    <p className="flex items-center gap-2">
+      <Spinner label="Building" />
+      Building your project
+    </p>
+  )
+}`,
+    css: `@theme inline {
+  --animate-spinner-fade: spinner-fade 1.2s linear infinite;
+}
+
+@keyframes spinner-fade {
+  from { opacity: 1; }
+  to { opacity: 0.15; }
+}`,
+    props: [
+      { name: "label", type: "string", default: "\"Loading\"", description: "What is loading, read by screen readers." },
+    ],
+  },
+  {
+    slug: "uptime-bar",
+    category: "indicators",
+    title: "Uptime Bar",
+    description: "The history of a service, one thin bar per day, colored by how the day went.",
+    example: "uptime-bar-demo",
+    usage: `import { UptimeBar } from "@/components/ui/uptime-bar"
+
+export function History({ days }: { days: { status: "up" | "degraded" | "down" | "none" }[] }) {
+  return <UptimeBar days={days} uptime="99.98%" />
+}`,
+    css: `@theme inline {
+  --animate-uptime-rise: uptime-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes uptime-rise {
+  from { scale: 1 0; }
+}`,
+    props: [
+      { name: "days", type: "{ status: \"up\" | \"degraded\" | \"down\" | \"none\"; label?: string }[]", description: "One entry per day, oldest first. The label shows when the pointer rests on the bar. Required." },
+      { name: "uptime", type: "string", description: "The uptime to show in the legend, such as \"99.98%\"." },
+      { name: "startLabel", type: "string", default: "\"90 days ago\"", description: "Label of the oldest day, under the first bar. Defaults to the number of days." },
+      { name: "endLabel", type: "string", default: "\"Today\"", description: "Label of the newest day, under the last bar." },
+    ],
+  },
+  {
+    slug: "status-badge",
+    category: "indicators",
+    title: "Status Badge",
+    description: "A pill that names the state of a service, with a live dot.",
+    example: "status-badge-demo",
+    usage: `import { StatusBadge } from "@/components/ui/status-badge"
+
+export function ApiStatus() {
+  return <StatusBadge status="operational" />
+}`,
+    props: [
+      { name: "status", type: "\"operational\" | \"degraded\" | \"outage\" | \"maintenance\"", description: "The state of the service. Required." },
+      { name: "children", type: "React.ReactNode", description: "Replaces the default label." },
+    ],
+  },
+  {
+    slug: "loading-dots",
+    category: "indicators",
+    title: "Loading Dots",
+    description: "Three dots that pulse in turn after a word, sized like the text around them.",
+    example: "loading-dots-demo",
+    usage: `import { LoadingDots } from "@/components/ui/loading-dots"
+
+export function Deploying() {
+  return (
+    <p>
+      Deploying
+      <LoadingDots />
+    </p>
+  )
+}`,
+    css: `@theme inline {
+  --animate-loading-dot: loading-dot 1.2s ease-in-out infinite;
+}
+
+@keyframes loading-dot {
+  0%, 80%, 100% { opacity: 0.25; translate: 0 0; }
+  40% { opacity: 1; translate: 0 -0.15em; }
+}`,
+    props: [
+      { name: "className", type: "string", description: "The dots take the size and color of the text; set them here or on the parent." },
+    ],
+  },
+  {
+    slug: "count-badge",
+    category: "indicators",
+    title: "Count Badge",
+    description: "A count pinned to an icon or an avatar, which pops when it changes.",
+    example: "count-badge-demo",
+    usage: `import { Bell } from "lucide-react"
+
+import { CountBadge } from "@/components/ui/count-badge"
+
+export function Notifications({ unread }: { unread: number }) {
+  return (
+    <CountBadge count={unread} label="unread notifications">
+      <Bell className="size-5" />
+    </CountBadge>
+  )
+}`,
+    props: [
+      { name: "count", type: "number", description: "The number to show. Nothing shows at 0, unless showZero is set. Required." },
+      { name: "max", type: "number", default: "99", description: "Past it, the badge reads \"99+\"." },
+      { name: "dot", type: "boolean", default: "false", description: "Show a plain dot instead of the number." },
+      { name: "showZero", type: "boolean", default: "false", description: "Show the badge when the count is 0." },
+      { name: "tone", type: "\"danger\" | \"success\" | \"neutral\"", default: "\"danger\"", description: "Red for alerts, green for presence, or the foreground color." },
+      { name: "label", type: "string", description: "What is counted, read after the number by screen readers." },
+    ],
+  },
 ]
 
 /** Components of each category, in category order, titles sorted. */

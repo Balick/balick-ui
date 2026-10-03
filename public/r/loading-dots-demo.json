@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loading-dots-demo",
+  "title": "Loading Dots Demo",
+  "description": "Example usage of Loading Dots.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/loading-dots.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/loading-dots-demo.tsx",
+      "content": "import { LoadingDots } from \"@/registry/balick/ui/loading-dots\"\n\nexport default function LoadingDotsDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-5\">\n      <p className=\"text-2xl font-semibold tracking-tight\">\n        Deploying\n        <LoadingDots />\n      </p>\n      <div className=\"flex items-center gap-2 rounded-2xl rounded-bl-sm border bg-card px-4 py-3 text-muted-foreground shadow-xs\">\n        <span className=\"sr-only\">Lina is typing</span>\n        <LoadingDots className=\"text-xl\" />\n      </div>\n      <p className=\"text-sm text-muted-foreground\">\n        Saving changes\n        <LoadingDots />\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

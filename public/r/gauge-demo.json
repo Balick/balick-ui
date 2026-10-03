@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gauge-demo",
+  "title": "Gauge Demo",
+  "description": "Example usage of Gauge.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/gauge.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/gauge-demo.tsx",
+      "content": "import { Gauge } from \"@/registry/balick/ui/gauge\"\n\nconst usage = [\n  { label: \"Build minutes\", value: 42 },\n  { label: \"Bandwidth\", value: 76 },\n  { label: \"Edge requests\", value: 94 },\n]\n\nexport default function GaugeDemo() {\n  return (\n    <div className=\"flex flex-wrap items-start justify-center gap-6\">\n      {usage.map((item) => (\n        <figure key={item.label} className=\"flex flex-col items-center gap-2\">\n          <Gauge value={item.value} aria-label={item.label} className=\"size-20\" />\n          <figcaption className=\"text-xs text-muted-foreground\">{item.label}</figcaption>\n        </figure>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
