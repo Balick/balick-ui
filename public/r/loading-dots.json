@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loading-dots",
+  "title": "Loading Dots",
+  "description": "Three dots that pulse in turn, sized like the text around them.",
+  "files": [
+    {
+      "path": "registry/balick/ui/loading-dots.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Three dots that pulse in turn, sized and colored like the text around\n * them: put them after a word, as in \"Deploying\". They are decorative, so\n * the word carries the meaning. They stand still under reduced motion.\n */\nexport function LoadingDots({ className, ...props }: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      data-slot=\"loading-dots\"\n      aria-hidden\n      className={cn(\"ml-[0.15em] inline-flex items-center gap-[0.18em] align-middle\", className)}\n      {...props}\n    >\n      {[0, 1, 2].map((index) => (\n        <span\n          key={index}\n          style={{ animationDelay: `${index * 0.16}s` }}\n          className=\"size-[0.24em] animate-loading-dot rounded-full bg-current motion-reduce:animate-none motion-reduce:opacity-60\"\n        />\n      ))}\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-loading-dot": "loading-dot 1.2s ease-in-out infinite"
+    }
+  },
+  "css": {
+    "@keyframes loading-dot": {
+      "0%, 80%, 100%": {
+        "opacity": "0.25",
+        "translate": "0 0"
+      },
+      "40%": {
+        "opacity": "1",
+        "translate": "0 -0.15em"
+      }
+    }
+  },
+  "type": "registry:ui"
+}

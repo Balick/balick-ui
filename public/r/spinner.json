@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Spinner",
+  "description": "Twelve bars that fade in turn, for waits the size of an icon.",
+  "files": [
+    {
+      "path": "registry/balick/ui/spinner.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface SpinnerProps extends React.ComponentProps<\"span\"> {\n  /** What is loading, read by screen readers. */\n  label?: string\n}\n\nconst bars = Array.from({ length: 12 }, (_, index) => index)\n\n/**\n * Twelve bars that fade in turn, for waits the size of an icon. It takes the\n * color of the text around it; size it with `size-*` utilities. Under reduced\n * motion the bars stand still, in a gradient.\n */\nexport function Spinner({ label = \"Loading\", className, ...props }: SpinnerProps) {\n  return (\n    <span\n      data-slot=\"spinner\"\n      role=\"status\"\n      aria-label={label}\n      className={cn(\"relative inline-block size-4 shrink-0\", className)}\n      {...props}\n    >\n      {bars.map((index) => (\n        <span\n          key={index}\n          aria-hidden\n          style={{\n            transform: `rotate(${index * 30 - 90}deg) translateX(92%)`,\n            animationDelay: `${(index - 12) * 0.1}s`,\n            opacity: 0.15 + (index / 11) * 0.85,\n          }}\n          className=\"absolute top-[46%] left-1/2 h-[8%] w-[24%] origin-[0_50%] animate-spinner-fade rounded-full bg-current motion-reduce:animate-none\"\n        />\n      ))}\n    </span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-spinner-fade": "spinner-fade 1.2s linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes spinner-fade": {
+      "from": {
+        "opacity": "1"
+      },
+      "to": {
+        "opacity": "0.15"
+      }
+    }
+  },
+  "type": "registry:ui"
+}
