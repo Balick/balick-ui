@@ -60,11 +60,6 @@ import BentoGridDemo from "@/registry/balick/examples/bento-grid-demo"
 import MasonryDemo from "@/registry/balick/examples/masonry-demo"
 import StickyColumnsDemo from "@/registry/balick/examples/sticky-columns-demo"
 import ScrollStackDemo from "@/registry/balick/examples/scroll-stack-demo"
-import ScrollerDemo from "@/registry/balick/examples/scroller-demo"
-import BrowserFrameDemo from "@/registry/balick/examples/browser-frame-demo"
-import PhoneFrameDemo from "@/registry/balick/examples/phone-frame-demo"
-import ExpandingPanelsDemo from "@/registry/balick/examples/expanding-panels-demo"
-import DividerDemo from "@/registry/balick/examples/divider-demo"
 import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
 import ShimmerTextDemo from "@/registry/balick/examples/shimmer-text-demo"
@@ -116,11 +111,6 @@ export const examples: Record<string, React.ComponentType> = {
   "masonry-demo": MasonryDemo,
   "sticky-columns-demo": StickyColumnsDemo,
   "scroll-stack-demo": ScrollStackDemo,
-  "scroller-demo": ScrollerDemo,
-  "browser-frame-demo": BrowserFrameDemo,
-  "phone-frame-demo": PhoneFrameDemo,
-  "expanding-panels-demo": ExpandingPanelsDemo,
-  "divider-demo": DividerDemo,
   "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,
   "shimmer-text-demo": ShimmerTextDemo,
