@@ -3,41 +3,99 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
 import { Row, SheetLabel, Spacer } from "@/components/sheet"
+import { TemplateGrid } from "@/components/templates/template-grid"
+import { defaultPlan } from "@/config/pro"
+import { templates } from "@/content/templates"
+import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Templates",
-  description: "Full pages assembled from Balick UI blocks. Coming soon.",
+  description:
+    "Complete landing pages for shadcn/ui and Next.js: SaaS, AI, fintech, waitlist, portfolio and more. Preview them live, install one with a single command.",
+  alternates: { canonical: "/templates" },
 }
 
-const planned = [
-  { title: "SaaS landing", blocks: "navbar · hero · logos · features · pricing · faq · footer" },
-  { title: "Portfolio", blocks: "navbar · hero · about · projects · contact · footer" },
-  { title: "Agency", blocks: "navbar · hero · services · steps · team · contact · footer" },
-  { title: "Startup", blocks: "navbar · hero · stats · integrations · testimonials · cta · footer" },
-  { title: "Waitlist", blocks: "hero · features · newsletter · footer" },
-  { title: "Changelog", blocks: "navbar · timeline · newsletter · footer" },
-]
+const pad = "px-4 md:px-6"
 
 export default function TemplatesPage() {
+  const pro = templates.filter((template) => template.tier === "pro")
+  const free = templates.filter((template) => template.tier === "free")
+
   return (
     <div className="sheet">
       <Spacer className="h-12 sm:h-16" />
       <Row>
-        <SheetLabel className="justify-center px-4 py-3 md:px-6">Coming soon</SheetLabel>
+        <SheetLabel className={cn(pad, "justify-center py-3")}>
+          {templates.length} templates · {free.length} free
+        </SheetLabel>
       </Row>
       <h1 className="text-center text-5xl font-semibold tracking-tighter sm:text-6xl">
-        <Row as="span" className="px-4 py-2 md:px-6">
+        <Row as="span" className={cn(pad, "py-2")}>
           Templates
         </Row>
       </h1>
       <Row>
-        <p className="mx-auto max-w-2xl px-4 py-3 text-center text-lg text-balance text-muted-foreground md:px-6">
-          Complete sites assembled from blocks: install, customise, deploy. Until they land,
-          compose your own page from the same blocks.
+        <p className={cn(pad, "mx-auto max-w-2xl py-3 text-center text-lg text-balance text-muted-foreground")}>
+          Complete pages assembled from blocks. Preview them live at any width, install one with a single
+          command, or open it in the composer and make it yours.
         </p>
       </Row>
       <Row>
-        <div className="px-4 py-4 text-center md:px-6">
+        <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
+          {pro.length > 0 && (
+            <Link
+              href="/pro"
+              className="inline-flex h-10 items-center gap-2 rounded-md bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-85"
+            >
+              Get every template from ${defaultPlan.price}
+              <ArrowRight className="size-4" />
+            </Link>
+          )}
+          <Link
+            href="/compose"
+            className="inline-flex h-10 items-center rounded-md border bg-card px-4 text-sm font-medium shadow-xs transition-colors hover:bg-accent"
+          >
+            Compose your own
+          </Link>
+        </div>
+      </Row>
+
+      {pro.length > 0 && (
+        <>
+          <Spacer marks className="h-10 sm:h-12" />
+          <Row>
+            <div className={cn(pad, "flex flex-wrap items-center justify-between gap-2 py-3")}>
+              <SheetLabel index="01">Pro templates</SheetLabel>
+              <Link href="/pro" className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase hover:text-foreground">
+                Included in Balick UI Pro →
+              </Link>
+            </div>
+          </Row>
+          <Row>
+            <TemplateGrid templates={pro} priority={3} />
+          </Row>
+        </>
+      )}
+
+      <Spacer marks className="h-10 sm:h-12" />
+      <Row>
+        <div className={cn(pad, "flex flex-wrap items-center justify-between gap-2 py-3")}>
+          <SheetLabel index={pro.length > 0 ? "02" : "01"}>Free templates</SheetLabel>
+          <span className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">MIT licensed</span>
+        </div>
+      </Row>
+      <Row>
+        <TemplateGrid templates={free} priority={pro.length > 0 ? 0 : 3} />
+      </Row>
+
+      <Spacer marks className="h-10 sm:h-12" />
+      <Row>
+        <div className={cn(pad, "flex flex-col items-center gap-4 py-10 text-center")}>
+          <h2 className="text-2xl font-semibold tracking-tight">Need another layout?</h2>
+          <p className="max-w-md text-balance text-muted-foreground">
+            Every template is a list of blocks. Start from one in the composer, or arrange your own page
+            from scratch.
+          </p>
           <Link
             href="/compose"
             className="inline-flex h-10 items-center gap-2 rounded-md bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-85"
@@ -45,27 +103,6 @@ export default function TemplatesPage() {
             Open the composer
             <ArrowRight className="size-4" />
           </Link>
-        </div>
-      </Row>
-      <Spacer className="h-8 sm:h-10" />
-      <Row>
-        <div className="overflow-hidden">
-          <ul className="-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {planned.map((template, index) => (
-              <li key={template.title} className="flex flex-col border-r border-b border-rule p-6">
-                <div aria-hidden className="flex aspect-[16/10] items-end rounded-lg border border-dashed border-mark bg-hatch p-3">
-                  <span className="rounded-sm bg-background px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
-                    Reserved
-                  </span>
-                </div>
-                <p className="mt-5 font-mono text-[11px] text-muted-foreground">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h2 className="mt-1 font-medium">{template.title}</h2>
-                <p className="mt-2 font-mono text-xs leading-5 text-muted-foreground">{template.blocks}</p>
-              </li>
-            ))}
-          </ul>
         </div>
       </Row>
       <Spacer className="h-16 sm:h-24" />

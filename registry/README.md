@@ -41,6 +41,18 @@ combination of blocks looks like one page.
    (a hero with a logo strip), declare it in `meta.includes` so the composer
    can warn about duplicates.
 4. Run `pnpm registry:build`, then `pnpm registry:verify`.
+
+## Adding a template
+
+A template is an ordered list of blocks, declared in `content/templates.ts`.
+`/r/templates/<slug>.json` serves it as an item that installs `app/page.tsx`
+and every block it uses; the gallery at `/templates` and the template page
+pick it up. Templates that use a Pro block are Pro templates.
+
+The cards on `/templates` show a screenshot of each template. With the dev
+server running, regenerate them with
+`node scripts/template-screenshots.mjs`, then commit `public/templates/`.
+
 ## Theme
 
 The `theme` item is generated: `pnpm registry:build` copies the colour tokens
