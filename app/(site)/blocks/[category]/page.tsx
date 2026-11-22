@@ -7,11 +7,13 @@ import { BlockViewer } from "@/components/block-viewer"
 import { BlocksCategoryTabs } from "@/components/blocks-category-tabs"
 import { Row, Spacer } from "@/components/sheet"
 import { CodeBlock } from "@/components/code-block"
+import { proInstallTarget } from "@/config/pro"
 import { installTarget } from "@/config/site"
 import { blockList } from "@/content/blocks"
 import { galleryCategories, galleryTabs } from "@/lib/blocks-gallery"
 import { shadcnAdd } from "@/lib/commands"
 import { getRegistryFiles, getRegistryItem } from "@/lib/registry"
+import { proItems } from "@/registry/__pro__"
 
 type Props = { params: Promise<{ category: string }> }
 
@@ -46,10 +48,13 @@ export default async function BlockCategoryPage({ params }: Props) {
 
   const blocks = await Promise.all(
     category.blocks.map(async (block) => {
-      const item = getRegistryItem(block.name)
-      const files = await getRegistryFiles(block.name)
+      // The source of a Pro block is never rendered: only its metadata is public.
+      const pro = block.tier === "pro"
+      const item = pro ? proItems.find((entry) => entry.name === block.name) : getRegistryItem(block.name)
+      const files = pro ? [] : await getRegistryFiles(block.name)
       return {
         ...block,
+        target: pro ? proInstallTarget(block.name) : installTarget(block.name),
         dependencies: [
           ...(item?.registryDependencies ?? []).map(dependencyName),
           ...(item?.dependencies ?? []),
@@ -104,7 +109,8 @@ export default async function BlockCategoryPage({ params }: Props) {
             name={block.name}
             title={block.title}
             description={block.description}
-            commands={shadcnAdd(installTarget(block.name))}
+            tier={block.tier}
+            commands={shadcnAdd(block.target)}
             dependencies={block.dependencies}
             files={block.files}
           />

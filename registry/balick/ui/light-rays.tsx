@@ -15,11 +15,13 @@ export interface LightRaysProps extends React.ComponentProps<"div"> {
 function ray(index: number) {
   const seed = (n: number) => (Math.sin(index * 12.9898 + n * 78.233) * 43758.5453) % 1
   const random = (n: number) => Math.abs(seed(n))
+  // Rounded, so the server and the browser render the same styles.
+  const round = (value: number) => Math.round(value * 1000) / 1000
   return {
-    width: 2 + random(1) * 6,
-    opacity: 0.15 + random(2) * 0.3,
-    delay: random(3),
-    sway: 2 + random(4) * 4,
+    width: round(2 + random(1) * 6),
+    opacity: round(0.15 + random(2) * 0.3),
+    delay: round(random(3)),
+    sway: round(2 + random(4) * 4),
   }
 }
 

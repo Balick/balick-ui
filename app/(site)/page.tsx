@@ -13,9 +13,12 @@ import { CategoryGrid } from "@/components/category-grid"
 import { Anatomy } from "@/components/home/anatomy"
 import { InstallPill } from "@/components/home/install-pill"
 import { Row, SheetLabel, Spacer } from "@/components/sheet"
+import { TemplateGrid } from "@/components/templates/template-grid"
+import { defaultPlan, proConfig } from "@/config/pro"
 import { installTarget } from "@/config/site"
-import { blockList } from "@/content/blocks"
+import { blockList, proBlocks } from "@/content/blocks"
 import { componentDocs, componentHref } from "@/content/components"
+import { templates } from "@/content/templates"
 import { galleryCategories, galleryCells } from "@/lib/blocks-gallery"
 import { composeInstallTarget, starterComposition } from "@/lib/compose"
 import { cn } from "@/lib/utils"
@@ -107,8 +110,15 @@ function Intro({
   )
 }
 
+/** The templates shown on the home page: the most complete ones first. */
+const featuredSlugs = ["launch", "ai-product", "saas"]
+
 export default function HomePage() {
   const categories = galleryCategories()
+  const featuredTemplates = [
+    ...featuredSlugs.flatMap((slug) => templates.filter((template) => template.slug === slug)),
+    ...templates.filter((template) => !featuredSlugs.includes(template.slug)),
+  ].slice(0, 3)
 
   return (
     <div className="sheet">
@@ -117,12 +127,12 @@ export default function HomePage() {
       <Row>
         <div className={cn(pad, "py-3 text-center")}>
           <Link
-            href="/compose"
+            href="/templates"
             className="inline-flex max-w-full items-center gap-2 rounded-full border bg-card py-1 pr-3 pl-1 text-xs shadow-xs transition-colors hover:bg-accent"
           >
             <span className="rounded-full bg-foreground px-2 py-0.5 font-medium text-background">New</span>
             <span className="truncate text-muted-foreground">
-              The composer: build a page from blocks, install it in one command
+              {templates.length} templates: a complete page in one command
             </span>
             <ArrowRight className="size-3 shrink-0 text-muted-foreground" />
           </Link>
@@ -145,7 +155,7 @@ export default function HomePage() {
       <Row>
         <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
           <PrimaryLink href="/compose">Open the composer</PrimaryLink>
-          <SecondaryLink href="/blocks">Browse blocks</SecondaryLink>
+          <SecondaryLink href="/templates">Browse templates</SecondaryLink>
         </div>
       </Row>
       <Row>
@@ -220,10 +230,28 @@ export default function HomePage() {
         </div>
       </Row>
 
-      {/* Composer */}
+      {/* Templates */}
       <Spacer marks />
       <Intro
         index="03"
+        label="Templates"
+        title="Or start from a whole page."
+        description="Landing pages for SaaS, AI, fintech, launches and portfolios, assembled from the same blocks. Preview them live, install one in a single command."
+      />
+      <Spacer className="h-8 sm:h-10" />
+      <Row top>
+        <TemplateGrid templates={featuredTemplates} />
+      </Row>
+      <Row>
+        <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
+          <PrimaryLink href="/templates">Browse all templates</PrimaryLink>
+        </div>
+      </Row>
+
+      {/* Composer */}
+      <Spacer marks />
+      <Intro
+        index="04"
         label="Composer"
         title="Compose, preview, install."
         description="Build a page in the browser. The link keeps your composition, and one command adds the page and every block it uses to your project."
@@ -278,7 +306,7 @@ export default function HomePage() {
       {/* Principles */}
       <Spacer marks />
       <Intro
-        index="04"
+        index="05"
         label="Principles"
         title="Quiet, consistent, yours."
         description="Production-ready sections that stay out of the way of your content."
@@ -308,7 +336,7 @@ export default function HomePage() {
       {/* Components */}
       <Spacer marks />
       <Intro
-        index="05"
+        index="06"
         label="Components"
         title="The pieces underneath."
         description="The animated components the blocks are made of, also available on their own. Every preview is the real component."
@@ -345,6 +373,49 @@ export default function HomePage() {
           </Showcase>
         </div>
       </Row>
+
+      {/* Pro */}
+      {proBlocks.length > 0 && (
+        <>
+          <Spacer marks />
+          <Intro
+            index="07"
+            label={proConfig.name}
+            title="Want more? Go Pro."
+            description={`${proBlocks.length} more blocks and every template: interactive heroes, product tours, pricing calculators. Pay once from $${defaultPlan.price}, get every update.`}
+          />
+          <Spacer className="h-8 sm:h-10" />
+          <Row top>
+            <ul className="grid grid-cols-2 md:grid-cols-4">
+              {[
+                { value: `+${proBlocks.length}`, label: "Pro blocks" },
+                { value: templates.filter((template) => template.tier === "pro").length, label: "Pro templates" },
+                { value: "1×", label: "Payment, no subscription" },
+                { value: `${proConfig.refundDays}d`, label: "Full refund" },
+              ].map((figure, index) => (
+                <li
+                  key={figure.label}
+                  className={cn(
+                    "flex flex-col gap-2 border-rule px-4 py-8 md:px-6",
+                    index % 2 === 0 && "border-r",
+                    index < 2 && "border-b md:border-b-0",
+                    index === 1 && "md:border-r"
+                  )}
+                >
+                  <span className="text-5xl font-semibold tracking-tighter tabular-nums">{figure.value}</span>
+                  <span className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">{figure.label}</span>
+                </li>
+              ))}
+            </ul>
+          </Row>
+          <Row>
+            <div className={cn(pad, "flex flex-wrap items-center justify-center gap-3 py-4")}>
+              <PrimaryLink href="/pro">Discover Pro</PrimaryLink>
+              <SecondaryLink href="/pro#pricing">See pricing</SecondaryLink>
+            </div>
+          </Row>
+        </>
+      )}
 
       {/* Closing */}
       <Spacer marks className="h-16 sm:h-24" />

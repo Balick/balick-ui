@@ -24,12 +24,14 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "node scripts/pro.mjs && next dev --turbopack",
+    "build": "node scripts/pro.mjs && next build",
     "start": "next start",
     "lint": "eslint .",
     "registry:build": "node scripts/sync-theme.mjs && node scripts/check-blocks.mjs && shadcn build",
-    "registry:verify": "node scripts/verify-registry.mjs"
+    "registry:verify": "node scripts/verify-registry.mjs",
+    "pro": "node scripts/pro.mjs",
+    "postinstall": "node scripts/pro.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.23",

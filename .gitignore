@@ -44,3 +44,10 @@ next-env.d.ts
 
 # personal Claude Code instructions
 CLAUDE.local.md
+
+# Pro registry: private sources and the modules generated from them (scripts/pro.mjs)
+/registry/pro/
+/registry/__pro__.ts
+/registry/__pro_blocks__.ts
+/registry/__pro_registry__.ts
+/.pro-sources.tar.gz

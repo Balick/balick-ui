@@ -12,7 +12,11 @@
  * page per block and per demo, so render errors show up too):
  *
  * - radix, base: `shadcn init` with that style, then `shadcn add` of every item,
- *   exactly what a user does.
+ *   exactly what a user does. With the Pro sources in registry/pro (see
+ *   scripts/pro.mjs), the project also declares the @balick-pro registry with
+ *   a license key and installs every Pro block and a Pro template. Against a
+ *   deployed site (--url), set BALICK_PRO_LICENSE to a valid key to include
+ *   them.
  * - v0: what "Open in v0" does with /r/v0/<name>.json. v0 cannot be driven from
  *   here (it needs an account), so this emulates what we have seen of it:
  *   files are written at their `target`; `css`, `cssVars` and `envVars` are
@@ -23,8 +27,9 @@
  *   export only. It does not replace opening a few items in v0 by hand.
  */
 import { spawn } from "node:child_process"
+import { randomUUID } from "node:crypto"
 import http from "node:http"
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import path from "node:path"
 
@@ -48,6 +53,14 @@ for (const key of ["NO_PROXY", "no_proxy"]) {
   process.env[key] = [process.env[key], "127.0.0.1", "localhost"].filter(Boolean).join(",")
 }
 http.setGlobalProxyFromEnv?.()
+
+// Pro items: installed with a license key the local site accepts, or the one
+// given for a deployed site.
+const proManifest = "registry/pro/registry.json"
+const proKey = remoteUrl ? process.env.BALICK_PRO_LICENSE : `verify_${randomUUID()}`
+const proItems =
+  proKey && existsSync(proManifest) ? JSON.parse(readFileSync(proManifest, "utf8")).items : []
+const proTemplate = "launch"
 
 const started = Date.now()
 const log = (message) =>
@@ -173,7 +186,7 @@ async function startSite() {
   await mustRun("pnpm", ["registry:build"])
   await mustRun("pnpm", ["build"], { env })
   const server = spawn("pnpm", ["exec", "next", "start", "-p", String(port + 1)], {
-    env: { ...process.env, ...env },
+    env: { ...process.env, ...env, ...(proItems.length ? { PRO_LICENSE_KEYS: proKey } : {}) },
     stdio: "ignore",
     detached: process.platform !== "win32",
     shell: process.platform === "win32",
@@ -267,18 +280,42 @@ async function checkInstall(base, site, items, work) {
   log(`Installing every item into a fresh ${base} project`)
   try {
     const dir = await createProject(work, `install-${base}`, base)
+    if (proItems.length) {
+      // What the Pro setup guide asks buyers to do.
+      const config = JSON.parse(readFileSync(path.join(dir, "components.json"), "utf8"))
+      config.registries = {
+        ...config.registries,
+        "@balick-pro": {
+          url: `${site}/r/pro/{name}.json`,
+          headers: { Authorization: "Bearer ${BALICK_PRO_LICENSE}" },
+        },
+      }
+      writeFile(dir, "components.json", JSON.stringify(config, null, 2))
+      writeFile(dir, ".env.local", `BALICK_PRO_LICENSE=${proKey}\n`)
+    }
     await mustRun(
       "npx",
-      ["-y", "shadcn@latest", "add", ...items.map((item) => `${site}/r/${item.name}.json`), "-y", "-o"],
+      [
+        "-y", "shadcn@latest", "add",
+        ...items.map((item) => `${site}/r/${item.name}.json`),
+        ...proItems.map((item) => `@balick-pro/${item.name}`),
+        "-y", "-o",
+      ],
       { cwd: dir }
     )
+    if (proItems.length) {
+      // A Pro template: its page, and its Pro blocks through the namespace.
+      await mustRun("npx", ["-y", "shadcn@latest", "add", `${site}/r/templates/${proTemplate}.json`, "-y", "-o"], {
+        cwd: dir,
+      })
+    }
 
     const css = readFileSync(path.join(dir, "app/globals.css"), "utf8")
     for (const needle of ["@keyframes marquee", "@keyframes shimmer-spin", "--animate-marquee", "--animate-shimmer-spin"]) {
       if (!css.includes(needle)) fail(stage, "globals.css", `the installed CSS lacks ${needle}`)
     }
 
-    for (const item of items) {
+    for (const item of [...items, ...proItems]) {
       if (item.type === "registry:block") writeFile(dir, `app/verify/${item.name}/page.tsx`, blockPage(item.name))
       if (item.type === "registry:example") writeFile(dir, `app/verify/${item.name}/page.tsx`, demoPage(item.name))
     }
@@ -452,7 +489,7 @@ const site = await startSite()
 const work = mkdtempSync(path.join(tmpdir(), "balick-verify-"))
 try {
   const { items } = await getJson(`${site.url}/r/registry.json`)
-  console.log(`Checking ${items.length} items from ${site.url}`)
+  console.log(`Checking ${items.length} items${proItems.length ? ` and ${proItems.length} Pro items` : ""} from ${site.url}`)
   if (!only || only === "radix") await checkInstall("radix", site.url, items, work)
   if (!only || only === "base") await checkInstall("base", site.url, items, work)
   if (!only || only === "v0") await checkV0(site.url, items, work)

@@ -28,7 +28,13 @@ const searchGroups = docsNav.flatMap((section) => {
   ]
 })
 
-export function CommandMenu({ className }: { className?: string }) {
+export interface SearchGroup {
+  heading: string
+  items: NavItem[]
+}
+
+/** `groups` adds results that come from the server, such as blocks and templates. */
+export function CommandMenu({ className, groups = [] }: { className?: string; groups?: SearchGroup[] }) {
   const router = useRouter()
   const { setTheme } = useTheme()
   const [open, setOpen] = React.useState(false)
@@ -88,7 +94,7 @@ export function CommandMenu({ className }: { className?: string }) {
           <Command.Empty className="py-10 text-center text-sm text-muted-foreground">
             No results found.
           </Command.Empty>
-          {searchGroups.map((group) => (
+          {[...groups, ...searchGroups].map((group) => (
             <Command.Group
               key={group.heading}
               heading={group.heading}

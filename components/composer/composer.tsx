@@ -16,12 +16,14 @@ import { Reorder, useDragControls } from "motion/react"
 
 import { InstallDialog } from "@/components/composer/install-dialog"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
+import { ProBadge } from "@/components/pro/pro-badge"
 import { ResizableFrame, ViewportToggle } from "@/components/resizable-frame"
 import { blockCategories, blockList, getBlock, getCategory } from "@/content/blocks"
 import { useCopy } from "@/hooks/use-copy"
 import {
   COMPOSE_MESSAGE,
   composeV0Url,
+  compositionHasPro,
   compositionHints,
   insertionIndex,
   serializeComposition,
@@ -228,11 +230,7 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
                               {block.name}
                             </span>
                           </span>
-                          {block.tier === "pro" && (
-                            <span className="rounded-full border px-1.5 font-mono text-[10px] text-muted-foreground">
-                              Pro
-                            </span>
-                          )}
+                          {block.tier === "pro" && <ProBadge />}
                           <Plus className="size-4 shrink-0 text-muted-foreground group-hover:text-foreground" />
                         </button>
                       </li>
@@ -270,7 +268,7 @@ export function Composer({ initialBlocks }: { initialBlocks: string[] }) {
             >
               <ExternalLink className="size-3.5" />
             </a>
-            {blocks.length > 0 && (
+            {blocks.length > 0 && !compositionHasPro(blocks) && (
               <OpenInV0Button
                 name="composed page"
                 url={composeV0Url(blocks)}

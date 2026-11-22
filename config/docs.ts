@@ -20,6 +20,7 @@ export const mainNav: NavItem[] = [
   { title: "Blocks", href: "/blocks" },
   { title: "Compose", href: "/compose" },
   { title: "Templates", href: "/templates" },
+  { title: "Pro", href: "/pro" },
 ]
 
 /**
@@ -35,6 +36,7 @@ export const docsNav: NavSection[] = [
       { title: "Introduction", href: "/docs" },
       { title: "Installation", href: "/docs/installation" },
       { title: "Theming", href: "/docs/theming" },
+      { title: "Pro setup", href: "/docs/pro", label: "Pro" },
     ],
   },
   {

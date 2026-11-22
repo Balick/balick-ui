@@ -11,6 +11,8 @@ const index = [
   { title: "Blocks", href: "/blocks" },
   { title: "Compose", href: "/compose" },
   { title: "Templates", href: "/templates" },
+  { title: "Pro", href: "/pro" },
+  { title: "License", href: "/license" },
 ]
 
 /** A cell of the footer: a mono label above its value. */
