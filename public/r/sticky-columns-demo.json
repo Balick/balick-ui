@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sticky-columns-demo",
+  "title": "Sticky Columns Demo",
+  "description": "Example usage of Sticky Columns.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/sticky-columns.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/sticky-columns-demo.tsx",
+      "content": "import { StickyColumns } from \"@/registry/balick/ui/sticky-columns\"\n\nconst steps = [\n  { title: \"Plan\", text: \"Turn ideas into issues, sorted by what matters this week.\" },\n  { title: \"Build\", text: \"Branches, reviews and previews, linked to the issue they close.\" },\n  { title: \"Ship\", text: \"Release when checks are green, with notes written for you.\" },\n  { title: \"Learn\", text: \"See how each release lands, and feed it back into the plan.\" },\n]\n\nexport default function StickyColumnsDemo() {\n  return (\n    <div className=\"h-80 w-full max-w-2xl overflow-y-auto rounded-xl border bg-background p-6\">\n      <StickyColumns\n        top=\"0rem\"\n        aside={\n          <div>\n            <p className=\"font-mono text-xs tracking-wider text-muted-foreground uppercase\">Workflow</p>\n            <h3 className=\"mt-2 text-2xl font-semibold tracking-tighter\">Plan, build, ship.</h3>\n            <p className=\"mt-2 text-sm leading-6 text-muted-foreground\">\n              This column stays put while the steps scroll by.\n            </p>\n          </div>\n        }\n      >\n        <div className=\"flex flex-col gap-4\">\n          {steps.map(({ title, text }, index) => (\n            <div key={title} className=\"rounded-xl border bg-card p-5\">\n              <p className=\"font-mono text-xs text-muted-foreground\">0{index + 1}</p>\n              <p className=\"mt-6 font-medium\">{title}</p>\n              <p className=\"mt-1 text-sm leading-6 text-muted-foreground\">{text}</p>\n            </div>\n          ))}\n        </div>\n      </StickyColumns>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

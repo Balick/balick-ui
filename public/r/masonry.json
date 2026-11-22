@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "masonry",
+  "title": "Masonry",
+  "description": "Items of uneven heights in columns, with no holes between them.",
+  "files": [
+    {
+      "path": "registry/balick/ui/masonry.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface MasonryProps extends React.ComponentProps<\"div\"> {\n  /** Space between items, as a CSS length. */\n  gap?: string\n}\n\n/**\n * Items of uneven heights laid out in columns, with no holes between them.\n * The number of columns follows the width of the container: one, two, then\n * three; set your own with a `columns-*` class. Items flow down each column.\n */\nexport function Masonry({ gap = \"1rem\", className, style, children, ...props }: MasonryProps) {\n  return (\n    <div className=\"@container/masonry w-full\">\n      <div\n        data-slot=\"masonry\"\n        style={{ \"--masonry-gap\": gap, ...style } as React.CSSProperties}\n        className={cn(\"columns-1 gap-(--masonry-gap) @sm/masonry:columns-2 @2xl/masonry:columns-3\", className)}\n        {...props}\n      >\n        {React.Children.map(children, (child) => (\n          <div className=\"mb-(--masonry-gap) break-inside-avoid\">{child}</div>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

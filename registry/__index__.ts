@@ -58,6 +58,10 @@ import RippleDemo from "@/registry/balick/examples/ripple-demo"
 import ScrambleTextDemo from "@/registry/balick/examples/scramble-text-demo"
 import ScrollProgressDemo from "@/registry/balick/examples/scroll-progress-demo"
 import SectionDemo from "@/registry/balick/examples/section-demo"
+import BentoGridDemo from "@/registry/balick/examples/bento-grid-demo"
+import MasonryDemo from "@/registry/balick/examples/masonry-demo"
+import StickyColumnsDemo from "@/registry/balick/examples/sticky-columns-demo"
+import ScrollStackDemo from "@/registry/balick/examples/scroll-stack-demo"
 import SegmentMeterDemo from "@/registry/balick/examples/segment-meter-demo"
 import SegmentedControlDemo from "@/registry/balick/examples/segmented-control-demo"
 import ShimmerButtonDemo from "@/registry/balick/examples/shimmer-button-demo"
@@ -111,6 +115,10 @@ export const examples: Record<string, React.ComponentType> = {
   "scramble-text-demo": ScrambleTextDemo,
   "scroll-progress-demo": ScrollProgressDemo,
   "section-demo": SectionDemo,
+  "bento-grid-demo": BentoGridDemo,
+  "masonry-demo": MasonryDemo,
+  "sticky-columns-demo": StickyColumnsDemo,
+  "scroll-stack-demo": ScrollStackDemo,
   "segment-meter-demo": SegmentMeterDemo,
   "segmented-control-demo": SegmentedControlDemo,
   "shimmer-button-demo": ShimmerButtonDemo,

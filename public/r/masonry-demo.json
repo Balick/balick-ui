@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "masonry-demo",
+  "title": "Masonry Demo",
+  "description": "Example usage of Masonry.",
+  "registryDependencies": [
+    "https://ui.balick.me/r/masonry.json"
+  ],
+  "files": [
+    {
+      "path": "registry/balick/examples/masonry-demo.tsx",
+      "content": "import { Masonry } from \"@/registry/balick/ui/masonry\"\n\nconst notes = [\n  { title: \"Moodboard\", height: \"h-28\" },\n  { title: \"Typography\", height: \"h-16\" },\n  { title: \"Palette\", height: \"h-32\" },\n  { title: \"Wireframes\", height: \"h-20\" },\n  { title: \"Motion\", height: \"h-24\" },\n  { title: \"Handoff\", height: \"h-14\" },\n]\n\nexport default function MasonryDemo() {\n  return (\n    <Masonry className=\"w-full max-w-2xl columns-2 @lg/masonry:columns-3\" gap=\"0.75rem\">\n      {notes.map(({ title, height }, index) => (\n        <figure key={title} className=\"overflow-hidden rounded-xl border bg-card\">\n          <div\n            className={`${height} bg-muted`}\n            style={{\n              backgroundImage: `linear-gradient(${120 + index * 30}deg, transparent, color-mix(in oklab, var(--color-foreground) ${6 + (index % 3) * 5}%, transparent))`,\n            }}\n          />\n          <figcaption className=\"px-3 py-2 text-xs font-medium\">{title}</figcaption>\n        </figure>\n      ))}\n    </Masonry>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

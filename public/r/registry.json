@@ -340,6 +340,57 @@
       ]
     },
     {
+      "name": "bento-grid",
+      "type": "registry:ui",
+      "title": "Bento Grid",
+      "description": "Feature cards of different sizes, with an illustration that eases up on hover.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/ui/bento-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "masonry",
+      "type": "registry:ui",
+      "title": "Masonry",
+      "description": "Items of uneven heights in columns, with no holes between them.",
+      "files": [
+        {
+          "path": "registry/balick/ui/masonry.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sticky-columns",
+      "type": "registry:ui",
+      "title": "Sticky Columns",
+      "description": "Two columns: one stays in view while the other scrolls by.",
+      "files": [
+        {
+          "path": "registry/balick/ui/sticky-columns.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-stack",
+      "type": "registry:ui",
+      "title": "Scroll Stack",
+      "description": "Cards that pile on top of each other as the page scrolls.",
+      "files": [
+        {
+          "path": "registry/balick/ui/scroll-stack.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "social-icons",
       "type": "registry:ui",
       "title": "Social icons",
@@ -976,6 +1027,69 @@
       "files": [
         {
           "path": "registry/balick/examples/section-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "bento-grid-demo",
+      "type": "registry:example",
+      "title": "Bento Grid Demo",
+      "description": "Example usage of Bento Grid.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/bento-grid.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/bento-grid-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "masonry-demo",
+      "type": "registry:example",
+      "title": "Masonry Demo",
+      "description": "Example usage of Masonry.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/masonry.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/masonry-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "sticky-columns-demo",
+      "type": "registry:example",
+      "title": "Sticky Columns Demo",
+      "description": "Example usage of Sticky Columns.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/sticky-columns.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/sticky-columns-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scroll-stack-demo",
+      "type": "registry:example",
+      "title": "Scroll Stack Demo",
+      "description": "Example usage of Scroll Stack.",
+      "registryDependencies": [
+        "https://ui.balick.me/r/scroll-stack.json"
+      ],
+      "files": [
+        {
+          "path": "registry/balick/examples/scroll-stack-demo.tsx",
           "type": "registry:example"
         }
       ]

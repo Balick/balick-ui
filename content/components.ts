@@ -31,7 +31,7 @@ export const componentCategories: {
   { slug: "motion", title: "Motion", description: "Reveals and loops that support the content.", featured: "marquee" },
   { slug: "backgrounds", title: "Backgrounds", description: "Patterns, light and texture that sit behind a section.", featured: "flickering-grid" },
   { slug: "indicators", title: "Indicators", description: "Small signals of state.", featured: "status-dot" },
-  { slug: "layout", title: "Layout", description: "The primitives every block is built on.", featured: "section" },
+  { slug: "layout", title: "Layout", description: "Primitives and grids that pages are built on.", featured: "bento-grid" },
 ]
 
 /**
@@ -431,6 +431,128 @@ export function Uptime() {
       { name: "suffix", type: "string", description: 'Text after the number, such as "%" or "M+".' },
       { name: "duration", type: "number", default: "1.2", description: "Duration of the count, in seconds." },
       { name: "delay", type: "number", default: "0", description: "Delay before the count starts once in view, in seconds." },
+    ],
+  },
+  {
+    slug: "bento-grid",
+    category: "layout",
+    title: "Bento Grid",
+    description: "Feature cards of different sizes, with an illustration that eases up on hover.",
+    example: "bento-grid-demo",
+    usage: `import { BarChart3 } from "lucide-react"
+
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
+
+export function Features() {
+  return (
+    <BentoGrid>
+      <BentoCard
+        className="@md/bento:col-span-2"
+        icon={<BarChart3 />}
+        title="Analytics"
+        description="Every visit, sign-up and sale, in one view."
+        background={<Chart />}
+        href="/analytics"
+      />
+      <BentoCard title="Alerts" description="Know the moment something happens." />
+    </BentoGrid>
+  )
+}`,
+    propGroups: [
+      {
+        title: "BentoGrid",
+        props: [
+          { name: "className", type: "string", description: "One column, then two from a 28rem container, three from 48rem. Rows are 16rem high: change them with auto-rows-*." },
+        ],
+      },
+      {
+        title: "BentoCard",
+        props: [
+          { name: "title", type: "ReactNode", description: "Title of the card. Required." },
+          { name: "description", type: "ReactNode", description: "Text under the title." },
+          { name: "icon", type: "ReactNode", description: "Icon shown above the title, in a small tile." },
+          { name: "background", type: "ReactNode", description: "Illustration that fills the card behind the text. It eases up on hover." },
+          { name: "href", type: "string", description: "Where the card leads. A link slides in under the text on hover, and stays visible on touch screens." },
+          { name: "cta", type: "ReactNode", default: '"Learn more"', description: "Text of the link." },
+          { name: "className", type: "string", description: "Make a card span two columns with @md/bento:col-span-2." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "masonry",
+    category: "layout",
+    title: "Masonry",
+    description: "Items of uneven heights in columns, with no holes between them.",
+    example: "masonry-demo",
+    usage: `import { Masonry } from "@/components/ui/masonry"
+
+export function Gallery({ photos }: { photos: { src: string; alt: string }[] }) {
+  return (
+    <Masonry>
+      {photos.map((photo) => (
+        <img key={photo.src} src={photo.src} alt={photo.alt} className="w-full rounded-xl" />
+      ))}
+    </Masonry>
+  )
+}`,
+    props: [
+      { name: "gap", type: "string", default: '"1rem"', description: "Space between items, as a CSS length." },
+      { name: "className", type: "string", description: "One, two, then three columns as the container widens. Set your own with columns-*." },
+    ],
+  },
+  {
+    slug: "sticky-columns",
+    category: "layout",
+    title: "Sticky Columns",
+    description: "Two columns: one stays in view while the other scrolls by.",
+    example: "sticky-columns-demo",
+    usage: `import { StickyColumns } from "@/components/ui/sticky-columns"
+
+export function Workflow() {
+  return (
+    <StickyColumns aside={<h2 className="text-4xl font-semibold tracking-tighter">Plan, build, ship.</h2>}>
+      <Steps />
+    </StickyColumns>
+  )
+}`,
+    props: [
+      { name: "aside", type: "ReactNode", description: "The column that stays in view: usually a title, a short text and a call to action. Required." },
+      { name: "side", type: '"left" | "right"', default: '"left"', description: "Side of the sticky column." },
+      { name: "top", type: "string", default: '"6rem"', description: "Distance kept between the sticky column and the top of the screen. The default clears the navbar." },
+    ],
+  },
+  {
+    slug: "scroll-stack",
+    category: "layout",
+    title: "Scroll Stack",
+    description: "Cards that pile on top of each other as the page scrolls.",
+    example: "scroll-stack-demo",
+    usage: `import { ScrollStack, ScrollStackItem } from "@/components/ui/scroll-stack"
+
+export function Process() {
+  return (
+    <ScrollStack>
+      <ScrollStackItem className="h-80">Collect</ScrollStackItem>
+      <ScrollStackItem className="h-80">Sort</ScrollStackItem>
+      <ScrollStackItem className="h-80">Decide</ScrollStackItem>
+    </ScrollStack>
+  )
+}`,
+    propGroups: [
+      {
+        title: "ScrollStack",
+        props: [
+          { name: "top", type: "string", default: '"6rem"', description: "Distance kept between the stack and the top of the screen. The default clears the navbar." },
+          { name: "offset", type: "string", default: '"1.5rem"', description: "How much of each card stays visible above the next one." },
+        ],
+      },
+      {
+        title: "ScrollStackItem",
+        props: [
+          { name: "...props", type: 'ComponentProps<"div">', description: "An opaque card, so the cards it covers do not show through. Any element works as a child of ScrollStack." },
+        ],
+      },
     ],
   },
   {
