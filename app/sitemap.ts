@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 
 import { siteConfig } from "@/config/site"
 import { categoryHref, componentDocs, componentHref, componentsByCategory } from "@/content/components"
+import { templateHref, templates } from "@/content/templates"
 import { galleryCategories } from "@/lib/blocks-gallery"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -17,7 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/docs/installation", priority: 0.8 },
     { path: "/docs/theming", priority: 0.6 },
     ...componentDocs.map((doc) => ({ path: componentHref(doc.slug), priority: 0.7 })),
-    { path: "/templates", priority: 0.4 },
+    { path: "/templates", priority: 0.9 },
+    ...templates.map((template) => ({ path: templateHref(template.slug), priority: 0.8 })),
+    { path: "/pro", priority: 0.9 },
+    { path: "/docs/pro", priority: 0.6 },
+    { path: "/license", priority: 0.3 },
   ]
 
   return pages.map(({ path, priority }) => ({

@@ -1,13 +1,47 @@
 import Link from "next/link"
 
-import { CommandMenu } from "@/components/command-menu"
+import { CommandMenu, type SearchGroup } from "@/components/command-menu"
 import { Logo } from "@/components/logo"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { Mark } from "@/components/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { siteConfig } from "@/config/site"
+import { templateHref, templates } from "@/content/templates"
+import { galleryCategories } from "@/lib/blocks-gallery"
 import { GitHubIcon } from "@/registry/balick/ui/social-icons"
+
+/** Search results built on the server, so the block sources stay out of the client bundle. */
+function searchGroups(): SearchGroup[] {
+  return [
+    {
+      heading: "Pages",
+      items: [
+        { title: "Blocks", href: "/blocks" },
+        { title: "Compose a page", href: "/compose" },
+        { title: "Templates", href: "/templates" },
+        { title: "Balick UI Pro", href: "/pro" },
+        { title: "Pro pricing", href: "/pro#pricing" },
+        { title: "License", href: "/license" },
+      ],
+    },
+    {
+      heading: "Templates",
+      items: templates.map((template) => ({
+        title: `${template.title} template`,
+        href: templateHref(template.slug),
+        label: template.tier === "pro" ? "Pro" : undefined,
+      })),
+    },
+    {
+      heading: "Blocks",
+      items: galleryCategories().map((category) => ({
+        title: `${category.title} blocks`,
+        href: `/blocks/${category.slug}`,
+      })),
+    },
+  ]
+}
 
 export function SiteHeader() {
   return (
@@ -24,7 +58,7 @@ export function SiteHeader() {
         </Link>
         <MainNav className="hidden md:flex" />
         <div className="ml-auto flex items-center gap-1.5">
-          <CommandMenu className="size-8 lg:h-8 lg:w-56" />
+          <CommandMenu className="size-8 lg:h-8 lg:w-56" groups={searchGroups()} />
           <a
             href={siteConfig.links.github}
             target="_blank"
