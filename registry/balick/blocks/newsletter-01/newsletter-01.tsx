@@ -69,7 +69,7 @@ export function Newsletter01({ id = "newsletter" }: { id?: string }) {
                 autoComplete="email"
                 placeholder="you@example.com"
                 required
-                className="h-10 flex-1"
+                className="h-10 sm:flex-1"
               />
               <Button type="submit" size="lg" disabled={status === "sending"}>
                 {status === "sending" ? "Subscribing…" : "Subscribe"}
