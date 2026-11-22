@@ -1,5 +1,7 @@
 import type * as React from "react"
 
+import { proBlocks } from "@/registry/__pro_blocks__"
+
 import { About01 } from "@/registry/balick/blocks/about-01/about-01"
 import { Blog01 } from "@/registry/balick/blocks/blog-01/blog-01"
 import { Contact01 } from "@/registry/balick/blocks/contact-01/contact-01"
@@ -169,4 +171,5 @@ export const blocks: Record<string, React.ComponentType> = {
   "contact-02": Contact02,
   "footer-01": Footer01,
   "footer-02": Footer02,
+  ...proBlocks,
 }

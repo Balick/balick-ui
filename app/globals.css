@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* The Pro sources are git-ignored (see scripts/pro.mjs), so Tailwind would skip them. */
+@source "../registry/pro";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

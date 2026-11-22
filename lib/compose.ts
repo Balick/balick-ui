@@ -1,3 +1,4 @@
+import { proInstallTarget } from "@/config/pro"
 import { installTarget, registryUrl, siteConfig } from "@/config/site"
 import {
   blockCategories,
@@ -122,15 +123,32 @@ ${lines.join("\n")}
 `
 }
 
+/** Whether a composition uses Pro blocks, which need a license key to install. */
+export function compositionHasPro(blocks: string[]) {
+  return blocks.some((block) => getBlock(block)?.tier === "pro")
+}
+
+/** How a page item refers to a block: Pro blocks through the authenticated namespace. */
+function blockDependency(block: string) {
+  return getBlock(block)?.tier === "pro" ? proInstallTarget(block) : registryUrl(block)
+}
+
 /** A shadcn registry item: the page file, plus every block as a dependency. */
-export function composeRegistryItem(blocks: string[]) {
+export function composeRegistryItem(
+  blocks: string[],
+  {
+    name = "balick-page",
+    title = "Balick UI page",
+    description = `A page composed of ${blocks.length} Balick UI blocks.`,
+  }: { name?: string; title?: string; description?: string } = {}
+) {
   return {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
-    name: "balick-page",
+    name,
     type: "registry:block",
-    title: "Balick UI page",
-    description: `A page composed of ${blocks.length} Balick UI blocks.`,
-    registryDependencies: [...new Set(blocks)].map(registryUrl),
+    title,
+    description,
+    registryDependencies: [...new Set(blocks)].map(blockDependency),
     files: [
       {
         path: "app/page.tsx",

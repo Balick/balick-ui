@@ -1,4 +1,5 @@
 import registry from "@/registry.json"
+import { proItems } from "@/registry/__pro__"
 
 export const blockCategories = [
   {
@@ -133,24 +134,43 @@ export interface BlockMeta {
   files: { path: string; type: string }[]
   /** Categories this block already contains, e.g. a hero with a logo strip. */
   includes: BlockCategory[]
-  /** Pro blocks will be previewable in the composer but need a key to install. */
+  /** Pro blocks are previewable everywhere but need a license key to install. */
   tier: "free" | "pro"
 }
 
 type BlockItemMeta = { includes?: BlockCategory[]; tier?: "free" | "pro" }
 
-/** Blocks as declared in registry.json, the single source of truth. */
-export const blockList: BlockMeta[] = registry.items
+type ManifestItem = {
+  name: string
+  type: string
+  title: string
+  description: string
+  categories?: string[]
+  meta?: BlockItemMeta
+  files?: { path: string; type: string }[]
+}
+
+/**
+ * Blocks as declared in registry.json, the single source of truth, followed
+ * by the Pro blocks when the Pro sources are available (see scripts/pro.mjs).
+ */
+export const blockList: BlockMeta[] = [
+  ...(registry.items as ManifestItem[]),
+  ...(proItems as ManifestItem[]).map((item) => ({ ...item, meta: { ...item.meta, tier: "pro" as const } })),
+]
   .filter((item) => item.type === "registry:block")
   .map((item) => ({
     name: item.name,
     title: item.title,
     description: item.description,
-    category: (item as { categories?: string[] }).categories?.[0] as BlockCategory,
+    category: item.categories?.[0] as BlockCategory,
     files: item.files ?? [],
-    includes: (item as { meta?: BlockItemMeta }).meta?.includes ?? [],
-    tier: (item as { meta?: BlockItemMeta }).meta?.tier ?? "free",
+    includes: item.meta?.includes ?? [],
+    tier: item.meta?.tier ?? "free",
   }))
+
+export const freeBlocks = blockList.filter((block) => block.tier === "free")
+export const proBlocks = blockList.filter((block) => block.tier === "pro")
 
 export function getCategory(slug: BlockCategory) {
   return blockCategories.find((category) => category.slug === slug)!

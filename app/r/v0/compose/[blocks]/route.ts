@@ -1,4 +1,6 @@
-import { composePageSource } from "@/lib/compose"
+import { NextResponse } from "next/server"
+
+import { composePageSource, compositionHasPro, parseComposition } from "@/lib/compose"
 import { composeResponse } from "@/lib/compose-response"
 import { readBuiltItem } from "@/lib/registry"
 import { composedCss, toV0Dependency } from "@/lib/v0-variant"
@@ -13,6 +15,10 @@ export async function GET(
   { params }: { params: Promise<{ blocks: string }> }
 ) {
   const { blocks } = await params
+  // Pro blocks are not published to v0: their sources need a license.
+  if (compositionHasPro(parseComposition(blocks.replace(/\.json$/, "")))) {
+    return NextResponse.json({ error: "Pages with Pro blocks cannot be opened in v0." }, { status: 403 })
+  }
   return composeResponse(blocks, async (item, names) => {
     const css = await composedCss(names, readBuiltItem)
     const variant = toV0Dependency(item)

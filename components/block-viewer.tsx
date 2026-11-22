@@ -4,6 +4,8 @@ import * as React from "react"
 import { Check, ExternalLink, FileCode2, Terminal } from "lucide-react"
 
 import { OpenInV0Button } from "@/components/open-in-v0-button"
+import { ProBadge } from "@/components/pro/pro-badge"
+import { ProLock } from "@/components/pro/pro-lock"
 import { ResizableFrame, ViewportToggle } from "@/components/resizable-frame"
 import { useCopy } from "@/hooks/use-copy"
 import { usePackageManager } from "@/hooks/use-package-manager"
@@ -14,6 +16,7 @@ interface BlockViewerProps {
   name: string
   title: string
   description: string
+  tier?: "free" | "pro"
   commands: Commands
   dependencies: string[]
   files: { path: string; code: React.ReactNode }[]
@@ -23,10 +26,12 @@ export function BlockViewer({
   name,
   title,
   description,
+  tier = "free",
   commands,
   dependencies,
   files,
 }: BlockViewerProps) {
+  const pro = tier === "pro"
   const [view, setView] = React.useState<"preview" | "code">("preview")
   const [width, setWidth] = React.useState<number | null>(null)
   const [activeFile, setActiveFile] = React.useState(0)
@@ -35,10 +40,11 @@ export function BlockViewer({
     <section id={name}>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h3 className="font-medium">
+          <h3 className="flex items-center gap-2 font-medium">
             <a href={`#${name}`} className="hover:underline hover:underline-offset-4">
               {title}
             </a>
+            {pro && <ProBadge />}
           </h3>
           <p className="mt-1 max-w-xl text-sm text-muted-foreground">{description}</p>
         </div>
@@ -71,7 +77,7 @@ export function BlockViewer({
           >
             <ExternalLink className="size-3.5" />
           </a>
-          <OpenInV0Button name={name} className="h-8" />
+          {!pro && <OpenInV0Button name={name} className="h-8" />}
         </div>
       </div>
 
@@ -88,7 +94,9 @@ export function BlockViewer({
           />
         </div>
 
-        {view === "code" && (
+        {view === "code" && pro && <ProLock title={title} />}
+
+        {view === "code" && !pro && (
           <div className="overflow-hidden rounded-xl border bg-card shadow-xs md:grid md:grid-cols-[220px_minmax(0,1fr)]">
             <div className="flex flex-col gap-4 border-b bg-muted/30 p-3 md:border-r md:border-b-0">
               <div>
